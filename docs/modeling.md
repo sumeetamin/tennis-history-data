@@ -32,6 +32,8 @@ The odds-enriched feature file applies these ranking fallbacks and includes `p1_
 
 ## Timing
 
+The recent append builder replays every eligible post-archive provider result in event-date/record-ID order, including results whose features were exported by earlier runs. It emits only unseen IDs. This preserves eligible recent history across daily runs; skipping existing IDs before replay would incorrectly omit their results from subsequent Elo, counts, form and head-to-head features. Regression checks compare a single batch against incremental output and cover the 28-day boundary and late-arriving matches. Existing rows are frozen: a result first received late can inform newly exported rows once temporally eligible, but does not retroactively revise previously published feature values. This is an event-date availability approximation, not a reconstructed publication-time feed.
+
 Source dates are generally tournament start dates, not match timestamps. Historical outcomes and serve statistics enter features only when their tournament date is **strictly more than 28 days before** the row's tournament date. All matches from a single edition therefore receive history from before that edition; same-tournament rounds are never fed into one another.
 
 The 28-day lag is a conservative availability assumption for historical match-derived features, not proof of true publication time. The archive lacks exact finish/publication timestamps. Unusually delayed events and retrospective corrections cannot be fully audited. Rankings use source-reported tournament-date values where present; the separate fallback uses only an earlier weekly ranking snapshot. Present-day player roster attributes are not joined into historical model features.

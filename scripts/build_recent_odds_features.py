@@ -78,7 +78,7 @@ def main():
         last_day = None
         for record in db.execute("SELECT * FROM matches ORDER BY event_date,record_id"):
             row = dict(record)
-            if not row.get("event_date") or row.get("outcome") != "completed" or not row.get("winner_id") or not row.get("loser_id"):
+            if not row.get("event_date") or row.get("outcome") != "completed" or not row.get("winner_id") or not row.get("loser_id") or row.get('source_extra_cells') or row['winner_id'] == row['loser_id']:
                 continue
             a, b = sorted((row["winner_id"], row["loser_id"]))
             if (row["tour"], row["tourney_id"], row["match_num"], a, b) in conflicts:
@@ -94,15 +94,21 @@ def main():
         if OUT.exists():
             with gzip.open(OUT, "rt", encoding="utf-8", newline="") as src:
                 for r in csv.DictReader(src):
+                    if r['record_id'] in existing:
+                        raise ValueError('Duplicate existing recent feature ID')
                     existing.add(r["record_id"])
                     all_dates.append(r["event_date"])
         candidates = []
         counters = defaultdict(int)
+        seen_provider_ids = set()
         with ODDS.open(encoding="utf-8", newline="") as src:
             for raw in csv.DictReader(src):
                 mid = raw.get("match_id", "")
-                if not mid or "vb:" + mid in existing:
+                if not mid:
                     continue
+                if mid in seen_provider_ids:
+                    raise ValueError('Duplicate provider match ID')
+                seen_provider_ids.add(mid)
                 tour = (raw.get("genre") or "").casefold()
                 if tour not in archive_max or not raw.get("date"):
                     continue
@@ -149,9 +155,7 @@ def main():
         candidates.sort(key=lambda x: (x[0], x[1]["record_id"]))
 
         written, fields = [], None
-        for day, row, raw in candidates:
-            history.release_before(day.toordinal() - LAG)
-            f = history.features(row, day)
+        for day, row, raw, f in replay_recent(history, candidates, existing):
             odds_p1 = str(raw.get("joueur1_id"))
             source_is_p1 = aliases[(row["tour"], odds_p1)] == f["p1_id"]
             prices = aligned_prices(raw, source_is_p1)
@@ -161,7 +165,6 @@ def main():
             fields = fields or list(f)
             written.append(f)
             all_dates.append(f["event_date"])
-            history.queue(row, day)
         if written:
             exists = OUT.exists()
             with gzip.open(OUT, "at" if exists else "wt", encoding="utf-8", newline="", compresslevel=6) as dest:
@@ -176,12 +179,24 @@ def main():
                   "archive_max_event_date": {k: v.isoformat() for k, v in archive_max.items()},
                   "skipped_unverified_identity": counters["unverified_identity"],
                   "future_dated_rows_skipped": counters["future_dated"],
+                  "eligible_recent_results_replayed": len(candidates),
+                  "history_policy": "Replay all eligible recent source results, including previously exported IDs, in date/record-ID order; emit only unseen IDs. Existing rows are never revised for later-arriving backfills.",
                   "date_range": [min(all_dates), max(all_dates)] if all_dates else None,
                   "sha256": digest,
                   "feature_file": "data/odds/recent_model_features.csv.gz",
                   "policy": "Strict crosswalk-derived player IDs and matching observed names only; completed scores dated no later than the current UTC date; immutable append-only output. No match scores, outcomes, or post-match statistics are features."}
         REPORT.write_text(json.dumps(report, indent=2), encoding="utf-8")
         print(json.dumps(report, indent=2))
+
+
+def replay_recent(history, candidates, existing):
+    """Reconstruct recent history independently of which rows were already exported."""
+    for day, row, raw in sorted(candidates, key=lambda item: (item[0], item[1]['record_id'])):
+        history.release_before(day.toordinal() - LAG)
+        features = history.features(row, day)
+        if row['record_id'] not in existing:
+            yield day, row, raw, features
+        history.queue(row, day)
 
 
 if __name__ == "__main__":

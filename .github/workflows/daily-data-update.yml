@@ -35,6 +35,9 @@ jobs:
       - name: Rebuild local archive database from tracked source CSVs
         run: python scripts/build_dataset.py
 
+      - name: Check temporal history and incremental replay
+        run: python -m unittest discover -s tests -v
+
       - name: Find and append missing recent matches
         env:
           LOOKBACK_DAYS: ${{ inputs.lookback_days || 30 }}
