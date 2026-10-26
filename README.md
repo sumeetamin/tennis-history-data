@@ -24,6 +24,7 @@ This repository contains the source data, not just links or a scraper template.
 - Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)
 - Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
 - Pre-match model rows with odds: `data/odds/model_features_with_odds.csv.gz` (p1/p2-aligned prices; `p1_won` is the target)
+- Pre-event ranking backfills: `data/processed/supplements/ranking_fallbacks.csv.gz` (keyed by `record_id`, weekly snapshots no more than 90 days old)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
 - Counts and missingness: `data/processed/coverage.csv`, `build_report.json`
 - Detailed post-2000 tier/profile completeness: `data/processed/post_2000_coverage_report.json`
@@ -44,6 +45,7 @@ python scripts/fetch_sackmann.py
 python scripts/build_dataset.py
 python scripts/build_features.py
 python scripts/partition_features.py
+python scripts/build_rank_fallbacks.py
 python scripts/fetch_valuebetennis_odds.py
 python scripts/link_odds_to_sackmann.py
 python scripts/build_model_features_with_odds.py

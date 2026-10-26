@@ -100,7 +100,9 @@ with gzip.open(link_path,'rt',encoding='utf-8',newline='') as src:
         assert row['match_id'] not in linked_odds_ids
         linked_odds_ids.add(row['match_id'])
         assert row['sackmann_record_id'] and row['link_method'] and row['score_match_basis']
-        match=db.execute('''SELECT tour,winner_id,loser_id,winner_name,loser_name,score FROM matches WHERE record_id=?''',
+        match=db.execute('''SELECT tour,winner_id,loser_id,winner_name,loser_name,score,
+                    winner_rank,loser_rank,winner_rank_points,loser_rank_points
+                FROM matches WHERE record_id=?''',
                          (row['sackmann_record_id'],)).fetchone()
         assert match is not None
         assert row['genre']==match[0]
@@ -115,11 +117,69 @@ with gzip.open(link_path,'rt',encoding='utf-8',newline='') as src:
         assert actual and actual==expected
         linked_match_ids[row['sackmann_record_id']]+=1
         odds_by_record[row['sackmann_record_id']]={
-            'odds':row, 'winner_id':str(match[1]), 'loser_id':str(match[2]),
+            'odds':row, 'winner_id':str(match[1]), 'loser_id':str(match[2]), 'match':match,
         }
 assert linked_rows==link_report['counts']['linked_score_and_winner_verified']
 duplicate_archive_links=sum(count>1 for count in linked_match_ids.values())
 assert duplicate_archive_links==0
+
+# Validate the keyed weekly-ranking supplement and its pre-event provenance.
+rank_fallback_path=ROOT/'data/processed/supplements/ranking_fallbacks.csv.gz'
+rank_fallback_report_path=ROOT/'data/processed/supplements/ranking_fallbacks_report.json'
+rank_fallback_report=json.loads(rank_fallback_report_path.read_text(encoding='utf-8'))
+assert sha256(rank_fallback_path)==rank_fallback_report['output']['sha256']
+assert rank_fallback_path.stat().st_size==rank_fallback_report['output']['bytes']
+assert sha256(out/'tennis.sqlite')==rank_fallback_report['input']['sha256']
+rank_fallbacks={}
+rank_fallback_rank_fills=0
+rank_fallback_points_fills=0
+with gzip.open(rank_fallback_path,'rt',encoding='utf-8',newline='') as src:
+    for row in csv.DictReader(src):
+        record_id=row['record_id']
+        assert record_id not in rank_fallbacks
+        match=db.execute('''SELECT tour,category,event_date,tourney_id,match_num,round,
+                    winner_id,loser_id,winner_rank,loser_rank,winner_rank_points,loser_rank_points
+                FROM matches WHERE record_id=?''',(record_id,)).fetchone()
+        assert match is not None
+        assert row['tour']==match[0] and row['event_date']==match[2]
+        ordered=sorted((str(match[6]),str(match[7])))
+        orientation_key='|'.join([str(match[i] or '') for i in (0,3,4,5)]+ordered)
+        if hashlib.sha256(orientation_key.encode()).digest()[0] % 2:
+            ordered.reverse()
+        assert (row['p1_id'],row['p2_id'])==tuple(ordered)
+        source_values={str(match[6]):(match[8],match[10]),str(match[7]):(match[9],match[11])}
+        event_day=date.fromisoformat(match[2])
+        has_fill=False
+        for side,player_id in (('p1',row['p1_id']),('p2',row['p2_id'])):
+            rank_fallback=row[f'{side}_rank_fallback']
+            points_fallback=row[f'{side}_rank_points_fallback']
+            snapshot_day=row[f'{side}_rank_snapshot_date']
+            if rank_fallback or points_fallback:
+                assert snapshot_day
+                assert snapshot_day < event_day.strftime('%Y%m%d')
+                age=(event_day-date.fromisoformat(f'{snapshot_day[:4]}-{snapshot_day[4:6]}-{snapshot_day[6:8]}')).days
+                assert 0 < age <= rank_fallback_report['policy']['maximum_snapshot_age_days']
+                weekly=db.execute('''SELECT rank,points,ranking_date FROM rankings
+                    WHERE tour=? AND player=? AND ranking_date<? ORDER BY ranking_date DESC LIMIT 1''',
+                    (row['tour'],player_id,event_day.strftime('%Y%m%d'))).fetchone()
+                assert weekly is not None and weekly[2]==snapshot_day
+                original_rank,original_points=source_values[player_id]
+                if rank_fallback:
+                    assert not original_rank or float(original_rank)<=0
+                    assert weekly[0] and float(weekly[0])>0 and float(rank_fallback)==float(weekly[0])
+                    rank_fallback_rank_fills+=1
+                    has_fill=True
+                if points_fallback:
+                    assert not original_points or not str(original_points).strip()
+                    assert weekly[1] and float(weekly[1])>0 and float(points_fallback)==float(weekly[1])
+                    rank_fallback_points_fills+=1
+                    has_fill=True
+            else:
+                assert not rank_fallback and not points_fallback
+        assert has_fill
+        rank_fallbacks[record_id]=row
+assert len(rank_fallbacks)==rank_fallback_report['output']['rows']
+assert len(rank_fallbacks)==rank_fallback_report['rows_with_at_least_one_fallback']
 
 # Validate the optional pre-match feature table with prices in deterministic p1/p2 orientation.
 odds_feature_path=ROOT/'data/odds/model_features_with_odds.csv.gz'
@@ -127,6 +187,7 @@ odds_feature_report=json.loads((ROOT/'data/odds/model_features_with_odds_report.
 assert sha256(odds_feature_path)==odds_feature_report['output']['sha256']
 assert sha256(link_path)==odds_feature_report['inputs'][link_path.name]
 assert sha256(odds_path)==odds_feature_report['inputs'][odds_path.name]
+assert sha256(rank_fallback_path)==odds_feature_report['inputs'][rank_fallback_path.relative_to(ROOT).as_posix()]
 assert sha256(out/'tennis.sqlite')==odds_feature_report['inputs']['tennis.sqlite']
 for filename,digest in odds_feature_report['inputs']['yearly_feature_csv_sha256'].items():
     assert sha256(ROOT/'data/processed/model_features_by_year'/filename)==digest
@@ -140,7 +201,9 @@ with gzip.open(odds_feature_path,'rt',encoding='utf-8',newline='') as src:
     odds_feature_columns=feature_reader.fieldnames or []
     expected_odds_columns=['odds_provider_match_id','odds_match_date_utc','odds_open_p1_decimal','odds_open_p2_decimal',
                            'odds_last_pre_match_p1_decimal','odds_last_pre_match_p2_decimal',
-                           'odds_open_pair_available','odds_last_pre_match_pair_available']
+                           'odds_open_pair_available','odds_last_pre_match_pair_available',
+                           'p1_rank_source','p1_rank_points_source','p1_rank_snapshot_date',
+                           'p2_rank_source','p2_rank_points_source','p2_rank_snapshot_date']
     assert odds_feature_columns[-len(expected_odds_columns):]==expected_odds_columns
     assert not {'winner_id','loser_id','score','minutes','odds_winner_id','odds_score'} & set(odds_feature_columns)
     for row in feature_reader:
@@ -175,6 +238,28 @@ with gzip.open(odds_feature_path,'rt',encoding='utf-8',newline='') as src:
         close_pair=bool(expected_prices[2] and expected_prices[3])
         assert row['odds_open_pair_available']==str(open_pair).lower()
         assert row['odds_last_pre_match_pair_available']==str(close_pair).lower()
+        fallback=rank_fallbacks.get(record_id)
+        archive_match=odds_by_record[record_id]['match']
+        raw_values={str(archive_match[1]):(archive_match[6],archive_match[8]),
+                    str(archive_match[2]):(archive_match[7],archive_match[9])}
+        for side in ('p1','p2'):
+            source_player=row[f'{side}_id']
+            raw_rank,raw_points=raw_values[source_player]
+            expected_rank_source='match_record' if raw_rank and float(raw_rank)>0 else 'missing'
+            expected_points_source='match_record' if raw_points and str(raw_points).strip() else 'missing'
+            rank_value=fallback.get(f'{side}_rank_fallback','') if fallback else ''
+            points_value=fallback.get(f'{side}_rank_points_fallback','') if fallback else ''
+            if expected_rank_source=='missing' and rank_value:
+                expected_rank_source='weekly_snapshot'
+                assert float(row[f'{side}_rank'])==float(rank_value)
+            if expected_points_source=='missing' and points_value:
+                expected_points_source='weekly_snapshot'
+                assert float(row[f'{side}_rank_points'])==float(points_value)
+            assert row[f'{side}_rank_source']==expected_rank_source
+            assert row[f'{side}_rank_points_source']==expected_points_source
+            expected_snapshot=(fallback.get(f'{side}_rank_snapshot_date','') if fallback and
+                               (expected_rank_source=='weekly_snapshot' or expected_points_source=='weekly_snapshot') else '')
+            assert row[f'{side}_rank_snapshot_date']==expected_snapshot
         odds_open_pairs+=open_pair
         odds_close_pairs+=close_pair
 assert odds_feature_rows==odds_feature_report['rows']
@@ -196,6 +281,10 @@ result['odds_feature_rows_checked']=odds_feature_rows
 result['odds_feature_provider_ids_unique']=len(odds_feature_ids)==odds_feature_rows
 result['odds_feature_opening_pairs_checked']=odds_open_pairs
 result['odds_feature_last_pre_match_pairs_checked']=odds_close_pairs
+result['ranking_fallback_rows_checked']=len(rank_fallbacks)
+result['ranking_fallback_rank_values_checked']=rank_fallback_rank_fills
+result['ranking_fallback_points_values_checked']=rank_fallback_points_fills
+result['odds_feature_rank_sources_checked']=odds_feature_rows*2
 (out/'validation_report.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result,indent=2))
 

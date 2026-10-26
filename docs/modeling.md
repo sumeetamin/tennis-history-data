@@ -14,11 +14,17 @@ IDs, names, event dates, split labels and audit dates are metadata, not model in
 
 For matches with a strict odds/archive/feature join, `data/odds/model_features_with_odds.csv.gz` adds opening and last pre-match prices oriented to feature `p1` and `p2`. `p1_won` is still the target and must be excluded from predictor columns. Opening odds are appropriate for earlier forecasts; last pre-match odds represent information available only immediately before play. Odds are not available for every row, so report price coverage and compare models on a consistent sample.
 
+## Missing match-time rankings
+
+`data/processed/supplements/ranking_fallbacks.csv.gz` contains pre-event weekly ranking values for feature rows whose match-file rank or ranking points are blank/nonpositive. Join it to a feature export on `record_id`; use the fallback only when the corresponding feature value is missing or nonpositive. Player order is already aligned to the feature row's `p1_id` and `p2_id`. Each side has a snapshot date so the fallback can be audited. The snapshot must be strictly earlier than the tournament start date and at most 90 days old. The report gives field counts and both-ranked coverage before and after fallback, by tour and tier.
+
+The odds-enriched feature file applies these ranking fallbacks and includes `p1_rank_source`, `p1_rank_points_source`, `p1_rank_snapshot_date` and the corresponding `p2` fields. `weekly_snapshot` identifies a fallback; `match_record` means the original match row supplied the value; `missing` means neither source supplied it. A filled rank can still be stale relative to an exact match date because the archive usually records tournament start dates, not match timestamps.
+
 ## Timing
 
 Source dates are generally tournament start dates, not match timestamps. Historical outcomes and serve statistics enter features only when their tournament date is **strictly more than 28 days before** the row's tournament date. All matches from a single edition therefore receive history from before that edition; same-tournament rounds are never fed into one another.
 
-The 28-day lag is a conservative availability assumption, not proof of true publication time. The archive lacks exact finish/publication timestamps. Unusually delayed events and retrospective corrections cannot be fully audited. Rankings are the source's reported rankings at tournament date; present-day player roster attributes are not joined into historical model features.
+The 28-day lag is a conservative availability assumption for historical match-derived features, not proof of true publication time. The archive lacks exact finish/publication timestamps. Unusually delayed events and retrospective corrections cannot be fully audited. Rankings use source-reported tournament-date values where present; the separate fallback uses only an earlier weekly ranking snapshot. Present-day player roster attributes are not joined into historical model features.
 
 Elo starts at 1500 and uses K=32. Overall and surface Elo are calculated within each tour across the available singles tiers. Within the same historical date, processing order is deterministic by record hash; exact match order is unknown. Elo is an illustrative baseline, not an optimized rating.
 

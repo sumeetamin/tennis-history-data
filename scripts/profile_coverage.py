@@ -14,6 +14,7 @@ ODDS = ROOT / 'data/odds/atp_wta_match_odds.csv'
 ODDS_MANIFEST = ROOT / 'data/odds/valuebetennis_manifest.json'
 LINK_REPORT = ROOT / 'data/odds/odds_link_report.json'
 ODDS_FEATURE_REPORT = ROOT / 'data/odds/model_features_with_odds_report.json'
+RANK_FALLBACK_REPORT = ROOT / 'data/processed/supplements/ranking_fallbacks_report.json'
 VALIDATION_REPORT = ROOT / 'data/processed/validation_report.json'
 START_DATE = '2000-01-01'
 
@@ -86,6 +87,7 @@ def main():
     odds_manifest = json.loads(ODDS_MANIFEST.read_text(encoding='utf-8'))
     link_report = json.loads(LINK_REPORT.read_text(encoding='utf-8'))
     odds_feature_report = json.loads(ODDS_FEATURE_REPORT.read_text(encoding='utf-8'))
+    rank_fallback_report = json.loads(RANK_FALLBACK_REPORT.read_text(encoding='utf-8'))
     validation_report = json.loads(VALIDATION_REPORT.read_text(encoding='utf-8')) if VALIDATION_REPORT.exists() else {}
     odds_coverage = {
         'rows': odds_manifest['rows'],
@@ -107,9 +109,15 @@ def main():
         'match_coverage_by_tour_and_tier': matches,
         'player_profile_completeness_for_players_with_post_2000_matches': profiles,
         'separate_odds_dataset': odds_coverage,
+        'weekly_ranking_fallbacks': {
+            'rows_with_at_least_one_fallback': rank_fallback_report['rows_with_at_least_one_fallback'],
+            'output': rank_fallback_report['output'],
+            'post_2000_coverage_by_tour_and_category': rank_fallback_report['post_2000_coverage_by_tour_and_category'],
+            'policy': rank_fallback_report['policy'],
+        },
         'definitions': {
             'both_serve_stats': 'Both players have positive recorded service points (w_svpt and l_svpt).',
-            'both_ranked': 'Both match-time ranking fields are positive.',
+            'both_ranked': 'Both match-file ranking fields are positive before any weekly-ranking fallback.',
             'minutes_recorded': 'Positive match duration recorded.',
             'profile_population': 'Unique player IDs appearing as winner or loser in an archive match dated on/after the start date.',
             'event_dates': 'Generally tournament start dates; they are not exact match dates.',
@@ -134,7 +142,20 @@ def main():
             f"{row['surface_recorded']:,} ({row['surface_recorded_pct']:.1f}%) | {row['first_event_date']} to {row['last_event_date']} |"
         )
     lines += [
-        '', '“Both serve stats” means both players have positive recorded service points. “Both ranked” means both match-time rank fields are positive. “Duration” means minutes are present. Event dates are usually tournament start dates, not exact match dates.', '',
+        '', '“Both serve stats” means both players have positive recorded service points. “Both ranked” means both match-time rank fields are positive before the fallback. “Duration” means minutes are present. Event dates are usually tournament start dates, not exact match dates.', '',
+        '## Pre-event ranking fallback for model features', '',
+        f"The keyed supplement contains {rank_fallback_report['rows_with_at_least_one_fallback']:,} feature rows with at least one rank or ranking-points value recovered from a weekly snapshot. A snapshot must strictly precede the tournament start date and be no more than 90 days old. These counts apply to the completed-match feature export, after its exclusions.", '',
+        '| Tour | Category | Feature matches | Both ranked before | Both ranked with fallback | Rank values filled | Ranking-point values filled |',
+        '|---|---|---:|---:|---:|---:|---:|',
+    ]
+    for tour, categories in rank_fallback_report['post_2000_coverage_by_tour_and_category'].items():
+        for category, values in categories.items():
+            lines.append(
+                f"| {tour} | {category} | {values['eligible_matches']:,} | {values['both_ranked_before']:,} ({values['both_ranked_before_pct']:.2f}%) | "
+                f"{values['both_ranked_after']:,} ({values['both_ranked_after_pct']:.2f}%) | {values.get('rank_fills', 0):,} | {values.get('rank_points_fills', 0):,} |"
+            )
+    lines += [
+        '', 'The main yearly feature files remain unchanged; join the supplement on `record_id` and use it only to fill blank or nonpositive rank values. The odds-enriched feature file already applies these fallbacks and carries per-player provenance columns.', '',
         '## Player profile coverage', '',
         '| Tour | Players appearing since 2000 | Date of birth | Height | Hand | Country | Wikidata ID |',
         '|---|---:|---:|---:|---:|---:|---:|',

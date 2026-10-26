@@ -38,5 +38,9 @@
   "odds_feature_rows_checked": 130854,
   "odds_feature_provider_ids_unique": true,
   "odds_feature_opening_pairs_checked": 79632,
-  "odds_feature_last_pre_match_pairs_checked": 59838
+  "odds_feature_last_pre_match_pairs_checked": 59838,
+  "ranking_fallback_rows_checked": 51604,
+  "ranking_fallback_rank_values_checked": 54155,
+  "ranking_fallback_points_values_checked": 40954,
+  "odds_feature_rank_sources_checked": 261708
 }

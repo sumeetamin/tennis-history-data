@@ -14,6 +14,7 @@ FEATURE_DIR = ROOT / 'data/processed/model_features_by_year'
 DB = ROOT / 'data/processed/tennis.sqlite'
 ODDS = ROOT / 'data/odds/atp_wta_match_odds.csv'
 CROSSWALK = ROOT / 'data/odds/linked_odds_sackmann.csv.gz'
+RANK_FALLBACKS = ROOT / 'data/processed/supplements/ranking_fallbacks.csv.gz'
 OUT = ROOT / 'data/odds/model_features_with_odds.csv.gz'
 REPORT = ROOT / 'data/odds/model_features_with_odds_report.json'
 EXTRA_FIELDS = [
@@ -21,6 +22,8 @@ EXTRA_FIELDS = [
     'odds_open_p1_decimal', 'odds_open_p2_decimal',
     'odds_last_pre_match_p1_decimal', 'odds_last_pre_match_p2_decimal',
     'odds_open_pair_available', 'odds_last_pre_match_pair_available',
+    'p1_rank_source', 'p1_rank_points_source', 'p1_rank_snapshot_date',
+    'p2_rank_source', 'p2_rank_points_source', 'p2_rank_snapshot_date',
 ]
 
 
@@ -33,7 +36,7 @@ def sha256(path):
 
 
 def main():
-    for path in (DB, ODDS, CROSSWALK):
+    for path in (DB, ODDS, CROSSWALK, RANK_FALLBACKS):
         if not path.is_file():
             raise SystemExit(f'Missing input: {path.relative_to(ROOT)}')
 
@@ -44,6 +47,14 @@ def main():
             if record_id in odds_by_record:
                 raise ValueError(f'Crosswalk has duplicate archive match ID: {record_id}')
             odds_by_record[record_id] = row
+
+    rank_fallback_by_record = {}
+    with gzip.open(RANK_FALLBACKS, 'rt', encoding='utf-8', newline='') as stream:
+        for row in csv.DictReader(stream):
+            record_id = row['record_id']
+            if record_id in rank_fallback_by_record:
+                raise ValueError(f'Rank supplement has duplicate archive match ID: {record_id}')
+            rank_fallback_by_record[record_id] = row
 
     archive_players = {}
     ids = list(odds_by_record)
@@ -107,6 +118,27 @@ def main():
                     seen_features.add(record_id)
                     odds = odds_info['row']
                     p1_id = feature['p1_id']
+                    fallback = rank_fallback_by_record.get(record_id)
+                    rank_sources = {}
+                    for side, player_id in (('p1', feature['p1_id']), ('p2', feature['p2_id'])):
+                        if fallback and (fallback['p1_id'] != feature['p1_id'] or fallback['p2_id'] != feature['p2_id']):
+                            raise ValueError(f'Rank supplement player orientation disagrees with feature row: {record_id}')
+                        for field in ('rank', 'rank_points'):
+                            value = feature[f'{side}_{field}']
+                            try:
+                                has_value = float(value) > 0 if field == 'rank' else bool(value and value.strip())
+                            except (TypeError, ValueError):
+                                has_value = False
+                            source = 'match_record' if has_value else 'missing'
+                            fallback_value = fallback.get(f'{side}_{field}_fallback') if fallback else ''
+                            if not has_value and fallback_value:
+                                feature[f'{side}_{field}'] = fallback_value
+                                source = 'weekly_snapshot'
+                                counts[f'{field}_fallbacks_applied'] += 1
+                            rank_sources[f'{side}_{field}_source'] = source
+                        rank_sources[f'{side}_rank_snapshot_date'] = (
+                            fallback.get(f'{side}_rank_snapshot_date', '') if fallback else ''
+                        )
                     if p1_id == odds_info['provider_p1_archive_id']:
                         opening_p1, opening_p2 = odds['cote1_ouverture'], odds['cote2_ouverture']
                         closing_p1, closing_p2 = odds['cote1_cloture'], odds['cote2_cloture']
@@ -125,8 +157,12 @@ def main():
                         'odds_last_pre_match_p2_decimal': closing_p2,
                         'odds_open_pair_available': str(bool(opening_p1 and opening_p2)).lower(),
                         'odds_last_pre_match_pair_available': str(bool(closing_p1 and closing_p2)).lower(),
+                        **rank_sources,
                     })
                     counts['rows'] += 1
+                    counts['rows_with_rank_fallback'] += bool(
+                        'weekly_snapshot' in rank_sources.values()
+                    )
                     counts[f"tour_{feature['tour']}"] += 1
                     counts['opening_pair'] += bool(opening_p1 and opening_p2)
                     counts['last_pre_match_pair'] += bool(closing_p1 and closing_p2)
@@ -146,9 +182,15 @@ def main():
         'feature_columns': len(writer.fieldnames) - len(EXTRA_FIELDS),
         'odds_columns': EXTRA_FIELDS,
         'output': {'path': OUT.relative_to(ROOT).as_posix(), 'bytes': OUT.stat().st_size, 'sha256': sha256(OUT)},
+        'rank_fallback_rows_in_odds_features': counts['rows_with_rank_fallback'],
+        'rank_fallback_fields_applied': {
+            'rank': counts['rank_fallbacks_applied'],
+            'rank_points': counts['rank_points_fallbacks_applied'],
+        },
         'inputs': {
             ODDS.name: sha256(ODDS),
             CROSSWALK.name: sha256(CROSSWALK),
+            RANK_FALLBACKS.relative_to(ROOT).as_posix(): sha256(RANK_FALLBACKS),
             DB.name: sha256(DB),
             'yearly_feature_csv_sha256': feature_hashes,
         },

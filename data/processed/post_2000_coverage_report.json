@@ -1,9 +1,9 @@
 {
-  "generated_utc": "2026-10-26T13:32:16+00:00",
+  "generated_utc": "2026-10-26T13:51:56+00:00",
   "event_date_inclusive": "2000-01-01",
   "source_database": {
     "path": "data/processed/tennis.sqlite",
-    "sha256": "70078dd3051b7b6c6ca0ee97a800be3be7be08e7e469cf1a131391366d6b4a7a"
+    "sha256": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d"
   },
   "match_coverage_by_tour_and_tier": [
     {
@@ -155,9 +155,82 @@
       }
     ]
   },
+  "weekly_ranking_fallbacks": {
+    "rows_with_at_least_one_fallback": 51604,
+    "output": {
+      "path": "data/processed/supplements/ranking_fallbacks.csv.gz",
+      "rows": 51604,
+      "bytes": 2469764,
+      "sha256": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58"
+    },
+    "post_2000_coverage_by_tour_and_category": {
+      "atp": {
+        "futures": {
+          "both_ranked_after": 322694,
+          "both_ranked_before": 314509,
+          "eligible_matches": 403435,
+          "matches_with_fallback": 9273,
+          "rank_fills": 9994,
+          "rank_points_fills": 9993,
+          "both_ranked_before_pct": 77.96,
+          "both_ranked_after_pct": 79.99
+        },
+        "qual_chall": {
+          "both_ranked_after": 177525,
+          "both_ranked_before": 176666,
+          "eligible_matches": 184058,
+          "matches_with_fallback": 898,
+          "rank_fills": 915,
+          "rank_points_fills": 915,
+          "both_ranked_before_pct": 95.98,
+          "both_ranked_after_pct": 96.45
+        },
+        "tour": {
+          "both_ranked_after": 74813,
+          "both_ranked_before": 74696,
+          "eligible_matches": 76488,
+          "matches_with_fallback": 129,
+          "rank_fills": 130,
+          "rank_points_fills": 130,
+          "both_ranked_before_pct": 97.66,
+          "both_ranked_after_pct": 97.81
+        }
+      },
+      "wta": {
+        "qual_itf": {
+          "both_ranked_after": 326731,
+          "both_ranked_before": 316442,
+          "eligible_matches": 474677,
+          "matches_with_fallback": 14935,
+          "rank_fills": 16200,
+          "rank_points_fills": 16182,
+          "both_ranked_before_pct": 66.66,
+          "both_ranked_after_pct": 68.83
+        },
+        "tour": {
+          "both_ranked_after": 67095,
+          "both_ranked_before": 66841,
+          "eligible_matches": 70324,
+          "matches_with_fallback": 350,
+          "rank_fills": 427,
+          "rank_points_fills": 427,
+          "both_ranked_before_pct": 95.05,
+          "both_ranked_after_pct": 95.41
+        }
+      }
+    },
+    "policy": {
+      "fills_only_missing_or_nonpositive_match_rank": true,
+      "fills_only_blank_match_rank_points": true,
+      "snapshot_must_precede_event_date": true,
+      "maximum_snapshot_age_days": 90,
+      "feature_orientation": "Same deterministic p1/p2 ID orientation as scripts/build_features.py",
+      "eligible_matches": "Completed, valid-player/date matches included by scripts/build_features.py; duplicate fixture conflicts and extra-cell rows excluded."
+    }
+  },
   "definitions": {
     "both_serve_stats": "Both players have positive recorded service points (w_svpt and l_svpt).",
-    "both_ranked": "Both match-time ranking fields are positive.",
+    "both_ranked": "Both match-file ranking fields are positive before any weekly-ranking fallback.",
     "minutes_recorded": "Positive match duration recorded.",
     "profile_population": "Unique player IDs appearing as winner or loser in an archive match dated on/after the start date.",
     "event_dates": "Generally tournament start dates; they are not exact match dates."

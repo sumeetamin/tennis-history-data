@@ -1,0 +1,143 @@
+{
+  "generated_utc": "2026-10-26T13:46:17+00:00",
+  "source": "Sackmann archive weekly ATP/WTA ranking snapshots; source attribution and CC BY-NC-SA 4.0 terms in DATA_LICENSE.md",
+  "policy": {
+    "fills_only_missing_or_nonpositive_match_rank": true,
+    "fills_only_blank_match_rank_points": true,
+    "snapshot_must_precede_event_date": true,
+    "maximum_snapshot_age_days": 90,
+    "feature_orientation": "Same deterministic p1/p2 ID orientation as scripts/build_features.py",
+    "eligible_matches": "Completed, valid-player/date matches included by scripts/build_features.py; duplicate fixture conflicts and extra-cell rows excluded."
+  },
+  "eligible_feature_matches": 1702961,
+  "rows_with_at_least_one_fallback": 51604,
+  "fill_counts_by_tour_and_category": {
+    "atp": {
+      "amateur": {
+        "both_ranked_after": 0,
+        "both_ranked_before": 0,
+        "eligible_matches": 23273,
+        "both_ranked_before_pct": 0.0,
+        "both_ranked_after_pct": 0.0
+      },
+      "futures": {
+        "both_ranked_after": 393113,
+        "both_ranked_before": 383164,
+        "eligible_matches": 503057,
+        "matches_with_fallback": 14735,
+        "rank_fills": 12165,
+        "rank_points_fills": 16909,
+        "both_ranked_before_pct": 76.17,
+        "both_ranked_after_pct": 78.14
+      },
+      "qual_chall": {
+        "both_ranked_after": 217626,
+        "both_ranked_before": 215538,
+        "eligible_matches": 232041,
+        "matches_with_fallback": 2763,
+        "rank_fills": 3580,
+        "rank_points_fills": 1062,
+        "both_ranked_before_pct": 92.89,
+        "both_ranked_after_pct": 93.79
+      },
+      "tour": {
+        "both_ranked_after": 153965,
+        "both_ranked_before": 146933,
+        "eligible_matches": 193769,
+        "matches_with_fallback": 9316,
+        "rank_fills": 11233,
+        "rank_points_fills": 1890,
+        "both_ranked_before_pct": 75.83,
+        "both_ranked_after_pct": 79.46
+      }
+    },
+    "wta": {
+      "qual_itf": {
+        "both_ranked_after": 387850,
+        "both_ranked_before": 373006,
+        "eligible_matches": 593071,
+        "matches_with_fallback": 23341,
+        "rank_fills": 25567,
+        "rank_points_fills": 20272,
+        "both_ranked_before_pct": 62.89,
+        "both_ranked_after_pct": 65.4
+      },
+      "tour": {
+        "both_ranked_after": 103338,
+        "both_ranked_before": 102362,
+        "eligible_matches": 157750,
+        "matches_with_fallback": 1449,
+        "rank_fills": 1610,
+        "rank_points_fills": 821,
+        "both_ranked_before_pct": 64.89,
+        "both_ranked_after_pct": 65.51
+      }
+    }
+  },
+  "post_2000_coverage_by_tour_and_category": {
+    "atp": {
+      "futures": {
+        "both_ranked_after": 322694,
+        "both_ranked_before": 314509,
+        "eligible_matches": 403435,
+        "matches_with_fallback": 9273,
+        "rank_fills": 9994,
+        "rank_points_fills": 9993,
+        "both_ranked_before_pct": 77.96,
+        "both_ranked_after_pct": 79.99
+      },
+      "qual_chall": {
+        "both_ranked_after": 177525,
+        "both_ranked_before": 176666,
+        "eligible_matches": 184058,
+        "matches_with_fallback": 898,
+        "rank_fills": 915,
+        "rank_points_fills": 915,
+        "both_ranked_before_pct": 95.98,
+        "both_ranked_after_pct": 96.45
+      },
+      "tour": {
+        "both_ranked_after": 74813,
+        "both_ranked_before": 74696,
+        "eligible_matches": 76488,
+        "matches_with_fallback": 129,
+        "rank_fills": 130,
+        "rank_points_fills": 130,
+        "both_ranked_before_pct": 97.66,
+        "both_ranked_after_pct": 97.81
+      }
+    },
+    "wta": {
+      "qual_itf": {
+        "both_ranked_after": 326731,
+        "both_ranked_before": 316442,
+        "eligible_matches": 474677,
+        "matches_with_fallback": 14935,
+        "rank_fills": 16200,
+        "rank_points_fills": 16182,
+        "both_ranked_before_pct": 66.66,
+        "both_ranked_after_pct": 68.83
+      },
+      "tour": {
+        "both_ranked_after": 67095,
+        "both_ranked_before": 66841,
+        "eligible_matches": 70324,
+        "matches_with_fallback": 350,
+        "rank_fills": 427,
+        "rank_points_fills": 427,
+        "both_ranked_before_pct": 95.05,
+        "both_ranked_after_pct": 95.41
+      }
+    }
+  },
+  "output": {
+    "path": "data/processed/supplements/ranking_fallbacks.csv.gz",
+    "rows": 51604,
+    "bytes": 2469764,
+    "sha256": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58"
+  },
+  "input": {
+    "path": "data/processed/tennis.sqlite",
+    "sha256": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d"
+  }
+}

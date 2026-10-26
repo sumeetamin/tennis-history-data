@@ -12,7 +12,21 @@ Measured from the pinned archive for event dates on/after 2000-01-01. The archiv
 | wta | qual_itf | 491,441 | 52,760 (10.7%) | 327,999 (66.7%) | 45,870 (9.3%) | 491,441 (100.0%) | 2000-01-03 to 2026-06-02 |
 | wta | tour | 72,714 | 47,746 (65.7%) | 69,186 (95.2%) | 25,821 (35.5%) | 72,579 (99.8%) | 2000-01-03 to 2026-05-25 |
 
-“Both serve stats” means both players have positive recorded service points. “Both ranked” means both match-time rank fields are positive. “Duration” means minutes are present. Event dates are usually tournament start dates, not exact match dates.
+“Both serve stats” means both players have positive recorded service points. “Both ranked” means both match-time rank fields are positive before the fallback. “Duration” means minutes are present. Event dates are usually tournament start dates, not exact match dates.
+
+## Pre-event ranking fallback for model features
+
+The keyed supplement contains 51,604 feature rows with at least one rank or ranking-points value recovered from a weekly snapshot. A snapshot must strictly precede the tournament start date and be no more than 90 days old. These counts apply to the completed-match feature export, after its exclusions.
+
+| Tour | Category | Feature matches | Both ranked before | Both ranked with fallback | Rank values filled | Ranking-point values filled |
+|---|---|---:|---:|---:|---:|---:|
+| atp | futures | 403,435 | 314,509 (77.96%) | 322,694 (79.99%) | 9,994 | 9,993 |
+| atp | qual_chall | 184,058 | 176,666 (95.98%) | 177,525 (96.45%) | 915 | 915 |
+| atp | tour | 76,488 | 74,696 (97.66%) | 74,813 (97.81%) | 130 | 130 |
+| wta | qual_itf | 474,677 | 316,442 (66.66%) | 326,731 (68.83%) | 16,200 | 16,182 |
+| wta | tour | 70,324 | 66,841 (95.05%) | 67,095 (95.41%) | 427 | 427 |
+
+The main yearly feature files remain unchanged; join the supplement on `record_id` and use it only to fill blank or nonpositive rank values. The odds-enriched feature file already applies these fallbacks and carries per-player provenance columns.
 
 ## Player profile coverage
 
@@ -37,4 +51,4 @@ An odds-enriched pre-match feature file is also available for 130,854 rows. It h
 - The results/rankings archive is frozen at its pinned source revision. The odds feed is maintained separately by the daily append-only action.
 - Regenerate this report after rebuilding the SQLite database and refreshing odds/crosswalk inputs with `python scripts/profile_coverage.py`.
 
-Report source database SHA-256: `70078dd3051b7b6c6ca0ee97a800be3be7be08e7e469cf1a131391366d6b4a7a`.
+Report source database SHA-256: `35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d`.

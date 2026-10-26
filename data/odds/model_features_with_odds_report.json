@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-26T13:28:54+00:00",
+  "generated_utc": "2026-10-26T13:48:49+00:00",
   "description": "Only strictly verified one-to-one odds/archive matches that also occur in the pre-match feature export.",
   "rows": 130854,
   "rows_by_tour": {
@@ -18,17 +18,29 @@
     "odds_last_pre_match_p1_decimal",
     "odds_last_pre_match_p2_decimal",
     "odds_open_pair_available",
-    "odds_last_pre_match_pair_available"
+    "odds_last_pre_match_pair_available",
+    "p1_rank_source",
+    "p1_rank_points_source",
+    "p1_rank_snapshot_date",
+    "p2_rank_source",
+    "p2_rank_points_source",
+    "p2_rank_snapshot_date"
   ],
   "output": {
     "path": "data/odds/model_features_with_odds.csv.gz",
-    "bytes": 30135311,
-    "sha256": "717893d8e8b60e9dde555934972831f3f1288f150251d5d35ff6335e0a85eb59"
+    "bytes": 30638233,
+    "sha256": "ed0b2105a858be6fb636f8f10598ed7631688f62c9a9928abd5f939e419a8150"
+  },
+  "rank_fallback_rows_in_odds_features": 3313,
+  "rank_fallback_fields_applied": {
+    "rank": 3647,
+    "rank_points": 3647
   },
   "inputs": {
     "atp_wta_match_odds.csv": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea",
     "linked_odds_sackmann.csv.gz": "9af94e0750059c57dc729dc5182aacab377dd63456874bf4e9d9c5aaefe8630f",
-    "tennis.sqlite": "70078dd3051b7b6c6ca0ee97a800be3be7be08e7e469cf1a131391366d6b4a7a",
+    "data/processed/supplements/ranking_fallbacks.csv.gz": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58",
+    "tennis.sqlite": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d",
     "yearly_feature_csv_sha256": {
       "model_features_2021.csv.gz": "861d2cfe61b9f6fd9a0497f1782516dba955737111a05998e1f708f26a461163",
       "model_features_2022.csv.gz": "fa76724acf8c88be1d4d7e6b42c3d4b5b9adb6f9d49b66fdb58b42d3ae471d98",
