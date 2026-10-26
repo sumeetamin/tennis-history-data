@@ -9,6 +9,7 @@ This repository contains the source data, not just links or a scraper template.
 - ATP qualifying/Challenger records, Futures records, and WTA qualifying/ITF records.
 - Player names, source IDs, date of birth, country, handedness, height and Wikidata IDs where supplied.
 - Historical rankings and ranking points.
+- Historical ATP/WTA singles match odds (2021 onward; separate attributed provider dataset).
 - Match scores, surface, round, draw size, seeds, entries, best-of format, duration, serve and break-point statistics where supplied.
 - Archived ATP doubles and older ATP amateur results.
 - A locally generated SQLite database, a compressed pre-match feature table split into yearly files, and measured coverage/quality reports.
@@ -19,6 +20,7 @@ This repository contains the source data, not just links or a scraper template.
 
 - Database: `data/processed/tennis.sqlite`
 - Model-ready pre-match rows: `data/processed/model_features_by_year/` (150 gzip CSVs, one per year)
+- Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
 - Counts and missingness: `data/processed/coverage.csv`, `build_report.json`
 - Baseline scores: `data/processed/feature_report.json`
@@ -37,6 +39,7 @@ python scripts/fetch_sackmann.py
 python scripts/build_dataset.py
 python scripts/build_features.py
 python scripts/partition_features.py
+python scripts/fetch_valuebetennis_odds.py
 python scripts/verify_dataset.py
 python -m unittest discover -s tests -v
 ```
@@ -56,6 +59,6 @@ Changes made here: exact duplicate match payload removal, normalized SQLite tabl
 
 ## License
 
-Source and derived tennis data: **CC BY-NC-SA 4.0**, attribution required, non-commercial use, share-alike. See [DATA_LICENSE.md](DATA_LICENSE.md).
+Sackmann source and derivatives: **CC BY-NC-SA 4.0**, attribution required, non-commercial use, share-alike; see [DATA_LICENSE.md](DATA_LICENSE.md). The separately sourced Valuebetennis odds file is **CC BY 4.0**; see [its data notes](data/odds/README.md) for attribution.
 Project-authored Python code: MIT; see [LICENSE](LICENSE).
 
