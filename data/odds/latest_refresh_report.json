@@ -1,0 +1,45 @@
+{
+  "as_of_date": "2026-10-27",
+  "checked_at_utc": "2026-10-26T20:53:59Z",
+  "latest_source_check": {
+    "source": "Valuebetennis ATP/WTA yearly match and odds CSVs",
+    "window_from": "2026-09-27",
+    "window_through": "2026-10-27",
+    "missing_settled_matches_appended": 0,
+    "latest_raw_row_date": "2026-10-27",
+    "latest_raw_row_status": "incomplete",
+    "latest_settled_match_date": "2026-10-26",
+    "raw_rows": 470167,
+    "raw_file_sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea"
+  },
+  "current_dataset_ranges": {
+    "pinned_match_archive": {
+      "atp_tour_latest_event_date": "2026-05-25",
+      "atp_challenger_futures_latest_event_date": "2026-06-01",
+      "wta_tour_latest_event_date": "2026-05-25",
+      "wta_itf_qualifying_latest_event_date": "2026-06-02"
+    },
+    "recent_model_snapshot": {
+      "path": "snapshots/2026-10-27/recent_model_features.csv.gz",
+      "rows": 5769,
+      "from": "2026-06-16",
+      "through": "2026-10-26",
+      "ambiguous_or_missing_player_mappings_excluded": 57
+    },
+    "weekly_ranking_fallbacks": {
+      "rows_with_fallbacks": 3110,
+      "latest_source_ranking_date": "2026-06-08"
+    }
+  },
+  "checks": {
+    "odds_export_manifest": "passed",
+    "recent_feature_supplements_and_temporal_guards": "passed",
+    "append_only_preservation": "passed",
+    "recent_snapshot_integrity": "passed"
+  },
+  "notes": [
+    "The Oct. 27 provider row is unfinished and was excluded from settled match features.",
+    "The main historical match archive remains pinned to its existing source revision; the recent feature snapshot extends coverage beyond it.",
+    "No new settled rows were available in the checked 30-day window, so existing match data bytes were not changed."
+  ]
+}

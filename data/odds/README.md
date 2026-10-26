@@ -1,5 +1,7 @@
 # Historical match odds
 
+The latest refresh, checked through **2026-10-27**, found no missing settled matches in the provider's rolling 30-day window. The latest settled date is **2026-10-26**; an unfinished Oct.  27 row remains excluded. Archive cutoffs, hashes and verification results are recorded in [`latest_refresh_report.json`](latest_refresh_report.json).
+
 For recent-period modeling through 2026-10-26, use the [audited snapshot](snapshots/2026-10-27/README.md), which has 5,769 rows with reconstructed history and corrected odds. A full replay found 57 rows with ambiguous or missing provider-player mappings; 2,872 retained rows have changed history values under current-source replay. The 5,826-row append-only file remains preserved, including those excluded rows. The snapshot is dated and does not update automatically.
 
 ## Required correction for recent feature odds
