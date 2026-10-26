@@ -92,9 +92,11 @@ def main() -> None:
                         f"invalid ranking snapshot date/age for {record_id} {side}")
     require(rank_fills == rank_report["rank_fills"], "rank fill count differs from report")
 
-    age_values = 0
+    profile_values = {"age": 0, "height": 0, "hand": 0, "rows": 0}
+    rows_with_profile = 0
     for record_id, row in profiles.items():
         event_day = date.fromisoformat(row["event_date"])
+        has_value = False
         for side in ("p1", "p2"):
             age = row.get(f"{side}_age_fallback", "")
             birth = row.get(f"{side}_birth_date", "")
@@ -102,8 +104,24 @@ def main() -> None:
                 require(birth, f"age has no birth-date provenance for {record_id} {side}")
                 expected = round((event_day - date.fromisoformat(birth)).days / 365.2425, 1)
                 require(float(age) == expected, f"age does not match birth date for {record_id} {side}")
-                age_values += 1
-    require(age_values == profile_report["field_values"]["age"], "profile age count differs from report")
+                require(row.get(f"{side}_birth_date_source"), f"birth date source missing for {record_id} {side}")
+                profile_values["age"] += 1
+                has_value = True
+            height = row.get(f"{side}_ht_fallback", "")
+            if height:
+                require(row.get(f"{side}_height_source"), f"height source missing for {record_id} {side}")
+                require(130 <= float(height) <= 230, f"implausible height for {record_id} {side}")
+                profile_values["height"] += 1
+                has_value = True
+            hand = row.get(f"{side}_hand_fallback", "")
+            if hand:
+                require(row.get(f"{side}_hand_source"), f"hand source missing for {record_id} {side}")
+                profile_values["hand"] += 1
+                has_value = True
+        rows_with_profile += has_value
+    profile_values["rows"] = rows_with_profile
+    require(profile_values == profile_report["field_values"], "profile field counts differ from report")
+    require(len(profiles) == profile_report["rows_with_profile_data"], "profile row count differs from report")
     print(f"Verified {len(features):,} recent feature rows, {len(rankings):,} ranking supplements, and {len(profiles):,} profile supplements; temporal guards and hashes match.")
 
 
