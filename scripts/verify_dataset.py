@@ -349,6 +349,41 @@ result['wikidata_profile_enrichment_rows_checked']=profile_rows
 result['wikidata_birth_dates_checked']=profile_dob_fills
 result['wikidata_heights_checked']=profile_height_fills
 result['odds_feature_rank_sources_checked']=odds_feature_rows*2
+recent_path=ROOT/'data/odds/recent_model_features.csv.gz'
+recent_report_path=ROOT/'data/odds/recent_model_features_report.json'
+recent_report=json.loads(recent_report_path.read_text(encoding='utf-8'))
+recent_rows=0
+recent_ids=set()
+recent_min=recent_max=''
+with gzip.open(recent_path,'rt',encoding='utf-8',newline='') as src:
+    recent_reader=csv.DictReader(src)
+    recent_columns=recent_reader.fieldnames or []
+    assert not {'winner_id','loser_id','score','minutes','winner_name','loser_name'} & set(recent_columns)
+    for row in recent_reader:
+        recent_rows+=1
+        rid=row['record_id']
+        assert rid.startswith('vb:') and rid not in recent_ids
+        recent_ids.add(rid)
+        day=date.fromisoformat(row['event_date'])
+        cutoff=date.fromisoformat(row['history_cutoff_exclusive'])
+        assert cutoff==day-timedelta(days=28)
+        tour=row['tour']
+        archive_max=date.fromisoformat(recent_report['archive_max_event_date'][tour])
+        assert day>archive_max+timedelta(days=recent_report['date_buffer_days'])
+        assert row['p1_id'] and row['p2_id'] and row['p1_id']!=row['p2_id']
+        assert row['p1_won'] in {'0','1'}
+        for side in ('p1','p2'):
+            latest=row[f'{side}_history_latest_date']
+            assert not latest or date.fromisoformat(latest)<cutoff
+        for col in ('odds_open_p1_decimal','odds_open_p2_decimal','odds_close_p1_decimal','odds_close_p2_decimal'):
+            assert not row[col] or float(row[col])>1
+        recent_min=min(recent_min,row['event_date']) if recent_min else row['event_date']
+        recent_max=max(recent_max,row['event_date'])
+assert recent_rows==recent_report['total_rows']
+assert sha256(recent_path)==recent_report['sha256']
+assert ([recent_min,recent_max] if recent_rows else None)==recent_report['date_range']
+result['recent_model_feature_rows_checked']=recent_rows
+result['recent_model_feature_sha256_checked']=True
 (out/'validation_report.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result,indent=2))
 

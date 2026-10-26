@@ -45,5 +45,7 @@
   "wikidata_profile_enrichment_rows_checked": 272,
   "wikidata_birth_dates_checked": 8,
   "wikidata_heights_checked": 265,
-  "odds_feature_rank_sources_checked": 261708
+  "odds_feature_rank_sources_checked": 261708,
+  "recent_model_feature_rows_checked": 4653,
+  "recent_model_feature_sha256_checked": true
 }

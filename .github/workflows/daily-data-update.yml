@@ -37,15 +37,18 @@ jobs:
           LOOKBACK_DAYS: ${{ inputs.lookback_days || 30 }}
         run: python scripts/update_recent_odds.py --lookback-days "$LOOKBACK_DAYS"
 
+      - name: Append verified post-archive model features
+        run: python scripts/build_recent_odds_features.py
+
       - name: Commit only when new matches were added
         shell: bash
         run: |
-          if git diff --quiet -- data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json; then
+          if git diff --quiet -- data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json; then
             echo "No data changes; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json
-          git commit -m "Append newly published recent tennis matches"
+          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json
+          git commit -m "Append recent tennis odds and verified model features"
           git push

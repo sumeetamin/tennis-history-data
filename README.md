@@ -24,6 +24,7 @@ This repository contains the source data, not just links or a scraper template.
 - Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)
 - Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
 - Pre-match model rows with odds: `data/odds/model_features_with_odds.csv.gz` (p1/p2-aligned prices; `p1_won` is the target)
+- Recent post-archive model rows: `data/odds/recent_model_features.csv.gz` (settled matches beyond June 2026; strictly mapped identities, pre-match history and odds)
 - Pre-event ranking backfills: `data/processed/supplements/ranking_fallbacks.csv.gz` (keyed by `record_id`, weekly snapshots no more than 90 days old)
 - Player DOB/height enrichment: `data/processed/supplements/player_profile_enrichment.csv.gz` (only existing Wikidata IDs and missing source fields; CC0 facts)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
@@ -58,7 +59,7 @@ python -m unittest discover -s tests -v
 
 The [daily GitHub Action](.github/workflows/daily-data-update.yml) checks Valuebetennis' published yearly files for missing settled matches from the last 30 days. It appends only unseen match IDs and creates a commit only when new rows are found. Existing rows are never replaced. You can also run it manually from the **Actions** tab and change the lookback window.
 
-The Action updates the raw odds CSV and its manifest only; it does not rebuild the crosswalk or odds-enriched feature export. Those derived odds files must be regenerated and verified after odds or source-feature changes. The pinned match archive/features currently end in June 2026, so newer odds rows do not have archive features to join yet.
+The Action appends raw odds and separately builds recent post-archive features where the player identities are verified by the existing strict crosswalk. It does not revise old rows or rebuild the historical crosswalk or odds-enriched archive feature export. The recent feature file applies a 14-day archive-end buffer and the standard 28-day history embargo; see [modeling notes](docs/modeling.md) for details.
 
 Allow several minutes and a few GB of free disk space. A failed database build leaves a staging database for inspection; remove only that generated `data/processed/tennis.building.sqlite` file before retrying.
 

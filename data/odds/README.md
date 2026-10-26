@@ -28,7 +28,7 @@ This is a mixed-source derivative: the features and weekly ranking supplement re
 
 The daily GitHub Action checks a rolling 30-day window and appends newly published, settled rows whose `match_id` is not already present. It does not modify existing records, and it commits nothing when there are no new matches. Schedule delivery can be delayed by GitHub; it is not a live feed.
 
-The Action updates only `atp_wta_match_odds.csv` and its manifest. After an append, regenerate `linked_odds_sackmann.csv.gz` and `model_features_with_odds.csv.gz` and run the verifier if you want those derived files to include newly linkable records. The pinned archive and feature table currently end in June 2026, so later odds rows cannot be joined until the match archive is refreshed under its source terms.
+The Action also runs `scripts/build_recent_odds_features.py`, which appends a separate post-archive feature file for settled matches whose players map uniquely through the existing strict crosswalk and whose names match observed crosswalk names. It starts only after a 14-day buffer past the archive's latest tournament start date per tour, replays archive history, applies the standard 28-day embargo, and appends new odds and feature rows without rewriting existing rows. Unverified IDs and names are omitted. `recent_model_features_report.json` records its counts and checksum. These rows do not replace or alter the pinned archive exports.
 
 Rebuild or refresh the combined export with:
 
