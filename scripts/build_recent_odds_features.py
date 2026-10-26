@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from build_features import History, orientation, LAG  # noqa: E402
 from odds_quality import settlement_status  # noqa: E402
+from recent_odds_mapping import aligned_prices
 
 ODDS = ROOT / "data/odds/atp_wta_match_odds.csv"
 CROSSWALK = ROOT / "data/odds/linked_odds_sackmann.csv.gz"
@@ -153,13 +154,9 @@ def main():
             f = history.features(row, day)
             odds_p1 = str(raw.get("joueur1_id"))
             source_is_p1 = aliases[(row["tour"], odds_p1)] == f["p1_id"]
-            for field, key in (("odds_open_p1_decimal", "cote1_ouverture"), ("odds_open_p2_decimal", "cote2_ouverture"),
-                               ("odds_close_p1_decimal", "cote1_cloture"), ("odds_close_p2_decimal", "cote2_cloture")):
-                source_key = key if source_is_p1 == field.endswith("p1_decimal") else key.replace("1_", "2_")
-                try:
-                    f[field] = float(raw.get(source_key) or "")
-                except ValueError:
-                    f[field] = None
+            prices = aligned_prices(raw, source_is_p1)
+            for field in ("odds_open_p1_decimal", "odds_open_p2_decimal", "odds_close_p1_decimal", "odds_close_p2_decimal"):
+                f[field] = prices[field]
             f.update(odds_provider="Valuebetennis", odds_provider_match_id=raw["match_id"], odds_match_date_utc=raw["date"])
             fields = fields or list(f)
             written.append(f)

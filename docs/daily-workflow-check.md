@@ -10,6 +10,8 @@ The new `scripts/verify_daily_append_only.py` compares each dataset against the 
 
 This is local Windows/Python verification, not a GitHub-hosted Ubuntu/Python 3.12 run. The GitHub Actions API returned zero workflow runs when inspected. A hosted run is still needed to establish runner timing, network access and commit permissions.
 
-## Separate unresolved data issue
+## Recent odds issue and correction
 
-An additional audit found 2,694 recent feature rows with identical exported opening prices despite unequal source prices (among 5,219 rows with unequal populated source opening prices). The recent feature builder's odds-side mapping needs correction, followed by a keyed correction supplement for previously published rows. Existing timing/hash validators do not establish odds-side correctness. Until corrected, do not use the recent feature file's odds columns directly; retain the original provider odds as the authoritative source. This issue does not affect the separately verified 2025 consensus supplement.
+An additional audit found 2,694 recent feature rows with identical exported opening prices despite unequal source prices (among 5,219 rows with unequal populated source opening prices). This identified a need to correct the recent feature builder and supply a keyed correction supplement for previously published rows. Existing timing/hash validators do not establish odds-side correctness. Use the correction overlay described below before using these recent odds columns; the original provider odds remain the authoritative source. This issue does not affect the separately verified 2025 consensus supplement.
+
+The issue is now addressed for future appends by explicit player-side mapping. The keyed `data/odds/recent_odds_corrections.csv` overlay repairs 2,713 existing rows (5,368 prices across opening/closing fields), independently checked against provider names and prices. Apply all four fields, including blanks, to matched `record_id` values. Original feature rows remain unchanged. The daily workflow maintains and verifies the overlay.

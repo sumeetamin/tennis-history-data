@@ -26,6 +26,7 @@ This repository contains the source data, not just links or a scraper template.
 - Pre-match model rows with odds: `data/odds/model_features_with_odds.csv.gz` (p1/p2-aligned prices; `p1_won` is the target)
 - 2025 consensus odds supplement: `data/odds/model_features_with_consensus_odds_2025.csv.gz` (4,802 feature rows with source-reported opening/closing consensus prices aligned to p1/p2; see quality flags and timing limits in the odds notes)
 - Recent post-archive model rows: `data/odds/recent_model_features.csv.gz` (settled matches beyond June 2026; strictly mapped identities, pre-match history and odds)
+- Recent odds corrections: `data/odds/recent_odds_corrections.csv` (required overlay for 2,713 existing recent rows; replace all four odds fields on matched IDs)
 - Recent match ranking supplement: `data/odds/recent_ranking_fallbacks.csv.gz` (weekly rankings aligned by `record_id`, with snapshot dates/ages)
 - Recent player profile context: `data/odds/recent_player_profiles.csv.gz` (age at match date, profile height and hand with field-level provenance)
 - Pre-event ranking backfills: `data/processed/supplements/ranking_fallbacks.csv.gz` (keyed by `record_id`, weekly snapshots no more than 90 days old)
@@ -70,11 +71,11 @@ The [daily GitHub Action](.github/workflows/daily-data-update.yml) checks Valueb
 The Action appends raw odds and separately builds recent post-archive features where the player identities are verified by the existing strict crosswalk. It does not revise old rows or rebuild the historical crosswalk or odds-enriched archive feature export. The recent feature file applies a 14-day archive-end buffer and the standard 28-day history embargo; see [modeling notes](docs/modeling.md) for details.
 
 Each daily run first rebuilds the ignored local SQLite database from the tracked, pinned source CSVs. The recent feature, ranking, and profile scripts require this database; it is not present in a fresh checkout. The commit step stages only the listed odds and recent supplement files, so rebuilding does not publish regenerated archive reports or replace historical source records.
-See the [fresh-checkout verification record](docs/daily-workflow-check.md) for local results, hosted-run limits, and an unresolved recent-odds orientation issue. Until that issue is corrected, use the original provider odds rather than the recent feature export's odds columns.
+See the [fresh-checkout verification record](docs/daily-workflow-check.md) for local results and hosted-run limits. For recent feature odds, apply `data/odds/recent_odds_corrections.csv` by `record_id`: replace all four odds fields on matched rows, including blank values. This repairs previously published price ordering without rewriting original rows.
 
 Before committing, the daily Action runs `scripts/verify_odds_export.py` to check match-ID uniqueness, required columns, ATP/WTA and yearly counts, byte size, and SHA-256 against the manifest. A mismatch fails the job before any commit is pushed.
 It also runs `scripts/verify_recent_supplements.py` to verify supplement keys/checksums, feature-label and 28-day history timing, prior-only ranking snapshots, and age-at-match calculations before committing.
-`scripts/verify_daily_append_only.py` then checks all four updated CSV/gzip datasets against the checkout's Git `HEAD`: every previously committed byte must remain an exact prefix. Any rewrite or truncation stops the job before committing. Reports may be refreshed to describe newly appended data.
+`scripts/verify_daily_append_only.py` then checks all five updated CSV/gzip datasets against the checkout's Git `HEAD`: every previously committed byte must remain an exact prefix. Any rewrite or truncation stops the job before committing. Reports may be refreshed to describe newly appended data.
 
 Allow several minutes and a few GB of free disk space. A failed database build leaves a staging database for inspection; remove only that generated `data/processed/tennis.building.sqlite` file before retrying.
 

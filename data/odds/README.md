@@ -1,5 +1,11 @@
 # Historical match odds
 
+## Required correction for recent feature odds
+
+Join `recent_odds_corrections.csv` onto `recent_model_features.csv.gz` by `record_id`. For matched IDs, replace **all four** `odds_open_p1_decimal`, `odds_open_p2_decimal`, `odds_close_p1_decimal`, and `odds_close_p2_decimal` fields with the correction values, including blanks. Unmatched feature rows keep their prices. The supplement repairs 5,368 price fields across 2,713 rows without rewriting existing feature bytes. Decimal prices that are missing, nonfinite or at most 1 are blank. This is a correction overlay, not a missing-value fallback.
+
+The original builder incorrectly duplicated one player's odds in some orientations. Future appends use explicit source-player indexing for each model side. `scripts/correct_recent_odds.py` compares every recent row with the provider's exact player-name pair, tour, result label and prices, appends missing corrections and rejects conflicts with earlier corrections. `--verify-only` checks the complete overlay and its hashes without modifying it. The daily workflow runs both modes and enforces append-only corrections. These are Valuebetennis prices joined to Sackmann-derived identities and retain the source obligations documented below. Market timing remains provider-reported.
+
 `atp_wta_match_odds.csv` combines the yearly ATP/WTA singles odds files published by Valuebetennis, preserving their fields and rows while converting the semicolon-separated source files to one comma-separated CSV. `genre` identifies `atp` or `wta`.
 
 - Coverage: 2021 onward, for the provider's captured and settled singles matches.

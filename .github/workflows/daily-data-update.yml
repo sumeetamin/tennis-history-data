@@ -49,6 +49,11 @@ jobs:
       - name: Append recent player profile context
         run: python scripts/build_recent_player_profiles.py
 
+      - name: Append and verify recent odds corrections
+        run: |
+          python scripts/correct_recent_odds.py
+          python scripts/correct_recent_odds.py --verify-only
+
       - name: Verify odds export and manifest
         run: python scripts/verify_odds_export.py
 
@@ -61,12 +66,12 @@ jobs:
       - name: Commit only when new matches were added
         shell: bash
         run: |
-          if git diff --quiet -- data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json; then
+          if git diff --quiet -- data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json data/odds/recent_odds_corrections.csv data/odds/recent_odds_corrections_report.json; then
             echo "No data changes; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json
+          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json data/odds/recent_odds_corrections.csv data/odds/recent_odds_corrections_report.json
           git commit -m "Append recent tennis odds and verified model features"
           git push

@@ -22,6 +22,8 @@ For matches with a strict odds/archive/feature join, `data/odds/model_features_w
 
 ## Missing match-time rankings
 
+Before using recent-feature odds, apply `data/odds/recent_odds_corrections.csv` on `record_id`, replacing all four odds columns for every matched correction row, including blanks. This overlay fixes previously published source-player ordering errors; it must not be treated as a blank-only fallback. The existing recent feature CSV remains immutable. The daily builder uses corrected price mapping for future appends, and the correction script verifies every existing row against source prices.
+
 `data/processed/supplements/ranking_fallbacks.csv.gz` contains pre-event weekly ranking values for feature rows whose match-file rank or ranking points are blank/nonpositive. Join it to a feature export on `record_id`; use the fallback only when the corresponding feature value is missing or nonpositive. Player order is already aligned to the feature row's `p1_id` and `p2_id`. Each side has a snapshot date so the fallback can be audited. The snapshot must be strictly earlier than the tournament start date and at most 90 days old. The report gives field counts and both-ranked coverage before and after fallback, by tour and tier.
 
 The odds-enriched feature file applies these ranking fallbacks and includes `p1_rank_source`, `p1_rank_points_source`, `p1_rank_snapshot_date` and the corresponding `p2` fields. `weekly_snapshot` identifies a fallback; `match_record` means the original match row supplied the value; `missing` means neither source supplied it. A filled rank can still be stale relative to an exact match date because the archive usually records tournament start dates, not match timestamps.
