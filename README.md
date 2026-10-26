@@ -11,20 +11,20 @@ This repository contains the source data, not just links or a scraper template.
 - Historical rankings and ranking points.
 - Match scores, surface, round, draw size, seeds, entries, best-of format, duration, serve and break-point statistics where supplied.
 - Archived ATP doubles and older ATP amateur results.
-- A SQLite database, a compressed pre-match feature table, and measured coverage/quality reports.
+- A locally generated SQLite database, a compressed pre-match feature table split into yearly files, and measured coverage/quality reports.
 
 **Coverage is a fixed historical snapshot, not every match ever played.** Read [measured coverage](docs/coverage.md) for actual date ranges and counts. Detailed statistics and player biography fields are often missing. No betting odds, injuries, coaches, tracking coordinates, or live update feed are included.
 
 ## Start here
 
 - Database: `data/processed/tennis.sqlite`
-- Model table: `data/processed/model_features.csv.gz`
+- Model-ready pre-match rows: `data/processed/model_features_by_year/` (150 gzip CSVs, one per year)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
 - Counts and missingness: `data/processed/coverage.csv`, `build_report.json`
 - Baseline scores: `data/processed/feature_report.json`
 - Validation results: `data/processed/validation_report.json`
 
-The database and model exports are generated locally and excluded from Git to avoid oversized binary files. The original CSVs, scripts, source metadata and documentation are tracked. A fresh Git clone can rebuild everything.
+The SQLite database and combined feature export are generated locally and excluded from Git. The yearly feature exports are included for direct use. A fresh Git clone can rebuild them from the tracked source CSVs.
 
 ## Rebuild
 
@@ -36,6 +36,7 @@ python scripts/fetch_sackmann.py
 
 python scripts/build_dataset.py
 python scripts/build_features.py
+python scripts/partition_features.py
 python scripts/verify_dataset.py
 python -m unittest discover -s tests -v
 ```
@@ -44,7 +45,7 @@ Allow several minutes and a few GB of free disk space. A failed database build l
 
 ## Using the data for prediction later
 
-This is a data repository. No trained model is included. The optional feature export assigns player 1 and player 2 independently of the result and uses `p1_won` as its target. Do not use winner/loser ordering or current-match statistics as pre-match predictors. See [modeling notes](docs/modeling.md) for timing assumptions and limitations.
+This is a data repository. No trained model is included. The feature export assigns player 1 and player 2 independently of the result and uses `p1_won` as its target. Do not use winner/loser ordering or current-match statistics as pre-match predictors. See [modeling notes](docs/modeling.md) for timing assumptions and limitations.
 
 ## Source and reproducibility
 

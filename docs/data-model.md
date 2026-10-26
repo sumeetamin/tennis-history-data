@@ -31,7 +31,7 @@ Match original fields include tournament ID/name, surface, draw size, level, sta
 The tournament view groups the event identifiers and observed metadata; inconsistent source names or dates may produce multiple rows for one logical event. It is not a fully reconciled historical tournament registry.
 
 ## Prediction table
-`model_features.csv.gz` contains one row per eligible completed singles match. Fields are documented in modeling.md. Current-match scores, duration and serve outcomes are absent from this export.
+`data/processed/model_features_by_year/` contains 150 gzip CSVs, one per event year, with 1,702,961 eligible completed singles matches total. Fields are documented in modeling.md. Current-match scores, duration and serve outcomes are absent from this pre-match export. `scripts/build_features.py` creates a combined local export; `scripts/partition_features.py` splits it into yearly files.
 
 ## Reports
 - source_files.json: exact source CSV checksums, sizes, counts, pinned URLs.

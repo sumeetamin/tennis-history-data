@@ -4,7 +4,7 @@
 
 The target is `p1_won`. Player ordering uses a deterministic hash of tournament/round/match identifiers and sorted player IDs; the result and score are not used for orientation.
 
-The optional training example uses only its explicit NUMERIC and CATEGORICAL column lists:
+The yearly feature exports in `data/processed/model_features_by_year/` contain the following pre-match inputs:
 - Pre-event source rankings/points, ages and heights represented as differences.
 - Overall Elo, surface Elo, prior win rates, historical serve-point win rates and recent-year win rates.
 - Historical match counts, surface counts and head-to-head history.
