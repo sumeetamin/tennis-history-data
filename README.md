@@ -25,6 +25,7 @@ This repository contains the source data, not just links or a scraper template.
 - Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
 - Pre-match model rows with odds: `data/odds/model_features_with_odds.csv.gz` (p1/p2-aligned prices; `p1_won` is the target)
 - Recent post-archive model rows: `data/odds/recent_model_features.csv.gz` (settled matches beyond June 2026; strictly mapped identities, pre-match history and odds)
+- Recent match ranking supplement: `data/odds/recent_ranking_fallbacks.csv.gz` (weekly rankings aligned by `record_id`, with snapshot dates/ages)
 - Pre-event ranking backfills: `data/processed/supplements/ranking_fallbacks.csv.gz` (keyed by `record_id`, weekly snapshots no more than 90 days old)
 - Player DOB/height enrichment: `data/processed/supplements/player_profile_enrichment.csv.gz` (only existing Wikidata IDs and missing source fields; CC0 facts)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
@@ -52,6 +53,8 @@ python scripts/fetch_wikidata_profiles.py
 python scripts/fetch_valuebetennis_odds.py
 python scripts/link_odds_to_sackmann.py
 python scripts/build_model_features_with_odds.py
+python scripts/build_recent_odds_features.py
+python scripts/build_recent_ranking_fallbacks.py
 python scripts/verify_dataset.py
 python scripts/profile_coverage.py
 python -m unittest discover -s tests -v

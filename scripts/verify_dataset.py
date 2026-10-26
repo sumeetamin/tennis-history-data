@@ -393,6 +393,64 @@ assert sha256(recent_path)==recent_report['sha256']
 assert ([recent_min,recent_max] if recent_rows else None)==recent_report['date_range']
 result['recent_model_feature_rows_checked']=recent_rows
 result['recent_model_feature_sha256_checked']=True
+recent_rank_path=ROOT/'data/odds/recent_ranking_fallbacks.csv.gz'
+recent_rank_report_path=ROOT/'data/odds/recent_ranking_fallbacks_report.json'
+recent_rank_report=json.loads(recent_rank_report_path.read_text(encoding='utf-8'))
+assert sha256(recent_rank_path)==recent_rank_report['sha256']
+assert sha256(recent_path)==recent_rank_report['input_feature_sha256']
+assert sha256(out/'tennis.sqlite')==recent_rank_report['input_database_sha256']
+recent_feature_lookup={}
+with gzip.open(recent_path,'rt',encoding='utf-8',newline='') as src:
+    for row in csv.DictReader(src):
+        recent_feature_lookup[row['record_id']]=row
+recent_rank_rows=0
+recent_rank_ids=set()
+recent_rank_counts=Counter()
+recent_rank_rows_by_tour=Counter()
+with gzip.open(recent_rank_path,'rt',encoding='utf-8',newline='') as src:
+    for row in csv.DictReader(src):
+        recent_rank_rows+=1
+        rid=row['record_id']
+        assert rid in recent_feature_lookup and rid not in recent_rank_ids
+        recent_rank_ids.add(rid)
+        feature=recent_feature_lookup[rid]
+        assert (row['tour'],row['event_date'],row['p1_id'],row['p2_id'])==(feature['tour'],feature['event_date'],feature['p1_id'],feature['p2_id'])
+        day=date.fromisoformat(row['event_date'])
+        changed=False
+        for side in ('p1','p2'):
+            snapshot=row[f'{side}_rank_snapshot_date']
+            rank=row[f'{side}_rank_fallback']
+            points=row[f'{side}_rank_points_fallback']
+            age=row[f'{side}_rank_age_days']
+            if not (snapshot or rank or points or age):
+                continue
+            assert snapshot and age
+            snapshot_day=date.fromisoformat(snapshot)
+            assert 1<=(day-snapshot_day).days<=recent_rank_report['max_snapshot_age_days']
+            assert int(age)==(day-snapshot_day).days
+            for field,value in (('rank',rank),('rank_points',points)):
+                if not value:
+                    continue
+                changed=True
+                assert not feature[f'{side}_{field}']
+                source_col='rank' if field=='rank' else 'points'
+                source=db.execute('SELECT '+source_col+' FROM rankings WHERE tour=? AND player=? AND ranking_date=?',
+                                  (row['tour'],row[f'{side}_id'],snapshot_day.strftime('%Y%m%d'))).fetchone()
+                assert source and source[0] and float(source[0])>0 and float(value)==float(source[0])
+                recent_rank_counts[field]+=1
+        assert changed
+        recent_rank_rows_by_tour[row['tour']]+=1
+assert recent_rank_rows==recent_rank_report['total_rows_with_fallbacks']
+assert recent_rank_counts['rank']==recent_rank_report['rank_fills']
+assert recent_rank_counts['rank_points']==recent_rank_report['rank_points_fills']
+assert {tour:count for tour,count in recent_rank_rows_by_tour.items()}=={
+    tour:values['rows'] for tour,values in recent_rank_report['rows_by_tour'].items()
+}
+assert recent_rank_report['source_latest_ranking_date']==db.execute('SELECT max(ranking_date) FROM rankings').fetchone()[0]
+assert sha256(recent_rank_path)==recent_rank_report['sha256']
+result['recent_rank_fallback_rows_checked']=recent_rank_rows
+result['recent_rank_values_checked']=recent_rank_counts['rank']
+result['recent_rank_points_checked']=recent_rank_counts['rank_points']
 (out/'validation_report.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result,indent=2))
 

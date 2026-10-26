@@ -16,6 +16,7 @@ ODDS_MANIFEST = ROOT / 'data/odds/valuebetennis_manifest.json'
 LINK_REPORT = ROOT / 'data/odds/odds_link_report.json'
 ODDS_FEATURE_REPORT = ROOT / 'data/odds/model_features_with_odds_report.json'
 RECENT_FEATURE_REPORT = ROOT / 'data/odds/recent_model_features_report.json'
+RECENT_RANK_REPORT = ROOT / 'data/odds/recent_ranking_fallbacks_report.json'
 RANK_FALLBACK_REPORT = ROOT / 'data/processed/supplements/ranking_fallbacks_report.json'
 PROFILE_ENRICHMENT = ROOT / 'data/processed/supplements/player_profile_enrichment.csv.gz'
 PROFILE_ENRICHMENT_REPORT = ROOT / 'data/processed/supplements/player_profile_enrichment_report.json'
@@ -114,6 +115,7 @@ def main():
     link_report = json.loads(LINK_REPORT.read_text(encoding='utf-8'))
     odds_feature_report = json.loads(ODDS_FEATURE_REPORT.read_text(encoding='utf-8'))
     recent_feature_report = json.loads(RECENT_FEATURE_REPORT.read_text(encoding='utf-8'))
+    recent_rank_report = json.loads(RECENT_RANK_REPORT.read_text(encoding='utf-8'))
     rank_fallback_report = json.loads(RANK_FALLBACK_REPORT.read_text(encoding='utf-8'))
     validation_report = json.loads(VALIDATION_REPORT.read_text(encoding='utf-8')) if VALIDATION_REPORT.exists() else {}
     odds_coverage = {
@@ -130,6 +132,10 @@ def main():
         'odds_enriched_last_pre_match_price_pairs': odds_feature_report['last_pre_match_odds_pair_rows'],
         'recent_model_feature_rows': recent_feature_report['total_rows'],
         'recent_model_feature_date_range': recent_feature_report['date_range'],
+        'recent_model_rows_with_rank_fallbacks': recent_rank_report['total_rows_with_fallbacks'],
+        'recent_model_rank_fills': recent_rank_report['rank_fills'],
+        'recent_model_rank_points_fills': recent_rank_report['rank_points_fills'],
+        'recent_model_rank_fallback_rows_by_tour': recent_rank_report['rows_by_tour'],
         'score_state_counts': validation_report.get('odds_score_state_counts', {}),
         'future_dated_rows': validation_report.get('odds_future_dated_rows_as_of_utc_date', []),
     }
@@ -222,7 +228,7 @@ def main():
         f"The separately attributed odds CSV contains **{odds_coverage['rows']:,}** singles rows with dates from {odds_coverage['first_match_date']} to {odds_coverage['last_match_date']}, with {odds_coverage['strict_archive_links']:,} verified links to archive matches ({odds_coverage['exact_event_links']:,} exact event-title links and {odds_coverage['event_title_fallback_links']:,} event-title fallback links). The fallback requires the same tour and normalized player pair, no exact-title candidate, a unique nearest archive date within 14 days, and exact winner plus player-oriented set-score agreement. It intentionally omits ambiguous or unverified candidates.",
         f"The validation report classifies score states as `{json.dumps(odds_coverage['score_state_counts'], sort_keys=True)}` and currently flags {len(odds_coverage['future_dated_rows'])} future-dated row(s) as of the last validator run. Filter these rows and nonterminal/unknown score states for modeling.", '',
         f"An odds-enriched pre-match feature file is also available for {odds_coverage['odds_enriched_feature_rows']:,} rows. It has {odds_coverage['odds_enriched_opening_price_pairs']:,} complete opening-price pairs and {odds_coverage['odds_enriched_last_pre_match_price_pairs']:,} complete last-pre-match-price pairs, oriented to feature p1/p2.", '',
-        f"A separate append-only recent model feature file contains {odds_coverage['recent_model_feature_rows']:,} rows from {odds_coverage['recent_model_feature_date_range'][0]} to {odds_coverage['recent_model_feature_date_range'][1]}, beyond the pinned archive cutoff. It uses verified player-ID aliases, a 14-day archive-end buffer, and the 28-day feature-history embargo.", '',
+        f"A separate append-only recent model feature file contains {odds_coverage['recent_model_feature_rows']:,} rows from {odds_coverage['recent_model_feature_date_range'][0]} to {odds_coverage['recent_model_feature_date_range'][1]}, beyond the pinned archive cutoff. It uses verified player-ID aliases, a 14-day archive-end buffer, and the 28-day feature-history embargo. A keyed weekly-ranking supplement provides {odds_coverage['recent_model_rank_fills']:,} rank and {odds_coverage['recent_model_rank_points_fills']:,} ranking-point values across {odds_coverage['recent_model_rows_with_rank_fallbacks']:,} of those recent matches, using snapshots strictly before match date and no more than 90 days old.", '',
         '## Limits', '',
         '- ITF/Futures and Challenger coverage is uneven; the counts above do not establish complete event coverage.',
         '- Lower-tier serve statistics are sparse, and many height and WTA birth-date values are missing.',

@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-26T14:50:11+00:00",
+  "generated_utc": "2026-10-26T15:04:18+00:00",
   "event_date_inclusive": "2000-01-01",
   "source_database": {
     "path": "data/processed/tennis.sqlite",
@@ -193,6 +193,21 @@
       "2026-06-16",
       "2026-10-26"
     ],
+    "recent_model_rows_with_rank_fallbacks": 3107,
+    "recent_model_rank_fills": 6119,
+    "recent_model_rank_points_fills": 6119,
+    "recent_model_rank_fallback_rows_by_tour": {
+      "atp": {
+        "rank_fills": 4212,
+        "rank_points_fills": 4212,
+        "rows": 2146
+      },
+      "wta": {
+        "rank_fills": 1907,
+        "rank_points_fills": 1907,
+        "rows": 961
+      }
+    },
     "score_state_counts": {
       "completed": 271157,
       "incomplete": 76743,

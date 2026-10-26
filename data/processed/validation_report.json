@@ -49,5 +49,8 @@
   "wikidata_heights_checked": 265,
   "odds_feature_rank_sources_checked": 424678,
   "recent_model_feature_rows_checked": 5789,
-  "recent_model_feature_sha256_checked": true
+  "recent_model_feature_sha256_checked": true,
+  "recent_rank_fallback_rows_checked": 3107,
+  "recent_rank_values_checked": 6119,
+  "recent_rank_points_checked": 6119
 }

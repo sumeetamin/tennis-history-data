@@ -1,0 +1,24 @@
+{
+  "total_rows_with_fallbacks": 3107,
+  "max_snapshot_age_days": 90,
+  "source_latest_ranking_date": "20260608",
+  "rank_fills": 6119,
+  "rank_points_fills": 6119,
+  "rows_by_tour": {
+    "atp": {
+      "rank_fills": 4212,
+      "rank_points_fills": 4212,
+      "rows": 2146
+    },
+    "wta": {
+      "rank_fills": 1907,
+      "rank_points_fills": 1907,
+      "rows": 961
+    }
+  },
+  "sha256": "55a52c98caa863fb237ed45bd4ec911f80096a986b3636c7af0785280dae968d",
+  "input_feature_sha256": "460ccbe0063020ecd489c7077c936a2ca323b817a5fa0b70c784efc0b6c0b6c3",
+  "input_database_sha256": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d",
+  "supplement_file": "data/odds/recent_ranking_fallbacks.csv.gz",
+  "policy": "Append-only fallback values; use only for missing rank fields. Snapshot strictly predates the match date and is at most 90 days old. Original recent feature rows are never rewritten."
+}
