@@ -14,7 +14,7 @@ This repository contains the source data, not just links or a scraper template.
 - Archived ATP doubles and older ATP amateur results.
 - A locally generated SQLite database, a compressed pre-match feature table split into yearly files, and measured coverage/quality reports.
 
-**Coverage is a fixed historical snapshot, not every match ever played.** Read [measured coverage](docs/coverage.md) for actual date ranges and counts. Detailed statistics and player biography fields are often missing. No betting odds, injuries, coaches, tracking coordinates, or live update feed are included.
+**Coverage is incomplete, especially in older and lower-tier records.** Read [measured coverage](docs/coverage.md) for observed date ranges and counts. Detailed statistics and player biography fields are often missing. Odds are provided separately and begin in 2021; they are not part of the historical feature table.
 
 ## Start here
 
@@ -43,6 +43,8 @@ python scripts/fetch_valuebetennis_odds.py
 python scripts/verify_dataset.py
 python -m unittest discover -s tests -v
 ```
+
+The [daily GitHub Action](.github/workflows/daily-data-update.yml) checks Valuebetennis' published yearly files for missing settled matches from the last 30 days. It appends only unseen match IDs and creates a commit only when new rows are found. Existing rows are never replaced. You can also run it manually from the **Actions** tab and change the lookback window.
 
 Allow several minutes and a few GB of free disk space. A failed database build leaves a staging database for inspection; remove only that generated `data/processed/tennis.building.sqlite` file before retrying.
 

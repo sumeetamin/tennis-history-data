@@ -1,0 +1,51 @@
+name: Daily tennis data update
+
+on:
+  schedule:
+    # 13:47 India Standard Time; avoid the busiest top-of-hour schedule slot.
+    - cron: "17 8 * * *"
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: "Check this many recent days for missing settled matches"
+        required: true
+        default: 30
+        type: number
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-tennis-data-update
+  cancel-in-progress: false
+
+jobs:
+  update-recent-odds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find and append missing recent matches
+        env:
+          LOOKBACK_DAYS: ${{ inputs.lookback_days || 30 }}
+        run: python scripts/update_recent_odds.py --lookback-days "$LOOKBACK_DAYS"
+
+      - name: Commit only when new matches were added
+        shell: bash
+        run: |
+          if git diff --quiet -- data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json; then
+            echo "No data changes; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json
+          git commit -m "Append newly published recent tennis matches"
+          git push

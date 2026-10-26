@@ -19,4 +19,4 @@ Potential conflicting match keys: 0. IDs absent from the master player tables: 0
 Original files preserve every source row. The normalized ranking table keeps the first occurrence of each tour/date/player key.
 Exact duplicate match payloads are collapsed; conflicting payloads remain in the database and are excluded from the model export.
 Pre-Open Era ATP records are present in the amateur file; this snapshot does not provide a complete pre-1968 history of all majors.
-The archive is a fixed snapshot. No current/live feed or betting odds are included.
+The Sackmann archive is a fixed snapshot. Daily append-only odds updates are maintained separately in `data/odds/atp_wta_match_odds.csv`; see `data/odds/README.md` for coverage and licensing.

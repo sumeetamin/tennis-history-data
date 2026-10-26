@@ -10,6 +10,8 @@
 
 The source does not include doubles or matches before 2021. The exact yearly file hashes and row counts used for this combined export are in `valuebetennis_manifest.json`.
 
+The daily GitHub Action checks a rolling 30-day window and appends newly published, settled rows whose `match_id` is not already present. It does not modify existing records, and it commits nothing when there are no new matches. Schedule delivery can be delayed by GitHub; it is not a live feed.
+
 Rebuild or refresh the combined export with:
 
 ```powershell
