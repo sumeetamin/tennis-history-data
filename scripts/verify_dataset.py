@@ -373,6 +373,7 @@ with gzip.open(recent_path,'rt',encoding='utf-8',newline='') as src:
         assert rid.startswith('vb:') and rid not in recent_ids
         recent_ids.add(rid)
         day=date.fromisoformat(row['event_date'])
+        assert day<=datetime.now(timezone.utc).date()
         cutoff=date.fromisoformat(row['history_cutoff_exclusive'])
         assert cutoff==day-timedelta(days=28)
         tour=row['tour']

@@ -7,7 +7,7 @@ import re
 import sqlite3
 import sys
 from collections import defaultdict
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -110,6 +110,9 @@ def main():
                 except ValueError:
                     counters["invalid_date"] += 1
                     continue
+                if day > datetime.now(timezone.utc).date():
+                    counters["future_dated"] += 1
+                    continue
                 if day <= archive_max[tour] + timedelta(days=14):
                     continue
                 if settlement_status(raw) != "completed":
@@ -175,10 +178,11 @@ def main():
                   "date_buffer_days": 14, "history_embargo_days": LAG,
                   "archive_max_event_date": {k: v.isoformat() for k, v in archive_max.items()},
                   "skipped_unverified_identity": counters["unverified_identity"],
+                  "future_dated_rows_skipped": counters["future_dated"],
                   "date_range": [min(all_dates), max(all_dates)] if all_dates else None,
                   "sha256": digest,
                   "feature_file": "data/odds/recent_model_features.csv.gz",
-                  "policy": "Strict crosswalk-derived player IDs and matching observed names only; completed scores only; immutable append-only output. No match scores, outcomes, or post-match statistics are features."}
+                  "policy": "Strict crosswalk-derived player IDs and matching observed names only; completed scores dated no later than the current UTC date; immutable append-only output. No match scores, outcomes, or post-match statistics are features."}
         REPORT.write_text(json.dumps(report, indent=2), encoding="utf-8")
         print(json.dumps(report, indent=2))
 
