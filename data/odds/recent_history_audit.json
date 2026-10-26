@@ -1,0 +1,217 @@
+{
+  "audited_utc": "2026-10-26T19:28:21+00:00",
+  "published_rows": 5789,
+  "reconstructed_rows": 5739,
+  "published_rows_missing_from_reconstruction": [
+    "vb:1000957",
+    "vb:1001391",
+    "vb:1002240",
+    "vb:1003697",
+    "vb:958015",
+    "vb:959626",
+    "vb:960054",
+    "vb:960072",
+    "vb:962759",
+    "vb:962962",
+    "vb:963833",
+    "vb:964235",
+    "vb:965741",
+    "vb:965921",
+    "vb:967127",
+    "vb:969263",
+    "vb:971153",
+    "vb:971533",
+    "vb:971665",
+    "vb:971890",
+    "vb:972179",
+    "vb:974286",
+    "vb:974291",
+    "vb:975473",
+    "vb:976012",
+    "vb:977858",
+    "vb:978229",
+    "vb:978360",
+    "vb:978682",
+    "vb:978683",
+    "vb:979698",
+    "vb:980697",
+    "vb:980915",
+    "vb:981087",
+    "vb:981582",
+    "vb:983903",
+    "vb:983911",
+    "vb:984027",
+    "vb:987056",
+    "vb:987670",
+    "vb:988607",
+    "vb:989414",
+    "vb:992136",
+    "vb:994585",
+    "vb:994665",
+    "vb:994817",
+    "vb:995691",
+    "vb:996314",
+    "vb:996944",
+    "vb:999639"
+  ],
+  "additional_reconstructed_rows": 0,
+  "nonprice_changed_rows": 2870,
+  "nonprice_changed_fields": {
+    "p1_elo": 2198,
+    "p1_surface_elo": 1358,
+    "elo_diff": 2870,
+    "surface_elo_diff": 1898,
+    "p2_elo": 2237,
+    "p2_surface_elo": 1388,
+    "p1_prior_matches": 1031,
+    "p1_prior_win_rate": 1033,
+    "p1_recent365_matches": 1031,
+    "p1_recent365_win_rate": 1034,
+    "prior_win_rate_diff": 1770,
+    "recent365_win_rate_diff": 1749,
+    "p2_prior_matches": 1048,
+    "p2_prior_win_rate": 1056,
+    "p2_surface_prior_matches": 663,
+    "p2_recent365_matches": 1048,
+    "p2_recent365_win_rate": 1053,
+    "p2_history_latest_date": 485,
+    "p1_surface_prior_matches": 628,
+    "p1_history_latest_date": 452
+  },
+  "examples": [
+    {
+      "record_id": "vb:1000134",
+      "field": "p1_elo",
+      "published": "1737.03331",
+      "reconstructed": "1736.69684"
+    },
+    {
+      "record_id": "vb:1000134",
+      "field": "p1_surface_elo",
+      "published": "1711.81685",
+      "reconstructed": "1711.52286"
+    },
+    {
+      "record_id": "vb:1000134",
+      "field": "elo_diff",
+      "published": "-106.40724999999998",
+      "reconstructed": "-106.74371999999994"
+    },
+    {
+      "record_id": "vb:1000134",
+      "field": "surface_elo_diff",
+      "published": "-4.008190000000013",
+      "reconstructed": "-4.3021799999999075"
+    },
+    {
+      "record_id": "vb:1000135",
+      "field": "p1_elo",
+      "published": "1911.29014",
+      "reconstructed": "1911.39531"
+    },
+    {
+      "record_id": "vb:1000135",
+      "field": "p1_surface_elo",
+      "published": "1796.01604",
+      "reconstructed": "1795.27384"
+    },
+    {
+      "record_id": "vb:1000135",
+      "field": "p2_elo",
+      "published": "1841.41285",
+      "reconstructed": "1841.41803"
+    },
+    {
+      "record_id": "vb:1000135",
+      "field": "p2_surface_elo",
+      "published": "1766.72291",
+      "reconstructed": "1766.72816"
+    },
+    {
+      "record_id": "vb:1000135",
+      "field": "elo_diff",
+      "published": "69.87729000000013",
+      "reconstructed": "69.97728000000006"
+    },
+    {
+      "record_id": "vb:1000135",
+      "field": "surface_elo_diff",
+      "published": "29.29313000000002",
+      "reconstructed": "28.545680000000175"
+    },
+    {
+      "record_id": "vb:1000136",
+      "field": "p1_elo",
+      "published": "1946.00588",
+      "reconstructed": "1927.44381"
+    },
+    {
+      "record_id": "vb:1000136",
+      "field": "p1_prior_matches",
+      "published": "1002",
+      "reconstructed": "1004"
+    },
+    {
+      "record_id": "vb:1000136",
+      "field": "p1_prior_win_rate",
+      "published": "0.5598802395209581",
+      "reconstructed": "0.5587649402390438"
+    },
+    {
+      "record_id": "vb:1000136",
+      "field": "p1_recent365_matches",
+      "published": "51",
+      "reconstructed": "53"
+    },
+    {
+      "record_id": "vb:1000136",
+      "field": "p1_recent365_win_rate",
+      "published": "0.5882352941176471",
+      "reconstructed": "0.5660377358490566"
+    },
+    {
+      "record_id": "vb:1000136",
+      "field": "p2_elo",
+      "published": "1674.59398",
+      "reconstructed": "1674.2164"
+    },
+    {
+      "record_id": "vb:1000136",
+      "field": "elo_diff",
+      "published": "271.41189999999983",
+      "reconstructed": "253.22740999999996"
+    },
+    {
+      "record_id": "vb:1000136",
+      "field": "prior_win_rate_diff",
+      "published": "0.027093354275056436",
+      "reconstructed": "0.025978054993142097"
+    },
+    {
+      "record_id": "vb:1000136",
+      "field": "recent365_win_rate_diff",
+      "published": "0.0028694404591105283",
+      "reconstructed": "-0.01932811780947996"
+    },
+    {
+      "record_id": "vb:1000161",
+      "field": "p1_elo",
+      "published": "1756.79233",
+      "reconstructed": "1757.53274"
+    }
+  ],
+  "price_differences_after_correction_overlay": 0,
+  "original_bytes_preserved": true,
+  "inputs": {
+    "published_features_sha256": "460ccbe0063020ecd489c7077c936a2ca323b817a5fa0b70c784efc0b6c0b6c3",
+    "odds_sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea",
+    "database_sha256": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d",
+    "crosswalk_sha256": "90c0bdb9b8eccb925abb3f6c75ba09e3a8b13566e82d0063cdac7d142b696267",
+    "builder_sha256": "022ccd17be95ce89b8e0f148d8b37fee0239de6b87135675f891e26f13694cdf",
+    "history_algorithm_sha256": "52912c8e5c22fb9a3c3b4f8c733ebb9fec63887e8530499002a177ebb136965a",
+    "odds_mapping_sha256": "3dfbbe3a9fe5b1c47f29e6eac4e183af0a78cf02291007202028d7f94cc5a1ea",
+    "correction_sha256": "cedea70f0e6c63466e5db4792bce223fefa2dca77be6039099a8a8705353f8a8"
+  },
+  "passed": false,
+  "scope": "Full field comparison against corrected single-batch replay of current sources; prices compared after correction overlay. This verifies replay consistency, not independent historical source accuracy or original publication timing."
+}

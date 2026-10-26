@@ -1,5 +1,7 @@
 # Historical match odds
 
+For recent-period modeling through 2026-10-26, use the [audited snapshot](snapshots/2026-10-26/README.md), which has 5,739 rows with reconstructed history and corrected odds. A full replay found 50 ambiguous-identity rows and 2,870 retained rows with changed history in the older append-only file. That file remains preserved; the price-only correction described below does not fix its history values. The snapshot is dated and does not update automatically.
+
 ## Required correction for recent feature odds
 
 Join `recent_odds_corrections.csv` onto `recent_model_features.csv.gz` by `record_id`. For matched IDs, replace **all four** `odds_open_p1_decimal`, `odds_open_p2_decimal`, `odds_close_p1_decimal`, and `odds_close_p2_decimal` fields with the correction values, including blanks. Unmatched feature rows keep their prices. The supplement repairs 5,368 price fields across 2,713 rows without rewriting existing feature bytes. Decimal prices that are missing, nonfinite or at most 1 are blank. This is a correction overlay, not a missing-value fallback.

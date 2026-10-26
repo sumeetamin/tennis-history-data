@@ -1,0 +1,27 @@
+{
+  "as_of_date": "2026-10-26",
+  "rows": 5739,
+  "excluded_ambiguous_identity_rows": 50,
+  "history_corrected_rows": 2870,
+  "snapshot_sha256": "683843e18fc10a711253c7d26f077d26ce3cabf4c3a170a8b4d030065c56477b",
+  "excluded_records_sha256": "3efa65b14140332faa664d25e9ddb4519d04601337cb08e25683b48d52b68306",
+  "inputs": {
+    "published_features_sha256": "460ccbe0063020ecd489c7077c936a2ca323b817a5fa0b70c784efc0b6c0b6c3",
+    "odds_sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea",
+    "database_sha256": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d",
+    "crosswalk_sha256": "90c0bdb9b8eccb925abb3f6c75ba09e3a8b13566e82d0063cdac7d142b696267",
+    "builder_sha256": "022ccd17be95ce89b8e0f148d8b37fee0239de6b87135675f891e26f13694cdf",
+    "correction_sha256": "cedea70f0e6c63466e5db4792bce223fefa2dca77be6039099a8a8705353f8a8",
+    "history_algorithm_sha256": "52912c8e5c22fb9a3c3b4f8c733ebb9fec63887e8530499002a177ebb136965a",
+    "odds_mapping_sha256": "3dfbbe3a9fe5b1c47f29e6eac4e183af0a78cf02291007202028d7f94cc5a1ea"
+  },
+  "checks": {
+    "unique_record_ids": true,
+    "row_set_equals_original_minus_exclusions": true,
+    "player_ids_dates_and_targets_preserved": true,
+    "all_history_dates_precede_28_day_cutoff": true,
+    "numeric_ratings_finite_and_differences_consistent": true,
+    "prices_match_provider_after_alignment": true
+  },
+  "scope": "Static replacement snapshot reconstructed from current pinned archive and provider feed. Publication-time availability and source facts not independently established. Existing append-only exports remain unchanged."
+}

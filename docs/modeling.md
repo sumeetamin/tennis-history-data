@@ -2,6 +2,8 @@
 
 ## Target and allowed input columns
 
+For recent-period data as of 2026-10-26, prefer the [audited 5,739-row snapshot](../data/odds/snapshots/2026-10-26/README.md). The older 5,789-row append-only file has 50 rows with ambiguous current identity mappings and 2,870 retained rows whose history differs from full current-source replay. An odds overlay alone does not repair those history/identity issues. The snapshot already contains corrected odds; join the rank/profile supplements only for IDs present in the snapshot. Do not duplicate rows by combining both versions of the same matches.
+
 The target is `p1_won`. Player ordering uses a deterministic hash of tournament/round/match identifiers and sorted player IDs; the result and score are not used for orientation.
 
 The yearly feature exports in `data/processed/model_features_by_year/` contain the following pre-match inputs:

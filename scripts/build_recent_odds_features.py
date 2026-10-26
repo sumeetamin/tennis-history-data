@@ -76,7 +76,9 @@ def main():
             FROM matches GROUP BY tour,tourney_id,match_num,min(winner_id,loser_id),max(winner_id,loser_id) HAVING count(*)>1""")}
         history = History()
         last_day = None
-        for record in db.execute("SELECT * FROM matches ORDER BY event_date,record_id"):
+        for archive_count, record in enumerate(db.execute("SELECT * FROM matches ORDER BY event_date,record_id"), 1):
+            if archive_count % 250000 == 0:
+                print(f'Examined {archive_count:,} archive matches for recent history', flush=True)
             row = dict(record)
             if not row.get("event_date") or row.get("outcome") != "completed" or not row.get("winner_id") or not row.get("loser_id") or row.get('source_extra_cells') or row['winner_id'] == row['loser_id']:
                 continue
