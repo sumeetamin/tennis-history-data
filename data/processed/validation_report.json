@@ -1,0 +1,10 @@
+{
+  "source_files_hash_checked": 299,
+  "feature_rows_temporally_checked": 1702961,
+  "label_rows_checked_against_db": 1703,
+  "label_counts": {
+    "1": 850686,
+    "0": 852275
+  },
+  "passed": true
+}

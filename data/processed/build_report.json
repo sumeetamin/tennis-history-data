@@ -1,0 +1,35 @@
+{
+  "source_revision": "83733587353df8a41f2fd4f516147d5aa83f5a8d",
+  "generated_at": "2026-10-26T07:47:10.727495+00:00",
+  "tables": {
+    "matches": {
+      "source_rows": 1774873,
+      "rows": 1762930,
+      "duplicate_keys_omitted": 11943
+    },
+    "doubles": {
+      "source_rows": 26399,
+      "rows": 26399,
+      "duplicate_keys_omitted": 0
+    },
+    "players": {
+      "source_rows": 137483,
+      "rows": 137483,
+      "duplicate_keys_omitted": 0
+    },
+    "rankings": {
+      "source_rows": 5574913,
+      "rows": 5573852,
+      "duplicate_keys_omitted": 1061
+    }
+  },
+  "invalid_event_dates": {},
+  "extra_csv_cell_rows": {
+    "doubles": 26399
+  },
+  "potential_conflicting_match_keys": 0,
+  "match_player_ids_missing_roster": 0,
+  "sqlite_integrity": "ok",
+  "source_files": 299,
+  "source_bytes": 472135845
+}

@@ -1,0 +1,2 @@
+source_id,provider,dataset,source_url,license_url,license_name,attribution,coverage_start,coverage_end,retrieved_at,redistribution_allowed,notes
+sackmann-archive,Jeff Sackmann via Aneeshers archive,Historical tennis CSVs,https://github.com/Aneeshers/tennis-sackmann-archive,https://creativecommons.org/licenses/by-nc-sa/4.0/,CC BY-NC-SA 4.0,Jeff Sackmann / Tennis Abstract,see docs/coverage.md,see docs/coverage.md,2026-10-26,non-commercial with attribution and share-alike,Revision 83733587353df8a41f2fd4f516147d5aa83f5a8d; raw bytes preserved; coverage is incomplete

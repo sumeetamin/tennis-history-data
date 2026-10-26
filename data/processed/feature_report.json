@@ -1,0 +1,44 @@
+{
+  "embargo_days": 28,
+  "rows_by_split": {
+    "train": 1486981,
+    "purged": 3241,
+    "validation": 63879,
+    "test": 148860
+  },
+  "excluded": {
+    "walkover": 10126,
+    "retirement": 48298,
+    "unknown": 894,
+    "default": 571,
+    "abandoned": 61,
+    "invalid_date_or_players": 19
+  },
+  "elo_baseline": {
+    "train": {
+      "rows": 1486981,
+      "elo_accuracy": 0.671126261868847,
+      "elo_brier": 0.20649146070386687,
+      "elo_log_loss": 0.5985886800948091
+    },
+    "purged": {
+      "rows": 3241,
+      "elo_accuracy": 0.7004011107682814,
+      "elo_brier": 0.19574089010081658,
+      "elo_log_loss": 0.5754066993969135
+    },
+    "validation": {
+      "rows": 63879,
+      "elo_accuracy": 0.6786424333505534,
+      "elo_brier": 0.2045591971927732,
+      "elo_log_loss": 0.5948231271123069
+    },
+    "test": {
+      "rows": 148860,
+      "elo_accuracy": 0.6805521966948811,
+      "elo_brier": 0.2030155228947003,
+      "elo_log_loss": 0.591070703816807
+    }
+  },
+  "interpretation": "Offline historical benchmark; no guarantee of future performance. Source tournament dates approximate availability."
+}

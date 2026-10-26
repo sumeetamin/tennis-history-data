@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.DS_Store
+Thumbs.db
+data/processed/*.sqlite*
+data/processed/*.csv.gz
+models/
+
