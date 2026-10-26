@@ -1,10 +1,10 @@
 """Create a conservative crosswalk between Valuebetennis odds and Sackmann matches.
 
-Only emit a one-to-one link when tour and normalized player names, nearest event
-date, winner, and player-oriented set scores all agree. Exact normalized event
-names are required for primary links; a separately labeled fallback permits a
-title mismatch only when no exact-title candidate exists. Original source files
-are read-only; output is a separate CSV plus an audit report.
+Emit one-to-one links when tour, normalized player pair, nearest event date and
+winner agree. Scores must agree whenever the provider supplies one. If the
+provider score is blank, accept only an exact event-title match whose unique
+nearest archive record confirms a completed match and winner. Original source
+files are read-only; output is a separate CSV plus an audit report.
 """
 import csv
 import gzip
@@ -58,7 +58,7 @@ def main():
     with sqlite3.connect(DB) as db:
         db.row_factory = sqlite3.Row
         for row in db.execute('''SELECT record_id,tour,tourney_name,event_date,tourney_date,
-                round,winner_name,loser_name,score FROM matches'''):
+                round,winner_name,loser_name,score,outcome FROM matches'''):
             pair = tuple(sorted((norm(row['winner_name']), norm(row['loser_name']))))
             if pair[0] and pair[1]:
                 by_pair[(row['tour'], pair)].append(dict(row))
@@ -149,7 +149,22 @@ def main():
             odds_score = score_sets(odds.get('score'))
             archive_score = score_sets(match['score'])
             expected_score = archive_score if p1_won else tuple((b, a) for a, b in archive_score)
-            if not odds_score or odds_score != expected_score:
+            if not odds_score:
+                # A missing provider score can still be linked when the exact
+                # event/player pair and unique date identify a completed archive
+                # record whose winner agrees with the provider.
+                if (not (odds.get('score') or '').strip() and not event_name_fallback
+                        and match['outcome'] == 'completed'):
+                    candidates_by_archive_id[match['record_id']].append({
+                        'odds': dict(odds), 'match': match, 'gap': gap,
+                        'absolute_gap': abs(gap), 'event_name_fallback': False,
+                        'score_verified': False,
+                    })
+                    counts['unscored_exact_event_candidates_archive_confirmed'] += 1
+                else:
+                    counts['unscored_or_unparseable_not_linked'] += 1
+                continue
+            if odds_score != expected_score:
                 counts['score_disagreement_or_missing'] += 1
                 continue
 
@@ -161,6 +176,7 @@ def main():
                 'gap': gap,
                 'absolute_gap': abs(gap),
                 'event_name_fallback': event_name_fallback,
+                'score_verified': True,
             })
 
     conflict_audit = []
@@ -174,6 +190,10 @@ def main():
                 counts['event_name_fallback_excluded_for_existing_exact_link'] += sum(
                     item['event_name_fallback'] for item in linked_candidates)
                 linked_candidates = [item for item in linked_candidates if not item['event_name_fallback']]
+            # Prefer an independently score-verified source row if multiple
+            # provider rows point at the same archive match.
+            if any(item['score_verified'] for item in linked_candidates):
+                linked_candidates = [item for item in linked_candidates if item['score_verified']]
             linked_candidates.sort(key=lambda item: item['absolute_gap'])
             closest_gap = linked_candidates[0]['absolute_gap']
             closest = [item for item in linked_candidates if item['absolute_gap'] == closest_gap]
@@ -207,6 +227,9 @@ def main():
                 method = 'exact tour + normalized player pair; no exact event-title candidate; unique nearest date within 14 days; winner and oriented set scores agree'
             else:
                 method = 'exact tour + normalized event + player pair; unique nearest event date and odds record; winner and oriented set scores agree'
+            if not chosen['score_verified']:
+                counts['linked_provider_score_missing_archive_confirmed'] += 1
+                method = 'exact tour + normalized event + player pair; unique nearest archive date and odds record; provider score missing; archive confirms completed match and winner'
             writer.writerow({
                 **odds,
                 'sackmann_record_id': match['record_id'],
@@ -217,9 +240,12 @@ def main():
                 'sackmann_score': match['score'],
                 'event_start_gap_days': chosen['gap'],
                 'link_method': method,
-                'score_match_basis': 'player-1 perspective; tiebreak detail ignored',
+                'score_match_basis': ('player-1 perspective; tiebreak detail ignored' if chosen['score_verified'] else
+                                      'provider score missing; exact title, unique nearest date, winner and completed archive record agree'),
             })
-            counts['linked_score_and_winner_verified'] += 1
+            counts['linked_archive_confirmed'] += 1
+            if chosen['score_verified']:
+                counts['linked_score_and_winner_verified'] += 1
 
     report = {
         'generated_utc': datetime.now(timezone.utc).isoformat(timespec='seconds'),
@@ -233,13 +259,14 @@ def main():
             'requires_one_to_one_archive_record_link': True,
             'duplicate_archive_candidates_resolved_by_unique_nearest_odds_date': True,
             'requires_winner_and_player_oriented_set_scores_to_agree': True,
+            'score_missing_exception': 'When provider score is blank: exact tour/event/player pair, unique nearest archive date, winner agreement, and completed archive record.',
             'tiebreak_detail_compared': False,
             'source_rows_modified': False,
         },
         'counts': dict(sorted(counts.items())),
         'archive_link_conflicts': conflict_audit,
         'outputs': {
-            OUT.name: {'rows': counts['linked_score_and_winner_verified'], 'sha256': sha256(OUT)},
+            OUT.name: {'rows': counts['linked_archive_confirmed'], 'sha256': sha256(OUT)},
         },
         'inputs': {
             ODDS.name: {'sha256': sha256(ODDS)},

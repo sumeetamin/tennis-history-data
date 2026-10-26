@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-26T15:41:06+00:00",
+  "generated_utc": "2026-10-26T20:32:49+00:00",
   "event_date_inclusive": "2000-01-01",
   "source_database": {
     "path": "data/processed/tennis.sqlite",
@@ -182,20 +182,22 @@
     },
     "first_match_date": "2021-01-01",
     "last_match_date": "2026-10-27",
-    "strict_archive_links": 220802,
-    "exact_event_links": 135343,
+    "strict_archive_links": 247884,
+    "score_verified_archive_links": 220802,
+    "archive_confirmed_links_with_missing_provider_score": 27082,
+    "exact_event_links": 162425,
     "event_title_fallback_links": 85459,
-    "odds_enriched_feature_rows": 212339,
-    "odds_enriched_opening_price_pairs": 149986,
-    "odds_enriched_last_pre_match_price_pairs": 116228,
-    "recent_model_feature_rows": 5789,
+    "odds_enriched_feature_rows": 239421,
+    "odds_enriched_opening_price_pairs": 152668,
+    "odds_enriched_last_pre_match_price_pairs": 117203,
+    "recent_model_feature_rows": 5826,
     "recent_model_feature_date_range": [
       "2026-06-16",
       "2026-10-26"
     ],
-    "recent_model_rows_with_rank_fallbacks": 3107,
-    "recent_model_rank_fills": 6119,
-    "recent_model_rank_points_fills": 6119,
+    "recent_model_rows_with_rank_fallbacks": 3110,
+    "recent_model_rank_fills": 6122,
+    "recent_model_rank_points_fills": 6122,
     "recent_model_rank_fallback_rows_by_tour": {
       "atp": {
         "rank_fills": 4212,
@@ -203,27 +205,27 @@
         "rows": 2146
       },
       "wta": {
-        "rank_fills": 1907,
-        "rank_points_fills": 1907,
-        "rows": 961
+        "rank_fills": 1910,
+        "rank_points_fills": 1910,
+        "rows": 964
       }
     },
-    "recent_model_profile_rows": 5789,
-    "recent_model_age_values": 11088,
-    "recent_model_height_profile_values": 7364,
-    "recent_model_hand_values": 11574,
+    "recent_model_profile_rows": 5826,
+    "recent_model_age_values": 11119,
+    "recent_model_height_profile_values": 7365,
+    "recent_model_hand_values": 11647,
     "recent_model_profile_values_by_tour": {
       "atp": {
-        "age": 7336,
+        "age": 7342,
         "height": 5861,
-        "hand": 7524,
-        "rows": 3762
+        "hand": 7532,
+        "rows": 3766
       },
       "wta": {
-        "age": 3752,
-        "hand": 4050,
-        "height": 1503,
-        "rows": 2027
+        "age": 3777,
+        "hand": 4115,
+        "height": 1504,
+        "rows": 2060
       }
     },
     "score_state_counts": {

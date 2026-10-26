@@ -109,17 +109,23 @@ linked_match_ids=Counter()
 link_method_counts=Counter()
 odds_by_record={}
 with gzip.open(link_path,'rt',encoding='utf-8',newline='') as src:
-    for row in csv.DictReader(src):
+    crosswalk_rows=list(csv.DictReader(src))
+archive_matches={}
+archive_ids=[row['sackmann_record_id'] for row in crosswalk_rows]
+db.execute('CREATE TEMP TABLE verify_crosswalk_ids(record_id TEXT PRIMARY KEY)')
+db.executemany('INSERT INTO verify_crosswalk_ids VALUES (?)',((rid,) for rid in archive_ids))
+archive_matches.update({row[0]:row[1:] for row in db.execute(
+    '''SELECT m.record_id,m.tour,m.winner_id,m.loser_id,m.winner_name,m.loser_name,m.score,
+              m.winner_rank,m.loser_rank,m.winner_rank_points,m.loser_rank_points,m.outcome
+       FROM matches AS m JOIN verify_crosswalk_ids AS x USING(record_id)''')})
+for row in crosswalk_rows:
         linked_rows+=1
         assert row['match_id'] not in linked_odds_ids
         linked_odds_ids.add(row['match_id'])
         assert row['sackmann_record_id'] and row['link_method'] and row['score_match_basis']
         link_method_counts['event_title_fallback' if row['link_method'].startswith('exact tour + normalized player pair; no exact event-title candidate') else 'exact_event']+=1
         assert abs(int(row['event_start_gap_days']))<=14
-        match=db.execute('''SELECT tour,winner_id,loser_id,winner_name,loser_name,score,
-                    winner_rank,loser_rank,winner_rank_points,loser_rank_points
-                FROM matches WHERE record_id=?''',
-                         (row['sackmann_record_id'],)).fetchone()
+        match=archive_matches.get(row['sackmann_record_id'])
         assert match is not None
         assert row['genre']==match[0]
         assert row['vainqueur_id'] in (row['joueur1_id'],row['joueur2_id'])
@@ -130,14 +136,24 @@ with gzip.open(link_path,'rt',encoding='utf-8',newline='') as src:
         archive=score_sets(match[5])
         p1_won=row['vainqueur_id']==row['joueur1_id']
         expected=archive if p1_won else tuple((b,a) for a,b in archive)
-        assert actual and actual==expected
+        if actual:
+            assert actual==expected
+            assert row['score_match_basis']=='player-1 perspective; tiebreak detail ignored'
+        else:
+            assert not (row['score'] or '').strip()
+            assert row['link_method'].startswith('exact tour + normalized event + player pair;')
+            assert row['score_match_basis'].startswith('provider score missing;')
+            assert match[10]=='completed'
         linked_match_ids[row['sackmann_record_id']]+=1
         odds_by_record[row['sackmann_record_id']]={
             'odds':row, 'winner_id':str(match[1]), 'loser_id':str(match[2]), 'match':match,
         }
-assert linked_rows==link_report['counts']['linked_score_and_winner_verified']
-assert link_method_counts['event_title_fallback']==link_report['counts'].get('linked_event_name_fallback',0)
+assert linked_rows==link_report['counts']['linked_archive_confirmed']
+assert link_report['outputs'][link_path.name]['rows']==linked_rows
 assert link_method_counts['exact_event']==linked_rows-link_method_counts['event_title_fallback']
+assert sum(1 for row in odds_by_record.values() if not (row['odds']['score'] or '').strip())==link_report['counts'].get('linked_provider_score_missing_archive_confirmed',0)
+assert sum(1 for row in odds_by_record.values() if score_sets(row['odds']['score']))==link_report['counts']['linked_score_and_winner_verified']
+assert link_method_counts['event_title_fallback']==link_report['counts'].get('linked_event_name_fallback',0)
 duplicate_archive_links=sum(count>1 for count in linked_match_ids.values())
 assert duplicate_archive_links==0
 
@@ -279,7 +295,14 @@ with gzip.open(odds_feature_path,'rt',encoding='utf-8',newline='') as src:
         assert record_id not in odds_feature_records
         odds_feature_records.add(record_id)
         match_odds=odds_by_record[record_id]['odds']
-        assert settlement_status(match_odds)=='completed'
+        odds_status=settlement_status(match_odds)
+        if odds_status!='completed':
+            assert odds_status=='missing_score'
+            link=odds_by_record[record_id]['odds']
+            archive_match=odds_by_record[record_id]['match']
+            assert link['link_method'].startswith('exact tour + normalized event + player pair;')
+            assert link['score_match_basis'].startswith('provider score missing;')
+            assert archive_match[10]=='completed'
         assert row['odds_provider_match_id']==match_odds['match_id']
         assert row['odds_match_date_utc']==match_odds['date']
         p1_archive_id=(odds_by_record[record_id]['winner_id']

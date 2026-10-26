@@ -7,7 +7,7 @@ import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SNAPSHOT_DIR = ROOT / 'data/odds/snapshots/2026-10-26'
+SNAPSHOT_DIR = ROOT / 'data/odds/snapshots/2026-10-27'
 FEATURES = SNAPSHOT_DIR / 'recent_model_features.csv.gz'
 EXCLUDED = SNAPSHOT_DIR / 'excluded_recent_records.json'
 MANIFEST = SNAPSHOT_DIR / 'manifest.json'

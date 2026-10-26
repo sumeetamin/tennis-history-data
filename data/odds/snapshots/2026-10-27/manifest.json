@@ -1,0 +1,30 @@
+{
+  "as_of_date": "2026-10-27",
+  "data_through": "2026-10-26",
+  "rows": 5769,
+  "excluded_recent_rows": 57,
+  "excluded_ambiguous_identity_rows": 57,
+  "excluded_other_strict_identity_rows": 0,
+  "history_corrected_rows": 2872,
+  "snapshot_sha256": "5145e78a4b4a2c5228bce4d4ab9c7e52b677ab585a0f13ea27557e8b9bb66a99",
+  "excluded_records_sha256": "f3ab39a386f9af7b73a48ebef866a7dc2678a0488357091add0379780b6efbb1",
+  "inputs": {
+    "published_features_sha256": "d76549e547af9ee55a32b5e00dbfdd27c3dd910b923901502c87b920aab5a0b3",
+    "odds_sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea",
+    "database_sha256": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d",
+    "crosswalk_sha256": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9",
+    "builder_sha256": "022ccd17be95ce89b8e0f148d8b37fee0239de6b87135675f891e26f13694cdf",
+    "history_algorithm_sha256": "52912c8e5c22fb9a3c3b4f8c733ebb9fec63887e8530499002a177ebb136965a",
+    "odds_mapping_sha256": "3dfbbe3a9fe5b1c47f29e6eac4e183af0a78cf02291007202028d7f94cc5a1ea",
+    "correction_sha256": "cedea70f0e6c63466e5db4792bce223fefa2dca77be6039099a8a8705353f8a8"
+  },
+  "checks": {
+    "unique_record_ids": true,
+    "row_set_equals_original_minus_exclusions": true,
+    "player_ids_dates_and_targets_preserved": true,
+    "all_history_dates_precede_28_day_cutoff": true,
+    "numeric_ratings_finite_and_differences_consistent": true,
+    "prices_match_provider_after_alignment": true
+  },
+  "scope": "Fresh single-batch reconstruction from current pinned archive and licensed Valuebetennis feed. Excluded rows retain their source records in the append-only export; this snapshot omits rows not reproduced by current strict identity checks."
+}

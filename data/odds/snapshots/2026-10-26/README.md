@@ -1,5 +1,7 @@
 # Audited recent feature snapshot: 2026-10-26
 
+Superseded by the [2026-10-27 snapshot](../2026-10-27/README.md), which adds newly recoverable verified matches after the crosswalk refresh. This earlier snapshot is retained as provenance.
+
 Use `recent_model_features.csv.gz` in this directory for recent-period modeling as of this snapshot. It has **5,739** rows with replayed history and corrected player-aligned prices. Do not concatenate it with the corresponding rows in the older append-only export: they describe the same matches.
 
 The original 5,789-row recent export is retained unchanged for provenance. Full reconstruction with the current crosswalk found:

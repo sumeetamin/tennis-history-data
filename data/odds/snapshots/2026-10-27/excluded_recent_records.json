@@ -1,0 +1,576 @@
+[
+  {
+    "record_id": "vb:1000957",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:1001391",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:1002240",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:1003697",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "32262": [
+        "210085",
+        "210747"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:958015",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41135": [
+        "149117",
+        "210086"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:959626",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:960054",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "90793": [
+        "213626",
+        "214523"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:960072",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "83647": [
+        "213194",
+        "213605"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:962759",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41393": [
+        "210117",
+        "210522"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:962962",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "32262": [
+        "210085",
+        "210747"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:963833",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41393": [
+        "210117",
+        "210522"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:964235",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "32262": [
+        "210085",
+        "210747"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:965741",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41135": [
+        "149117",
+        "210086"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:965921",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "83647": [
+        "213194",
+        "213605"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:967127",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41135": [
+        "149117",
+        "210086"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:969263",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "34991": [
+        "210029",
+        "210044"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:971153",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41135": [
+        "149117",
+        "210086"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:971533",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:971665",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "40318": [
+        "210083",
+        "210556"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:971890",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "39806": [
+        "210084",
+        "210150"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:972179",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "40318": [
+        "210083",
+        "210556"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:974286",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41135": [
+        "149117",
+        "210086"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:974291",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:975473",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "39806": [
+        "210084",
+        "210150"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:976012",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "39806": [
+        "210084",
+        "210150"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:977858",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:978229",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:978360",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "39806": [
+        "210084",
+        "210150"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:978682",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:978683",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "39806": [
+        "210084",
+        "210150"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:979698",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "39806": [
+        "210084",
+        "210150"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:980697",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "32262": [
+        "210085",
+        "210747"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:980915",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:981087",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "34991": [
+        "210029",
+        "210044"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:981582",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "34991": [
+        "210029",
+        "210044"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:983903",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "39806": [
+        "210084",
+        "210150"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:983911",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:984027",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41135": [
+        "149117",
+        "210086"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:987056",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "2118": [
+        "106227",
+        "210079"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:987670",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "2118": [
+        "106227",
+        "210079"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:988607",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "2118": [
+        "106227",
+        "210079"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:989414",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "2118": [
+        "106227",
+        "210079"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:992136",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "83647": [
+        "213194",
+        "213605"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:994585",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "34991": [
+        "210029",
+        "210044"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:994665",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "83647": [
+        "213194",
+        "213605"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:994817",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "54242": [
+        "211776",
+        "212021"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:995247",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "69221": [
+        "264044",
+        "266594"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:995256",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "56693": [
+        "260390",
+        "266707"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:995691",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41135": [
+        "149117",
+        "210086"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:996314",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "40318": [
+        "210083",
+        "210556"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:996944",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41135": [
+        "149117",
+        "210086"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:997561",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "65264": [
+        "263642",
+        "267449"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:997566",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "65677": [
+        "263683",
+        "266709"
+      ],
+      "69221": [
+        "264044",
+        "266594"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:997571",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "56693": [
+        "260390",
+        "266707"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:997721",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "65264": [
+        "263642",
+        "267449"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:997829",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "65677": [
+        "263683",
+        "266709"
+      ]
+    }
+  },
+  {
+    "record_id": "vb:999639",
+    "reason": "ambiguous_or_missing_provider_id_mapping",
+    "provider_id_candidates": {
+      "41135": [
+        "149117",
+        "210086"
+      ]
+    }
+  }
+]

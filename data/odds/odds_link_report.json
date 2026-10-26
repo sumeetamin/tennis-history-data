@@ -1,39 +1,70 @@
 {
-  "generated_utc": "2026-10-26T14:37:13+00:00",
+  "generated_utc": "2026-10-26T19:44:55+00:00",
   "odds_source": "Valuebetennis CC BY 4.0; attribution in data/odds/README.md",
   "match_source": "Sackmann archive mirror; source revision and license in repository manifests/docs",
   "join_policy": {
     "max_event_start_gap_days": 14,
+    "primary_requires_exact_normalized_tour_event_and_player_pair": true,
     "fallback_when_event_title_differs": "same tour and normalized player pair, no exact-title candidate, unique nearest archive date within 14 days, winner and player-oriented set scores agree",
     "requires_unique_nearest_candidate": true,
     "requires_one_to_one_archive_record_link": true,
     "duplicate_archive_candidates_resolved_by_unique_nearest_odds_date": true,
     "requires_winner_and_player_oriented_set_scores_to_agree": true,
+    "score_missing_exception": "When provider score is blank: exact tour/event/player pair, unique nearest archive date, winner agreement, and completed archive record.",
     "tiebreak_detail_compared": false,
-    "source_rows_modified": false,
-    "primary_requires_exact_normalized_tour_event_and_player_pair": true,
-    "existing_exact_event_links_take_priority": true
+    "source_rows_modified": false
   },
   "counts": {
     "ambiguous_nearest_candidate": 67,
-    "archive_nearest_date_tie_groups_excluded": 1,
-    "archive_records_with_multiple_odds_candidates": 11,
+    "archive_nearest_date_tie_groups_excluded": 5,
+    "archive_records_with_multiple_odds_candidates": 28,
     "event_name_fallback_candidates": 85469,
     "event_name_fallback_excluded_for_existing_exact_link": 2,
     "event_name_fallback_nearest_tie": 4,
     "event_name_fallback_no_score_winner_candidate": 17498,
     "invalid_odds_identity_or_date": 1,
+    "linked_archive_confirmed": 247884,
     "linked_event_name_fallback": 85459,
+    "linked_provider_score_missing_archive_confirmed": 27082,
     "linked_score_and_winner_verified": 220802,
     "no_exact_pair_event_date_candidate": 180578,
-    "odds_candidates_excluded_for_archive_collision": 12,
+    "odds_candidates_excluded_for_archive_collision": 33,
     "odds_rows": 470167,
     "score_and_winner_verified_candidates": 220816,
-    "score_disagreement_or_missing": 50717,
+    "score_disagreement_or_missing": 21799,
+    "unscored_exact_event_candidates_archive_confirmed": 27221,
+    "unscored_or_unparseable_not_linked": 1697,
     "winner_disagreement": 485,
     "winner_id_not_resolved": 1
   },
   "archive_link_conflicts": [
+    {
+      "sackmann_record_id": "0eb0832644477e41e18dd8f40b248589f40dafd73bb9d6daf66972b9fd7dd737",
+      "action": "excluded_nearest_date_tie",
+      "candidate_odds_match_ids": [
+        "390090",
+        "390135"
+      ],
+      "absolute_event_start_gaps_days": 6
+    },
+    {
+      "sackmann_record_id": "c12c5bb46a9939464701b5028cee1d4aafa7e6db126bb065fc5ca71239450360",
+      "action": "excluded_nearest_date_tie",
+      "candidate_odds_match_ids": [
+        "396979",
+        "397111"
+      ],
+      "absolute_event_start_gaps_days": 1
+    },
+    {
+      "sackmann_record_id": "d838e0f4e334a82db637fa33146c6dc21cd1b86f2364d2de150a36cbae6dbf32",
+      "action": "excluded_nearest_date_tie",
+      "candidate_odds_match_ids": [
+        "454649",
+        "454813"
+      ],
+      "absolute_event_start_gaps_days": 3
+    },
     {
       "sackmann_record_id": "82c6f3f31d06b0a6309cf28ca06f2a592faea62e5477577e88b6533ef52f38a7",
       "action": "kept_unique_closest_odds_record",
@@ -50,6 +81,15 @@
       "kept_absolute_event_start_gap_days": 1,
       "excluded_odds_match_ids": [
         "520853"
+      ]
+    },
+    {
+      "sackmann_record_id": "8610b99b907241171fee328d48105faedd07b003ec142da6c46dd5b142da5d0d",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "536757",
+      "kept_absolute_event_start_gap_days": 2,
+      "excluded_odds_match_ids": [
+        "536556"
       ]
     },
     {
@@ -98,6 +138,15 @@
       ]
     },
     {
+      "sackmann_record_id": "cce2ee12ca9651f7b29a8e39db798534cd6ad8d4d1512cd6a2d158598f56850b",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "699030",
+      "kept_absolute_event_start_gap_days": 0,
+      "excluded_odds_match_ids": [
+        "698576"
+      ]
+    },
+    {
       "sackmann_record_id": "dd9e3e9aabef70fdb58be05aa0b8228e096f3511fa450ee1ce4adf6e7faf18fc",
       "action": "excluded_nearest_date_tie",
       "candidate_odds_match_ids": [
@@ -125,6 +174,114 @@
       ]
     },
     {
+      "sackmann_record_id": "13c4f7e53e7cbbd0efcf011f606210ca25f5560c719e9f3d10d9beac6d0682ee",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "776757",
+      "kept_absolute_event_start_gap_days": 2,
+      "excluded_odds_match_ids": [
+        "777527"
+      ]
+    },
+    {
+      "sackmann_record_id": "9eb5eae5674f9291fb564d72977c182a5437a3ff11bfc0a889a69c302f720158",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "778895",
+      "kept_absolute_event_start_gap_days": 1,
+      "excluded_odds_match_ids": [
+        "776914"
+      ]
+    },
+    {
+      "sackmann_record_id": "727d5eb5648a45e6944ac9922e83651b54ce78be4c437e7b98bb36fa39af308c",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "779759",
+      "kept_absolute_event_start_gap_days": 0,
+      "excluded_odds_match_ids": [
+        "778086"
+      ]
+    },
+    {
+      "sackmann_record_id": "c84a6a27b709daa74c0a1133dd53a9451734d6821471dc85dea86d479419e435",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "780298",
+      "kept_absolute_event_start_gap_days": 4,
+      "excluded_odds_match_ids": [
+        "778839"
+      ]
+    },
+    {
+      "sackmann_record_id": "069fc5682fd72fd542bdadb754160951ac059c6874a9b9fc7936e733379f583c",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "780094",
+      "kept_absolute_event_start_gap_days": 3,
+      "excluded_odds_match_ids": [
+        "778831"
+      ]
+    },
+    {
+      "sackmann_record_id": "7e181e21d42231b14589a5b2540aba067a496bb18c3b50acf7162367c3f6f86f",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "780122",
+      "kept_absolute_event_start_gap_days": 3,
+      "excluded_odds_match_ids": [
+        "778832"
+      ]
+    },
+    {
+      "sackmann_record_id": "fe1905860ea011e05313fc1d12018cee58b7d9c2bb7e08020b9b560c8af485b1",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "778892",
+      "kept_absolute_event_start_gap_days": 1,
+      "excluded_odds_match_ids": [
+        "780322"
+      ]
+    },
+    {
+      "sackmann_record_id": "b9a6d4b68a6c6501caef7a28a67fb1377dc9126dd6066409962edac6bb2587cb",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "779585",
+      "kept_absolute_event_start_gap_days": 1,
+      "excluded_odds_match_ids": [
+        "781968"
+      ]
+    },
+    {
+      "sackmann_record_id": "267a16fc69ad44adfbd316fc16343f9469c5517628b5003abe19973e32634727",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "779865",
+      "kept_absolute_event_start_gap_days": 2,
+      "excluded_odds_match_ids": [
+        "782280"
+      ]
+    },
+    {
+      "sackmann_record_id": "404cd2f5d13062b9fd852a4f758dc95c3acf2ffcf8d5df914941b59d7ca18231",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "781823",
+      "kept_absolute_event_start_gap_days": 1,
+      "excluded_odds_match_ids": [
+        "780491"
+      ]
+    },
+    {
+      "sackmann_record_id": "bfc9af7cdf5b8146cf93a3c5287bf1c5314a57fd5e456ba64a564c2f09466414",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "782553",
+      "kept_absolute_event_start_gap_days": 0,
+      "excluded_odds_match_ids": [
+        "782886"
+      ]
+    },
+    {
+      "sackmann_record_id": "8fcb164f6c7aec31b3efb054653524ac23d23149767e0ce3080679c540c7b9b4",
+      "action": "excluded_nearest_date_tie",
+      "candidate_odds_match_ids": [
+        "783395",
+        "786332"
+      ],
+      "absolute_event_start_gaps_days": 2
+    },
+    {
       "sackmann_record_id": "2c4d41e3b6ae31ac05c8027ac966c323f225392681a09334efb67e54cf212a16",
       "action": "kept_unique_closest_odds_record",
       "kept_odds_match_id": "818454",
@@ -136,8 +293,8 @@
   ],
   "outputs": {
     "linked_odds_sackmann.csv.gz": {
-      "rows": 220802,
-      "sha256": "90c0bdb9b8eccb925abb3f6c75ba09e3a8b13566e82d0063cdac7d142b696267"
+      "rows": 247884,
+      "sha256": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9"
     }
   },
   "inputs": {
@@ -152,7 +309,6 @@
     "Unlinked odds rows are not necessarily missing matches; this archive has incomplete lower-tier coverage.",
     "Score and winner checks deliberately exclude candidate links where the two sources disagree.",
     "When multiple odds IDs otherwise match one archive row, only the uniquely closest odds date is kept; equal-distance conflicts are omitted and listed in the audit.",
-    "This static crosswalk must be regenerated after either input dataset changes.",
-    "Event-title fallback links are separately labeled and require no exact-title candidate plus unique nearest date, agreeing winner, and exact player-oriented set scores."
+    "This static crosswalk must be regenerated after either input dataset changes."
   ]
 }

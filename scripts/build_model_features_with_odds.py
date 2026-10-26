@@ -63,20 +63,28 @@ def main():
         for offset in range(0, len(ids), 500):
             chunk = ids[offset:offset + 500]
             marks = ','.join('?' for _ in chunk)
-            for record_id, winner_id, loser_id in db.execute(
-                    f'SELECT record_id,winner_id,loser_id FROM matches WHERE record_id IN ({marks})', chunk):
-                archive_players[record_id] = (str(winner_id), str(loser_id))
+            for record_id, winner_id, loser_id, outcome in db.execute(
+                    f'SELECT record_id,winner_id,loser_id,outcome FROM matches WHERE record_id IN ({marks})', chunk):
+                archive_players[record_id] = (str(winner_id), str(loser_id), outcome)
     if len(archive_players) != len(odds_by_record):
         raise ValueError(f'{len(odds_by_record)-len(archive_players)} crosswalk records are absent from SQLite')
 
     oriented_odds = {}
     excluded_odds_states = Counter()
+    accepted_missing_score_archive_confirmed = 0
     for record_id, row in odds_by_record.items():
         status = settlement_status(row)
-        if status != 'completed':
+        winner_id, loser_id, archive_outcome = archive_players[record_id]
+        archive_confirmed_missing_score = (
+            status == 'missing_score'
+            and row['link_method'].startswith('exact tour + normalized event + player pair;')
+            and archive_outcome == 'completed'
+        )
+        if status != 'completed' and not archive_confirmed_missing_score:
             excluded_odds_states[status] += 1
             continue
-        winner_id, loser_id = archive_players[record_id]
+        if archive_confirmed_missing_score:
+            accepted_missing_score_archive_confirmed += 1
         if row['vainqueur_id'] == row['joueur1_id']:
             provider_p1_id, provider_p2_id = winner_id, loser_id
         elif row['vainqueur_id'] == row['joueur2_id']:
@@ -179,13 +187,14 @@ def main():
     missing_features = set(oriented_odds) - seen_features
     report = {
         'generated_utc': datetime.now(timezone.utc).isoformat(timespec='seconds'),
-        'description': 'Only strictly verified one-to-one odds/archive matches with completed feed scores that also occur in the pre-match feature export.',
+        'description': 'One-to-one odds/archive links with completed provider scores, plus exact-title blank-score links where a unique date and completed archive record independently confirm the winner; joined to the pre-match feature export.',
         'rows': counts['rows'],
         'rows_by_tour': {key.removeprefix('tour_'): value for key, value in sorted(counts.items()) if key.startswith('tour_')},
         'opening_odds_pair_rows': counts['opening_pair'],
         'last_pre_match_odds_pair_rows': counts['last_pre_match_pair'],
         'linked_matches_missing_from_feature_export': len(missing_features),
         'linked_matches_excluded_by_odds_score_state': dict(sorted(excluded_odds_states.items())),
+        'provider_score_missing_but_archive_confirms_completed_winner': accepted_missing_score_archive_confirmed,
         'feature_columns': len(writer.fieldnames) - len(EXTRA_FIELDS),
         'odds_columns': EXTRA_FIELDS,
         'output': {'path': OUT.relative_to(ROOT).as_posix(), 'bytes': OUT.stat().st_size, 'sha256': sha256(OUT)},

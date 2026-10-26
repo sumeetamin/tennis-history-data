@@ -25,7 +25,7 @@ This repository contains the source data, not just links or a scraper template.
 - Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
 - Pre-match model rows with odds: `data/odds/model_features_with_odds.csv.gz` (p1/p2-aligned prices; `p1_won` is the target)
 - 2025 consensus odds supplement: `data/odds/model_features_with_consensus_odds_2025.csv.gz` (4,802 feature rows with source-reported opening/closing consensus prices aligned to p1/p2; see quality flags and timing limits in the odds notes)
-- Audited recent model snapshot: `data/odds/snapshots/2026-10-26/recent_model_features.csv.gz` (5,739 rows with reconstructed history and corrected odds; preferred for recent-period modeling through this snapshot)
+- Audited recent model snapshot: `data/odds/snapshots/2026-10-27/recent_model_features.csv.gz` (5,769 rows with reconstructed history and corrected odds through 2026-10-26; preferred for recent-period modeling)
 - Daily append-only recent archive: `data/odds/recent_model_features.csv.gz` (retains earlier rows with known history/identity issues; see the dated snapshot and audit report before modeling)
 - Recent odds corrections: `data/odds/recent_odds_corrections.csv` (required overlay for 2,713 existing recent rows; replace all four odds fields on matched IDs)
 - Recent match ranking supplement: `data/odds/recent_ranking_fallbacks.csv.gz` (weekly rankings aligned by `record_id`, with snapshot dates/ages)
@@ -59,11 +59,13 @@ python scripts/fetch_wikidata_profiles.py
 python scripts/fetch_valuebetennis_odds.py
 python scripts/link_odds_to_sackmann.py
 python scripts/build_model_features_with_odds.py
+python scripts/verify_odds_links.py
 python scripts/build_recent_odds_features.py
 python scripts/build_recent_ranking_fallbacks.py
 python scripts/build_recent_player_profiles.py
 python scripts/verify_dataset.py
 python scripts/profile_coverage.py
+python scripts/verify_recent_history_snapshot.py
 python -m unittest discover -s tests -v
 ```
 
