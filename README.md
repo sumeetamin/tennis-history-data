@@ -25,10 +25,12 @@ This repository contains the source data, not just links or a scraper template.
 - Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
 - Counts and missingness: `data/processed/coverage.csv`, `build_report.json`
+- Detailed post-2000 tier/profile completeness: `data/processed/post_2000_coverage_report.json`
+- Readable post-2000 coverage summary: `docs/post-2000-coverage.md`
 - Baseline scores: `data/processed/feature_report.json`
 - Validation results: `data/processed/validation_report.json`
 
-The SQLite database and combined feature export are generated locally and excluded from Git. The yearly feature exports are included for direct use. A fresh Git clone can rebuild them from the tracked source CSVs.
+The SQLite database and combined feature export are generated locally and excluded from Git. The yearly feature exports are included for direct use. A fresh Git clone can rebuild them from the tracked source CSVs. `scripts/verify_dataset.py` checks raw-file hashes, temporal feature boundaries, sampled target labels, odds-manifest totals/checksum, and every published odds crosswalk row against the local SQLite archive.
 
 ## Rebuild
 
@@ -43,6 +45,7 @@ python scripts/build_features.py
 python scripts/partition_features.py
 python scripts/fetch_valuebetennis_odds.py
 python scripts/link_odds_to_sackmann.py
+python scripts/profile_coverage.py
 python scripts/verify_dataset.py
 python -m unittest discover -s tests -v
 ```

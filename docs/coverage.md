@@ -13,10 +13,11 @@ Source revision: 83733587353df8a41f2fd4f516147d5aa83f5a8d. Counts measured from 
 
 These are observed ranges, not proof of complete coverage. Event dates are usually tournament start dates, not exact match dates.
 See data/processed/coverage.csv for yearly counts, ranking availability and serve-stat availability.
+For post-2000 completeness by tour/tier and player-profile field, see the generated [coverage summary](post-2000-coverage.md) and its machine-readable [JSON report](../data/processed/post_2000_coverage_report.json). These rates show which fields are populated; they do not establish completeness of real-world tournament coverage.
 
 Player records: 137,483. Ranking records: 5,573,852. Doubles records: 26,399.
 Potential conflicting match keys: 0. IDs absent from the master player tables: 0.
 Original files preserve every source row. The normalized ranking table keeps the first occurrence of each tour/date/player key.
 Exact duplicate match payloads are collapsed; conflicting payloads remain in the database and are excluded from the model export.
 Pre-Open Era ATP records are present in the amateur file; this snapshot does not provide a complete pre-1968 history of all majors.
-The Sackmann archive is a fixed snapshot. Daily append-only odds updates are maintained separately in `data/odds/atp_wta_match_odds.csv`; see `data/odds/README.md` for coverage and licensing.
+The match archive is a fixed snapshot. Separately attributed settled singles odds from 2021 onward are maintained in `data/odds/atp_wta_match_odds.csv`; the daily workflow appends newly published rows without revising existing ones. See `data/odds/README.md` for coverage and licensing.

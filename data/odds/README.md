@@ -8,9 +8,11 @@
 - This is a separate source dataset. Its player/match IDs are Valuebetennis IDs and should not be treated as Sackmann IDs.
 - Attribution: **Valuebetennis, Résultats et cotes de tennis depuis 2021**, https://www.valuebetennis.com/donnees.htm, CC BY 4.0.
 
-The source does not include doubles or matches before 2021. The exact yearly file hashes and row counts used for this combined export are in `valuebetennis_manifest.json`.
+The source does not include doubles or matches before 2021. The manifest records the source season hashes as well as the current combined CSV row counts, per-tour/per-year counts, byte size, and SHA-256. Daily appends update those combined-file checksums and counts from the actual CSV, without changing previously stored odds rows.
 
-`linked_odds_sackmann.csv.gz` is a conservative crosswalk to the repository's match archive. It includes only records with an exact normalized tour, tournament, and player-pair match, one nearest archive event date within 14 days, and agreement on winner and player-1-oriented set scores. It preserves the original odds fields and adds the Sackmann `record_id` plus the matched archive fields. Unmatched rows are intentionally omitted rather than guessed. Counts, hashes, and excluded-candidate reasons are in `odds_link_report.json`.
+The upstream feed can contain missing scores, nonterminal-looking scores, or future-dated rows despite its settled-match description. The raw export is preserved as published; the daily updater only appends rows with a winner ID tied to one listed player and either (a) a completed score with the winner agreeing with the set score, or (b) an explicit retirement, walkover, or default marker. The score check is a conservative heuristic because the feed does not provide a separate settlement-status field. The dataset validator reports score-state counts and future-dated rows so questionable rows can be excluded deliberately downstream.
+
+`linked_odds_sackmann.csv.gz` is a conservative one-to-one crosswalk to the repository's match archive. It includes only records with an exact normalized tour, tournament, and player-pair match, one nearest archive event date within 14 days, a unique closest odds record for each archive match, and agreement on winner and player-1-oriented set scores. It preserves the original odds fields and adds the Sackmann `record_id` plus the matched archive fields. Unmatched rows are intentionally omitted rather than guessed. Counts, hashes, and excluded-candidate reasons are in `odds_link_report.json`.
 
 Regenerate the crosswalk after rebuilding either input dataset with:
 

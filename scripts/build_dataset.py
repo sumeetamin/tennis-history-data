@@ -160,12 +160,13 @@ def main():
     text += [f'| {t} | {c} | {n:,} | {lo} | {hi} |' for t,c,n,lo,hi in ranges]
     text += ['', 'These are observed ranges, not proof of complete coverage. Event dates are usually tournament start dates, not exact match dates.',
              'See data/processed/coverage.csv for yearly counts, ranking availability and serve-stat availability.',
+             'Post-2000 match-stat and player-profile completeness is summarized in docs/post-2000-coverage.md and data/processed/post_2000_coverage_report.json (generate with scripts/profile_coverage.py).',
              '', f'Player records: {totals["players"]["rows"]:,}. Ranking records: {totals["rankings"]["rows"]:,}. Doubles records: {totals["doubles"]["rows"]:,}.',
              f'Potential conflicting match keys: {conflicts:,}. IDs absent from the master player tables: {orphan:,}.',
              'Original files preserve every source row. The normalized ranking table keeps the first occurrence of each tour/date/player key.',
              'Exact duplicate match payloads are collapsed; conflicting payloads remain in the database and are excluded from the model export.',
              'Pre-Open Era ATP records are present in the amateur file; this snapshot does not provide a complete pre-1968 history of all majors.',
-             'The archive is a fixed snapshot. No current/live feed or betting odds are included.']
+             'The match archive is a fixed snapshot. Separately attributed settled singles odds from 2021 onward are maintained in data/odds; the daily workflow appends newly published rows without revising existing ones.']
     (ROOT/'docs/coverage.md').write_text('\n'.join(text)+'\n',encoding='utf-8')
     db.commit()
     db.close()

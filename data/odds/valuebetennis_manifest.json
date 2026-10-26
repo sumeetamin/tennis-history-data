@@ -41,5 +41,16 @@
       "rows": 72910,
       "sha256": "43cae11e933e6605dc7bb697970a61cdf4be4e409a7c4f31cdb2cca3b66586af"
     }
-  ]
+  ],
+  "rows_by_year": {
+    "2021": 63728,
+    "2022": 83381,
+    "2023": 89826,
+    "2024": 79910,
+    "2025": 80412,
+    "2026": 72910
+  },
+  "duplicate_match_ids_in_file": 0,
+  "combined_sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea",
+  "combined_bytes": 67319196
 }

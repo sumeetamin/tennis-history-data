@@ -1,28 +1,99 @@
 {
-  "generated_utc": "2026-10-26T13:03:25+00:00",
+  "generated_utc": "2026-10-26T13:24:08+00:00",
   "odds_source": "Valuebetennis CC BY 4.0; attribution in data/odds/README.md",
   "match_source": "Sackmann archive mirror; source revision and license in repository manifests/docs",
   "join_policy": {
     "max_event_start_gap_days": 14,
     "requires_exact_normalized_tour_event_and_player_pair": true,
     "requires_unique_nearest_candidate": true,
+    "requires_one_to_one_archive_record_link": true,
+    "duplicate_archive_candidates_resolved_by_unique_nearest_odds_date": true,
     "requires_winner_and_player_oriented_set_scores_to_agree": true,
     "tiebreak_detail_compared": false,
     "source_rows_modified": false
   },
   "counts": {
     "ambiguous_nearest_candidate": 67,
+    "archive_nearest_date_tie_groups_excluded": 1,
+    "archive_records_with_multiple_odds_candidates": 7,
     "invalid_odds_identity_or_date": 1,
-    "linked_score_and_winner_verified": 135351,
+    "linked_score_and_winner_verified": 135343,
     "no_exact_pair_event_date_candidate": 283546,
+    "odds_candidates_excluded_for_archive_collision": 8,
     "odds_rows": 470167,
+    "score_and_winner_verified_candidates": 135351,
     "score_disagreement_or_missing": 50717,
     "winner_disagreement": 485
   },
+  "archive_link_conflicts": [
+    {
+      "sackmann_record_id": "82c6f3f31d06b0a6309cf28ca06f2a592faea62e5477577e88b6533ef52f38a7",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "505053",
+      "kept_absolute_event_start_gap_days": 2,
+      "excluded_odds_match_ids": [
+        "503214"
+      ]
+    },
+    {
+      "sackmann_record_id": "3ec9970f78dd96087dd3a602d1b6b22f390dd03661048b445e12911159f784d9",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "521682",
+      "kept_absolute_event_start_gap_days": 1,
+      "excluded_odds_match_ids": [
+        "520853"
+      ]
+    },
+    {
+      "sackmann_record_id": "3de3ba87916fb7e925f6ea6cb9e4131fe2e90311b2719bc93488c11c9e22eab0",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "587536",
+      "kept_absolute_event_start_gap_days": 1,
+      "excluded_odds_match_ids": [
+        "587674"
+      ]
+    },
+    {
+      "sackmann_record_id": "19802c42ac7dda401d4328d084446087a9976102d90540af706fff1eea5bd2e7",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "619222",
+      "kept_absolute_event_start_gap_days": 2,
+      "excluded_odds_match_ids": [
+        "621539"
+      ]
+    },
+    {
+      "sackmann_record_id": "7c974e3f92182fb6beae07b52f479b72c6d13da9b0d829db3b2d7e7175e732ed",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "634853",
+      "kept_absolute_event_start_gap_days": 3,
+      "excluded_odds_match_ids": [
+        "637113"
+      ]
+    },
+    {
+      "sackmann_record_id": "2480be29f048a2acc5b623b17a5df6f4277840870194cfcff5490c215e911608",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "691364",
+      "kept_absolute_event_start_gap_days": 1,
+      "excluded_odds_match_ids": [
+        "688603"
+      ]
+    },
+    {
+      "sackmann_record_id": "dd9e3e9aabef70fdb58be05aa0b8228e096f3511fa450ee1ce4adf6e7faf18fc",
+      "action": "excluded_nearest_date_tie",
+      "candidate_odds_match_ids": [
+        "732391",
+        "735022"
+      ],
+      "absolute_event_start_gaps_days": 3
+    }
+  ],
   "outputs": {
     "linked_odds_sackmann.csv.gz": {
-      "rows": 135351,
-      "sha256": "25fc9c6bede59e1f70041ec04bd557c8684d2ffc2fae08d46e1261dd580e8c09"
+      "rows": 135343,
+      "sha256": "9af94e0750059c57dc729dc5182aacab377dd63456874bf4e9d9c5aaefe8630f"
     }
   },
   "inputs": {
@@ -36,6 +107,7 @@
   "limitations": [
     "Unlinked odds rows are not necessarily missing matches; this archive has incomplete lower-tier coverage.",
     "Score and winner checks deliberately exclude candidate links where the two sources disagree.",
+    "When multiple odds IDs otherwise match one archive row, only the uniquely closest odds date is kept; equal-distance conflicts are omitted and listed in the audit.",
     "This static crosswalk must be regenerated after either input dataset changes."
   ]
 }

@@ -1,8 +1,8 @@
 """Create a conservative crosswalk between Valuebetennis odds and Sackmann matches.
 
-Only emit a link when tour, exact normalized event/player names, nearest event
-date, winner, and player-oriented set scores all agree. Original source files
-are read-only; output is a separate CSV plus a compact audit report.
+Only emit a one-to-one link when tour, exact normalized event/player names,
+nearest event date, winner, and player-oriented set scores all agree. Original
+source files are read-only; output is a separate CSV plus an audit report.
 """
 import csv
 import gzip
@@ -62,10 +62,11 @@ def main():
                 by_pair[(row['tour'], pair)].append(dict(row))
 
     counts = Counter()
+    candidates_by_archive_id = defaultdict(list)
     source_fields = None
     output_fields = None
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    with ODDS.open(encoding='utf-8-sig', newline='') as source, gzip.open(OUT, 'wt', encoding='utf-8', newline='', compresslevel=6) as target:
+    with ODDS.open(encoding='utf-8-sig', newline='') as source:
         reader = csv.DictReader(source)
         source_fields = reader.fieldnames or []
         output_fields = source_fields + [
@@ -73,9 +74,6 @@ def main():
             'sackmann_tourney_name', 'sackmann_round', 'sackmann_score',
             'event_start_gap_days', 'link_method', 'score_match_basis',
         ]
-        writer = csv.DictWriter(target, fieldnames=output_fields)
-        writer.writeheader()
-
         for odds in reader:
             counts['odds_rows'] += 1
             played = parse_date(odds.get('date'))
@@ -122,7 +120,48 @@ def main():
                 counts['score_disagreement_or_missing'] += 1
                 continue
 
-            counts['linked_score_and_winner_verified'] += 1
+            counts['score_and_winner_verified_candidates'] += 1
+            gap = (date.fromisoformat(match['event_date']) - played).days
+            candidates_by_archive_id[match['record_id']].append({
+                'odds': dict(odds),
+                'match': match,
+                'gap': gap,
+                'absolute_gap': abs(gap),
+            })
+
+    conflict_audit = []
+    with gzip.open(OUT, 'wt', encoding='utf-8', newline='', compresslevel=6) as target:
+        writer = csv.DictWriter(target, fieldnames=output_fields)
+        writer.writeheader()
+        for record_id, linked_candidates in candidates_by_archive_id.items():
+            linked_candidates.sort(key=lambda item: item['absolute_gap'])
+            closest_gap = linked_candidates[0]['absolute_gap']
+            closest = [item for item in linked_candidates if item['absolute_gap'] == closest_gap]
+            if len(linked_candidates) > 1:
+                counts['archive_records_with_multiple_odds_candidates'] += 1
+            if len(closest) != 1:
+                counts['archive_nearest_date_tie_groups_excluded'] += 1
+                counts['odds_candidates_excluded_for_archive_collision'] += len(linked_candidates)
+                conflict_audit.append({
+                    'sackmann_record_id': record_id,
+                    'action': 'excluded_nearest_date_tie',
+                    'candidate_odds_match_ids': [item['odds']['match_id'] for item in closest],
+                    'absolute_event_start_gaps_days': closest_gap,
+                })
+                continue
+            chosen = closest[0]
+            rejected = len(linked_candidates) - 1
+            if rejected:
+                counts['odds_candidates_excluded_for_archive_collision'] += rejected
+                conflict_audit.append({
+                    'sackmann_record_id': record_id,
+                    'action': 'kept_unique_closest_odds_record',
+                    'kept_odds_match_id': chosen['odds']['match_id'],
+                    'kept_absolute_event_start_gap_days': closest_gap,
+                    'excluded_odds_match_ids': [item['odds']['match_id'] for item in linked_candidates[1:]],
+                })
+            odds = chosen['odds']
+            match = chosen['match']
             writer.writerow({
                 **odds,
                 'sackmann_record_id': match['record_id'],
@@ -131,10 +170,11 @@ def main():
                 'sackmann_tourney_name': match['tourney_name'],
                 'sackmann_round': match['round'],
                 'sackmann_score': match['score'],
-                'event_start_gap_days': (date.fromisoformat(match['event_date']) - played).days,
-                'link_method': 'exact tour + normalized event + player pair; unique nearest event date; winner and oriented set scores agree',
+                'event_start_gap_days': chosen['gap'],
+                'link_method': 'exact tour + normalized event + player pair; unique nearest event date and odds record; winner and oriented set scores agree',
                 'score_match_basis': 'player-1 perspective; tiebreak detail ignored',
             })
+            counts['linked_score_and_winner_verified'] += 1
 
     report = {
         'generated_utc': datetime.now(timezone.utc).isoformat(timespec='seconds'),
@@ -144,11 +184,14 @@ def main():
             'max_event_start_gap_days': MAX_EVENT_DATE_GAP_DAYS,
             'requires_exact_normalized_tour_event_and_player_pair': True,
             'requires_unique_nearest_candidate': True,
+            'requires_one_to_one_archive_record_link': True,
+            'duplicate_archive_candidates_resolved_by_unique_nearest_odds_date': True,
             'requires_winner_and_player_oriented_set_scores_to_agree': True,
             'tiebreak_detail_compared': False,
             'source_rows_modified': False,
         },
         'counts': dict(sorted(counts.items())),
+        'archive_link_conflicts': conflict_audit,
         'outputs': {
             OUT.name: {'rows': counts['linked_score_and_winner_verified'], 'sha256': sha256(OUT)},
         },
@@ -159,6 +202,7 @@ def main():
         'limitations': [
             'Unlinked odds rows are not necessarily missing matches; this archive has incomplete lower-tier coverage.',
             'Score and winner checks deliberately exclude candidate links where the two sources disagree.',
+            'When multiple odds IDs otherwise match one archive row, only the uniquely closest odds date is kept; equal-distance conflicts are omitted and listed in the audit.',
             'This static crosswalk must be regenerated after either input dataset changes.',
         ],
     }

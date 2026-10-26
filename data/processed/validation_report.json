@@ -6,5 +6,33 @@
     "1": 850686,
     "0": 852275
   },
-  "passed": true
+  "passed": true,
+  "odds_rows_checked": 470167,
+  "odds_duplicate_match_ids": 0,
+  "odds_link_rows_checked": 135343,
+  "odds_links_to_repeated_archive_rows": 0,
+  "odds_manifest_sha256_checked": true,
+  "odds_crosswalk_sha256_checked": true,
+  "odds_score_state_counts": {
+    "completed": 271157,
+    "incomplete": 76743,
+    "invalid": 8,
+    "missing_score": 122208,
+    "retirement": 7,
+    "walkover": 1,
+    "winner_disagreement": 42,
+    "winner_id_unresolved": 1
+  },
+  "odds_future_dated_rows_as_of_utc_date": [
+    {
+      "match_id": "1005365",
+      "date": "2026-10-27 05:05:00",
+      "tournoi": "Seoul Challenger",
+      "categorie": "Challenger",
+      "genre": "atp",
+      "joueur1": "Yeonsu Jeong",
+      "joueur2": "Yunseong Chung",
+      "score": "6-3 3-6 5-4"
+    }
+  ]
 }

@@ -36,6 +36,8 @@ def main() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     downloads: list[dict[str, object]] = []
     tour_counts: Counter[str] = Counter()
+    match_ids: set[str] = set()
+    duplicate_match_ids = 0
     total_rows = 0
     fieldnames: list[str] | None = None
 
@@ -71,6 +73,10 @@ def main() -> None:
                         tour = (row.get("genre") or "").lower()
                         if tour not in {"atp", "wta"}:
                             raise ValueError(f"Unexpected tour {tour!r} in {source}")
+                        match_id = row.get("match_id") or ""
+                        if match_id in match_ids:
+                            duplicate_match_ids += 1
+                        match_ids.add(match_id)
                         assert writer is not None
                         writer.writerow(row)
                         tour_counts[tour] += 1
@@ -87,6 +93,10 @@ def main() -> None:
         "delimiter": ",",
         "rows": total_rows,
         "rows_by_tour": dict(sorted(tour_counts.items())),
+        "rows_by_year": {str(item["year"]): item["rows"] for item in downloads},
+        "duplicate_match_ids_in_file": duplicate_match_ids,
+        "combined_sha256": sha256(OUTPUT),
+        "combined_bytes": OUTPUT.stat().st_size,
         "year_files": downloads,
     }
     MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

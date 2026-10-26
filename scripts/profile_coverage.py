@@ -1,0 +1,166 @@
+"""Measure post-2000 match-stat and player-profile completeness from SQLite."""
+import hashlib
+import csv
+import json
+import sqlite3
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DB = ROOT / 'data/processed/tennis.sqlite'
+OUT = ROOT / 'data/processed/post_2000_coverage_report.json'
+DOC = ROOT / 'docs/post-2000-coverage.md'
+ODDS = ROOT / 'data/odds/atp_wta_match_odds.csv'
+ODDS_MANIFEST = ROOT / 'data/odds/valuebetennis_manifest.json'
+LINK_REPORT = ROOT / 'data/odds/odds_link_report.json'
+VALIDATION_REPORT = ROOT / 'data/processed/validation_report.json'
+START_DATE = '2000-01-01'
+
+
+def sha256(path):
+    digest = hashlib.sha256()
+    with path.open('rb') as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b''):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def percentage(count, total):
+    return round(100 * count / total, 2) if total else None
+
+
+def main():
+    if not DB.is_file():
+        raise SystemExit('Build data/processed/tennis.sqlite first with scripts/build_dataset.py')
+    with sqlite3.connect(DB) as db:
+        db.row_factory = sqlite3.Row
+        matches = []
+        for row in db.execute('''SELECT tour,category,count(*) AS matches,
+                sum(CASE WHEN CAST(w_svpt AS REAL)>0 AND CAST(l_svpt AS REAL)>0 THEN 1 ELSE 0 END) AS both_serve_stats,
+                sum(CASE WHEN CAST(winner_rank AS REAL)>0 AND CAST(loser_rank AS REAL)>0 THEN 1 ELSE 0 END) AS both_ranked,
+                sum(CASE WHEN CAST(minutes AS REAL)>0 THEN 1 ELSE 0 END) AS minutes_recorded,
+                sum(CASE WHEN surface IS NOT NULL AND surface!='' THEN 1 ELSE 0 END) AS surface_recorded,
+                min(event_date) AS first_event_date,max(event_date) AS last_event_date
+            FROM matches WHERE event_date>=? GROUP BY tour,category ORDER BY tour,category''', (START_DATE,)):
+            total = row['matches']
+            matches.append({
+                'tour': row['tour'], 'category': row['category'], 'matches': total,
+                'both_serve_stats': row['both_serve_stats'],
+                'both_serve_stats_pct': percentage(row['both_serve_stats'], total),
+                'both_ranked': row['both_ranked'],
+                'both_ranked_pct': percentage(row['both_ranked'], total),
+                'minutes_recorded': row['minutes_recorded'],
+                'minutes_recorded_pct': percentage(row['minutes_recorded'], total),
+                'surface_recorded': row['surface_recorded'],
+                'surface_recorded_pct': percentage(row['surface_recorded'], total),
+                'first_event_date': row['first_event_date'], 'last_event_date': row['last_event_date'],
+            })
+
+        profiles = []
+        appearances = '''
+            SELECT tour,winner_id AS player_id FROM matches WHERE event_date>=?
+            UNION SELECT tour,loser_id FROM matches WHERE event_date>=?
+        '''
+        for row in db.execute(f'''SELECT p.tour,count(*) AS players,
+                sum(CASE WHEN p.dob IS NOT NULL AND p.dob!='' THEN 1 ELSE 0 END) AS date_of_birth,
+                sum(CASE WHEN p.height IS NOT NULL AND p.height!='' THEN 1 ELSE 0 END) AS height,
+                sum(CASE WHEN p.hand IS NOT NULL AND p.hand!='' THEN 1 ELSE 0 END) AS hand,
+                sum(CASE WHEN p.ioc IS NOT NULL AND p.ioc!='' THEN 1 ELSE 0 END) AS country,
+                sum(CASE WHEN p.wikidata_id IS NOT NULL AND p.wikidata_id!='' THEN 1 ELSE 0 END) AS wikidata_id
+            FROM players p JOIN ({appearances}) a USING(tour,player_id)
+            GROUP BY p.tour ORDER BY p.tour''', (START_DATE, START_DATE)):
+            total = row['players']
+            fields = ('date_of_birth', 'height', 'hand', 'country', 'wikidata_id')
+            profiles.append({
+                'tour': row['tour'], 'players': total,
+                **{field: row[field] for field in fields},
+                **{field + '_pct': percentage(row[field], total) for field in fields},
+            })
+
+    odds_dates = []
+    with ODDS.open(encoding='utf-8-sig', newline='') as stream:
+        for odds_row in csv.DictReader(stream):
+            if odds_row.get('date'):
+                odds_dates.append(odds_row['date'][:10])
+    odds_manifest = json.loads(ODDS_MANIFEST.read_text(encoding='utf-8'))
+    link_report = json.loads(LINK_REPORT.read_text(encoding='utf-8'))
+    validation_report = json.loads(VALIDATION_REPORT.read_text(encoding='utf-8')) if VALIDATION_REPORT.exists() else {}
+    odds_coverage = {
+        'rows': odds_manifest['rows'],
+        'rows_by_tour': odds_manifest['rows_by_tour'],
+        'rows_by_year': odds_manifest.get('rows_by_year', {}),
+        'first_match_date': min(odds_dates) if odds_dates else None,
+        'last_match_date': max(odds_dates) if odds_dates else None,
+        'strict_archive_links': link_report['counts']['linked_score_and_winner_verified'],
+        'score_state_counts': validation_report.get('odds_score_state_counts', {}),
+        'future_dated_rows': validation_report.get('odds_future_dated_rows_as_of_utc_date', []),
+    }
+    report = {
+        'generated_utc': datetime.now(timezone.utc).isoformat(timespec='seconds'),
+        'event_date_inclusive': START_DATE,
+        'source_database': {'path': 'data/processed/tennis.sqlite', 'sha256': sha256(DB)},
+        'match_coverage_by_tour_and_tier': matches,
+        'player_profile_completeness_for_players_with_post_2000_matches': profiles,
+        'separate_odds_dataset': odds_coverage,
+        'definitions': {
+            'both_serve_stats': 'Both players have positive recorded service points (w_svpt and l_svpt).',
+            'both_ranked': 'Both match-time ranking fields are positive.',
+            'minutes_recorded': 'Positive match duration recorded.',
+            'profile_population': 'Unique player IDs appearing as winner or loser in an archive match dated on/after the start date.',
+            'event_dates': 'Generally tournament start dates; they are not exact match dates.',
+        },
+        'limitations': [
+            'Coverage counts describe records present in the pinned archive and do not establish tournament completeness.',
+            'The source archive has uneven Challenger and ITF/Futures coverage, and many lower-tier matches lack serve statistics.',
+        ],
+    }
+    OUT.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    lines = [
+        '# Post-2000 data completeness', '',
+        f"Measured from the pinned archive for event dates on/after {START_DATE}. The archive currently contains **{sum(row['matches'] for row in matches):,}** match rows across the tiers listed below. These are source-record counts, not proof that every real-world event is present.", '',
+        '## Match and statistics coverage', '',
+        '| Tour | Category | Matches | Both serve stats | Both ranked | Duration | Surface | Event date range |',
+        '|---|---|---:|---:|---:|---:|---:|---|',
+    ]
+    for row in matches:
+        lines.append(
+            f"| {row['tour']} | {row['category']} | {row['matches']:,} | {row['both_serve_stats']:,} ({row['both_serve_stats_pct']:.1f}%) | "
+            f"{row['both_ranked']:,} ({row['both_ranked_pct']:.1f}%) | {row['minutes_recorded']:,} ({row['minutes_recorded_pct']:.1f}%) | "
+            f"{row['surface_recorded']:,} ({row['surface_recorded_pct']:.1f}%) | {row['first_event_date']} to {row['last_event_date']} |"
+        )
+    lines += [
+        '', '“Both serve stats” means both players have positive recorded service points. “Both ranked” means both match-time rank fields are positive. “Duration” means minutes are present. Event dates are usually tournament start dates, not exact match dates.', '',
+        '## Player profile coverage', '',
+        '| Tour | Players appearing since 2000 | Date of birth | Height | Hand | Country | Wikidata ID |',
+        '|---|---:|---:|---:|---:|---:|---:|',
+    ]
+    for row in profiles:
+        lines.append(
+            f"| {row['tour']} | {row['players']:,} | {row['date_of_birth']:,} ({row['date_of_birth_pct']:.1f}%) | "
+            f"{row['height']:,} ({row['height_pct']:.1f}%) | {row['hand']:,} ({row['hand_pct']:.1f}%) | "
+            f"{row['country']:,} ({row['country_pct']:.1f}%) | {row['wikidata_id']:,} ({row['wikidata_id_pct']:.1f}%) |"
+        )
+    lines += [
+        '', 'Player completeness is measured among unique player IDs appearing in post-2000 archive matches. It is not the percentage of all professional players identified.', '',
+        '## Odds coverage', '',
+        f"The separately attributed odds CSV contains **{odds_coverage['rows']:,}** singles rows with dates from {odds_coverage['first_match_date']} to {odds_coverage['last_match_date']}, with {odds_coverage['strict_archive_links']:,} strict links to archive matches. The crosswalk requires exact normalized tour, event and player pair, a unique nearest event date, and agreeing winner and score. It intentionally omits unverified candidates.",
+        f"The validation report classifies score states as `{json.dumps(odds_coverage['score_state_counts'], sort_keys=True)}` and currently flags {len(odds_coverage['future_dated_rows'])} future-dated row(s) as of the last validator run. Filter these rows and nonterminal/unknown score states for modeling.", '',
+        '## Limits', '',
+        '- ITF/Futures and Challenger coverage is uneven; the counts above do not establish complete event coverage.',
+        '- Lower-tier serve statistics are sparse, and many height and WTA birth-date values are missing.',
+        '- The results/rankings archive is frozen at its pinned source revision. The odds feed is maintained separately by the daily append-only action.',
+        '- Regenerate this report after rebuilding the SQLite database and refreshing odds/crosswalk inputs with `python scripts/profile_coverage.py`.', '',
+        f"Report source database SHA-256: `{sha256(DB)}`.",
+    ]
+    DOC.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    print(json.dumps({
+        'report': OUT.relative_to(ROOT).as_posix(),
+        'documentation': DOC.relative_to(ROOT).as_posix(),
+        'match_rows': sum(row['matches'] for row in matches),
+        'match_groups': len(matches),
+        'players_by_tour': {row['tour']: row['players'] for row in profiles},
+    }, indent=2))
+
+
+if __name__ == '__main__':
+    main()
