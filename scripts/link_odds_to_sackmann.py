@@ -1,8 +1,10 @@
 """Create a conservative crosswalk between Valuebetennis odds and Sackmann matches.
 
-Only emit a one-to-one link when tour, exact normalized event/player names,
-nearest event date, winner, and player-oriented set scores all agree. Original
-source files are read-only; output is a separate CSV plus an audit report.
+Only emit a one-to-one link when tour and normalized player names, nearest event
+date, winner, and player-oriented set scores all agree. Exact normalized event
+names are required for primary links; a separately labeled fallback permits a
+title mismatch only when no exact-title candidate exists. Original source files
+are read-only; output is a separate CSV plus an audit report.
 """
 import csv
 import gzip
@@ -82,21 +84,52 @@ def main():
             if not played or not p1 or not p2:
                 counts['invalid_odds_identity_or_date'] += 1
                 continue
-            candidates = [
+            pair_date_candidates = [
                 match for match in by_pair.get((odds.get('genre'), pair), [])
-                if norm(match['tourney_name']) == norm(odds.get('tournoi'))
-                and match['event_date']
+                if match['event_date']
                 and abs((date.fromisoformat(match['event_date']) - played).days) <= MAX_EVENT_DATE_GAP_DAYS
             ]
-            if not candidates:
+            if not pair_date_candidates:
                 counts['no_exact_pair_event_date_candidate'] += 1
                 continue
+
+            exact_event_candidates = [match for match in pair_date_candidates
+                                      if norm(match['tourney_name']) == norm(odds.get('tournoi'))]
+            candidates = exact_event_candidates
+            event_name_fallback = False
+            if not candidates:
+                # A fallback is accepted only when winner and full oriented set score
+                # agree for a unique nearest same-player-pair archive record.
+                event_name_fallback = True
+                compatible = []
+                winner_id = str(odds.get('vainqueur_id') or '')
+                p1_id, p2_id = str(odds.get('joueur1_id') or ''), str(odds.get('joueur2_id') or '')
+                if winner_id == p1_id:
+                    odds_winner, p1_won = p1, True
+                elif winner_id == p2_id:
+                    odds_winner, p1_won = p2, False
+                else:
+                    counts['winner_id_not_resolved'] += 1
+                    continue
+                odds_score = score_sets(odds.get('score'))
+                for match in pair_date_candidates:
+                    if odds_winner != norm(match['winner_name']):
+                        continue
+                    archive_score = score_sets(match['score'])
+                    expected_score = archive_score if p1_won else tuple((b, a) for a, b in archive_score)
+                    if odds_score and odds_score == expected_score:
+                        compatible.append(match)
+                if not compatible:
+                    counts['event_name_fallback_no_score_winner_candidate'] += 1
+                    continue
+                candidates = compatible
+                counts['event_name_fallback_candidates'] += 1
 
             gaps = [abs((date.fromisoformat(match['event_date']) - played).days) for match in candidates]
             nearest_gap = min(gaps)
             nearest = [match for match, gap in zip(candidates, gaps) if gap == nearest_gap]
             if len(nearest) != 1:
-                counts['ambiguous_nearest_candidate'] += 1
+                counts['event_name_fallback_nearest_tie' if event_name_fallback else 'ambiguous_nearest_candidate'] += 1
                 continue
             match = nearest[0]
 
@@ -127,6 +160,7 @@ def main():
                 'match': match,
                 'gap': gap,
                 'absolute_gap': abs(gap),
+                'event_name_fallback': event_name_fallback,
             })
 
     conflict_audit = []
@@ -134,6 +168,12 @@ def main():
         writer = csv.DictWriter(target, fieldnames=output_fields)
         writer.writeheader()
         for record_id, linked_candidates in candidates_by_archive_id.items():
+            # Preserve the existing exact-event link whenever a fallback also points
+            # to this archive record. The fallback only fills otherwise-unlinked rows.
+            if any(not item['event_name_fallback'] for item in linked_candidates):
+                counts['event_name_fallback_excluded_for_existing_exact_link'] += sum(
+                    item['event_name_fallback'] for item in linked_candidates)
+                linked_candidates = [item for item in linked_candidates if not item['event_name_fallback']]
             linked_candidates.sort(key=lambda item: item['absolute_gap'])
             closest_gap = linked_candidates[0]['absolute_gap']
             closest = [item for item in linked_candidates if item['absolute_gap'] == closest_gap]
@@ -162,6 +202,11 @@ def main():
                 })
             odds = chosen['odds']
             match = chosen['match']
+            if chosen['event_name_fallback']:
+                counts['linked_event_name_fallback'] += 1
+                method = 'exact tour + normalized player pair; no exact event-title candidate; unique nearest date within 14 days; winner and oriented set scores agree'
+            else:
+                method = 'exact tour + normalized event + player pair; unique nearest event date and odds record; winner and oriented set scores agree'
             writer.writerow({
                 **odds,
                 'sackmann_record_id': match['record_id'],
@@ -171,7 +216,7 @@ def main():
                 'sackmann_round': match['round'],
                 'sackmann_score': match['score'],
                 'event_start_gap_days': chosen['gap'],
-                'link_method': 'exact tour + normalized event + player pair; unique nearest event date and odds record; winner and oriented set scores agree',
+                'link_method': method,
                 'score_match_basis': 'player-1 perspective; tiebreak detail ignored',
             })
             counts['linked_score_and_winner_verified'] += 1
@@ -182,7 +227,8 @@ def main():
         'match_source': 'Sackmann archive mirror; source revision and license in repository manifests/docs',
         'join_policy': {
             'max_event_start_gap_days': MAX_EVENT_DATE_GAP_DAYS,
-            'requires_exact_normalized_tour_event_and_player_pair': True,
+            'primary_requires_exact_normalized_tour_event_and_player_pair': True,
+            'fallback_when_event_title_differs': 'same tour and normalized player pair, no exact-title candidate, unique nearest archive date within 14 days, winner and player-oriented set scores agree',
             'requires_unique_nearest_candidate': True,
             'requires_one_to_one_archive_record_link': True,
             'duplicate_archive_candidates_resolved_by_unique_nearest_odds_date': True,

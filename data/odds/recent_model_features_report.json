@@ -1,17 +1,17 @@
 {
-  "total_rows": 4653,
+  "total_rows": 5789,
   "date_buffer_days": 14,
   "history_embargo_days": 28,
   "archive_max_event_date": {
     "atp": "2026-06-01",
     "wta": "2026-06-02"
   },
-  "skipped_unverified_identity": 2080,
+  "skipped_unverified_identity": 944,
   "date_range": [
     "2026-06-16",
     "2026-10-26"
   ],
-  "sha256": "c32a0009488ffa4b0487482bfce8613a5c2ebdaa921b1e3d5a7ce662aec853bf",
+  "sha256": "460ccbe0063020ecd489c7077c936a2ca323b817a5fa0b70c784efc0b6c0b6c3",
   "feature_file": "data/odds/recent_model_features.csv.gz",
   "policy": "Strict crosswalk-derived player IDs and matching observed names only; completed scores only; immutable append-only output. No match scores, outcomes, or post-match statistics are features."
 }

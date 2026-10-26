@@ -1,14 +1,18 @@
 {
-  "generated_utc": "2026-10-26T13:48:49+00:00",
-  "description": "Only strictly verified one-to-one odds/archive matches that also occur in the pre-match feature export.",
-  "rows": 130854,
+  "generated_utc": "2026-10-26T14:49:50+00:00",
+  "description": "Only strictly verified one-to-one odds/archive matches with completed feed scores that also occur in the pre-match feature export.",
+  "rows": 212339,
   "rows_by_tour": {
-    "atp": 58183,
-    "wta": 72671
+    "atp": 113461,
+    "wta": 98878
   },
-  "opening_odds_pair_rows": 79632,
-  "last_pre_match_odds_pair_rows": 59838,
-  "linked_matches_missing_from_feature_export": 4489,
+  "opening_odds_pair_rows": 149986,
+  "last_pre_match_odds_pair_rows": 116228,
+  "linked_matches_missing_from_feature_export": 12,
+  "linked_matches_excluded_by_odds_score_state": {
+    "incomplete": 8447,
+    "retirement": 4
+  },
   "feature_columns": 63,
   "odds_columns": [
     "odds_provider_match_id",
@@ -28,17 +32,17 @@
   ],
   "output": {
     "path": "data/odds/model_features_with_odds.csv.gz",
-    "bytes": 30638233,
-    "sha256": "ed0b2105a858be6fb636f8f10598ed7631688f62c9a9928abd5f939e419a8150"
+    "bytes": 54458861,
+    "sha256": "7375e6777cabc2aa0bb6da529a21117fd1f959112f9194e2aaa277f94936c610"
   },
-  "rank_fallback_rows_in_odds_features": 3313,
+  "rank_fallback_rows_in_odds_features": 3916,
   "rank_fallback_fields_applied": {
-    "rank": 3647,
-    "rank_points": 3647
+    "rank": 4295,
+    "rank_points": 4295
   },
   "inputs": {
     "atp_wta_match_odds.csv": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea",
-    "linked_odds_sackmann.csv.gz": "9af94e0750059c57dc729dc5182aacab377dd63456874bf4e9d9c5aaefe8630f",
+    "linked_odds_sackmann.csv.gz": "90c0bdb9b8eccb925abb3f6c75ba09e3a8b13566e82d0063cdac7d142b696267",
     "data/processed/supplements/ranking_fallbacks.csv.gz": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58",
     "tennis.sqlite": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d",
     "yearly_feature_csv_sha256": {

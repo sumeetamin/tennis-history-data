@@ -50,10 +50,12 @@ The supplement is keyed by `(tour, player_id)` and is licensed CC0 for Wikidata 
 
 ## Odds coverage
 
-The separately attributed odds CSV contains **470,167** singles rows with dates from 2021-01-01 to 2026-10-27, with 135,343 strict links to archive matches. The crosswalk requires exact normalized tour, event and player pair, a unique nearest event date, and agreeing winner and score. It intentionally omits unverified candidates.
+The separately attributed odds CSV contains **470,167** singles rows with dates from 2021-01-01 to 2026-10-27, with 220,802 verified links to archive matches (135,343 exact event-title links and 85,459 event-title fallback links). The fallback requires the same tour and normalized player pair, no exact-title candidate, a unique nearest archive date within 14 days, and exact winner plus player-oriented set-score agreement. It intentionally omits ambiguous or unverified candidates.
 The validation report classifies score states as `{"completed": 271157, "incomplete": 76743, "invalid": 8, "missing_score": 122208, "retirement": 7, "walkover": 1, "winner_disagreement": 42, "winner_id_unresolved": 1}` and currently flags 1 future-dated row(s) as of the last validator run. Filter these rows and nonterminal/unknown score states for modeling.
 
-An odds-enriched pre-match feature file is also available for 130,854 rows. It has 79,632 complete opening-price pairs and 59,838 complete last-pre-match-price pairs, oriented to feature p1/p2.
+An odds-enriched pre-match feature file is also available for 212,339 rows. It has 149,986 complete opening-price pairs and 116,228 complete last-pre-match-price pairs, oriented to feature p1/p2.
+
+A separate append-only recent model feature file contains 5,789 rows from 2026-06-16 to 2026-10-26, beyond the pinned archive cutoff. It uses verified player-ID aliases, a 14-day archive-end buffer, and the 28-day feature-history embargo.
 
 ## Limits
 

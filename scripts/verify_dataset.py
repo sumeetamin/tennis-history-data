@@ -106,6 +106,7 @@ assert sha256(link_path)==link_report['outputs'][link_path.name]['sha256']
 linked_rows=0
 linked_odds_ids=set()
 linked_match_ids=Counter()
+link_method_counts=Counter()
 odds_by_record={}
 with gzip.open(link_path,'rt',encoding='utf-8',newline='') as src:
     for row in csv.DictReader(src):
@@ -113,6 +114,8 @@ with gzip.open(link_path,'rt',encoding='utf-8',newline='') as src:
         assert row['match_id'] not in linked_odds_ids
         linked_odds_ids.add(row['match_id'])
         assert row['sackmann_record_id'] and row['link_method'] and row['score_match_basis']
+        link_method_counts['event_title_fallback' if row['link_method'].startswith('exact tour + normalized player pair; no exact event-title candidate') else 'exact_event']+=1
+        assert abs(int(row['event_start_gap_days']))<=14
         match=db.execute('''SELECT tour,winner_id,loser_id,winner_name,loser_name,score,
                     winner_rank,loser_rank,winner_rank_points,loser_rank_points
                 FROM matches WHERE record_id=?''',
@@ -133,6 +136,8 @@ with gzip.open(link_path,'rt',encoding='utf-8',newline='') as src:
             'odds':row, 'winner_id':str(match[1]), 'loser_id':str(match[2]), 'match':match,
         }
 assert linked_rows==link_report['counts']['linked_score_and_winner_verified']
+assert link_method_counts['event_title_fallback']==link_report['counts'].get('linked_event_name_fallback',0)
+assert link_method_counts['exact_event']==linked_rows-link_method_counts['event_title_fallback']
 duplicate_archive_links=sum(count>1 for count in linked_match_ids.values())
 assert duplicate_archive_links==0
 
@@ -274,6 +279,7 @@ with gzip.open(odds_feature_path,'rt',encoding='utf-8',newline='') as src:
         assert record_id not in odds_feature_records
         odds_feature_records.add(record_id)
         match_odds=odds_by_record[record_id]['odds']
+        assert settlement_status(match_odds)=='completed'
         assert row['odds_provider_match_id']==match_odds['match_id']
         assert row['odds_match_date_utc']==match_odds['date']
         p1_archive_id=(odds_by_record[record_id]['winner_id']
@@ -333,6 +339,8 @@ result={'source_files_hash_checked':len(manifest['files']),
 result['odds_rows_checked']=odds_rows
 result['odds_duplicate_match_ids']=odds_duplicates
 result['odds_link_rows_checked']=linked_rows
+result['odds_exact_event_links_checked']=link_method_counts['exact_event']
+result['odds_event_title_fallback_links_checked']=link_method_counts['event_title_fallback']
 result['odds_links_to_repeated_archive_rows']=duplicate_archive_links
 result['odds_manifest_sha256_checked']=True
 result['odds_crosswalk_sha256_checked']=True

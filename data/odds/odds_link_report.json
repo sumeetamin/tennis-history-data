@@ -1,29 +1,37 @@
 {
-  "generated_utc": "2026-10-26T13:24:08+00:00",
+  "generated_utc": "2026-10-26T14:37:13+00:00",
   "odds_source": "Valuebetennis CC BY 4.0; attribution in data/odds/README.md",
   "match_source": "Sackmann archive mirror; source revision and license in repository manifests/docs",
   "join_policy": {
     "max_event_start_gap_days": 14,
-    "requires_exact_normalized_tour_event_and_player_pair": true,
+    "fallback_when_event_title_differs": "same tour and normalized player pair, no exact-title candidate, unique nearest archive date within 14 days, winner and player-oriented set scores agree",
     "requires_unique_nearest_candidate": true,
     "requires_one_to_one_archive_record_link": true,
     "duplicate_archive_candidates_resolved_by_unique_nearest_odds_date": true,
     "requires_winner_and_player_oriented_set_scores_to_agree": true,
     "tiebreak_detail_compared": false,
-    "source_rows_modified": false
+    "source_rows_modified": false,
+    "primary_requires_exact_normalized_tour_event_and_player_pair": true,
+    "existing_exact_event_links_take_priority": true
   },
   "counts": {
     "ambiguous_nearest_candidate": 67,
     "archive_nearest_date_tie_groups_excluded": 1,
-    "archive_records_with_multiple_odds_candidates": 7,
+    "archive_records_with_multiple_odds_candidates": 11,
+    "event_name_fallback_candidates": 85469,
+    "event_name_fallback_excluded_for_existing_exact_link": 2,
+    "event_name_fallback_nearest_tie": 4,
+    "event_name_fallback_no_score_winner_candidate": 17498,
     "invalid_odds_identity_or_date": 1,
-    "linked_score_and_winner_verified": 135343,
-    "no_exact_pair_event_date_candidate": 283546,
-    "odds_candidates_excluded_for_archive_collision": 8,
+    "linked_event_name_fallback": 85459,
+    "linked_score_and_winner_verified": 220802,
+    "no_exact_pair_event_date_candidate": 180578,
+    "odds_candidates_excluded_for_archive_collision": 12,
     "odds_rows": 470167,
-    "score_and_winner_verified_candidates": 135351,
+    "score_and_winner_verified_candidates": 220816,
     "score_disagreement_or_missing": 50717,
-    "winner_disagreement": 485
+    "winner_disagreement": 485,
+    "winner_id_not_resolved": 1
   },
   "archive_link_conflicts": [
     {
@@ -81,6 +89,15 @@
       ]
     },
     {
+      "sackmann_record_id": "b3772e2ee7c58415c17b1a7837c3a6ff4560c70e5775ca713c18cc637d8799d6",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "694315",
+      "kept_absolute_event_start_gap_days": 4,
+      "excluded_odds_match_ids": [
+        "698513"
+      ]
+    },
+    {
       "sackmann_record_id": "dd9e3e9aabef70fdb58be05aa0b8228e096f3511fa450ee1ce4adf6e7faf18fc",
       "action": "excluded_nearest_date_tie",
       "candidate_odds_match_ids": [
@@ -88,12 +105,39 @@
         "735022"
       ],
       "absolute_event_start_gaps_days": 3
+    },
+    {
+      "sackmann_record_id": "3a123de4119b93b85b4229967f884d1cc6d2556c9c86ddb99ad61340fc9689de",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "762539",
+      "kept_absolute_event_start_gap_days": 2,
+      "excluded_odds_match_ids": [
+        "760905"
+      ]
+    },
+    {
+      "sackmann_record_id": "02b781d079d523c9dd2456f06d979694a705dbdeeb0ff5f8626942ba57f575cf",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "768391",
+      "kept_absolute_event_start_gap_days": 1,
+      "excluded_odds_match_ids": [
+        "770072"
+      ]
+    },
+    {
+      "sackmann_record_id": "2c4d41e3b6ae31ac05c8027ac966c323f225392681a09334efb67e54cf212a16",
+      "action": "kept_unique_closest_odds_record",
+      "kept_odds_match_id": "818454",
+      "kept_absolute_event_start_gap_days": 2,
+      "excluded_odds_match_ids": [
+        "821151"
+      ]
     }
   ],
   "outputs": {
     "linked_odds_sackmann.csv.gz": {
-      "rows": 135343,
-      "sha256": "9af94e0750059c57dc729dc5182aacab377dd63456874bf4e9d9c5aaefe8630f"
+      "rows": 220802,
+      "sha256": "90c0bdb9b8eccb925abb3f6c75ba09e3a8b13566e82d0063cdac7d142b696267"
     }
   },
   "inputs": {
@@ -101,13 +145,14 @@
       "sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea"
     },
     "tennis.sqlite": {
-      "sha256": "70078dd3051b7b6c6ca0ee97a800be3be7be08e7e469cf1a131391366d6b4a7a"
+      "sha256": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d"
     }
   },
   "limitations": [
     "Unlinked odds rows are not necessarily missing matches; this archive has incomplete lower-tier coverage.",
     "Score and winner checks deliberately exclude candidate links where the two sources disagree.",
     "When multiple odds IDs otherwise match one archive row, only the uniquely closest odds date is kept; equal-distance conflicts are omitted and listed in the audit.",
-    "This static crosswalk must be regenerated after either input dataset changes."
+    "This static crosswalk must be regenerated after either input dataset changes.",
+    "Event-title fallback links are separately labeled and require no exact-title candidate plus unique nearest date, agreeing winner, and exact player-oriented set scores."
   ]
 }

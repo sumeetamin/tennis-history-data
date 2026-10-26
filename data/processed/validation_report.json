@@ -9,7 +9,9 @@
   "passed": true,
   "odds_rows_checked": 470167,
   "odds_duplicate_match_ids": 0,
-  "odds_link_rows_checked": 135343,
+  "odds_link_rows_checked": 220802,
+  "odds_exact_event_links_checked": 135343,
+  "odds_event_title_fallback_links_checked": 85459,
   "odds_links_to_repeated_archive_rows": 0,
   "odds_manifest_sha256_checked": true,
   "odds_crosswalk_sha256_checked": true,
@@ -35,17 +37,17 @@
       "score": "6-3 3-6 5-4"
     }
   ],
-  "odds_feature_rows_checked": 130854,
+  "odds_feature_rows_checked": 212339,
   "odds_feature_provider_ids_unique": true,
-  "odds_feature_opening_pairs_checked": 79632,
-  "odds_feature_last_pre_match_pairs_checked": 59838,
+  "odds_feature_opening_pairs_checked": 149986,
+  "odds_feature_last_pre_match_pairs_checked": 116228,
   "ranking_fallback_rows_checked": 51604,
   "ranking_fallback_rank_values_checked": 54155,
   "ranking_fallback_points_values_checked": 40954,
   "wikidata_profile_enrichment_rows_checked": 272,
   "wikidata_birth_dates_checked": 8,
   "wikidata_heights_checked": 265,
-  "odds_feature_rank_sources_checked": 261708,
-  "recent_model_feature_rows_checked": 4653,
+  "odds_feature_rank_sources_checked": 424678,
+  "recent_model_feature_rows_checked": 5789,
   "recent_model_feature_sha256_checked": true
 }

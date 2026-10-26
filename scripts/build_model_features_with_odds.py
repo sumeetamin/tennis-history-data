@@ -8,6 +8,7 @@ import sqlite3
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
+from odds_quality import settlement_status
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURE_DIR = ROOT / 'data/processed/model_features_by_year'
@@ -69,7 +70,12 @@ def main():
         raise ValueError(f'{len(odds_by_record)-len(archive_players)} crosswalk records are absent from SQLite')
 
     oriented_odds = {}
+    excluded_odds_states = Counter()
     for record_id, row in odds_by_record.items():
+        status = settlement_status(row)
+        if status != 'completed':
+            excluded_odds_states[status] += 1
+            continue
         winner_id, loser_id = archive_players[record_id]
         if row['vainqueur_id'] == row['joueur1_id']:
             provider_p1_id, provider_p2_id = winner_id, loser_id
@@ -170,15 +176,16 @@ def main():
         OUT.unlink(missing_ok=True)
         raise SystemExit('No verified odds links overlap the yearly feature export.')
 
-    missing_features = set(odds_by_record) - seen_features
+    missing_features = set(oriented_odds) - seen_features
     report = {
         'generated_utc': datetime.now(timezone.utc).isoformat(timespec='seconds'),
-        'description': 'Only strictly verified one-to-one odds/archive matches that also occur in the pre-match feature export.',
+        'description': 'Only strictly verified one-to-one odds/archive matches with completed feed scores that also occur in the pre-match feature export.',
         'rows': counts['rows'],
         'rows_by_tour': {key.removeprefix('tour_'): value for key, value in sorted(counts.items()) if key.startswith('tour_')},
         'opening_odds_pair_rows': counts['opening_pair'],
         'last_pre_match_odds_pair_rows': counts['last_pre_match_pair'],
         'linked_matches_missing_from_feature_export': len(missing_features),
+        'linked_matches_excluded_by_odds_score_state': dict(sorted(excluded_odds_states.items())),
         'feature_columns': len(writer.fieldnames) - len(EXTRA_FIELDS),
         'odds_columns': EXTRA_FIELDS,
         'output': {'path': OUT.relative_to(ROOT).as_posix(), 'bytes': OUT.stat().st_size, 'sha256': sha256(OUT)},
