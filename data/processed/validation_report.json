@@ -52,5 +52,9 @@
   "recent_model_feature_sha256_checked": true,
   "recent_rank_fallback_rows_checked": 3107,
   "recent_rank_values_checked": 6119,
-  "recent_rank_points_checked": 6119
+  "recent_rank_points_checked": 6119,
+  "recent_player_profile_rows_checked": 5789,
+  "recent_player_age_values_checked": 11088,
+  "recent_player_height_values_checked": 7364,
+  "recent_player_hand_values_checked": 11574
 }

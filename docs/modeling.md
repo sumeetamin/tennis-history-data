@@ -18,6 +18,8 @@ For matches with a strict odds/archive/feature join, `data/odds/model_features_w
 
 `data/odds/recent_ranking_fallbacks.csv.gz` adds pre-match ranks and ranking points for eligible recent-feature rows without changing those rows. Join on `record_id` and fill only blanks. Each snapshot is strictly earlier than the match date, at most 90 days old, and has an explicit snapshot date and age. Missing ranks stay missing when no eligible historical snapshot exists.
 
+`data/odds/recent_player_profiles.csv.gz` supplies age-at-match, roster height and handedness for eligible recent rows, also joined by `record_id`. Birth dates and heights include field-level source labels. Age is computed from the date of birth and actual odds-feed match date. Height is a static roster profile value, not a historical measurement; assess whether that is appropriate for the model and avoid treating it as a match-time observation.
+
 ## Missing match-time rankings
 
 `data/processed/supplements/ranking_fallbacks.csv.gz` contains pre-event weekly ranking values for feature rows whose match-file rank or ranking points are blank/nonpositive. Join it to a feature export on `record_id`; use the fallback only when the corresponding feature value is missing or nonpositive. Player order is already aligned to the feature row's `p1_id` and `p2_id`. Each side has a snapshot date so the fallback can be audited. The snapshot must be strictly earlier than the tournament start date and at most 90 days old. The report gives field counts and both-ranked coverage before and after fallback, by tour and tier.

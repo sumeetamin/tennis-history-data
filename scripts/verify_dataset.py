@@ -451,6 +451,104 @@ assert sha256(recent_rank_path)==recent_rank_report['sha256']
 result['recent_rank_fallback_rows_checked']=recent_rank_rows
 result['recent_rank_values_checked']=recent_rank_counts['rank']
 result['recent_rank_points_checked']=recent_rank_counts['rank_points']
+recent_profile_path=ROOT/'data/odds/recent_player_profiles.csv.gz'
+recent_profile_report_path=ROOT/'data/odds/recent_player_profiles_report.json'
+recent_profile_report=json.loads(recent_profile_report_path.read_text(encoding='utf-8'))
+assert sha256(recent_profile_path)==recent_profile_report['profile_supplement_sha256']
+assert sha256(recent_path)==recent_profile_report['input_recent_features_sha256']
+assert sha256(out/'tennis.sqlite')==recent_profile_report['input_database_sha256']
+assert sha256(profile_enrichment_path)==recent_profile_report['input_wikidata_profile_supplement_sha256']
+wikidata_profile_by_key={}
+with gzip.open(profile_enrichment_path,'rt',encoding='utf-8',newline='') as src:
+    for row in csv.DictReader(src):
+        wikidata_profile_by_key[(row['tour'],row['player_id'])]=row
+recent_profile_rows=0
+recent_profile_ids=set()
+recent_profile_counts=Counter()
+recent_profile_rows_by_tour=Counter()
+with gzip.open(recent_profile_path,'rt',encoding='utf-8',newline='') as src:
+    for row in csv.DictReader(src):
+        recent_profile_rows+=1
+        rid=row['record_id']
+        assert rid in recent_feature_lookup and rid not in recent_profile_ids
+        recent_profile_ids.add(rid)
+        feature=recent_feature_lookup[rid]
+        assert (row['tour'],row['event_date'],row['p1_id'],row['p2_id'])==(feature['tour'],feature['event_date'],feature['p1_id'],feature['p2_id'])
+        event_day=date.fromisoformat(row['event_date'])
+        dob_by_side={}
+        height_by_side={}
+        has_data=False
+        for side in ('p1','p2'):
+            key=(row['tour'],row[f'{side}_id'])
+            player=db.execute('SELECT hand,dob,height,wikidata_id FROM players WHERE tour=? AND player_id=?',key).fetchone()
+            assert player is not None
+            enrichment=wikidata_profile_by_key.get(key,{})
+            age=row[f'{side}_age_fallback']
+            dob=row[f'{side}_birth_date']
+            dob_source=row[f'{side}_birth_date_source']
+            if age:
+                has_data=True
+                dob_day=datetime.strptime(dob,'%Y-%m-%d').date()
+                assert dob_day<=event_day and 12<=float(age)<=70
+                assert round((event_day-dob_day).days/365.2425,1)==float(age)
+                if dob_source=='Sackmann roster':
+                    assert player[1] and datetime.strptime(player[1],'%Y%m%d').date()==dob_day
+                elif dob_source=='Wikidata CC0':
+                    assert enrichment.get('date_of_birth_fallback')==dob
+                else:
+                    assert False, f'Unexpected birth-date provenance: {dob_source}'
+                assert not feature[f'{side}_age']
+                dob_by_side[side]=float(age)
+                recent_profile_counts['age']+=1
+            else:
+                assert not dob and not dob_source
+            height=row[f'{side}_ht_fallback']
+            height_source=row[f'{side}_height_source']
+            if height:
+                has_data=True
+                assert 130<=float(height)<=230 and float(height).is_integer()
+                if height_source=='Sackmann roster profile':
+                    assert player[2] and float(player[2])==float(height)
+                elif height_source=='Wikidata CC0':
+                    assert enrichment.get('height_cm_fallback') and float(enrichment['height_cm_fallback'])==float(height)
+                else:
+                    assert False, f'Unexpected height provenance: {height_source}'
+                assert not feature[f'{side}_ht']
+                height_by_side[side]=float(height)
+                recent_profile_counts['height']+=1
+            else:
+                assert not height_source
+            hand=row[f'{side}_hand_fallback']
+            hand_source=row[f'{side}_hand_source']
+            if hand:
+                has_data=True
+                assert hand_source=='Sackmann roster' and player[0] and player[0].strip().upper()==hand
+                assert not feature[f'{side}_hand']
+                recent_profile_counts['hand']+=1
+            else:
+                assert not hand_source
+        age_diff=row['age_diff_fallback']
+        height_diff=row['height_diff_fallback']
+        if age_diff:
+            assert 'p1' in dob_by_side and 'p2' in dob_by_side
+            assert float(age_diff)==round(dob_by_side['p1']-dob_by_side['p2'],1)
+        if height_diff:
+            assert 'p1' in height_by_side and 'p2' in height_by_side
+            assert float(height_diff)==height_by_side['p1']-height_by_side['p2']
+        assert has_data
+        recent_profile_rows_by_tour[row['tour']]+=1
+assert recent_profile_rows==recent_profile_report['rows_with_profile_data']
+assert recent_profile_rows==recent_profile_report['field_values']['rows']
+for field in ('age','height','hand'):
+    assert recent_profile_counts[field]==recent_profile_report['field_values'][field]
+assert {tour:count for tour,count in recent_profile_rows_by_tour.items()}=={
+    tour:values['rows'] for tour,values in recent_profile_report['field_values_by_tour'].items()
+}
+assert recent_profile_report['height_is_historical'] is False
+result['recent_player_profile_rows_checked']=recent_profile_rows
+result['recent_player_age_values_checked']=recent_profile_counts['age']
+result['recent_player_height_values_checked']=recent_profile_counts['height']
+result['recent_player_hand_values_checked']=recent_profile_counts['hand']
 (out/'validation_report.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result,indent=2))
 

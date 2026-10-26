@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-26T15:04:18+00:00",
+  "generated_utc": "2026-10-26T15:15:04+00:00",
   "event_date_inclusive": "2000-01-01",
   "source_database": {
     "path": "data/processed/tennis.sqlite",
@@ -206,6 +206,24 @@
         "rank_fills": 1907,
         "rank_points_fills": 1907,
         "rows": 961
+      }
+    },
+    "recent_model_profile_rows": 5789,
+    "recent_model_age_values": 11088,
+    "recent_model_height_profile_values": 7364,
+    "recent_model_hand_values": 11574,
+    "recent_model_profile_values_by_tour": {
+      "atp": {
+        "age": 7336,
+        "height": 5861,
+        "hand": 7524,
+        "rows": 3762
+      },
+      "wta": {
+        "age": 3752,
+        "hand": 4050,
+        "height": 1503,
+        "rows": 2027
       }
     },
     "score_state_counts": {

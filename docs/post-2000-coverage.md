@@ -55,7 +55,7 @@ The validation report classifies score states as `{"completed": 271157, "incompl
 
 An odds-enriched pre-match feature file is also available for 212,339 rows. It has 149,986 complete opening-price pairs and 116,228 complete last-pre-match-price pairs, oriented to feature p1/p2.
 
-A separate append-only recent model feature file contains 5,789 rows from 2026-06-16 to 2026-10-26, beyond the pinned archive cutoff. It uses verified player-ID aliases, a 14-day archive-end buffer, and the 28-day feature-history embargo. A keyed weekly-ranking supplement provides 6,119 rank and 6,119 ranking-point values across 3,107 of those recent matches, using snapshots strictly before match date and no more than 90 days old.
+A separate append-only recent model feature file contains 5,789 rows from 2026-06-16 to 2026-10-26, beyond the pinned archive cutoff. It uses verified player-ID aliases, a 14-day archive-end buffer, and the 28-day feature-history embargo. A keyed weekly-ranking supplement provides 6,119 rank and 6,119 ranking-point values across 3,107 matches, from snapshots strictly before match date and no more than 90 days old. The keyed profile supplement adds 11,088 ages at match date, 7,364 static profile heights, and 11,574 handedness values across 5,789 matches. Height is not a historical measurement.
 
 ## Limits
 
