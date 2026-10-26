@@ -21,7 +21,11 @@ def verify_prefix(path, original):
 
 
 def main():
-    for name in DATASETS:
+    curated = subprocess.check_output([
+        'git', 'ls-tree', '-r', '--name-only', 'HEAD', '--',
+        'data/curated/post_2000/matches', 'data/curated/post_2000/players.csv.gz',
+    ], cwd=ROOT, text=True).splitlines()
+    for name in (*DATASETS, *curated):
         original = subprocess.check_output(['git', 'cat-file', 'blob', f'HEAD:{name}'], cwd=ROOT)
         appended = verify_prefix(ROOT / name, original)
         print(f'{name}: committed bytes preserved; {appended:,} bytes appended')

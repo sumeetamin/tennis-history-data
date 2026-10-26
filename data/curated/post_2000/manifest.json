@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "as_of_date": "2026-10-27",
+  "match_rows": 1262346,
+  "player_rows": 42587,
+  "matches_by_source": {
+    "sackmann": 1255705,
+    "valuebetennis": 6641
+  },
+  "latest_dates_by_source": {
+    "sackmann": "2026-06-02",
+    "valuebetennis": "2026-10-26"
+  },
+  "player_appearances_by_identity_status": {
+    "archive_id": 2511410,
+    "crosswalk_verified": 12280,
+    "ambiguous_archive_mapping": 148,
+    "provider_only": 854
+  },
+  "quality_flags": {
+    "not_ordinary_completed_match": 46723,
+    "missing_surface": 188,
+    "missing_detailed_match_statistics": 6641,
+    "unresolved_archive_identity": 926
+  },
+  "source_row_accounting": {
+    "sackmann": 1255712,
+    "valuebetennis_already_linked": 247884,
+    "valuebetennis_unlinked": 222283
+  },
+  "excluded_rows_by_reason": {
+    "sackmann:invalid_identity_or_extra_cells": 7,
+    "valuebetennis:unlinked_within_archive_window": 47596,
+    "valuebetennis:missing_score": 95120,
+    "valuebetennis:incomplete_or_unsupported_set": 71855,
+    "valuebetennis:incomplete_or_unknown_match_format": 732,
+    "valuebetennis:terminal_or_unsupported_score": 290,
+    "valuebetennis:winner_score_disagreement": 39,
+    "valuebetennis:invalid_player_or_winner_id": 7,
+    "valuebetennis:sets_after_match_decided": 3
+  },
+  "inputs_sha256": {
+    "data/odds/atp_wta_match_odds.csv": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea",
+    "data/odds/linked_odds_sackmann.csv.gz": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9",
+    "data/processed/supplements/ranking_fallbacks.csv.gz": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58",
+    "data/processed/supplements/player_profile_enrichment.csv.gz": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875"
+  },
+  "files": [
+    {
+      "path": "matches/atp_2000.csv.gz",
+      "rows": 19797,
+      "bytes": 2420405,
+      "sha256": "ecf875e671b493d11948ee1781422fea2816e53bf18bfee971c655998aa9bcb1"
+    },
+    {
+      "path": "matches/wta_2000.csv.gz",
+      "rows": 14052,
+      "bytes": 1645271,
+      "sha256": "247c77b374aac2d1b80d567b4f965672359460ef0cb917056b07a098dce07a4f"
+    },
+    {
+      "path": "matches/wta_2001.csv.gz",
+      "rows": 13740,
+      "bytes": 1579610,
+      "sha256": "3d7bb827dc6e72c1afe702d67c37575dd2e012d33b13725ef5b7dcdbf4a3918b"
+    },
+    {
+      "path": "matches/atp_2001.csv.gz",
+      "rows": 20880,
+      "bytes": 2573913,
+      "sha256": "2604760ec77cb03d100fcc136314b75773e9d0fbdf6599fec731978bffff89f2"
+    },
+    {
+      "path": "matches/wta_2002.csv.gz",
+      "rows": 14150,
+      "bytes": 1666274,
+      "sha256": "854af3d44021b9cd1ce8d70a9c0e8e8c5c4c3b088ae9943cbe743baaf94b9f46"
+    },
+    {
+      "path": "matches/atp_2002.csv.gz",
+      "rows": 20028,
+      "bytes": 2475934,
+      "sha256": "d0115a2abb3847209ba02dc479277bdfd5de3f385201c12c4f57c93b5c0d1702"
+    },
+    {
+      "path": "matches/atp_2003.csv.gz",
+      "rows": 21236,
+      "bytes": 2642447,
+      "sha256": "77664b9c25463296c62e7c617ca93f9063cec32bf6058aacf38ce4f9ec961f0b"
+    },
+    {
+      "path": "matches/wta_2003.csv.gz",
+      "rows": 14146,
+      "bytes": 1699438,
+      "sha256": "3cf8557760264e3f811ac807f6cee98f096539f91cb7bc88e59f162c446cafb2"
+    },
+    {
+      "path": "matches/wta_2004.csv.gz",
+      "rows": 15396,
+      "bytes": 1858281,
+      "sha256": "914e786ef8b8b1e88892bf9c5517c6e1d5aef4d480075fc1e1dbf465f425d7d7"
+    },
+    {
+      "path": "matches/atp_2004.csv.gz",
+      "rows": 22429,
+      "bytes": 2806479,
+      "sha256": "83526154ac942ecd01d9ae75b02562d26a8dabcf7c605df6301f1d009702702d"
+    },
+    {
+      "path": "matches/atp_2005.csv.gz",
+      "rows": 23438,
+      "bytes": 2946581,
+      "sha256": "19910deb9eb090b179d870425231ccd3fe88af8255c1249c103476fd5af21b90"
+    },
+    {
+      "path": "matches/wta_2005.csv.gz",
+      "rows": 16247,
+      "bytes": 1980448,
+      "sha256": "2d1f5a440afbbf638bccae6817b185d0a09695c9a9e202ab4aa7ee4b5d22e28d"
+    },
+    {
+      "path": "matches/wta_2006.csv.gz",
+      "rows": 17162,
+      "bytes": 2123905,
+      "sha256": "83e5834d2c0dfd38ba11ccc8f5882e9142489a1c33ddc03a2d38a0cd26a0b049"
+    },
+    {
+      "path": "matches/atp_2006.csv.gz",
+      "rows": 24319,
+      "bytes": 3085294,
+      "sha256": "338269efa3a3a8f7a3322ed99de8808d30f81d2a72df5fd206dd7f7cd192dd7a"
+    },
+    {
+      "path": "matches/wta_2007.csv.gz",
+      "rows": 17566,
+      "bytes": 2194352,
+      "sha256": "1491974dd8767c75e73df8aa8af5c60ca5ed0c5fc387053ea7841fe8b43a0661"
+    },
+    {
+      "path": "matches/atp_2007.csv.gz",
+      "rows": 25992,
+      "bytes": 3311711,
+      "sha256": "fec933c827fe965b5cab8a268648627cf9ed0fac87783fe68dd3a38cafb6cc33"
+    },
+    {
+      "path": "matches/atp_2008.csv.gz",
+      "rows": 26664,
+      "bytes": 3408552,
+      "sha256": "8e9d8803091d9bfc61fc98bec0bd5b4a5d1ef72ea29d0a0df303f36612273bff"
+    },
+    {
+      "path": "matches/wta_2008.csv.gz",
+      "rows": 17853,
+      "bytes": 2220515,
+      "sha256": "8162664d0ba59ee508055a82cb678fdb63e9e20d5ae94ff769c984b858d5cce3"
+    },
+    {
+      "path": "matches/atp_2009.csv.gz",
+      "rows": 25115,
+      "bytes": 3206812,
+      "sha256": "ab12c1ced927b81e919a6aa6cf6d655c6475624de0dee938dbb4a742416fd75b"
+    },
+    {
+      "path": "matches/wta_2009.csv.gz",
+      "rows": 18105,
+      "bytes": 2266585,
+      "sha256": "bc4dc40c9ce94aa9d3aadd957fda6758ef05d90d3e4e73bb1de440faeddb374a"
+    },
+    {
+      "path": "matches/atp_2010.csv.gz",
+      "rows": 24701,
+      "bytes": 3302976,
+      "sha256": "d404a9834f943b1a5f97471999a1f5e53e434a5d185da96f5a77701dc5bd7e13"
+    },
+    {
+      "path": "matches/wta_2010.csv.gz",
+      "rows": 18756,
+      "bytes": 2368899,
+      "sha256": "c7eae9ce24c93dfdf2deccce469d10172105ffcbbb68be983fdbd8953813d79a"
+    },
+    {
+      "path": "matches/atp_2011.csv.gz",
+      "rows": 25990,
+      "bytes": 3463767,
+      "sha256": "4e41b7250666ed8834384af45d849bc44a1ea2195700e82987bf7adc646ea04a"
+    },
+    {
+      "path": "matches/wta_2011.csv.gz",
+      "rows": 19994,
+      "bytes": 2536635,
+      "sha256": "533dc8675794bc5a815ab01ecafe2dfd211a5eb9242c39776357df13415c2606"
+    },
+    {
+      "path": "matches/atp_2012.csv.gz",
+      "rows": 27979,
+      "bytes": 3725231,
+      "sha256": "6315941686057b42b8f3040d7f04d0beecc9c205242b24bf958ebcc7dec644f3"
+    },
+    {
+      "path": "matches/wta_2012.csv.gz",
+      "rows": 19639,
+      "bytes": 2494962,
+      "sha256": "9654203d2f9ea88e4a8ed1f0a032d3c6efe42ea48c31d1531faafa242673ac71"
+    },
+    {
+      "path": "matches/wta_2013.csv.gz",
+      "rows": 21381,
+      "bytes": 2708516,
+      "sha256": "d99c63b92a5a6086f91ce16492d3758b4423961b71e3c95d3ee1031fb751b66a"
+    },
+    {
+      "path": "matches/atp_2013.csv.gz",
+      "rows": 29359,
+      "bytes": 3924408,
+      "sha256": "dbba0b1aae9ea2bbcd710d8df35399da1cff2b2d3a5ded4a10c01404804589c1"
+    },
+    {
+      "path": "matches/wta_2014.csv.gz",
+      "rows": 21403,
+      "bytes": 2721045,
+      "sha256": "fad60ce35d7727ba87a4d1a8dae264b4016dcfa5805e5e9b87de8de7511d9121"
+    },
+    {
+      "path": "matches/atp_2014.csv.gz",
+      "rows": 29956,
+      "bytes": 4006100,
+      "sha256": "a83c5c6c8c290e3014bc0acc943eb0d9d251ae79afbbd61293644cca4c8a5f18"
+    },
+    {
+      "path": "matches/atp_2015.csv.gz",
+      "rows": 31132,
+      "bytes": 4156474,
+      "sha256": "f45e932adafe5b53eee7adcaa4a7d6b152b51c107c4d03135b4b8ab099df94e7"
+    },
+    {
+      "path": "matches/wta_2015.csv.gz",
+      "rows": 22301,
+      "bytes": 2816212,
+      "sha256": "a4f2fcf92c59a0d4534bb208cdebd1c68c9f34e1e110927d439078f5b04f1b94"
+    },
+    {
+      "path": "matches/atp_2016.csv.gz",
+      "rows": 32637,
+      "bytes": 4501601,
+      "sha256": "a4b75cab1c3111ea57b2f58fab850d97ddeecd157851fb6993d4821a2150651a"
+    },
+    {
+      "path": "matches/wta_2016.csv.gz",
+      "rows": 22266,
+      "bytes": 2867538,
+      "sha256": "882c3bd8cbdad258a444d87f6db43088b89d3072fd0650ab897b587c069ab471"
+    },
+    {
+      "path": "matches/atp_2017.csv.gz",
+      "rows": 30555,
+      "bytes": 4216707,
+      "sha256": "46acd1ab1a1d5371fbe22f013ebd8288aa1f35e986411018b4fa6a26b411a16d"
+    },
+    {
+      "path": "matches/wta_2017.csv.gz",
+      "rows": 21695,
+      "bytes": 2802140,
+      "sha256": "264d8fc0de71c7b3e5564a02beb2a4bf63b20191dc3c764e12c03d834c0b2e79"
+    },
+    {
+      "path": "matches/wta_2018.csv.gz",
+      "rows": 21452,
+      "bytes": 2755674,
+      "sha256": "c84cd0c86691cb13a2daf9ce94f9dbac7e039b170a64a3acb78a4b2d03ccae29"
+    },
+    {
+      "path": "matches/atp_2018.csv.gz",
+      "rows": 30162,
+      "bytes": 4170055,
+      "sha256": "22448cf32680ea38a66bdc1dd414fb058b2a5649c02e4076efca638647cb55c3"
+    },
+    {
+      "path": "matches/atp_2019.csv.gz",
+      "rows": 28015,
+      "bytes": 3799331,
+      "sha256": "5961f9893e8a9b93eacd526cfcbec0cc25bb150d7b610c4db3fff2137372c166"
+    },
+    {
+      "path": "matches/wta_2019.csv.gz",
+      "rows": 31865,
+      "bytes": 4025702,
+      "sha256": "945c985262f4b61127e775f07c3753db2b850f585c4e58e8a265b7f4b5212250"
+    },
+    {
+      "path": "matches/atp_2020.csv.gz",
+      "rows": 9336,
+      "bytes": 1281362,
+      "sha256": "23fc0a2fef4efc5f73dd17d45296c6299a778ad55a9ad95a9b10ef70f361b8aa"
+    },
+    {
+      "path": "matches/wta_2020.csv.gz",
+      "rows": 10698,
+      "bytes": 1348034,
+      "sha256": "7bf0339173cef5e93ef35125d67a8fb0e6a8096fd29dbc54101979831cb3e87f"
+    },
+    {
+      "path": "matches/wta_2021.csv.gz",
+      "rows": 26731,
+      "bytes": 3589594,
+      "sha256": "68bb0d18a3644153766644c5abaee7201611537250505d35f2d4a83c16113acf"
+    },
+    {
+      "path": "matches/atp_2021.csv.gz",
+      "rows": 22063,
+      "bytes": 3263479,
+      "sha256": "82fef1d36b6cbbe569faca48893c5ea4fc1c1f7d9fc6ef11647051fc65cd6ce8"
+    },
+    {
+      "path": "matches/atp_2022.csv.gz",
+      "rows": 29239,
+      "bytes": 4434945,
+      "sha256": "aed7c05c3f86f8b79f9341ce6cbb971f371ea5043b12cf73e1bc679716da4094"
+    },
+    {
+      "path": "matches/wta_2022.csv.gz",
+      "rows": 35598,
+      "bytes": 4870157,
+      "sha256": "94b906f64e371e31295172149fae31c3546d8f277d1de287a6dfd970fef01e0b"
+    },
+    {
+      "path": "matches/atp_2023.csv.gz",
+      "rows": 31275,
+      "bytes": 4764527,
+      "sha256": "a3117f034ab8463b055b48f222894dcce7b925779b656894c4247afd2d30d609"
+    },
+    {
+      "path": "matches/wta_2023.csv.gz",
+      "rows": 37028,
+      "bytes": 5067814,
+      "sha256": "af339746c11e1e5572ee46d22432ddbccb08854ef5df0b0211072586fd557c71"
+    },
+    {
+      "path": "matches/wta_2024.csv.gz",
+      "rows": 41056,
+      "bytes": 5517592,
+      "sha256": "ffba412ab67232c6a1b4eb217ee8413adb577371195575f727f627c318e997bf"
+    },
+    {
+      "path": "matches/atp_2024.csv.gz",
+      "rows": 33000,
+      "bytes": 4939911,
+      "sha256": "db44845c16bde4f55566cd3b09e4265b0d9db7aa4efabb83732d24f55a838fa6"
+    },
+    {
+      "path": "matches/atp_2025.csv.gz",
+      "rows": 32168,
+      "bytes": 5208453,
+      "sha256": "57605ccef8b8da603b1d2c69931b92017b5d7e1a59603159499cdef400f4c684"
+    },
+    {
+      "path": "matches/wta_2025.csv.gz",
+      "rows": 23818,
+      "bytes": 3721108,
+      "sha256": "129b0ba55ba431371f50c208edee641740d5dead2dfe3c196268397de523d189"
+    },
+    {
+      "path": "matches/wta_2026.csv.gz",
+      "rows": 12392,
+      "bytes": 1684002,
+      "sha256": "89023577dac10f5e190757eeffa94eb0f730fef5dbb3b07ea03c283fbd190417"
+    },
+    {
+      "path": "matches/atp_2026.csv.gz",
+      "rows": 18391,
+      "bytes": 2517690,
+      "sha256": "694cc027a4abfbbb7708e72ed56312c2addb116eae4eec7c921f296d12b04c31"
+    },
+    {
+      "path": "players.csv.gz",
+      "rows": 42587,
+      "bytes": 1071509,
+      "sha256": "8b23e1a7e4565f598984688dbc75be537c295ad0615995be4a9de97eec0490c6"
+    }
+  ],
+  "scope": "Post-2000 available singles results; not an exhaustive census. Archive dates are tournament starts. Recent results require a complete supported score, agreeing winner, and a 14-day archive-end buffer. Missing values are not imputed.",
+  "append_policy": "Existing match and player rows are immutable. Changed source interpretations fail the rebuild and require a documented correction overlay.",
+  "license": "Combined derivative: CC BY-NC-SA 4.0; also credit Valuebetennis CC BY 4.0 and Wikidata CC0.",
+  "archive_source_manifest_lf_sha256": "568295797704108fa2ed6e773a805d7019bd637b1e579893ef4f9f466a3195c4"
+}

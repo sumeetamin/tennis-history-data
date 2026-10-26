@@ -19,6 +19,7 @@ This repository contains the source data, not just links or a scraper template.
 
 ## Start here
 
+- Unified post-2000 results: [`data/curated/post_2000/`](data/curated/post_2000/README.md) (yearly ATP/WTA CSVs, a player table, available ranking backfills and verified odds, explicit date/identity provenance, coverage and exclusion reports)
 - Database: `data/processed/tennis.sqlite`
 - Model-ready pre-match rows: `data/processed/model_features_by_year/` (150 gzip CSVs, one per year)
 - Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)
@@ -66,6 +67,8 @@ python scripts/build_recent_player_profiles.py
 python scripts/verify_dataset.py
 python scripts/profile_coverage.py
 python scripts/verify_recent_history_snapshot.py
+python scripts/build_curated_dataset.py
+python scripts/verify_curated_dataset.py
 python -m unittest discover -s tests -v
 ```
 
@@ -74,6 +77,8 @@ The [daily GitHub Action](.github/workflows/daily-data-update.yml) checks Valueb
 To check every available historical Valuebetennis season (2021 onward) for newly published settled IDs without rewriting existing rows, run `python scripts/backfill_missing_odds.py`. The latest all-season scan is recorded in `data/odds/latest_refresh_report.json`.
 
 The Action appends raw odds and separately builds recent post-archive features where the player identities are verified by the existing strict crosswalk. It does not revise old rows or rebuild the historical crosswalk or odds-enriched archive feature export. The recent feature file applies a 14-day archive-end buffer and the standard 28-day history embargo; see [modeling notes](docs/modeling.md) for details.
+
+It also appends and validates the unified post-2000 results release. That release can retain recent players under clearly marked provider IDs even when their archive identities cannot be resolved. It contains results and current-match statistics, not a ready-to-train feature matrix. Its source coverage and unknown values are reported explicitly.
 
 Each daily run first rebuilds the ignored local SQLite database from the tracked, pinned source CSVs. The recent feature, ranking, and profile scripts require this database; it is not present in a fresh checkout. The commit step stages only the listed odds and recent supplement files, so rebuilding does not publish regenerated archive reports or replace historical source records.
 Recent history replays eligible previously exported results as well as new matches, while appending only unseen IDs. The workflow checks incremental replay and the 28-day embargo with regression tests before processing new data.

@@ -30,3 +30,5 @@ The Valuebetennis odds files are separately licensed under CC BY 4.0 and require
 
 The player-profile supplement uses Wikidata structured facts, released under CC0. Its `tour`, `player_id`, and `wikidata_id` keys are carried from the Sackmann rosters, so the file remains a mixed-source derivative and the roster-derived identifiers retain the CC BY-NC-SA 4.0 obligations. See `data/processed/supplements/player_profile_enrichment_report.json` for source URL, item revisions and checksums.
 
+The unified post-2000 results release under `data/curated/post_2000/` combines the Sackmann archive, verified Valuebetennis results/prices, prior ranking supplements and available Wikidata profile facts. It retains the CC BY-NC-SA 4.0 terms for the combined derivative and attribution to each source. Changes include namespaced identities, separate effective ranking fields, winner-oriented prices/scores, admission checks and an exclusion ledger. Original source records remain unchanged.
+
