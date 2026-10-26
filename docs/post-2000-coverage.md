@@ -64,7 +64,7 @@ A separate append-only recent model feature file contains 5,826 rows from 2026-0
 - The results/rankings archive is frozen at its pinned source revision. The odds feed is maintained separately by the daily append-only action.
 - Regenerate this report after rebuilding the SQLite database and refreshing odds/crosswalk inputs with `python scripts/profile_coverage.py`.
 
-Report source database SHA-256: `35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d`.
+Report source database SHA-256: `70078dd3051b7b6c6ca0ee97a800be3be7be08e7e469cf1a131391366d6b4a7a`.
 
 ## Additional 2025 consensus odds
 

@@ -31,7 +31,10 @@ def main():
     link_report = json.loads(LINK_REPORT.read_text(encoding='utf-8'))
     feature_report = json.loads(FEATURE_REPORT.read_text(encoding='utf-8'))
     assert sha(ODDS) == link_report['inputs'][ODDS.name]['sha256']
-    assert sha(DB) == link_report['inputs'][DB.name]['sha256']
+    # SQLite's serialized bytes are runtime/version dependent. Integrity plus
+    # row-by-row archive comparisons below are the meaningful validation.
+    with sqlite3.connect(DB) as check_db:
+        assert check_db.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
     assert sha(CROSSWALK) == link_report['outputs'][CROSSWALK.name]['sha256']
     assert sha(FEATURES) == feature_report['output']['sha256']
 

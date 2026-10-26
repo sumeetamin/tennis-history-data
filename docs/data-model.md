@@ -24,6 +24,8 @@ All original source columns are retained as TEXT to preserve source values. Empt
 - outcome: completed / retirement / walkover / default / abandoned / unknown.
 - source_extra_cells: JSON of nonempty surplus cells, when a malformed source row has more cells than its header. Surplus empty cells are ignored in the DB while raw files retain them.
 
+The SQLite file is a generated local build artifact and its binary SHA-256 can vary across Python/SQLite versions even when the imported rows are equivalent. Validation therefore checks SQLite integrity and compares source-backed rows and feature outputs directly; the recorded SQLite SHA in older build reports is provenance, not a portable content identity.
+
 Player uniqueness: tour + player_id. Rankings uniqueness: tour + ranking_date + player; first occurrence wins, all source copies remain in raw files.
 
 Match original fields include tournament ID/name, surface, draw size, level, start date, match number, winner/loser IDs, seed, entry, names, hand, height, country, age, ranking, ranking points, score, best_of, round, minutes, and w_/l_ serve statistics. Refer to the preserved upstream matches_data_dictionary.txt for exact field meanings.
