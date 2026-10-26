@@ -23,6 +23,7 @@ This repository contains the source data, not just links or a scraper template.
 - Model-ready pre-match rows: `data/processed/model_features_by_year/` (150 gzip CSVs, one per year)
 - Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)
 - Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
+- Pre-match model rows with odds: `data/odds/model_features_with_odds.csv.gz` (p1/p2-aligned prices; `p1_won` is the target)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
 - Counts and missingness: `data/processed/coverage.csv`, `build_report.json`
 - Detailed post-2000 tier/profile completeness: `data/processed/post_2000_coverage_report.json`
@@ -45,12 +46,15 @@ python scripts/build_features.py
 python scripts/partition_features.py
 python scripts/fetch_valuebetennis_odds.py
 python scripts/link_odds_to_sackmann.py
-python scripts/profile_coverage.py
+python scripts/build_model_features_with_odds.py
 python scripts/verify_dataset.py
+python scripts/profile_coverage.py
 python -m unittest discover -s tests -v
 ```
 
 The [daily GitHub Action](.github/workflows/daily-data-update.yml) checks Valuebetennis' published yearly files for missing settled matches from the last 30 days. It appends only unseen match IDs and creates a commit only when new rows are found. Existing rows are never replaced. You can also run it manually from the **Actions** tab and change the lookback window.
+
+The Action updates the raw odds CSV and its manifest only; it does not rebuild the crosswalk or odds-enriched feature export. Those derived odds files must be regenerated and verified after odds or source-feature changes. The pinned match archive/features currently end in June 2026, so newer odds rows do not have archive features to join yet.
 
 Allow several minutes and a few GB of free disk space. A failed database build leaves a staging database for inspection; remove only that generated `data/processed/tennis.building.sqlite` file before retrying.
 

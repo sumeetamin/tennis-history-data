@@ -34,5 +34,9 @@
       "joueur2": "Yunseong Chung",
       "score": "6-3 3-6 5-4"
     }
-  ]
+  ],
+  "odds_feature_rows_checked": 130854,
+  "odds_feature_provider_ids_unique": true,
+  "odds_feature_opening_pairs_checked": 79632,
+  "odds_feature_last_pre_match_pairs_checked": 59838
 }

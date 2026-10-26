@@ -93,29 +93,94 @@ assert sha256(link_path)==link_report['outputs'][link_path.name]['sha256']
 linked_rows=0
 linked_odds_ids=set()
 linked_match_ids=Counter()
+odds_by_record={}
 with gzip.open(link_path,'rt',encoding='utf-8',newline='') as src:
     for row in csv.DictReader(src):
         linked_rows+=1
         assert row['match_id'] not in linked_odds_ids
         linked_odds_ids.add(row['match_id'])
         assert row['sackmann_record_id'] and row['link_method'] and row['score_match_basis']
-        match=db.execute('''SELECT tour,winner_name,loser_name,score FROM matches WHERE record_id=?''',
+        match=db.execute('''SELECT tour,winner_id,loser_id,winner_name,loser_name,score FROM matches WHERE record_id=?''',
                          (row['sackmann_record_id'],)).fetchone()
         assert match is not None
         assert row['genre']==match[0]
         assert row['vainqueur_id'] in (row['joueur1_id'],row['joueur2_id'])
         linked_winner=row['joueur1'] if row['vainqueur_id']==row['joueur1_id'] else row['joueur2']
-        assert norm(linked_winner)==norm(match[1])
-        assert row['sackmann_score']==match[3]
+        assert norm(linked_winner)==norm(match[3])
+        assert row['sackmann_score']==match[5]
         actual=score_sets(row['score'])
-        archive=score_sets(match[3])
+        archive=score_sets(match[5])
         p1_won=row['vainqueur_id']==row['joueur1_id']
         expected=archive if p1_won else tuple((b,a) for a,b in archive)
         assert actual and actual==expected
         linked_match_ids[row['sackmann_record_id']]+=1
+        odds_by_record[row['sackmann_record_id']]={
+            'odds':row, 'winner_id':str(match[1]), 'loser_id':str(match[2]),
+        }
 assert linked_rows==link_report['counts']['linked_score_and_winner_verified']
 duplicate_archive_links=sum(count>1 for count in linked_match_ids.values())
 assert duplicate_archive_links==0
+
+# Validate the optional pre-match feature table with prices in deterministic p1/p2 orientation.
+odds_feature_path=ROOT/'data/odds/model_features_with_odds.csv.gz'
+odds_feature_report=json.loads((ROOT/'data/odds/model_features_with_odds_report.json').read_text(encoding='utf-8'))
+assert sha256(odds_feature_path)==odds_feature_report['output']['sha256']
+assert sha256(link_path)==odds_feature_report['inputs'][link_path.name]
+assert sha256(odds_path)==odds_feature_report['inputs'][odds_path.name]
+assert sha256(out/'tennis.sqlite')==odds_feature_report['inputs']['tennis.sqlite']
+for filename,digest in odds_feature_report['inputs']['yearly_feature_csv_sha256'].items():
+    assert sha256(ROOT/'data/processed/model_features_by_year'/filename)==digest
+odds_feature_rows=0
+odds_feature_records=set()
+odds_feature_ids=set()
+odds_open_pairs=0
+odds_close_pairs=0
+with gzip.open(odds_feature_path,'rt',encoding='utf-8',newline='') as src:
+    feature_reader=csv.DictReader(src)
+    odds_feature_columns=feature_reader.fieldnames or []
+    expected_odds_columns=['odds_provider_match_id','odds_match_date_utc','odds_open_p1_decimal','odds_open_p2_decimal',
+                           'odds_last_pre_match_p1_decimal','odds_last_pre_match_p2_decimal',
+                           'odds_open_pair_available','odds_last_pre_match_pair_available']
+    assert odds_feature_columns[-len(expected_odds_columns):]==expected_odds_columns
+    assert not {'winner_id','loser_id','score','minutes','odds_winner_id','odds_score'} & set(odds_feature_columns)
+    for row in feature_reader:
+        odds_feature_rows+=1
+        record_id=row['record_id']
+        assert record_id in odds_by_record
+        assert record_id not in odds_feature_records
+        odds_feature_records.add(record_id)
+        match_odds=odds_by_record[record_id]['odds']
+        assert row['odds_provider_match_id']==match_odds['match_id']
+        assert row['odds_match_date_utc']==match_odds['date']
+        p1_archive_id=(odds_by_record[record_id]['winner_id']
+                       if match_odds['vainqueur_id']==match_odds['joueur1_id']
+                       else odds_by_record[record_id]['loser_id'])
+        p2_archive_id=(odds_by_record[record_id]['loser_id']
+                       if match_odds['vainqueur_id']==match_odds['joueur1_id']
+                       else odds_by_record[record_id]['winner_id'])
+        assert {row['p1_id'],row['p2_id']}=={p1_archive_id,p2_archive_id}
+        assert row['p1_id']!=row['p2_id']
+        assert int(row['p1_won'])==int(row['p1_id']==odds_by_record[record_id]['winner_id'])
+        odds_feature_ids.add(row['odds_provider_match_id'])
+        if row['p1_id']==p1_archive_id:
+            expected_prices=(match_odds['cote1_ouverture'],match_odds['cote2_ouverture'],
+                             match_odds['cote1_cloture'],match_odds['cote2_cloture'])
+        else:
+            expected_prices=(match_odds['cote2_ouverture'],match_odds['cote1_ouverture'],
+                             match_odds['cote2_cloture'],match_odds['cote1_cloture'])
+        actual_prices=(row['odds_open_p1_decimal'],row['odds_open_p2_decimal'],
+                       row['odds_last_pre_match_p1_decimal'],row['odds_last_pre_match_p2_decimal'])
+        assert actual_prices==expected_prices
+        open_pair=bool(expected_prices[0] and expected_prices[1])
+        close_pair=bool(expected_prices[2] and expected_prices[3])
+        assert row['odds_open_pair_available']==str(open_pair).lower()
+        assert row['odds_last_pre_match_pair_available']==str(close_pair).lower()
+        odds_open_pairs+=open_pair
+        odds_close_pairs+=close_pair
+assert odds_feature_rows==odds_feature_report['rows']
+assert len(odds_feature_ids)==odds_feature_rows
+assert odds_open_pairs==odds_feature_report['opening_odds_pair_rows']
+assert odds_close_pairs==odds_feature_report['last_pre_match_odds_pair_rows']
 result={'source_files_hash_checked':len(manifest['files']),
         'feature_rows_temporally_checked':sum(counts.values()),
         'label_rows_checked_against_db':sampled,'label_counts':dict(labels),'passed':True}
@@ -127,6 +192,10 @@ result['odds_manifest_sha256_checked']=True
 result['odds_crosswalk_sha256_checked']=True
 result['odds_score_state_counts']=dict(sorted(odds_score_states.items()))
 result['odds_future_dated_rows_as_of_utc_date']=odds_future_rows
+result['odds_feature_rows_checked']=odds_feature_rows
+result['odds_feature_provider_ids_unique']=len(odds_feature_ids)==odds_feature_rows
+result['odds_feature_opening_pairs_checked']=odds_open_pairs
+result['odds_feature_last_pre_match_pairs_checked']=odds_close_pairs
 (out/'validation_report.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result,indent=2))
 

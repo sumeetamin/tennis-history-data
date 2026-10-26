@@ -28,6 +28,8 @@ Player completeness is measured among unique player IDs appearing in post-2000 a
 The separately attributed odds CSV contains **470,167** singles rows with dates from 2021-01-01 to 2026-10-27, with 135,343 strict links to archive matches. The crosswalk requires exact normalized tour, event and player pair, a unique nearest event date, and agreeing winner and score. It intentionally omits unverified candidates.
 The validation report classifies score states as `{"completed": 271157, "incomplete": 76743, "invalid": 8, "missing_score": 122208, "retirement": 7, "walkover": 1, "winner_disagreement": 42, "winner_id_unresolved": 1}` and currently flags 1 future-dated row(s) as of the last validator run. Filter these rows and nonterminal/unknown score states for modeling.
 
+An odds-enriched pre-match feature file is also available for 130,854 rows. It has 79,632 complete opening-price pairs and 59,838 complete last-pre-match-price pairs, oriented to feature p1/p2.
+
 ## Limits
 
 - ITF/Futures and Challenger coverage is uneven; the counts above do not establish complete event coverage.

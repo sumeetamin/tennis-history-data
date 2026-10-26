@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-26T13:26:16+00:00",
+  "generated_utc": "2026-10-26T13:32:16+00:00",
   "event_date_inclusive": "2000-01-01",
   "source_database": {
     "path": "data/processed/tennis.sqlite",
@@ -129,6 +129,9 @@
     "first_match_date": "2021-01-01",
     "last_match_date": "2026-10-27",
     "strict_archive_links": 135343,
+    "odds_enriched_feature_rows": 130854,
+    "odds_enriched_opening_price_pairs": 79632,
+    "odds_enriched_last_pre_match_price_pairs": 59838,
     "score_state_counts": {
       "completed": 271157,
       "incomplete": 76743,

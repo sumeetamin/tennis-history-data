@@ -13,6 +13,7 @@ DOC = ROOT / 'docs/post-2000-coverage.md'
 ODDS = ROOT / 'data/odds/atp_wta_match_odds.csv'
 ODDS_MANIFEST = ROOT / 'data/odds/valuebetennis_manifest.json'
 LINK_REPORT = ROOT / 'data/odds/odds_link_report.json'
+ODDS_FEATURE_REPORT = ROOT / 'data/odds/model_features_with_odds_report.json'
 VALIDATION_REPORT = ROOT / 'data/processed/validation_report.json'
 START_DATE = '2000-01-01'
 
@@ -84,6 +85,7 @@ def main():
                 odds_dates.append(odds_row['date'][:10])
     odds_manifest = json.loads(ODDS_MANIFEST.read_text(encoding='utf-8'))
     link_report = json.loads(LINK_REPORT.read_text(encoding='utf-8'))
+    odds_feature_report = json.loads(ODDS_FEATURE_REPORT.read_text(encoding='utf-8'))
     validation_report = json.loads(VALIDATION_REPORT.read_text(encoding='utf-8')) if VALIDATION_REPORT.exists() else {}
     odds_coverage = {
         'rows': odds_manifest['rows'],
@@ -92,6 +94,9 @@ def main():
         'first_match_date': min(odds_dates) if odds_dates else None,
         'last_match_date': max(odds_dates) if odds_dates else None,
         'strict_archive_links': link_report['counts']['linked_score_and_winner_verified'],
+        'odds_enriched_feature_rows': odds_feature_report['rows'],
+        'odds_enriched_opening_price_pairs': odds_feature_report['opening_odds_pair_rows'],
+        'odds_enriched_last_pre_match_price_pairs': odds_feature_report['last_pre_match_odds_pair_rows'],
         'score_state_counts': validation_report.get('odds_score_state_counts', {}),
         'future_dated_rows': validation_report.get('odds_future_dated_rows_as_of_utc_date', []),
     }
@@ -145,6 +150,7 @@ def main():
         '## Odds coverage', '',
         f"The separately attributed odds CSV contains **{odds_coverage['rows']:,}** singles rows with dates from {odds_coverage['first_match_date']} to {odds_coverage['last_match_date']}, with {odds_coverage['strict_archive_links']:,} strict links to archive matches. The crosswalk requires exact normalized tour, event and player pair, a unique nearest event date, and agreeing winner and score. It intentionally omits unverified candidates.",
         f"The validation report classifies score states as `{json.dumps(odds_coverage['score_state_counts'], sort_keys=True)}` and currently flags {len(odds_coverage['future_dated_rows'])} future-dated row(s) as of the last validator run. Filter these rows and nonterminal/unknown score states for modeling.", '',
+        f"An odds-enriched pre-match feature file is also available for {odds_coverage['odds_enriched_feature_rows']:,} rows. It has {odds_coverage['odds_enriched_opening_price_pairs']:,} complete opening-price pairs and {odds_coverage['odds_enriched_last_pre_match_price_pairs']:,} complete last-pre-match-price pairs, oriented to feature p1/p2.", '',
         '## Limits', '',
         '- ITF/Futures and Challenger coverage is uneven; the counts above do not establish complete event coverage.',
         '- Lower-tier serve statistics are sparse, and many height and WTA birth-date values are missing.',

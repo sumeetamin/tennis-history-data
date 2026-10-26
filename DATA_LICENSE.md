@@ -22,3 +22,7 @@ Original source CSV bytes and license notices are preserved under data/raw.
 No ownership of the original source data is claimed. The MIT code license
 does not replace or expand the data license.
 
+## Other source datasets and mixed-source exports
+
+The Valuebetennis odds files are separately licensed under CC BY 4.0 and require attribution to Valuebetennis. The odds-enriched feature export combines those odds with Sackmann-derived features; preserve both sources' attribution and license terms. See `data/odds/README.md` for the exact scope and file-level notes. Do not assume every file in the repository has only the license stated above.
+

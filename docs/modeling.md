@@ -12,6 +12,8 @@ The yearly feature exports in `data/processed/model_features_by_year/` contain t
 
 IDs, names, event dates, split labels and audit dates are metadata, not model inputs. The source database also contains winners, final scores, minutes and current-match serve statistics; those are post-match outcomes and must not become pre-match predictors.
 
+For matches with a strict odds/archive/feature join, `data/odds/model_features_with_odds.csv.gz` adds opening and last pre-match prices oriented to feature `p1` and `p2`. `p1_won` is still the target and must be excluded from predictor columns. Opening odds are appropriate for earlier forecasts; last pre-match odds represent information available only immediately before play. Odds are not available for every row, so report price coverage and compare models on a consistent sample.
+
 ## Timing
 
 Source dates are generally tournament start dates, not match timestamps. Historical outcomes and serve statistics enter features only when their tournament date is **strictly more than 28 days before** the row's tournament date. All matches from a single edition therefore receive history from before that edition; same-tournament rounds are never fed into one another.
