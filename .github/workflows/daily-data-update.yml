@@ -49,6 +49,9 @@ jobs:
       - name: Verify odds export and manifest
         run: python scripts/verify_odds_export.py
 
+      - name: Verify recent model supplements and temporal boundaries
+        run: python scripts/verify_recent_supplements.py
+
       - name: Commit only when new matches were added
         shell: bash
         run: |
