@@ -1,0 +1,41 @@
+{
+  "generated_utc": "2026-10-26T13:03:25+00:00",
+  "odds_source": "Valuebetennis CC BY 4.0; attribution in data/odds/README.md",
+  "match_source": "Sackmann archive mirror; source revision and license in repository manifests/docs",
+  "join_policy": {
+    "max_event_start_gap_days": 14,
+    "requires_exact_normalized_tour_event_and_player_pair": true,
+    "requires_unique_nearest_candidate": true,
+    "requires_winner_and_player_oriented_set_scores_to_agree": true,
+    "tiebreak_detail_compared": false,
+    "source_rows_modified": false
+  },
+  "counts": {
+    "ambiguous_nearest_candidate": 67,
+    "invalid_odds_identity_or_date": 1,
+    "linked_score_and_winner_verified": 135351,
+    "no_exact_pair_event_date_candidate": 283546,
+    "odds_rows": 470167,
+    "score_disagreement_or_missing": 50717,
+    "winner_disagreement": 485
+  },
+  "outputs": {
+    "linked_odds_sackmann.csv.gz": {
+      "rows": 135351,
+      "sha256": "25fc9c6bede59e1f70041ec04bd557c8684d2ffc2fae08d46e1261dd580e8c09"
+    }
+  },
+  "inputs": {
+    "atp_wta_match_odds.csv": {
+      "sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea"
+    },
+    "tennis.sqlite": {
+      "sha256": "70078dd3051b7b6c6ca0ee97a800be3be7be08e7e469cf1a131391366d6b4a7a"
+    }
+  },
+  "limitations": [
+    "Unlinked odds rows are not necessarily missing matches; this archive has incomplete lower-tier coverage.",
+    "Score and winner checks deliberately exclude candidate links where the two sources disagree.",
+    "This static crosswalk must be regenerated after either input dataset changes."
+  ]
+}

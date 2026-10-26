@@ -10,6 +10,7 @@ This repository contains the source data, not just links or a scraper template.
 - Player names, source IDs, date of birth, country, handedness, height and Wikidata IDs where supplied.
 - Historical rankings and ranking points.
 - Historical ATP/WTA singles match odds (2021 onward; separate attributed provider dataset).
+- A conservative odds-to-match crosswalk for records with independently agreeing winner and score.
 - Match scores, surface, round, draw size, seeds, entries, best-of format, duration, serve and break-point statistics where supplied.
 - Archived ATP doubles and older ATP amateur results.
 - A locally generated SQLite database, a compressed pre-match feature table split into yearly files, and measured coverage/quality reports.
@@ -21,6 +22,7 @@ This repository contains the source data, not just links or a scraper template.
 - Database: `data/processed/tennis.sqlite`
 - Model-ready pre-match rows: `data/processed/model_features_by_year/` (150 gzip CSVs, one per year)
 - Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)
+- Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
 - Counts and missingness: `data/processed/coverage.csv`, `build_report.json`
 - Baseline scores: `data/processed/feature_report.json`
@@ -40,6 +42,7 @@ python scripts/build_dataset.py
 python scripts/build_features.py
 python scripts/partition_features.py
 python scripts/fetch_valuebetennis_odds.py
+python scripts/link_odds_to_sackmann.py
 python scripts/verify_dataset.py
 python -m unittest discover -s tests -v
 ```

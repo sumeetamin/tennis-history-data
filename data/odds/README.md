@@ -10,6 +10,16 @@
 
 The source does not include doubles or matches before 2021. The exact yearly file hashes and row counts used for this combined export are in `valuebetennis_manifest.json`.
 
+`linked_odds_sackmann.csv.gz` is a conservative crosswalk to the repository's match archive. It includes only records with an exact normalized tour, tournament, and player-pair match, one nearest archive event date within 14 days, and agreement on winner and player-1-oriented set scores. It preserves the original odds fields and adds the Sackmann `record_id` plus the matched archive fields. Unmatched rows are intentionally omitted rather than guessed. Counts, hashes, and excluded-candidate reasons are in `odds_link_report.json`.
+
+Regenerate the crosswalk after rebuilding either input dataset with:
+
+```powershell
+python scripts/link_odds_to_sackmann.py
+```
+
+The crosswalk's coverage is lower than the full odds CSV because the results archive has uneven ITF/Challenger coverage and source scores can disagree. It is a verified subset, not a claim that all odds rows can be linked.
+
 The daily GitHub Action checks a rolling 30-day window and appends newly published, settled rows whose `match_id` is not already present. It does not modify existing records, and it commits nothing when there are no new matches. Schedule delivery can be delayed by GitHub; it is not a live feed.
 
 Rebuild or refresh the combined export with:
