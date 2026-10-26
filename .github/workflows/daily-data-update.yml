@@ -46,6 +46,9 @@ jobs:
       - name: Append recent player profile context
         run: python scripts/build_recent_player_profiles.py
 
+      - name: Verify odds export and manifest
+        run: python scripts/verify_odds_export.py
+
       - name: Commit only when new matches were added
         shell: bash
         run: |

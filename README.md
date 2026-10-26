@@ -66,6 +66,8 @@ The [daily GitHub Action](.github/workflows/daily-data-update.yml) checks Valueb
 
 The Action appends raw odds and separately builds recent post-archive features where the player identities are verified by the existing strict crosswalk. It does not revise old rows or rebuild the historical crosswalk or odds-enriched archive feature export. The recent feature file applies a 14-day archive-end buffer and the standard 28-day history embargo; see [modeling notes](docs/modeling.md) for details.
 
+Before committing, the daily Action runs `scripts/verify_odds_export.py` to check match-ID uniqueness, required columns, ATP/WTA and yearly counts, byte size, and SHA-256 against the manifest. A mismatch fails the job before any commit is pushed.
+
 Allow several minutes and a few GB of free disk space. A failed database build leaves a staging database for inspection; remove only that generated `data/processed/tennis.building.sqlite` file before retrying.
 
 ## Using the data for prediction later
