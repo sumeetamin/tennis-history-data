@@ -71,6 +71,8 @@ python -m unittest discover -s tests -v
 
 The [daily GitHub Action](.github/workflows/daily-data-update.yml) checks Valuebetennis' published yearly files for missing settled matches from the last 30 days. It appends only unseen match IDs and creates a commit only when new rows are found. Existing rows are never replaced. You can also run it manually from the **Actions** tab and change the lookback window.
 
+To check every available historical Valuebetennis season (2021 onward) for newly published settled IDs without rewriting existing rows, run `python scripts/backfill_missing_odds.py`. The latest all-season scan is recorded in `data/odds/latest_refresh_report.json`.
+
 The Action appends raw odds and separately builds recent post-archive features where the player identities are verified by the existing strict crosswalk. It does not revise old rows or rebuild the historical crosswalk or odds-enriched archive feature export. The recent feature file applies a 14-day archive-end buffer and the standard 28-day history embargo; see [modeling notes](docs/modeling.md) for details.
 
 Each daily run first rebuilds the ignored local SQLite database from the tracked, pinned source CSVs. The recent feature, ranking, and profile scripts require this database; it is not present in a fresh checkout. The commit step stages only the listed odds and recent supplement files, so rebuilding does not publish regenerated archive reports or replace historical source records.

@@ -52,5 +52,30 @@
   },
   "duplicate_match_ids_in_file": 0,
   "combined_sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea",
-  "combined_bytes": 67319196
+  "combined_bytes": 67319196,
+  "last_full_history_backfill": {
+    "checked_at_utc": "2026-10-26T21:04:40.020323+00:00",
+    "source_years_checked": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "2026"
+    ],
+    "source_year_sha256": {
+      "2021": "ea30ae06fab7734ada518b974aacf55bea3cde41ff569f1135c9d05f79cc9aee",
+      "2022": "e4bab3987820ecdded8895648ac7bcbdac2539410fc5d4a9901febb6f95b114c",
+      "2023": "fa45622d678b17176c8b950d09872538dd765a684b16e1910a3ede4e75664bfb",
+      "2024": "c408f36f191e2e3f7f1ce0de26b5ce828c48403b0dc5904c5751170ba0affc39",
+      "2025": "73a9a93ee2fbd3ebfe155fe67b7d6dca2edd8d55bbbc4729ba5c347173fbf038",
+      "2026": "43cae11e933e6605dc7bb697970a61cdf4be4e409a7c4f31cdb2cca3b66586af"
+    },
+    "source_seasons_not_available": [],
+    "new_settled_rows_appended": 0,
+    "new_rows_by_tour": {},
+    "unsettled_future_or_invalid_rows_skipped": 0,
+    "existing_rows_rewritten": 0,
+    "policy": "Append unseen settled match IDs from all available seasons; never revise existing rows."
+  }
 }

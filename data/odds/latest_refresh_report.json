@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-10-27",
-  "checked_at_utc": "2026-10-26T20:53:59Z",
+  "checked_at_utc": "2026-10-26T21:04:40Z",
   "latest_source_check": {
     "source": "Valuebetennis ATP/WTA yearly match and odds CSVs",
     "window_from": "2026-09-27",
@@ -11,6 +11,20 @@
     "latest_settled_match_date": "2026-10-26",
     "raw_rows": 470167,
     "raw_file_sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea"
+  },
+  "all_season_source_scan": {
+    "source": "Valuebetennis ATP/WTA yearly match and odds CSVs",
+    "seasons_checked": [2021, 2022, 2023, 2024, 2025, 2026],
+    "missing_settled_match_ids_appended": 0,
+    "existing_rows_rewritten": 0,
+    "source_year_sha256": {
+      "2021": "ea30ae06fab7734ada518b974aacf55bea3cde41ff569f1135c9d05f79cc9aee",
+      "2022": "e4bab3987820ecdded8895648ac7bcbdac2539410fc5d4a9901febb6f95b114c",
+      "2023": "fa45622d678b17176c8b950d09872538dd765a684b16e1910a3ede4e75664bfb",
+      "2024": "c408f36f191e2e3f7f1ce0de26b5ce828c48403b0dc5904c5751170ba0affc39",
+      "2025": "73a9a93ee2fbd3ebfe155fe67b7d6dca2edd8d55bbbc4729ba5c347173fbf038",
+      "2026": "43cae11e933e6605dc7bb697970a61cdf4be4e409a7c4f31cdb2cca3b66586af"
+    }
   },
   "current_dataset_ranges": {
     "pinned_match_archive": {
@@ -33,6 +47,7 @@
   },
   "checks": {
     "odds_export_manifest": "passed",
+    "all_available_odds_seasons_scanned": "passed",
     "recent_feature_supplements_and_temporal_guards": "passed",
     "append_only_preservation": "passed",
     "recent_snapshot_integrity": "passed"
@@ -40,6 +55,6 @@
   "notes": [
     "The Oct. 27 provider row is unfinished and was excluded from settled match features.",
     "The main historical match archive remains pinned to its existing source revision; the recent feature snapshot extends coverage beyond it.",
-    "No new settled rows were available in the checked 30-day window, so existing match data bytes were not changed."
+    "No new settled rows were available in either the checked 30-day window or the all-season source scan, so existing match data bytes were not changed."
   ]
 }
