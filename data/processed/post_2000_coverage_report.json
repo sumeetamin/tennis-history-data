@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-26T15:15:04+00:00",
+  "generated_utc": "2026-10-26T15:41:06+00:00",
   "event_date_inclusive": "2000-01-01",
   "source_database": {
     "path": "data/processed/tennis.sqlite",
@@ -332,5 +332,19 @@
   "limitations": [
     "Coverage counts describe records present in the pinned archive and do not establish tournament completeness.",
     "The source archive has uneven Challenger and ITF/Futures coverage, and many lower-tier matches lack serve statistics."
-  ]
+  ],
+  "additional_2025_consensus_odds": {
+    "source_rows": 5791,
+    "linked_archive_rows": 4957,
+    "model_feature_rows": 4802,
+    "model_rows_by_tour": {
+      "atp": 2479,
+      "wta": 2323
+    },
+    "model_rows_with_best_close_pair": 4720,
+    "report_path": "data/odds/multi_bookmaker_consensus_2025_report.json",
+    "report_sha256": "ce0a8033f569865487ef3ee1ff4d8251bb14e70e17a4bc0589f30b3dbc9766af",
+    "coverage_note": "Additional market source for already archived 2025-season matches; do not add these rows to the historical match count.",
+    "market_timing": "Opening/closing labels are publisher-reported; quote timestamps are unavailable and have not been independently verified."
+  }
 }

@@ -18,6 +18,8 @@ This inventory is a starting point, not a guarantee of completeness. Confirm cur
 
 ## Coverage policy
 
+An additional imported source is **[minmaxxxer, ATP and WTA 2025 closing odds and results](https://huggingface.co/datasets/minmaxxxer/atp-wta-closing-odds-2025)**, pinned at `9d8b6a741f8b26c2386e5556b4b1cc9cf6afd188`. Its dataset card declares CC BY 4.0 and is preserved with the 5,791-row raw CSV. This source adds publisher-reported opening/closing market consensus and bookmaker coverage for a 2025 sample. It has no individual quote timestamps and contains extreme best-price outliers; those are flagged and filtered in the derived model export. See [source attribution, link policy and validation](../data/odds/README.md#2025-consensus-odds-from-multiple-bookmakers). It contributes a second market view rather than new match-history coverage.
+
 "Since the beginning" means the earliest verifiable record per tour, tier, event, and field, not a single universal start date. The Open Era begins in 1968, but some professional events, tours, rankings, and statistics have different histories. The initial archive has partial ITF coverage, so it cannot by itself satisfy a complete ITF-history goal. Challenger and ITF depth is especially uneven across eras. Publish a coverage report with the oldest and newest records and completeness rates for each data family.
 
 ## Before ingesting a source

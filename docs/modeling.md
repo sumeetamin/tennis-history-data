@@ -54,7 +54,15 @@ Walkovers, retirements, defaults, abandoned/unknown outcomes, invalid dates/play
 
 The export includes top-tier and lower-tier singles plus older ATP amateur records. Select the population your model is meant to predict, and report scores by tour, level, year and available player history. The example defaults to ATP tour rows. A player with no prior history has Elo 1500, zero counts and missing historical rates.
 
-The data are incomplete, especially for older/lower-tier statistics and biographical details. A frozen archive can contain later corrections to historical records. Results do not establish profitable betting performance; odds and costs are absent.
+The data are incomplete, especially for older/lower-tier statistics and biographical details. A frozen archive can contain later corrections to historical records. Results do not establish profitable betting performance; odds cover only a subset, and transaction costs and historical bet executability are not established.
+
+## 2025 consensus odds supplement
+
+`data/odds/model_features_with_consensus_odds_2025.csv.gz` adds a second market source to 4,802 historical feature rows (2,479 ATP, 2,323 WTA). Source season 2025 includes late-December 2024 events, so the builder joins both yearly feature partitions. Historical feature columns are copied unchanged. `odds_2025_*` probabilities and prices are aligned using matched archive player IDs, independently of the result. `p1_won` is still the target; source identifiers, names, and quality flags are audit metadata. Raw source result, score, and `favorite_won` fields are deliberately absent from this model export.
+
+Opening/closing labels are the publisher's claims; the sample has no individual quote timestamps to independently prove those availability times. For an opening-time forecast, omit closing prices/probabilities, line movement, and other close/snapshot-derived market summaries (including bookmaker count and margin). Closing data can only support an immediately-pre-match scenario under the publisher's timing assumption. Fair odds are margin-removed consensus values, not executable bookmaker prices.
+
+Both sources must report a completed match for model inclusion; two archive-feature candidates were omitted because the odds source reports retirement. A best-close price that is nonfinite, at most 1, or more than twice its corresponding fair closing odds flags the whole pair. Both best-close fields are blank for those 82 model rows; source values remain in the raw CSV and audit crosswalk. This is a heuristic anomaly filter, not proof that unflagged prices were executable or pre-match. Counts, hashes and every-row validation results are in the consensus reports under `data/odds/`.
 
 ## Validation
 

@@ -42,3 +42,35 @@ Rebuild or refresh the combined export with:
 ```powershell
 python scripts/fetch_valuebetennis_odds.py
 ```
+
+## 2025 consensus odds from multiple bookmakers
+
+`sources/atp_wta_2025_closing_odds.csv` preserves all 5,791 source rows from **minmaxxxer, ATP and WTA 2025 closing odds and results**, published with **CC BY 4.0** metadata on [Hugging Face](https://huggingface.co/datasets/minmaxxxer/atp-wta-closing-odds-2025). The pinned revision is `9d8b6a741f8b26c2386e5556b4b1cc9cf6afd188`. The original dataset card is preserved in `sources/consensus_2025_UPSTREAM_README.md`; the report records source URLs, retrieval date and SHA-256. Season 2025 spans source match dates 2024-12-27 through 2025-12-21. This sample supplements the existing market data; it does not establish complete tournament coverage or extend odds before 2021.
+
+The source reports opening/closing consensus probabilities and fair decimal odds, best closing prices, bookmaker counts, margin and line movement. The publisher describes removing each bookmaker's margin proportionally and taking the median across bookmaker brands. Fair odds are synthetic consensus prices, not executable quotes. Individual quote timestamps are unavailable; opening/closing timing is publisher-reported and not independently verified here.
+
+Two additional files make the sample usable with this archive:
+
+| File | Rows | Contents and ordering |
+|---|---:|---|
+| `multi_bookmaker_consensus_2025.csv.gz` | 4,957 | Audit crosswalk keyed by `record_id`. All market p1/p2 fields retain source player1/player2 order. `source_player1_archive_id` / `source_player2_archive_id` give the explicit Sackmann mapping. Includes outcome fields for auditing, so do not use it directly as a predictor matrix. |
+| `model_features_with_consensus_odds_2025.csv.gz` | 4,802 | Existing 2024/2025 historical features with the added `odds_2025_*` prices and probabilities converted to model `p1_id` / `p2_id` order. Counts: 2,479 ATP and 2,323 WTA. `p1_won` is the target. |
+
+Links require the same tour, matching abbreviated surname/first-initial pairs, a unique nearest event date within 14 days, and agreement on winner and every set's games (tiebreak detail is ignored). Exact normalized event titles are preferred (3,682 links); title fallbacks retain all other checks (1,275 links). Ambiguous matches, collisions without a unique nearest source row, and source-player IDs mapping to multiple archive IDs are excluded. Abbreviated names are weaker evidence than a shared authoritative player ID; the crosswalk records its matching method. Unmatched source records remain available in the original file.
+
+The model export requires both a historical feature row and agreement that the match completed. Two otherwise eligible archive rows were excluded because the source marks retirement. Its player orientation uses mapped player IDs. Original historical features are preserved unchanged; source final score, result and `favorite_won` are not copied into it.
+
+Quality audit: 131 of the 5,791 raw source price pairs are flagged: 129 contain a best-close price above twice the corresponding consensus fair odds, and two contain an invalid price. The ratio limit is a suspicious-price heuristic, not proof of a source error. Raw data and audit links preserve these values. For the 82 affected model rows, both best-close fields are blank and `odds_2025_best_close_pair_available` is 0; `odds_2025_best_close_quality_flags` explains the omission. Missing best prices are handled the same way. No individual quote timestamps establish that even an unflagged best price was available before play or executable.
+
+Use source-reported opening columns only for an opening-time forecast. Closing columns, line movement and snapshot summaries such as bookmaker counts/margins belong only to a forecast at the relevant later time. See [modeling notes](../../docs/modeling.md) for the availability assumptions.
+
+Rebuild and validate every new record from the tracked raw source and locally rebuilt SQLite archive:
+
+```powershell
+python scripts/build_2025_consensus_odds.py
+python scripts/verify_2025_consensus_odds.py
+```
+
+`multi_bookmaker_consensus_2025_report.json` records counts, input/output hashes and policies; `consensus_2025_validation_report.json` records full-row verification. This is a pinned historical sample, not a daily-updated feed.
+
+Attribution: **minmaxxxer, ATP and WTA 2025 closing odds and results, CC BY 4.0**, https://huggingface.co/datasets/minmaxxxer/atp-wta-closing-odds-2025; license https://creativecommons.org/licenses/by/4.0/. Changes: matched archive records, converted market player ordering, and filtered flagged best-price pairs in the model export. Both derived files additionally contain Sackmann data and retain its CC BY-NC-SA 4.0 obligations.

@@ -65,3 +65,7 @@ A separate append-only recent model feature file contains 5,789 rows from 2026-0
 - Regenerate this report after rebuilding the SQLite database and refreshing odds/crosswalk inputs with `python scripts/profile_coverage.py`.
 
 Report source database SHA-256: `35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d`.
+
+## Additional 2025 consensus odds
+
+A separate attributed sample contributes 5,791 raw odds rows, 4,957 archive links, and 4,802 aligned model rows. These overlap existing match history and are not additional historical matches. Only 4,720 model rows retain best-close pairs after the documented anomaly filter. Opening/closing timing is publisher-reported, without independently verified quote timestamps. See [odds notes](../data/odds/README.md#2025-consensus-odds-from-multiple-bookmakers) and its source/validation reports.

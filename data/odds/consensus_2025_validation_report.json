@@ -1,0 +1,15 @@
+{
+  "validated_utc": "2026-10-26T15:40:54+00:00",
+  "source_rows": 5791,
+  "archive_links_checked": 4957,
+  "model_rows_checked": 4802,
+  "source_player_aliases_checked": 666,
+  "model_rows_by_tour": {
+    "atp": 2479,
+    "wta": 2323
+  },
+  "model_rows_with_best_close_pair_blanked": 82,
+  "report_sha256": "ce0a8033f569865487ef3ee1ff4d8251bb14e70e17a4bc0589f30b3dbc9766af",
+  "scope": "Full source/archive links, unique IDs and aliases, result agreement, unchanged historical features, ID-based market orientation, best-price filtering, file hashes. Source quote timing is not independently verified.",
+  "passed": true
+}

@@ -24,6 +24,7 @@ This repository contains the source data, not just links or a scraper template.
 - Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)
 - Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
 - Pre-match model rows with odds: `data/odds/model_features_with_odds.csv.gz` (p1/p2-aligned prices; `p1_won` is the target)
+- 2025 consensus odds supplement: `data/odds/model_features_with_consensus_odds_2025.csv.gz` (4,802 feature rows with source-reported opening/closing consensus prices aligned to p1/p2; see quality flags and timing limits in the odds notes)
 - Recent post-archive model rows: `data/odds/recent_model_features.csv.gz` (settled matches beyond June 2026; strictly mapped identities, pre-match history and odds)
 - Recent match ranking supplement: `data/odds/recent_ranking_fallbacks.csv.gz` (weekly rankings aligned by `record_id`, with snapshot dates/ages)
 - Recent player profile context: `data/odds/recent_player_profiles.csv.gz` (age at match date, profile height and hand with field-level provenance)
@@ -49,6 +50,8 @@ python scripts/fetch_sackmann.py
 python scripts/build_dataset.py
 python scripts/build_features.py
 python scripts/partition_features.py
+python scripts/build_2025_consensus_odds.py
+python scripts/verify_2025_consensus_odds.py
 python scripts/build_rank_fallbacks.py
 python scripts/fetch_wikidata_profiles.py
 python scripts/fetch_valuebetennis_odds.py
@@ -86,4 +89,6 @@ Changes made here: exact duplicate match payload removal, normalized SQLite tabl
 
 Sackmann source and derivatives: **CC BY-NC-SA 4.0**, attribution required, non-commercial use, share-alike; see [DATA_LICENSE.md](DATA_LICENSE.md). The separately sourced Valuebetennis odds file is **CC BY 4.0**; see [its data notes](data/odds/README.md) for attribution.
 Project-authored Python code: MIT; see [LICENSE](LICENSE).
+
+The separately attributed 2025 consensus odds sample from minmaxxxer is also marked **CC BY 4.0** by its publisher. Its crosswalk and feature exports combine it with Sackmann data and retain both sources' terms. See [odds notes](data/odds/README.md).
 

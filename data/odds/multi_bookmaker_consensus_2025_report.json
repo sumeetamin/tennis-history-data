@@ -1,0 +1,86 @@
+{
+  "generated_utc": "2026-10-26T15:40:44+00:00",
+  "source": {
+    "provider": "minmaxxxer",
+    "dataset": "ATP and WTA 2025 closing odds and results",
+    "url": "https://huggingface.co/datasets/minmaxxxer/atp-wta-closing-odds-2025",
+    "revision": "9d8b6a741f8b26c2386e5556b4b1cc9cf6afd188",
+    "license": "CC BY 4.0",
+    "attribution": "Data compiled by minmaxxxer from publicly available match and odds information; dataset card CC BY 4.0.",
+    "raw_file": "data/odds/sources/atp_wta_2025_closing_odds.csv",
+    "raw_sha256": "05ad12b646e55eba9b626b2860cfb98dd6fc869c173e3b9d7dec2016bfb58c20",
+    "download_url": "https://huggingface.co/datasets/minmaxxxer/atp-wta-closing-odds-2025/resolve/9d8b6a741f8b26c2386e5556b4b1cc9cf6afd188/atp_wta_2025_closing_odds.csv",
+    "retrieved_utc_date": "2026-10-26",
+    "source_card_file": "data/odds/sources/consensus_2025_UPSTREAM_README.md",
+    "source_card_sha256": "71f89618594c4526e1db84b0ca903aef9542f55d5cfbb65d71c2af3a2729e537",
+    "raw_rows": 5791,
+    "date_range": [
+      "2024-12-27",
+      "2025-12-21"
+    ],
+    "rows_by_tour": {
+      "ATP": 2949,
+      "WTA": 2842
+    },
+    "rows_by_status": {
+      "finished": 5553,
+      "retired": 196,
+      "walkover": 42
+    },
+    "best_close_pairs_flagged": 131
+  },
+  "join_policy": {
+    "identity": "tour plus abbreviated surname/initial pair",
+    "maximum_event_date_gap_days": 14,
+    "requires_winner_and_full_set_score_agreement": true,
+    "tiebreak_detail_compared": false,
+    "source_player_ids_mapping_to_multiple_archive_ids_excluded": true,
+    "exact_normalized_tournament_name_preferred": true,
+    "one_to_one_source_and_archive_links": true,
+    "ambiguous_matches_excluded": true
+  },
+  "counts": {
+    "ambiguous_nearest_archive_match": 1,
+    "best_close_pair_flagged": 84,
+    "event_title_fallback": 1275,
+    "exact_event_title": 3682,
+    "linked_rows": 4957,
+    "linked_with_model_feature": 4802,
+    "model_excluded_noncompleted_or_status_disagreement": 2,
+    "no_player_pair_and_date_candidate": 663,
+    "source_rows": 5791,
+    "unusable_tour_or_player_identity": 109,
+    "winner_or_full_set_score_mismatch": 61
+  },
+  "output": {
+    "path": "data/odds/multi_bookmaker_consensus_2025.csv.gz",
+    "sha256": "98938e4e64372b7a5002b52e8469a9b46f41bf5e810dca127d0c8993cf995dcc",
+    "bytes": 679351
+  },
+  "model_feature_output": {
+    "path": "data/odds/model_features_with_consensus_odds_2025.csv.gz",
+    "rows": 4802,
+    "sha256": "42516430c553848f17babf12479136c375c07de7faa9f9d92beb31aec47bc638",
+    "bytes": 1671523
+  },
+  "inputs": {
+    "sqlite_sha256": "35b55c959930a671034d9217c6e428b532a08a51b789c673e8b22d0a011bec0d",
+    "feature_files": {
+      "data/processed/model_features_by_year/model_features_2024.csv.gz": "2aa58bf3e3bf52bf52e4834e4523f546bdaed827a370ac3f74ef5674b01d091c",
+      "data/processed/model_features_by_year/model_features_2025.csv.gz": "942b508c39f0b35ff55de867c254e182cac1f9ceae6c9645730e72c486442736"
+    }
+  },
+  "model_rows_by_tour": {
+    "atp": 2479,
+    "wta": 2323
+  },
+  "model_rows_with_best_close_pair": 4720,
+  "market_timing": "Opening/closing labels are publisher-reported; quote timestamps are unavailable and have not been independently verified.",
+  "best_close_filter": "Retain raw values; blank both best-close prices in model export when either price is invalid or exceeds twice its corresponding fair closing odds. This heuristic does not establish executability or pre-match timing.",
+  "conflicting_source_player_ids": 0,
+  "limitations": [
+    "The source is a 2025 sample and does not extend the repository's historical odds start date.",
+    "Only source matches with an unambiguous archive candidate and exact winner/set-score agreement are linked.",
+    "The linked odds crosswalk preserves source player1/player2 order; the separate model feature export reorients prices to p1/p2."
+  ]
+}

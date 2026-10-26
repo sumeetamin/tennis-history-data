@@ -24,6 +24,8 @@ does not replace or expand the data license.
 
 ## Other source datasets and mixed-source exports
 
+The raw 2025 consensus odds CSV and upstream dataset card under `data/odds/sources/` are attributed to **minmaxxxer, ATP and WTA 2025 closing odds and results**, published with **CC BY 4.0** metadata at [Hugging Face](https://huggingface.co/datasets/minmaxxxer/atp-wta-closing-odds-2025). Source revision: `9d8b6a741f8b26c2386e5556b4b1cc9cf6afd188`; license: https://creativecommons.org/licenses/by/4.0/. Raw bytes are preserved; the linked and model exports add matching, player-order conversion, and flagged best-price filtering. Both the crosswalk and model export contain Sackmann-derived records and retain the CC BY-NC-SA 4.0 obligations as well as minmaxxxer's CC BY 4.0 attribution. The dataset card and checksums are preserved alongside the sample and in its report.
+
 The Valuebetennis odds files are separately licensed under CC BY 4.0 and require attribution to Valuebetennis. The odds-enriched feature export combines those odds with Sackmann-derived features; preserve both sources' attribution and license terms. See `data/odds/README.md` for the exact scope and file-level notes. Do not assume every file in the repository has only the license stated above.
 
 The player-profile supplement uses Wikidata structured facts, released under CC0. Its `tour`, `player_id`, and `wikidata_id` keys are carried from the Sackmann rosters, so the file remains a mixed-source derivative and the roster-derived identifiers retain the CC BY-NC-SA 4.0 obligations. See `data/processed/supplements/player_profile_enrichment_report.json` for source URL, item revisions and checksums.

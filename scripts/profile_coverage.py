@@ -178,7 +178,21 @@ def main():
             'The source archive has uneven Challenger and ITF/Futures coverage, and many lower-tier matches lack serve statistics.',
         ],
     }
-    OUT.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    consensus_path = ROOT / 'data/odds/multi_bookmaker_consensus_2025_report.json'
+    if consensus_path.exists():
+        consensus = json.loads(consensus_path.read_text(encoding='utf-8'))
+        report['additional_2025_consensus_odds'] = {
+            'source_rows': consensus['source']['raw_rows'],
+            'linked_archive_rows': consensus['counts']['linked_rows'],
+            'model_feature_rows': consensus['model_feature_output']['rows'],
+            'model_rows_by_tour': consensus['model_rows_by_tour'],
+            'model_rows_with_best_close_pair': consensus['model_rows_with_best_close_pair'],
+            'report_path': consensus_path.relative_to(ROOT).as_posix(),
+            'report_sha256': sha256(consensus_path),
+            'coverage_note': 'Additional market source for already archived 2025-season matches; do not add these rows to the historical match count.',
+            'market_timing': consensus['market_timing'],
+        }
+    OUT.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8', newline='\n')
     lines = [
         '# Post-2000 data completeness', '',
         f"Measured from the pinned archive for event dates on/after {START_DATE}. The archive currently contains **{sum(row['matches'] for row in matches):,}** match rows across the tiers listed below. These are source-record counts, not proof that every real-world event is present.", '',
@@ -243,7 +257,11 @@ def main():
         '- Regenerate this report after rebuilding the SQLite database and refreshing odds/crosswalk inputs with `python scripts/profile_coverage.py`.', '',
         f"Report source database SHA-256: `{sha256(DB)}`.",
     ]
-    DOC.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    if 'additional_2025_consensus_odds' in report:
+        extra = report['additional_2025_consensus_odds']
+        lines += ['', '## Additional 2025 consensus odds', '',
+                  f"A separate attributed sample contributes {extra['source_rows']:,} raw odds rows, {extra['linked_archive_rows']:,} archive links, and {extra['model_feature_rows']:,} aligned model rows. These overlap existing match history and are not additional historical matches. Only {extra['model_rows_with_best_close_pair']:,} model rows retain best-close pairs after the documented anomaly filter. Opening/closing timing is publisher-reported, without independently verified quote timestamps. See [odds notes](../data/odds/README.md#2025-consensus-odds-from-multiple-bookmakers) and its source/validation reports.", '']
+    DOC.write_text('\n'.join(lines).rstrip() + '\n', encoding='utf-8')
     print(json.dumps({
         'report': OUT.relative_to(ROOT).as_posix(),
         'documentation': DOC.relative_to(ROOT).as_posix(),
