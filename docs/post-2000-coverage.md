@@ -37,6 +37,17 @@ The main yearly feature files remain unchanged; join the supplement on `record_i
 
 Player completeness is measured among unique player IDs appearing in post-2000 archive matches. It is not the percentage of all professional players identified.
 
+## CC0 player-profile supplement
+
+The roster tables above show values present in the pinned archive. A separate supplement uses only existing Wikidata IDs and fills only missing/invalid birth dates or heights. It does not alter the source player files. Birth dates require day precision; heights are converted to centimeters and restricted to 130–230 cm. Conflicting Wikidata values are omitted.
+
+| Tour | Birth dates added | DOB coverage after supplement | Heights added | Height coverage after supplement |
+|---|---:|---:|---:|---:|
+| atp | 0 | 19,493 (93.7%) | 67 | 2,996 (14.4%) |
+| wta | 0 | 17,143 (80.5%) | 131 | 1,197 (5.6%) |
+
+The supplement is keyed by `(tour, player_id)` and is licensed CC0 for Wikidata structured facts; its player IDs are derived from the Sackmann rosters and retain those source obligations. Height is a player profile value, not a historical height-at-match value. See `data/processed/supplements/player_profile_enrichment_report.json` for hashes, revision IDs and field counts.
+
 ## Odds coverage
 
 The separately attributed odds CSV contains **470,167** singles rows with dates from 2021-01-01 to 2026-10-27, with 135,343 strict links to archive matches. The crosswalk requires exact normalized tour, event and player pair, a unique nearest event date, and agreeing winner and score. It intentionally omits unverified candidates.

@@ -1,6 +1,7 @@
 """Measure post-2000 match-stat and player-profile completeness from SQLite."""
 import hashlib
 import csv
+import gzip
 import json
 import sqlite3
 from datetime import datetime, timezone
@@ -15,6 +16,8 @@ ODDS_MANIFEST = ROOT / 'data/odds/valuebetennis_manifest.json'
 LINK_REPORT = ROOT / 'data/odds/odds_link_report.json'
 ODDS_FEATURE_REPORT = ROOT / 'data/odds/model_features_with_odds_report.json'
 RANK_FALLBACK_REPORT = ROOT / 'data/processed/supplements/ranking_fallbacks_report.json'
+PROFILE_ENRICHMENT = ROOT / 'data/processed/supplements/player_profile_enrichment.csv.gz'
+PROFILE_ENRICHMENT_REPORT = ROOT / 'data/processed/supplements/player_profile_enrichment_report.json'
 VALIDATION_REPORT = ROOT / 'data/processed/validation_report.json'
 START_DATE = '2000-01-01'
 
@@ -78,6 +81,28 @@ def main():
                 **{field: row[field] for field in fields},
                 **{field + '_pct': percentage(row[field], total) for field in fields},
             })
+        appearance_ids = {(row[0], row[1]) for row in db.execute('''
+            SELECT tour,winner_id AS player_id FROM matches WHERE event_date>=?
+            UNION SELECT tour,loser_id FROM matches WHERE event_date>=?
+        ''', (START_DATE, START_DATE))}
+
+    enriched_players = {}
+    with gzip.open(PROFILE_ENRICHMENT, 'rt', encoding='utf-8', newline='') as stream:
+        for row in csv.DictReader(stream):
+            key = (row['tour'], row['player_id'])
+            if key not in appearance_ids:
+                continue
+            fields = enriched_players.setdefault(row['tour'], {'date_of_birth': 0, 'height': 0})
+            fields['date_of_birth'] += bool(row['date_of_birth_fallback'])
+            fields['height'] += bool(row['height_cm_fallback'])
+    profile_enrichment_report = json.loads(PROFILE_ENRICHMENT_REPORT.read_text(encoding='utf-8'))
+    for profile in profiles:
+        additions = enriched_players.get(profile['tour'], {})
+        for field in ('date_of_birth', 'height'):
+            added = additions.get(field, 0)
+            profile[f'{field}_wikidata_added'] = added
+            profile[f'{field}_after_wikidata'] = profile[field] + added
+            profile[f'{field}_after_wikidata_pct'] = percentage(profile[f'{field}_after_wikidata'], profile['players'])
 
     odds_dates = []
     with ODDS.open(encoding='utf-8-sig', newline='') as stream:
@@ -108,6 +133,13 @@ def main():
         'source_database': {'path': 'data/processed/tennis.sqlite', 'sha256': sha256(DB)},
         'match_coverage_by_tour_and_tier': matches,
         'player_profile_completeness_for_players_with_post_2000_matches': profiles,
+        'wikidata_profile_enrichment': {
+            'license': profile_enrichment_report['license'],
+            'requested_unique_entities': profile_enrichment_report['requested_unique_entities'],
+            'output': profile_enrichment_report['output'],
+            'post_2000_player_fields_added': enriched_players,
+            'policy': profile_enrichment_report['policy'],
+        },
         'separate_odds_dataset': odds_coverage,
         'weekly_ranking_fallbacks': {
             'rows_with_at_least_one_fallback': rank_fallback_report['rows_with_at_least_one_fallback'],
@@ -168,6 +200,18 @@ def main():
         )
     lines += [
         '', 'Player completeness is measured among unique player IDs appearing in post-2000 archive matches. It is not the percentage of all professional players identified.', '',
+        '## CC0 player-profile supplement', '',
+        'The roster tables above show values present in the pinned archive. A separate supplement uses only existing Wikidata IDs and fills only missing/invalid birth dates or heights. It does not alter the source player files. Birth dates require day precision; heights are converted to centimeters and restricted to 130–230 cm. Conflicting Wikidata values are omitted.', '',
+        '| Tour | Birth dates added | DOB coverage after supplement | Heights added | Height coverage after supplement |',
+        '|---|---:|---:|---:|---:|',
+    ]
+    for row in profiles:
+        lines.append(
+            f"| {row['tour']} | {row['date_of_birth_wikidata_added']:,} | {row['date_of_birth_after_wikidata']:,} ({row['date_of_birth_after_wikidata_pct']:.1f}%) | "
+            f"{row['height_wikidata_added']:,} | {row['height_after_wikidata']:,} ({row['height_after_wikidata_pct']:.1f}%) |"
+        )
+    lines += [
+        '', 'The supplement is keyed by `(tour, player_id)` and is licensed CC0 for Wikidata structured facts; its player IDs are derived from the Sackmann rosters and retain those source obligations. Height is a player profile value, not a historical height-at-match value. See `data/processed/supplements/player_profile_enrichment_report.json` for hashes, revision IDs and field counts.', '',
         '## Odds coverage', '',
         f"The separately attributed odds CSV contains **{odds_coverage['rows']:,}** singles rows with dates from {odds_coverage['first_match_date']} to {odds_coverage['last_match_date']}, with {odds_coverage['strict_archive_links']:,} strict links to archive matches. The crosswalk requires exact normalized tour, event and player pair, a unique nearest event date, and agreeing winner and score. It intentionally omits unverified candidates.",
         f"The validation report classifies score states as `{json.dumps(odds_coverage['score_state_counts'], sort_keys=True)}` and currently flags {len(odds_coverage['future_dated_rows'])} future-dated row(s) as of the last validator run. Filter these rows and nonterminal/unknown score states for modeling.", '',

@@ -26,3 +26,5 @@ does not replace or expand the data license.
 
 The Valuebetennis odds files are separately licensed under CC BY 4.0 and require attribution to Valuebetennis. The odds-enriched feature export combines those odds with Sackmann-derived features; preserve both sources' attribution and license terms. See `data/odds/README.md` for the exact scope and file-level notes. Do not assume every file in the repository has only the license stated above.
 
+The player-profile supplement uses Wikidata structured facts, released under CC0. Its `tour`, `player_id`, and `wikidata_id` keys are carried from the Sackmann rosters, so the file remains a mixed-source derivative and the roster-derived identifiers retain the CC BY-NC-SA 4.0 obligations. See `data/processed/supplements/player_profile_enrichment_report.json` for source URL, item revisions and checksums.
+

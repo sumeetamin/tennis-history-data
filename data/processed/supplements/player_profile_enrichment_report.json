@@ -1,0 +1,55 @@
+{
+  "generated_utc": "2026-10-26T14:12:45+00:00",
+  "source": "Wikidata structured data, fetched through the MediaWiki Action API",
+  "source_url": "https://www.wikidata.org/w/api.php",
+  "license": "CC0 for structured data",
+  "attribution": "Wikidata contributors; attribution is appreciated. Player IDs and Wikidata IDs come from the Sackmann CC BY-NC-SA 4.0 rosters.",
+  "policy": {
+    "only_existing_roster_wikidata_ids": true,
+    "only_fills_source_missing_or_invalid_fields": true,
+    "birth_date_requires_day_precision": true,
+    "birth_date_plausibility_range": [
+      "1850-01-01",
+      "2026-10-26"
+    ],
+    "height_units_normalized_to_cm": [
+      "Q11573",
+      "Q174728",
+      "Q174789",
+      "Q218593",
+      "Q3710"
+    ],
+    "height_plausibility_range_cm": [
+      130,
+      230
+    ],
+    "conflicting_best_ranked_values_excluded": true,
+    "original_roster_rows_modified": false
+  },
+  "requested_unique_entities": 4683,
+  "roster_input_sha256": {
+    "data/raw/sackmann-archive/atp/atp_players.csv": "89e81bb3a02561dee29afe53dbcdabe4ae22f725fb5d0303617366a57e3b7a83",
+    "data/raw/sackmann-archive/wta/wta_players.csv": "601a747a3e6e291d5ae8778b0e75f30db5536dbf9cd3d654a95d991311ad8870"
+  },
+  "counts": {
+    "batches_completed": 94,
+    "birth_date_conflicts": 25,
+    "birth_dates_filled": 8,
+    "birth_dates_filled_atp": 2,
+    "birth_dates_filled_wta": 6,
+    "height_conflicts": 0,
+    "heights_filled": 265,
+    "heights_filled_atp": 108,
+    "heights_filled_wta": 157,
+    "rows": 272,
+    "rows_atp": 109,
+    "rows_wta": 163
+  },
+  "request_retries": {},
+  "output": {
+    "path": "data/processed/supplements/player_profile_enrichment.csv.gz",
+    "rows": 272,
+    "bytes": 4425,
+    "sha256": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875"
+  }
+}

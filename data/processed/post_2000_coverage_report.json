@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-26T13:51:56+00:00",
+  "generated_utc": "2026-10-26T14:18:59+00:00",
   "event_date_inclusive": "2000-01-01",
   "source_database": {
     "path": "data/processed/tennis.sqlite",
@@ -95,7 +95,13 @@
       "height_pct": 14.07,
       "hand_pct": 99.96,
       "country_pct": 99.98,
-      "wikidata_id_pct": 13.23
+      "wikidata_id_pct": 13.23,
+      "date_of_birth_wikidata_added": 0,
+      "date_of_birth_after_wikidata": 19493,
+      "date_of_birth_after_wikidata_pct": 93.66,
+      "height_wikidata_added": 67,
+      "height_after_wikidata": 2996,
+      "height_after_wikidata_pct": 14.39
     },
     {
       "tour": "wta",
@@ -109,9 +115,57 @@
       "height_pct": 5.0,
       "hand_pct": 99.99,
       "country_pct": 100.0,
-      "wikidata_id_pct": 11.12
+      "wikidata_id_pct": 11.12,
+      "date_of_birth_wikidata_added": 0,
+      "date_of_birth_after_wikidata": 17143,
+      "date_of_birth_after_wikidata_pct": 80.46,
+      "height_wikidata_added": 131,
+      "height_after_wikidata": 1197,
+      "height_after_wikidata_pct": 5.62
     }
   ],
+  "wikidata_profile_enrichment": {
+    "license": "CC0 for structured data",
+    "requested_unique_entities": 4683,
+    "output": {
+      "path": "data/processed/supplements/player_profile_enrichment.csv.gz",
+      "rows": 272,
+      "bytes": 4425,
+      "sha256": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875"
+    },
+    "post_2000_player_fields_added": {
+      "wta": {
+        "date_of_birth": 0,
+        "height": 131
+      },
+      "atp": {
+        "date_of_birth": 0,
+        "height": 67
+      }
+    },
+    "policy": {
+      "only_existing_roster_wikidata_ids": true,
+      "only_fills_source_missing_or_invalid_fields": true,
+      "birth_date_requires_day_precision": true,
+      "birth_date_plausibility_range": [
+        "1850-01-01",
+        "2026-10-26"
+      ],
+      "height_units_normalized_to_cm": [
+        "Q11573",
+        "Q174728",
+        "Q174789",
+        "Q218593",
+        "Q3710"
+      ],
+      "height_plausibility_range_cm": [
+        130,
+        230
+      ],
+      "conflicting_best_ranked_values_excluded": true,
+      "original_roster_rows_modified": false
+    }
+  },
   "separate_odds_dataset": {
     "rows": 470167,
     "rows_by_tour": {

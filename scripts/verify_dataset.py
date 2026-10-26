@@ -24,6 +24,19 @@ def norm(value):
 def score_sets(value):
     return tuple((int(a),int(b)) for a,b in re.findall(r'(\d+)\s*[-–]\s*(\d+)',value or ''))
 
+def valid_source_dob(value):
+    try:
+        parsed=datetime.strptime(str(value or ''),'%Y%m%d').date()
+        return date(1850,1,1)<=parsed<=datetime.now(timezone.utc).date()
+    except ValueError:
+        return False
+
+def valid_source_height(value):
+    try:
+        return 130<=float(value)<=230
+    except (TypeError,ValueError):
+        return False
+
 manifest=json.loads((ROOT/'data/source_files.json').read_text(encoding='utf-8'))
 for item in manifest['files']:
     with (ROOT/'data/raw/sackmann-archive'/item['path']).open('rb') as src:
@@ -181,6 +194,54 @@ with gzip.open(rank_fallback_path,'rt',encoding='utf-8',newline='') as src:
 assert len(rank_fallbacks)==rank_fallback_report['output']['rows']
 assert len(rank_fallbacks)==rank_fallback_report['rows_with_at_least_one_fallback']
 
+# Validate Wikidata profile values against the existing roster IDs and missing fields.
+profile_enrichment_path=ROOT/'data/processed/supplements/player_profile_enrichment.csv.gz'
+profile_enrichment_report_path=ROOT/'data/processed/supplements/player_profile_enrichment_report.json'
+profile_enrichment_report=json.loads(profile_enrichment_report_path.read_text(encoding='utf-8'))
+assert sha256(profile_enrichment_path)==profile_enrichment_report['output']['sha256']
+assert profile_enrichment_path.stat().st_size==profile_enrichment_report['output']['bytes']
+source_hashes={item['path']:item['sha256'] for item in manifest['files']}
+expected_roster_hashes={path:source_hashes[path] for path in (
+    'atp/atp_players.csv','wta/wta_players.csv')}
+expected_roster_hashes={
+    f'data/raw/sackmann-archive/{path}':digest
+    for path,digest in expected_roster_hashes.items()
+}
+assert profile_enrichment_report['roster_input_sha256']==expected_roster_hashes
+profile_rows=0
+profile_dob_fills=0
+profile_height_fills=0
+profile_keys=set()
+with gzip.open(profile_enrichment_path,'rt',encoding='utf-8',newline='') as src:
+    for row in csv.DictReader(src):
+        key=(row['tour'],row['player_id'])
+        assert key not in profile_keys
+        profile_keys.add(key)
+        original=db.execute('SELECT wikidata_id,dob,height FROM players WHERE tour=? AND player_id=?',key).fetchone()
+        assert original is not None and original[0]==row['wikidata_id']
+        assert re.fullmatch(r'Q\d+',row['wikidata_id'])
+        assert int(row['wikidata_lastrevid'])>0
+        dob=row['date_of_birth_fallback']
+        height=row['height_cm_fallback']
+        if dob:
+            assert not valid_source_dob(original[1])
+            parsed=datetime.strptime(dob,'%Y-%m-%d').date()
+            assert date(1850,1,1)<=parsed<=datetime.now(timezone.utc).date()
+            profile_dob_fills+=1
+        if height:
+            try:
+                height_value=float(height)
+            except ValueError:
+                assert False, f'Invalid Wikidata height: {height}'
+            assert not valid_source_height(original[2])
+            assert height_value.is_integer() and 130<=height_value<=230
+            profile_height_fills+=1
+        assert dob or height
+        profile_rows+=1
+assert profile_rows==profile_enrichment_report['output']['rows']
+assert profile_dob_fills==profile_enrichment_report['counts']['birth_dates_filled']
+assert profile_height_fills==profile_enrichment_report['counts']['heights_filled']
+
 # Validate the optional pre-match feature table with prices in deterministic p1/p2 orientation.
 odds_feature_path=ROOT/'data/odds/model_features_with_odds.csv.gz'
 odds_feature_report=json.loads((ROOT/'data/odds/model_features_with_odds_report.json').read_text(encoding='utf-8'))
@@ -284,6 +345,9 @@ result['odds_feature_last_pre_match_pairs_checked']=odds_close_pairs
 result['ranking_fallback_rows_checked']=len(rank_fallbacks)
 result['ranking_fallback_rank_values_checked']=rank_fallback_rank_fills
 result['ranking_fallback_points_values_checked']=rank_fallback_points_fills
+result['wikidata_profile_enrichment_rows_checked']=profile_rows
+result['wikidata_birth_dates_checked']=profile_dob_fills
+result['wikidata_heights_checked']=profile_height_fills
 result['odds_feature_rank_sources_checked']=odds_feature_rows*2
 (out/'validation_report.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result,indent=2))

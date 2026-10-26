@@ -42,5 +42,8 @@
   "ranking_fallback_rows_checked": 51604,
   "ranking_fallback_rank_values_checked": 54155,
   "ranking_fallback_points_values_checked": 40954,
+  "wikidata_profile_enrichment_rows_checked": 272,
+  "wikidata_birth_dates_checked": 8,
+  "wikidata_heights_checked": 265,
   "odds_feature_rank_sources_checked": 261708
 }

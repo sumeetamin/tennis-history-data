@@ -20,6 +20,8 @@ For matches with a strict odds/archive/feature join, `data/odds/model_features_w
 
 The odds-enriched feature file applies these ranking fallbacks and includes `p1_rank_source`, `p1_rank_points_source`, `p1_rank_snapshot_date` and the corresponding `p2` fields. `weekly_snapshot` identifies a fallback; `match_record` means the original match row supplied the value; `missing` means neither source supplied it. A filled rank can still be stale relative to an exact match date because the archive usually records tournament start dates, not match timestamps.
 
+`data/processed/supplements/player_profile_enrichment.csv.gz` adds missing/invalid birth dates and heights for roster entries that already have a matching Wikidata ID. Join on `(tour, player_id)`. Its structured facts are CC0; the player IDs are carried from the Sackmann rosters, whose source obligations still apply. This supplement is player metadata and is not automatically added to match features. For age, calculate it from birth date and the historical event date; do not use a present-day age. Height is not verified as a historical measurement for each match.
+
 ## Timing
 
 Source dates are generally tournament start dates, not match timestamps. Historical outcomes and serve statistics enter features only when their tournament date is **strictly more than 28 days before** the row's tournament date. All matches from a single edition therefore receive history from before that edition; same-tournament rounds are never fed into one another.
