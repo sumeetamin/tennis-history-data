@@ -7,6 +7,7 @@ from collections import Counter
 from datetime import date, timedelta
 
 from build_curated_dataset import ROOT, OUT, DB, ODDS, LINKS, RANKS, read_gzip, sha, odds_fields, source_manifest_sha
+from build_recent_odds_features import norm
 from curated_quality import completed_result, decimal_price, orient_score, profile_height
 
 
@@ -30,6 +31,7 @@ def main():
     source_fields = [r[1] for r in db.execute('PRAGMA table_info(matches)')]
     archive_expected = {}
     players = {r['player_id']: r for r in read_gzip(OUT / 'players.csv.gz')}
+    archive_roster = [r for r in players.values() if r['source'] == 'sackmann']
     for player in players.values():
         require(not player['height_cm'] or profile_height(player['height_cm']) == player['height_cm'], 'Implausible player height: ' + player['player_id'])
     invalid_source_heights = {
@@ -38,8 +40,14 @@ def main():
         if r['height'] and not profile_height(r['height'])
     }
     seen, recent, counts, latest = set(), {}, Counter(), {}
+    candidate_ids = {r['candidate_key']: r for r in read_gzip(OUT / 'player_identity_candidates.csv.gz')}
+    linked_provider_ids = set()
+    linked_odds_match_ids = set()
+    for link in read_gzip(LINKS):
+        linked_provider_ids.add((link['genre'], link['joueur1_id']))
+        linked_provider_ids.add((link['genre'], link['joueur2_id']))
     links = {r['sackmann_record_id']: r for r in read_gzip(LINKS)}
-    linked_provider_ids = {r['match_id'] for r in links.values()}
+    linked_odds_match_ids = {r['match_id'] for r in links.values()}
     fallbacks = {r['record_id']: r for r in read_gzip(RANKS)}
     cutoff = {r[0]: date.fromisoformat(r[1]) for r in db.execute('SELECT tour,max(event_date) FROM matches GROUP BY tour')}
     both_ranked, both_serve, open_pairs, exact_dates, filled_rank_values = 0, 0, 0, 0, 0
@@ -88,7 +96,7 @@ def main():
                     require(row['match_date'] == links[rid]['date'][:10], 'Historical match date: ' + rid)
             else:
                 require(row['source'] == 'valuebetennis', 'Unknown source: ' + rid)
-                require(row['source_record_id'] not in linked_provider_ids, 'Cross-source duplicate: ' + rid)
+                require(row['source_record_id'] not in linked_odds_match_ids, 'Cross-source duplicate: ' + rid)
                 require(date.fromisoformat(row['event_date']) > cutoff[row['tour']] + timedelta(days=14), 'Archive overlap buffer: ' + rid)
                 require(row['date_precision'] == 'match_day' and row['match_date'] == row['event_date'], 'Recent date precision: ' + rid)
                 recent[row['source_record_id']] = row
@@ -109,6 +117,21 @@ def main():
         actual = source_fingerprint([str(original[k]) if original[k] is not None else '' for k in source_fields])
         require(archive_expected.pop(rid, None) == actual, 'Archive row missing or changed: ' + rid)
     require(not archive_expected, 'Curated archive IDs absent from source')
+    for key, candidate in candidate_ids.items():
+        require(key == ':'.join((candidate['tour'], candidate['source_player_id'], candidate['evidence_match_id'])), 'Candidate key mismatch')
+        require(candidate['candidate_status'] == 'unverified_name_only', 'Candidate status must remain unverified')
+        require((candidate['tour'], candidate['source_player_id']) not in linked_provider_ids, 'Candidate already has a crosswalk')
+        evidence_id = candidate['evidence_match_id'].removeprefix('vb:')
+        evidence = recent.get(evidence_id)
+        require(evidence is not None and evidence['event_date'] == candidate['evidence_match_date'], 'Candidate evidence match: ' + key)
+        sides = [side for side in ('winner', 'loser')
+                 if evidence[f'source_{side}_id'] == candidate['source_player_id']
+                 and norm(evidence[f'{side}_name']) == norm(candidate['source_name'])]
+        require(len(sides) == 1, 'Candidate does not match source identity: ' + key)
+        source_names = [candidate['source_name']]
+        target_ids = {p['player_id'] for p in archive_roster
+                      if p['tour'] == candidate['tour'] and any(norm(p['name']) == norm(name) for name in source_names)}
+        require(len(target_ids) == 1 and next(iter(target_ids)) == candidate['candidate_player_id'], 'Candidate is not unique in archive roster: ' + key)
     verified_recent = set()
     with ODDS.open(encoding='utf-8', newline='') as stream:
         for raw in csv.DictReader(stream):
@@ -125,6 +148,7 @@ def main():
     require(verified_recent == recent.keys(), 'Missing recent source rows')
     require(len(seen) == manifest['match_rows'] and dict(counts) == manifest['matches_by_source'], 'Total/source count')
     require(len(players) == manifest['player_rows'], 'Player count')
+    require(len(candidate_ids) == manifest['name_only_identity_candidate_rows'], 'Identity-candidate count')
     require(latest == manifest['latest_dates_by_source'], 'Latest source dates')
     issues = Counter()
     for row in read_gzip(OUT / 'issues.csv.gz'):
@@ -140,6 +164,7 @@ def main():
         paired_opening_odds=open_pairs, exact_match_dates=exact_dates,
         ranking_values_filled=filled_rank_values,
         issue_ledger_rows=sum(issues.values()),
+        identity_candidate_rows_checked=len(candidate_ids),
         profile_height_rows_checked=len(players),
         implausible_source_profile_heights_omitted=sum(pid in players and not players[pid]['height_cm'] for pid in invalid_source_heights),
         scope='Every exported row checked against local source values; IDs, date precision, rank timing, odds orientation, file hashes and counts. Does not prove source accuracy or exhaustive real-world coverage.')

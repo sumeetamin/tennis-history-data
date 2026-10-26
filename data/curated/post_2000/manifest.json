@@ -2,7 +2,7 @@
   "schema_version": 1,
   "as_of_date": "2026-10-27",
   "match_rows": 1262346,
-  "player_rows": 42587,
+  "player_rows": 42602,
   "matches_by_source": {
     "sackmann": 1255705,
     "valuebetennis": 6641
@@ -23,6 +23,7 @@
     "missing_detailed_match_statistics": 6641,
     "unresolved_archive_identity": 926
   },
+  "name_only_identity_candidate_rows": 125,
   "source_row_accounting": {
     "sackmann": 1255712,
     "valuebetennis_already_linked": 247884,
@@ -45,6 +46,7 @@
     "data/processed/supplements/ranking_fallbacks.csv.gz": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58",
     "data/processed/supplements/player_profile_enrichment.csv.gz": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875"
   },
+  "archive_source_manifest_lf_sha256": "568295797704108fa2ed6e773a805d7019bd637b1e579893ef4f9f466a3195c4",
   "files": [
     {
       "path": "matches/atp_2000.csv.gz",
@@ -372,13 +374,18 @@
     },
     {
       "path": "players.csv.gz",
-      "rows": 42587,
-      "bytes": 1071509,
-      "sha256": "8b23e1a7e4565f598984688dbc75be537c295ad0615995be4a9de97eec0490c6"
+      "rows": 42602,
+      "bytes": 1072095,
+      "sha256": "38c6456f493f7c65ffcb4ed60f90aa145c9bd68954b4c6ab2573ca10a98adc2b"
+    },
+    {
+      "path": "player_identity_candidates.csv.gz",
+      "rows": 125,
+      "bytes": 3398,
+      "sha256": "643f3fc047b21e3406381db0f24ad11b2bad52438727a18e4a4ef376b2f4bb4c"
     }
   ],
   "scope": "Post-2000 available singles results; not an exhaustive census. Archive dates are tournament starts. Recent results require a complete supported score, agreeing winner, and a 14-day archive-end buffer. Missing values are not imputed.",
   "append_policy": "Existing match and player rows are immutable. Changed source interpretations fail the rebuild and require a documented correction overlay.",
-  "license": "Combined derivative: CC BY-NC-SA 4.0; also credit Valuebetennis CC BY 4.0 and Wikidata CC0.",
-  "archive_source_manifest_lf_sha256": "568295797704108fa2ed6e773a805d7019bd637b1e579893ef4f9f466a3195c4"
+  "license": "Combined derivative: CC BY-NC-SA 4.0; also credit Valuebetennis CC BY 4.0 and Wikidata CC0."
 }

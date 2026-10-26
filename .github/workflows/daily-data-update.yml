@@ -74,7 +74,7 @@ jobs:
       - name: Commit only when new matches were added
         shell: bash
         run: |
-          if [ -z "$(git status --porcelain -- data/odds/atp_wta_match_odds.csv data/odds/recent_model_features.csv.gz data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_player_profiles.csv.gz data/odds/recent_odds_corrections.csv data/curated/post_2000/matches data/curated/post_2000/players.csv.gz)" ]; then
+          if [ -z "$(git status --porcelain -- data/odds/atp_wta_match_odds.csv data/odds/recent_model_features.csv.gz data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_player_profiles.csv.gz data/odds/recent_odds_corrections.csv data/curated/post_2000/matches data/curated/post_2000/players.csv.gz data/curated/post_2000/player_identity_candidates.csv.gz)" ]; then
             echo "No data changes; nothing to commit."
             exit 0
           fi

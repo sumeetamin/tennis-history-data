@@ -24,6 +24,7 @@ def main():
     curated = subprocess.check_output([
         'git', 'ls-tree', '-r', '--name-only', 'HEAD', '--',
         'data/curated/post_2000/matches', 'data/curated/post_2000/players.csv.gz',
+        'data/curated/post_2000/player_identity_candidates.csv.gz',
     ], cwd=ROOT, text=True).splitlines()
     for name in (*DATASETS, *curated):
         original = subprocess.check_output(['git', 'cat-file', 'blob', f'HEAD:{name}'], cwd=ROOT)

@@ -33,6 +33,9 @@ for SIDE in ('winner', 'loser'):
 PLAYER_FIELDS = ['player_id', 'tour', 'source', 'source_player_id', 'name', 'name_first',
                  'name_last', 'hand', 'dob', 'ioc', 'height_cm', 'wikidata_id',
                  'dob_source', 'height_source', 'identity_status']
+CANDIDATE_FIELDS = ['candidate_key', 'tour', 'source_player_id', 'source_name',
+                    'candidate_player_id', 'candidate_basis', 'candidate_status',
+                    'evidence_match_id', 'evidence_match_date']
 
 
 def sha(path):
@@ -141,9 +144,16 @@ def main():
             key = row['tour'], link[f'joueur{n}_id']
             aliases[key].add(row[f'{side}_id'])
             names[key].add(norm(link[f'joueur{n}']))
+    source_aliases = {key: set(value) for key, value in aliases.items()}
     ranks = {r['record_id']: r for r in read_gzip(RANKS)}
     enrichment = {(r['tour'], r['player_id']): r for r in read_gzip(PROFILES)}
     roster = {(r['tour'], r['player_id']): dict(r) for r in db.execute('SELECT * FROM players')}
+    archive_name_ids = defaultdict(set)
+    for (tour, pid), player in roster.items():
+        full_name = norm(' '.join(x for x in (player.get('name_first'), player.get('name_last')) if x))
+        if full_name:
+            archive_name_ids[(tour, full_name)].add(pid)
+    identity_candidate_rows = {}
     cutoff = {r[0]: date.fromisoformat(r[1]) for r in db.execute('SELECT tour,max(event_date) FROM matches GROUP BY tour')}
     used_players, tables, metrics = {}, {}, defaultdict(Counter)
     issue_counts, flags_count = Counter(), Counter()
@@ -180,6 +190,14 @@ def main():
         if canonical not in used_players:
             used_players[canonical] = dict(player_id=canonical, tour=tour, source='valuebetennis',
                 source_player_id=pid, name=name, identity_status=status)
+        roster_candidates = archive_name_ids[(tour, norm(name))]
+        if not source_aliases.get(key) and len(roster_candidates) == 1:
+            candidate_player_id = next(iter(roster_candidates))
+            archive_player(tour, candidate_player_id)
+            evidence = str(row['match_id'])
+            identity_candidate_rows[(tour, pid, evidence)] = dict(
+                candidate_id=candidate_player_id, source_name=name,
+                match_date=row['date'][:10], evidence_match_id='vb:' + evidence)
         return canonical, status
 
     with tempfile.TemporaryDirectory(prefix='curated-', dir=ROOT / 'data/processed') as temp:
@@ -301,7 +319,17 @@ def main():
             players = AppendTable(OUT / 'players.csv.gz', PLAYER_FIELDS, 'player_id', scratch, stack)
             for key in sorted(used_players):
                 players.add(used_players[key])
-        all_tables = list(tables.values()) + [players]
+            candidates_table = AppendTable(OUT / 'player_identity_candidates.csv.gz', CANDIDATE_FIELDS,
+                                           'candidate_key', scratch, stack)
+            for (tour, provider_id, match_id), candidate in sorted(identity_candidate_rows.items()):
+                candidates_table.add(dict(
+                    candidate_key=f"{tour}:{provider_id}:{candidate['evidence_match_id']}", tour=tour, source_player_id=provider_id,
+                    source_name=candidate['source_name'],
+                    candidate_player_id=f"sackmann:{tour}:{candidate['candidate_id']}",
+                    candidate_basis='unique exact normalized full name in the same tour roster',
+                    candidate_status='unverified_name_only', evidence_match_id=candidate['evidence_match_id'],
+                    evidence_match_date=candidate['match_date']))
+        all_tables = list(tables.values()) + [players, candidates_table]
         for table in all_tables:
             table.check()
         # All inputs and existing rows must remain stable before publication.
@@ -324,6 +352,7 @@ def main():
         match_rows=sum(included_sources.values()), player_rows=len(used_players),
         matches_by_source=dict(included_sources), latest_dates_by_source=latest,
         player_appearances_by_identity_status=dict(identities), quality_flags=dict(flags_count),
+        name_only_identity_candidate_rows=len(candidates_table.seen),
         source_row_accounting=dict(source_counts), excluded_rows_by_reason=dict(issue_counts),
         inputs_sha256=inputs,
         archive_source_manifest_lf_sha256=archive_manifest,

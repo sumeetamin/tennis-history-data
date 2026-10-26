@@ -57,6 +57,12 @@ Wikidata fallback if available, otherwise leave them blank without guessing unit
 Original match-file height fields remain unchanged source observations.
 Unmapped provider players have names and provider IDs; unknown biographies stay blank.
 
+`player_identity_candidates.csv.gz` contains one evidence row per recent match where
+an unmapped provider ID's exact normalized full name matches exactly one same-tour
+archive roster entry. These are explicitly `unverified_name_only`; they are not
+merged into the results or player table. Review them before using as aliases. A
+matching name alone is not proof that two IDs belong to the same person.
+
 ## Admission and exclusions
 
 The archive export rejects missing/equal player IDs and malformed extra CSV cells.

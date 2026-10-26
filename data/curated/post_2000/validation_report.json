@@ -1,7 +1,7 @@
 {
   "passed": true,
   "match_rows": 1262346,
-  "player_rows": 42587,
+  "player_rows": 42602,
   "matches_by_source": {
     "sackmann": 1255705,
     "valuebetennis": 6641
@@ -16,7 +16,8 @@
   "exact_match_dates": 254525,
   "ranking_values_filled": 55313,
   "issue_ledger_rows": 215649,
+  "profile_height_rows_checked": 42602,
+  "implausible_source_profile_heights_omitted": 7,
   "scope": "Every exported row checked against local source values; IDs, date precision, rank timing, odds orientation, file hashes and counts. Does not prove source accuracy or exhaustive real-world coverage.",
-  "profile_height_rows_checked": 42587,
-  "implausible_source_profile_heights_omitted": 7
+  "identity_candidate_rows_checked": 125
 }
