@@ -15,3 +15,5 @@ The ranking and player-profile supplements in `data/odds/` can be left-joined on
 This is a fixed audit snapshot, not a daily feed. The daily append-only file continues to grow and does not retroactively revise old rows. Later source backfills can change what a full reconstruction produces. Exact source publication times are unavailable; this audit establishes consistency with the documented event-date embargo and current source inputs, not independently confirmed historical availability or completeness.
 
 Reconstruction: `python scripts/audit_recent_history.py` rebuilds into a new scratch directory and compares against the original export. It intentionally exits nonzero if differences remain. Compare decompressed records when reproducing this snapshot because gzip container timestamps can differ. Use the source revisions/hashes in the manifest; changing the odds feed or crosswalk can legitimately change reconstruction results.
+
+Verify the checked-in snapshot, manifest hashes, excluded IDs, row set, preserved labels, history embargo, corrected prices, and recorded history-change count with `python scripts/verify_recent_history_snapshot.py`.
