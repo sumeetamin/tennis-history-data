@@ -1,0 +1,308 @@
+{
+  "counts_by_event_level": {
+    "challenger": 3431,
+    "grand_slam": 337,
+    "itf": 659,
+    "main_tour": 922,
+    "masters": 525,
+    "unknown": 2
+  },
+  "counts_by_season": {
+    "2026": 5876
+  },
+  "counts_by_source_round_code": {
+    "1": 1134,
+    "10": 255,
+    "12": 122,
+    "2": 104,
+    "3": 706,
+    "4": 1907,
+    "5": 1044,
+    "6": 96,
+    "7": 38,
+    "8": 3,
+    "9": 465,
+    "unknown": 2
+  },
+  "counts_by_surface": {
+    "Clay": 2105,
+    "Grass": 419,
+    "Hard": 3352
+  },
+  "counts_by_tour": {
+    "atp": 3796,
+    "wta": 2080
+  },
+  "data_sources": {
+    "identity": "Strict unique provider-player-ID/name crosswalk",
+    "player_profiles": "Sackmann roster plus Wikidata CC0 supplement; height is not historical",
+    "ranking_fallbacks": "Prior weekly Sackmann ranking snapshots; strictly before match date and at most 90 days old",
+    "results_odds": "Valuebetennis, https://www.valuebetennis.com/donnees.htm, CC BY 4.0"
+  },
+  "date_range": [
+    "2026-06-16",
+    "2026-10-27"
+  ],
+  "field_missingness": {
+    "p1_age": {
+      "available": 5613,
+      "coverage_pct": 95.52,
+      "missing": 263
+    },
+    "p1_hand": {
+      "available": 5873,
+      "coverage_pct": 99.95,
+      "missing": 3
+    },
+    "p1_ht": {
+      "available": 3694,
+      "coverage_pct": 62.87,
+      "missing": 2182
+    },
+    "p1_rank": {
+      "available": 3069,
+      "coverage_pct": 52.23,
+      "missing": 2807
+    },
+    "p1_rank_points": {
+      "available": 3069,
+      "coverage_pct": 52.23,
+      "missing": 2807
+    },
+    "p2_age": {
+      "available": 5604,
+      "coverage_pct": 95.37,
+      "missing": 272
+    },
+    "p2_hand": {
+      "available": 5873,
+      "coverage_pct": 99.95,
+      "missing": 3
+    },
+    "p2_ht": {
+      "available": 3733,
+      "coverage_pct": 63.53,
+      "missing": 2143
+    },
+    "p2_rank": {
+      "available": 3053,
+      "coverage_pct": 51.96,
+      "missing": 2823
+    },
+    "p2_rank_points": {
+      "available": 3053,
+      "coverage_pct": 51.96,
+      "missing": 2823
+    },
+    "prior_matches": {
+      "available": 0,
+      "coverage_pct": 0.0,
+      "missing": 5876
+    },
+    "recent365_matches": {
+      "available": 0,
+      "coverage_pct": 0.0,
+      "missing": 5876
+    },
+    "surface_prior_matches": {
+      "available": 0,
+      "coverage_pct": 0.0,
+      "missing": 5876
+    }
+  },
+  "files": {
+    "data/odds/recent_lower_tier_event_features.csv.gz": {
+      "bytes": 1033016,
+      "rows": 4090,
+      "sha256": "5e1d3388098d6e6f87bfc0c19521601bfb408c6186130b6b1c5df3e6bd304f11"
+    },
+    "data/odds/recent_main_tour_event_features.csv.gz": {
+      "bytes": 442785,
+      "rows": 1784,
+      "sha256": "9698ecce44e0066d1f21ee1355e1a240a928110910adf376cfb98c8ba3f99ac2"
+    },
+    "data/odds/recent_model_features_enriched.csv.gz": {
+      "bytes": 1532006,
+      "rows": 5876,
+      "sha256": "d70935150d9e434ddfdc4749278decf6903affdca97f39f37804f63b4127ac11"
+    }
+  },
+  "identity_target": {
+    "duplicate_record_ids": 0,
+    "p1_won_counts": {
+      "0": 2954,
+      "1": 2922
+    },
+    "unique_record_ids": 5876
+  },
+  "inputs": {
+    "data/odds/atp_wta_match_odds.csv": "b5b47209487628ca06f92c1b3f46944d5762c31da2785f79f8c8b59af3d23715",
+    "data/odds/recent_model_features.csv.gz": "66588e771d740397b3d2fd3756be3202b2505b93d9a4efb1ecee7cecdf8e28bd",
+    "data/odds/recent_player_profiles.csv.gz": "6d012909d6e49c3a48df47807bf4e289e5e1913d22cf21f4ef99aa5385dbab91",
+    "data/odds/recent_ranking_fallbacks.csv.gz": "2ca135792fbb424b277c5bfacae632f91b67f527dd74c62e1fdf55f032ce18a8"
+  },
+  "main_tour_subset_note": "Main Tour, Masters, and Grand Slam event categories; qualifying-stage rows are not independently removed.",
+  "missingness_by_tour": {
+    "atp": {
+      "p1_age": {
+        "available": 3701,
+        "coverage_pct": 97.5,
+        "missing": 95
+      },
+      "p1_hand": {
+        "available": 3796,
+        "coverage_pct": 100.0,
+        "missing": 0
+      },
+      "p1_ht": {
+        "available": 2958,
+        "coverage_pct": 77.92,
+        "missing": 838
+      },
+      "p1_rank": {
+        "available": 2112,
+        "coverage_pct": 55.64,
+        "missing": 1684
+      },
+      "p1_rank_points": {
+        "available": 2112,
+        "coverage_pct": 55.64,
+        "missing": 1684
+      },
+      "p2_age": {
+        "available": 3700,
+        "coverage_pct": 97.47,
+        "missing": 96
+      },
+      "p2_hand": {
+        "available": 3796,
+        "coverage_pct": 100.0,
+        "missing": 0
+      },
+      "p2_ht": {
+        "available": 2954,
+        "coverage_pct": 77.82,
+        "missing": 842
+      },
+      "p2_rank": {
+        "available": 2100,
+        "coverage_pct": 55.32,
+        "missing": 1696
+      },
+      "p2_rank_points": {
+        "available": 2100,
+        "coverage_pct": 55.32,
+        "missing": 1696
+      },
+      "prior_matches": {
+        "available": 0,
+        "coverage_pct": 0.0,
+        "missing": 3796
+      },
+      "recent365_matches": {
+        "available": 0,
+        "coverage_pct": 0.0,
+        "missing": 3796
+      },
+      "surface_prior_matches": {
+        "available": 0,
+        "coverage_pct": 0.0,
+        "missing": 3796
+      }
+    },
+    "wta": {
+      "p1_age": {
+        "available": 1912,
+        "coverage_pct": 91.92,
+        "missing": 168
+      },
+      "p1_hand": {
+        "available": 2077,
+        "coverage_pct": 99.86,
+        "missing": 3
+      },
+      "p1_ht": {
+        "available": 736,
+        "coverage_pct": 35.38,
+        "missing": 1344
+      },
+      "p1_rank": {
+        "available": 957,
+        "coverage_pct": 46.01,
+        "missing": 1123
+      },
+      "p1_rank_points": {
+        "available": 957,
+        "coverage_pct": 46.01,
+        "missing": 1123
+      },
+      "p2_age": {
+        "available": 1904,
+        "coverage_pct": 91.54,
+        "missing": 176
+      },
+      "p2_hand": {
+        "available": 2077,
+        "coverage_pct": 99.86,
+        "missing": 3
+      },
+      "p2_ht": {
+        "available": 779,
+        "coverage_pct": 37.45,
+        "missing": 1301
+      },
+      "p2_rank": {
+        "available": 953,
+        "coverage_pct": 45.82,
+        "missing": 1127
+      },
+      "p2_rank_points": {
+        "available": 953,
+        "coverage_pct": 45.82,
+        "missing": 1127
+      },
+      "prior_matches": {
+        "available": 0,
+        "coverage_pct": 0.0,
+        "missing": 2080
+      },
+      "recent365_matches": {
+        "available": 0,
+        "coverage_pct": 0.0,
+        "missing": 2080
+      },
+      "surface_prior_matches": {
+        "available": 0,
+        "coverage_pct": 0.0,
+        "missing": 2080
+      }
+    }
+  },
+  "odds": {
+    "last_pre_match_pair_rows": 5240,
+    "opening_pair_rows": 5304,
+    "quote_timestamp_rows": 0,
+    "timestamp_verified_rows": 0,
+    "timing_note": "Prices have provider opening/last-pre-match labels but no verifiable quote timestamps."
+  },
+  "round_code_note": "Source documents code 0 as pre-qualifications and code 12 as final. Intermediate codes are preserved, not guessed into round names.",
+  "rows": 5876,
+  "source_join_missing_rows": 0,
+  "strict_identity_unverified_candidates_excluded": 972,
+  "subsets": {
+    "all_levels": {
+      "file": "data/odds/recent_model_features_enriched.csv.gz",
+      "rows": 5876
+    },
+    "challenger_itf_event_levels": {
+      "file": "data/odds/recent_lower_tier_event_features.csv.gz",
+      "rows": 4090
+    },
+    "main_tour_event_levels": {
+      "definition": "Main Tour, Masters, and Grand Slam event categories; qualifying stages remain identifiable only by raw round code.",
+      "file": "data/odds/recent_main_tour_event_features.csv.gz",
+      "rows": 1784
+    },
+    "unknown_event_level_rows": 2
+  }
+}
