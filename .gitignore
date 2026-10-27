@@ -7,4 +7,5 @@ Thumbs.db
 data/processed/*.sqlite*
 data/processed/*.csv.gz
 models/
+data/odds/quotes/odds_quotes_long.csv.gz
 

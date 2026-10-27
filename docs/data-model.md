@@ -42,3 +42,26 @@ The tournament view groups the event identifiers and observed metadata; inconsis
 - feature_report.json: eligible/excluded counts, temporal splits and Elo baseline.
 - validation_report.json: source hash checks and feature chronology/label checks.
 
+## Cross-source identity and event timing
+
+The curated post-2000 match `record_id` is a stable payload identifier, not a
+real-world match ID. Preserve each source's own match, player, and event IDs.
+Where the Grand Slam point supplement has a unique event/round/opponent match
+crosswalk, it records canonical archive player IDs and event IDs with the
+method and candidate count. Its `player_aliases.csv.gz` is an automatically
+generated alias table; `human_reviewed=0` means these identities have not been
+manually certified. Apply the latest row in `corrections.csv.gz` for the
+effective alias/link state. Do not merge source IDs merely because their text
+looks similar.
+
+The archive generally supplies a tournament start date rather than a match
+start timestamp. Current odds sources supply prices and stage labels, but no
+verifiable individual quote timestamp/time zone or result publication time.
+Those fields stay blank. Do not substitute tournament dates, schedules, or
+assumed delays when doing point-in-time prediction research.
+
+See `docs/coverage-dashboard.md` and the machine-readable coverage files for
+the separate ATP/WTA main-tour and broader-results populations, row-level
+missingness by season/level/surface/ranking/odds/history, and the treatment of
+qualifiers, Challengers, ITF/Futures and non-standard outcomes.
+

@@ -1,0 +1,70 @@
+{
+  "append_policy": "New quote IDs append. If the source changes an existing quote value, the original row remains immutable and the latest value is recorded in the correction overlay.",
+  "bookmaker": "Pinnacle as attributed by Valuebetennis.",
+  "corrections_path": "data/odds/quotes/odds_quote_corrections.csv.gz",
+  "dataset": "data/odds/quotes/by_year",
+  "files": {
+    "data/odds/quotes/by_year/odds_quotes_2021.csv.gz": {
+      "bytes": 18888772,
+      "rows": 254912,
+      "sha256": "0ee11c09d4c75e320cafa54229b52e534cb35a5f838aa305f0114d7d5e72fac4"
+    },
+    "data/odds/quotes/by_year/odds_quotes_2022.csv.gz": {
+      "bytes": 25087903,
+      "rows": 333524,
+      "sha256": "a1c7d2be3136ce3a1b0c68e7d7440141d165d5e76e83d5543647b93e6c81f2b4"
+    },
+    "data/odds/quotes/by_year/odds_quotes_2023.csv.gz": {
+      "bytes": 26962445,
+      "rows": 359304,
+      "sha256": "aff808b6d307aff01ce95e9d3c923f69b443a0a6f6924f4b7ed22e8b64e6c780"
+    },
+    "data/odds/quotes/by_year/odds_quotes_2024.csv.gz": {
+      "bytes": 23827160,
+      "rows": 319640,
+      "sha256": "0f622a8adfd39febac97249ff083ed190d8ad68b4d720e7a35b5ac6a5c4ba0ea"
+    },
+    "data/odds/quotes/by_year/odds_quotes_2025.csv.gz": {
+      "bytes": 23863879,
+      "rows": 321648,
+      "sha256": "9cb285954d8079799167d92f7d77e90f0ec595f81c0cde394621e1ea988a5bc1"
+    },
+    "data/odds/quotes/by_year/odds_quotes_2026.csv.gz": {
+      "bytes": 20000148,
+      "rows": 291872,
+      "sha256": "5d77db78a1f806504aaea806f549e6cf6574af9abbbf5e9256d5838fa68b590a"
+    }
+  },
+  "identity_policy": "Provider match/player/event IDs and original CSV row numbers are retained; quote IDs include source row number because provider match IDs may be duplicated. Canonical player/event IDs are filled only when the strict archive match crosswalk identifies the match and exact player name.",
+  "market": "Match winner, decimal price, one row per source player and quoted stage.",
+  "new_quotes_appended": 0,
+  "quote_corrections_appended": 0,
+  "quote_rows_by_tour": {
+    "atp": 1100320,
+    "wta": 780580
+  },
+  "refreshed_at_utc": "2026-10-27T08:00:39+00:00",
+  "rows": 1880900,
+  "schema_version": 3,
+  "sha256": "01786dd7af38d7fe5f5a62caca78c1532bc2f0f1409cdb6746b78b967688cf3f",
+  "source": "Valuebetennis historical tennis results and odds since 2021",
+  "source_license": "CC BY 4.0",
+  "source_match_date_range": [
+    "2021-01-01",
+    "2026-10-27"
+  ],
+  "source_match_rows": 470225,
+  "source_sha256": "b5b47209487628ca06f92c1b3f46944d5762c31da2785f79f8c8b59af3d23715",
+  "source_url": "https://www.valuebetennis.com/donnees.htm",
+  "stage_counts": {
+    "atp:last_pre_match:missing": 337746,
+    "atp:last_pre_match:valid": 212414,
+    "atp:opening:missing": 284082,
+    "atp:opening:valid": 266078,
+    "wta:last_pre_match:missing": 235237,
+    "wta:last_pre_match:valid": 155053,
+    "wta:opening:missing": 194236,
+    "wta:opening:valid": 196054
+  },
+  "timestamp_policy": "No individual quote timestamp, verified match start time, time zone, or result-publication time is supplied. Those columns are intentionally blank; opening/last-pre-match stages are provider labels, not timestamp proof."
+}

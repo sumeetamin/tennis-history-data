@@ -22,9 +22,13 @@ This repository contains the source data, not just links or a scraper template.
 - Unified post-2000 results: [`data/curated/post_2000/`](data/curated/post_2000/README.md) (yearly ATP/WTA CSVs, a player table, available ranking backfills and verified odds, explicit date/identity provenance, coverage and exclusion reports)
 - ATP/WTA main-tour modeling table: [`data/curated/main_tour/`](data/curated/main_tour/README.md) (one labeled pre-match feature table from 2000 onward; opening/last-pre-match odds and recent supplements where available; append-only, with season coverage, event census and quality audit)
 - ATP/WTA charted-match stats: [`data/curated/match_charting/`](data/curated/match_charting/README.md) (licensed aggregate serve, return, rally, shot, net-play and error tables with conservative match-link candidates; post-match statistics)
+- Grand Slam point-by-point supplement: [`data/curated/point_by_point/`](data/curated/point_by_point/README.md) (2011–2024 available singles point logs, explicit source gaps, statistics, append-only identity crosswalk and license)
+- Player/event/surface/ranking/odds/timing missingness: [`coverage dashboard`](docs/coverage-dashboard.md) (refreshed by the daily workflow)
+- Player prior point-history sensitivity layer: [`data/experimental/point_history/`](data/experimental/point_history/) (separate from the baseline; tournament-start timing is only a proxy; no model trained)
 - Database: `data/processed/tennis.sqlite`
 - Model-ready pre-match rows: `data/processed/model_features_by_year/` (150 gzip CSVs, one per year)
 - Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)
+- Long, player-oriented odds quotes: [`data/odds/quotes/by_year/`](data/odds/quotes/by_year/) (yearly partitions with stable quote IDs, provider stage, bookmaker, player prices, provenance and explicit unavailable-timestamp fields)
 - Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
 - Pre-match model rows with odds: `data/odds/model_features_with_odds.csv.gz` (p1/p2-aligned prices; `p1_won` is the target)
 - 2025 consensus odds supplement: `data/odds/model_features_with_consensus_odds_2025.csv.gz` (4,802 feature rows with source-reported opening/closing consensus prices aligned to p1/p2; see quality flags and timing limits in the odds notes)
@@ -35,6 +39,7 @@ This repository contains the source data, not just links or a scraper template.
 - Recent player profile context: `data/odds/recent_player_profiles.csv.gz` (age at match date, profile height and hand with field-level provenance)
 - ATP/WTA main-tour coverage and quality: [`quality report`](data/curated/main_tour/quality_report.json), [`season coverage`](data/curated/main_tour/season_coverage.csv), and [`observed event census`](data/curated/main_tour/tournament_census.csv.gz)
 - Reviewed source access and licensing decisions: [`docs/data-sources.md`](docs/data-sources.md)
+- How to attribute data, model and evaluation changes separately: [`model experiment protocol`](docs/model-experiments.md)
 - Pre-event ranking backfills: `data/processed/supplements/ranking_fallbacks.csv.gz` (keyed by `record_id`, weekly snapshots no more than 90 days old)
 - Player DOB/height enrichment: `data/processed/supplements/player_profile_enrichment.csv.gz` (only existing Wikidata IDs and missing source fields; CC0 facts)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
@@ -76,10 +81,14 @@ python scripts/verify_curated_dataset.py
 python scripts/build_main_tour_dataset.py
 python scripts/audit_atp_wta_main_tour.py
 python scripts/update_match_charting_project.py
+python scripts/update_point_by_point_supplement.py
+python scripts/build_odds_quote_table.py
+python scripts/build_point_history_experiment.py
+python scripts/build_coverage_dashboard.py
 python -m unittest discover -s tests -v
 ```
 
-The [daily GitHub Action](.github/workflows/daily-data-update.yml) checks Valuebetennis' published yearly files for missing settled matches from the last 30 days. It appends only unseen match IDs and creates a commit only when new rows are found. Existing rows are never replaced. You can also run it manually from the **Actions** tab and change the lookback window.
+The [daily GitHub Action](.github/workflows/daily-data-update.yml) checks Valuebetennis' published yearly files for missing settled matches from the last 30 days. It appends unseen match/quote IDs and records source corrections in overlays; it commits only when tracked data changes. Published rows are not rewritten. You can also run it manually from the **Actions** tab and change the lookback window.
 
 To check every available historical Valuebetennis season (2021 onward) for newly published settled IDs without rewriting existing rows, run `python scripts/backfill_missing_odds.py`. The latest all-season scan is recorded in `data/odds/latest_refresh_report.json`.
 
