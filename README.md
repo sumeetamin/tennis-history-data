@@ -20,6 +20,7 @@ This repository contains the source data, not just links or a scraper template.
 ## Start here
 
 - Unified post-2000 results: [`data/curated/post_2000/`](data/curated/post_2000/README.md) (yearly ATP/WTA CSVs, a player table, available ranking backfills and verified odds, explicit date/identity provenance, coverage and exclusion reports)
+- ATP/WTA main-tour modeling table: [`data/curated/main_tour/`](data/curated/main_tour/README.md) (one labeled pre-match feature table from 2000 onward; opening/last-pre-match odds and recent supplements where available; append-only)
 - Database: `data/processed/tennis.sqlite`
 - Model-ready pre-match rows: `data/processed/model_features_by_year/` (150 gzip CSVs, one per year)
 - Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)

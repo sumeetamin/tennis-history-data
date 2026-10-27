@@ -10,6 +10,7 @@ This is a results dataset, **not a pre-match feature matrix**. Winner/loser orde
 scores, current-match statistics and duration reveal the outcome. They must not
 be passed directly to a predictive model as pre-match predictors. Existing
 outcome-independent feature exports remain available elsewhere in the repo.
+For a single ATP/WTA main-tour modeling table, use [`../main_tour/`](../main_tour/README.md).
 
 ## What is combined
 

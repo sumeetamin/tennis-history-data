@@ -9,6 +9,7 @@ DATASETS = (
     'data/odds/recent_ranking_fallbacks.csv.gz',
     'data/odds/recent_player_profiles.csv.gz',
     'data/odds/recent_odds_corrections.csv',
+    'data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz',
 )
 
 

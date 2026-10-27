@@ -1,0 +1,37 @@
+{
+  "append_policy": "Existing row content is immutable; only unseen record IDs are appended. New backfills may appear out of date order; sort by event_date when reading.",
+  "dataset": "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz",
+  "date_ranges": {
+    "atp": [
+      "2000-01-03",
+      "2026-10-25"
+    ],
+    "wta": [
+      "2000-01-03",
+      "2026-10-26"
+    ]
+  },
+  "main_tour_categories": [
+    "grand_chelem",
+    "main_tour",
+    "masters",
+    "tour"
+  ],
+  "rows": 148582,
+  "schema_version": 1,
+  "sha256": "6f6ac6f77bb5dbf6c3db6f9decdf1f5844673a22f90c26129e19f5b309c401a1",
+  "tour_category_rows": {
+    "atp:grand_chelem": 89,
+    "atp:main_tour": 489,
+    "atp:masters": 242,
+    "atp:tour": 76488,
+    "wta:grand_chelem": 248,
+    "wta:main_tour": 419,
+    "wta:masters": 283,
+    "wta:tour": 70324
+  },
+  "tour_rows": {
+    "atp": 77308,
+    "wta": 71274
+  }
+}
