@@ -1,6 +1,11 @@
 name: Daily tennis data update
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/daily-data-update.yml"
+      - "scripts/build_recent_features_enriched.py"
   schedule:
     # 13:47 India Standard Time; avoid the busiest top-of-hour schedule slot.
     - cron: "17 8 * * *"
@@ -57,6 +62,9 @@ jobs:
           python scripts/correct_recent_odds.py
           python scripts/correct_recent_odds.py --verify-only
 
+      - name: Build joined recent feature exports by competition level
+        run: python scripts/build_recent_features_enriched.py
+
       - name: Verify odds export and manifest
         run: python scripts/verify_odds_export.py
 
@@ -104,6 +112,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json data/odds/recent_odds_corrections.csv data/odds/recent_odds_corrections_report.json data/odds/quotes data/curated/post_2000 data/curated/main_tour data/curated/match_charting data/curated/point_by_point data/experimental/point_history docs/coverage-dashboard.md
+          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json data/odds/recent_odds_corrections.csv data/odds/recent_odds_corrections_report.json data/odds/recent_model_features_enriched.csv.gz data/odds/recent_main_tour_event_features.csv.gz data/odds/recent_lower_tier_event_features.csv.gz data/odds/recent_features_enrichment_report.json data/odds/recent_model_features_enriched.csv.gz data/odds/recent_main_tour_event_features.csv.gz data/odds/recent_lower_tier_event_features.csv.gz data/odds/recent_features_enrichment_report.json data/odds/quotes data/curated/post_2000 data/curated/main_tour data/curated/match_charting data/curated/point_by_point data/experimental/point_history docs/coverage-dashboard.md
           git commit -m "Append recent tennis results, odds and verified features"
           git push

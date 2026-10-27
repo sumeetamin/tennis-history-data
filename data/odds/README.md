@@ -8,6 +8,18 @@ The full-season backfill scanned every available Valuebetennis season from 2021 
 
 For recent-period modeling through 2026-10-26, use the [audited snapshot](snapshots/2026-10-27/README.md), which has 5,769 rows with reconstructed history and corrected odds. A full replay found 57 rows with ambiguous or missing provider-player mappings; 2,872 retained rows have changed history values under current-source replay. The append-only file now has 5,876 rows through 2026-10-27 and remains preserved, including rows with known identity/history issues. The audited snapshot is dated and does not update automatically.
 
+## Enriched recent feature exports
+
+The daily workflow builds a joined recent dataset from the strict-identity feature rows, Valuebetennis match metadata, and the existing ranking/profile supplements. The [enrichment report](recent_features_enrichment_report.json) measures missingness by tour, season, event level, surface, source round code, odds availability, and player-history depth.
+
+- [All event levels](recent_model_features_enriched.csv.gz): enriched feature rows with source tournament category, raw round code, available ranking/profile values, and explicit odds-timing fields.
+- [Main Tour, Masters, and Grand Slam event categories](recent_main_tour_event_features.csv.gz): separated from lower tiers. Qualifying-stage rows are not independently removed.
+- [Challenger and ITF event categories](recent_lower_tier_event_features.csv.gz): lower-tier results remain available in their own file.
+
+Unavailable fields stay blank. Ranking fallbacks use a prior weekly snapshot strictly before the match date and no more than 90 days old. Age is derived from sourced birth dates. Height is roster/profile context, not a historical measurement. The provider documents round code 0 as pre-qualifications and 12 as the final; intermediate codes are preserved without guessed names.
+
+The source gives a match datetime and provider-labelled opening/last-pre-match prices, but no timestamp for each odds quote. The enriched export leaves quote time blank and sets odds timestamp verification to false. Its last price must not be treated as verified at an exact prediction cutoff.
+
 ## Required correction for recent feature odds
 
 Join `recent_odds_corrections.csv` onto `recent_model_features.csv.gz` by `record_id`. For matched IDs, replace **all four** `odds_open_p1_decimal`, `odds_open_p2_decimal`, `odds_close_p1_decimal`, and `odds_close_p2_decimal` fields with the correction values, including blanks. Unmatched feature rows keep their prices. The supplement repairs 5,368 price fields across 2,713 rows without rewriting existing feature bytes. Decimal prices that are missing, nonfinite or at most 1 are blank. This is a correction overlay, not a missing-value fallback.

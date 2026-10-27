@@ -22,6 +22,8 @@ For matches with a strict odds/archive/feature join, `data/odds/model_features_w
 
 `data/odds/recent_player_profiles.csv.gz` supplies age-at-match, roster height and handedness for eligible recent rows, also joined by `record_id`. Birth dates and heights include field-level source labels. Age is computed from the date of birth and actual odds-feed match date. Height is a static roster profile value, not a historical measurement; assess whether that is appropriate for the model and avoid treating it as a match-time observation.
 
+Use `data/odds/recent_model_features_enriched.csv.gz` for a single joined recent table, and compare competition populations with `recent_main_tour_event_features.csv.gz` and `recent_lower_tier_event_features.csv.gz`. Consult `recent_features_enrichment_report.json` for coverage by tour, season, event level, surface, odds availability, and history depth. Qualifying-stage rows are not separately identified because the provider documents only the endpoints of its round-code scale; exact quote timestamps are not published, so recent prices are not verified against a chosen prediction cutoff.
+
 ## Missing match-time rankings
 
 Before using recent-feature odds, apply `data/odds/recent_odds_corrections.csv` on `record_id`, replacing all four odds columns for every matched correction row, including blanks. This overlay fixes previously published source-player ordering errors; it must not be treated as a blank-only fallback. The existing recent feature CSV remains immutable. The daily builder uses corrected price mapping for future appends, and the correction script verifies every existing row against source prices.
