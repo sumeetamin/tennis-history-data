@@ -17,6 +17,8 @@ The current release has 148,596 rows: 77,315 ATP and 71,281 WTA, with event date
 
 The table combines existing pre-match feature exports with the append-only recent feature feed. It does not claim complete tournament or odds coverage. Historical ATP/WTA match results and statistics remain in `../post_2000/matches/`; player biographies and source limitations are documented there. The event census has no independent expected-event list, so it cannot prove that an event or match is absent.
 
+For separate, post-match shot-charted aggregates, see [`../match_charting/`](../match_charting/README.md). Those values must not be joined onto the same match as pre-match model inputs; use only information from charted matches that occurred before the forecast date.
+
 ## Append-only updates
 
 Run `python scripts/build_main_tour_dataset.py` after rebuilding the archive and recent feature supplements, then run `python scripts/audit_atp_wta_main_tour.py`. The builder appends unseen `record_id` values, preserves existing compressed data members, and fails if a previously published feature row changes. New historical backfills may be appended out of date order; sort by `event_date` when reading. `manifest.json` records counts, date ranges, row additions, and the output SHA-256. The daily GitHub Action runs both steps automatically.

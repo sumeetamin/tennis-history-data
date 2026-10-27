@@ -21,6 +21,7 @@ This repository contains the source data, not just links or a scraper template.
 
 - Unified post-2000 results: [`data/curated/post_2000/`](data/curated/post_2000/README.md) (yearly ATP/WTA CSVs, a player table, available ranking backfills and verified odds, explicit date/identity provenance, coverage and exclusion reports)
 - ATP/WTA main-tour modeling table: [`data/curated/main_tour/`](data/curated/main_tour/README.md) (one labeled pre-match feature table from 2000 onward; opening/last-pre-match odds and recent supplements where available; append-only, with season coverage, event census and quality audit)
+- ATP/WTA charted-match stats: [`data/curated/match_charting/`](data/curated/match_charting/README.md) (licensed aggregate serve, return, rally, shot, net-play and error tables with conservative match-link candidates; post-match statistics)
 - Database: `data/processed/tennis.sqlite`
 - Model-ready pre-match rows: `data/processed/model_features_by_year/` (150 gzip CSVs, one per year)
 - Match odds: `data/odds/atp_wta_match_odds.csv` (opening and last pre-match Pinnacle prices)
@@ -33,6 +34,7 @@ This repository contains the source data, not just links or a scraper template.
 - Recent match ranking supplement: `data/odds/recent_ranking_fallbacks.csv.gz` (weekly rankings aligned by `record_id`, with snapshot dates/ages)
 - Recent player profile context: `data/odds/recent_player_profiles.csv.gz` (age at match date, profile height and hand with field-level provenance)
 - ATP/WTA main-tour coverage and quality: [`quality report`](data/curated/main_tour/quality_report.json), [`season coverage`](data/curated/main_tour/season_coverage.csv), and [`observed event census`](data/curated/main_tour/tournament_census.csv.gz)
+- Reviewed source access and licensing decisions: [`docs/data-sources.md`](docs/data-sources.md)
 - Pre-event ranking backfills: `data/processed/supplements/ranking_fallbacks.csv.gz` (keyed by `record_id`, weekly snapshots no more than 90 days old)
 - Player DOB/height enrichment: `data/processed/supplements/player_profile_enrichment.csv.gz` (only existing Wikidata IDs and missing source fields; CC0 facts)
 - Original CSVs: `data/raw/sackmann-archive/atp/` and `wta/`
@@ -73,6 +75,7 @@ python scripts/build_curated_dataset.py
 python scripts/verify_curated_dataset.py
 python scripts/build_main_tour_dataset.py
 python scripts/audit_atp_wta_main_tour.py
+python scripts/update_match_charting_project.py
 python -m unittest discover -s tests -v
 ```
 
@@ -91,6 +94,7 @@ See the [fresh-checkout verification record](docs/daily-workflow-check.md) for l
 Before committing, the daily Action runs `scripts/verify_odds_export.py` to check match-ID uniqueness, required columns, ATP/WTA and yearly counts, byte size, and SHA-256 against the manifest. A mismatch fails the job before any commit is pushed.
 It also runs `scripts/verify_recent_supplements.py` to verify supplement keys/checksums, feature-label and 28-day history timing, prior-only ranking snapshots, and age-at-match calculations before committing.
 The same workflow creates an ATP/WTA season coverage table, an observed tournament/event census and a quality report. The census measures events present in the source; it cannot establish which tournaments or matches are missing without an independent authoritative calendar and draw list.
+It also checks the published Match Charting Project revision and appends newly published metadata/stat rows and conservative match links, while preserving existing observations and recording source corrections separately.
 `scripts/verify_daily_append_only.py` then checks all five updated CSV/gzip datasets against the checkout's Git `HEAD`: every previously committed byte must remain an exact prefix. Any rewrite or truncation stops the job before committing. Reports may be refreshed to describe newly appended data.
 
 Allow several minutes and a few GB of free disk space. A failed database build leaves a staging database for inspection; remove only that generated `data/processed/tennis.building.sqlite` file before retrying.

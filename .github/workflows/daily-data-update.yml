@@ -74,18 +74,21 @@ jobs:
       - name: Audit ATP/WTA main-tour coverage and quality
         run: python scripts/audit_atp_wta_main_tour.py
 
+      - name: Append licensed ATP/WTA match charting statistics
+        run: python scripts/update_match_charting_project.py
+
       - name: Verify existing dataset bytes were preserved
         run: python scripts/verify_daily_append_only.py
 
       - name: Commit only when new matches were added
         shell: bash
         run: |
-          if [ -z "$(git status --porcelain -- data/odds/atp_wta_match_odds.csv data/odds/recent_model_features.csv.gz data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_player_profiles.csv.gz data/odds/recent_odds_corrections.csv data/curated/post_2000/matches data/curated/post_2000/players.csv.gz data/curated/post_2000/player_identity_candidates.csv.gz data/curated/main_tour)" ]; then
+          if [ -z "$(git status --porcelain -- data/odds/atp_wta_match_odds.csv data/odds/recent_model_features.csv.gz data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_player_profiles.csv.gz data/odds/recent_odds_corrections.csv data/curated/post_2000/matches data/curated/post_2000/players.csv.gz data/curated/post_2000/player_identity_candidates.csv.gz data/curated/main_tour data/curated/match_charting)" ]; then
             echo "No data changes; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json data/odds/recent_odds_corrections.csv data/odds/recent_odds_corrections_report.json data/curated/post_2000 data/curated/main_tour
+          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json data/odds/recent_odds_corrections.csv data/odds/recent_odds_corrections_report.json data/curated/post_2000 data/curated/main_tour data/curated/match_charting
           git commit -m "Append recent tennis results, odds and verified features"
           git push
