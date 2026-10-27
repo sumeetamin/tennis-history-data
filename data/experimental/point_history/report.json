@@ -1,0 +1,17 @@
+{
+  "corrections_appended": 148596,
+  "generated_at_utc": "2026-10-27T07:48:35+00:00",
+  "linked_pbp_matches_in_history": 9838,
+  "model_training": "Not performed.",
+  "new_rows_appended": 0,
+  "opponent_adjustment": "tour_prior_serve_rate + player_shrunk_serve_deviation - opponent_shrunk_return_deviation",
+  "rows": 148596,
+  "rows_with_prior_point_history": 77578,
+  "shrinkage": {
+    "k_points": 200.0,
+    "method": "fixed pseudo-point shrinkage toward prior tour mean",
+    "note": "Transparent sensitivity baseline; not a reproduction of Efron-Morris empirical Bayes."
+  },
+  "source_scope": "Grand Slam PBP crosswalk only",
+  "timing_limit": "Uses event start date as a proxy and the existing 28-day history cutoff; exact match played times are unavailable."
+}
