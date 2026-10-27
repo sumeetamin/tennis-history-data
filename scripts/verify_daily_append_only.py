@@ -27,7 +27,23 @@ def main():
         'data/curated/post_2000/matches', 'data/curated/post_2000/players.csv.gz',
         'data/curated/post_2000/player_identity_candidates.csv.gz',
     ], cwd=ROOT, text=True).splitlines()
-    for name in (*DATASETS, *curated):
+    supplement_paths = subprocess.check_output([
+        'git', 'ls-tree', '-r', '--name-only', 'HEAD', '--',
+        'data/odds/quotes/by_year', 'data/odds/quotes/odds_quote_corrections.csv.gz',
+        'data/curated/point_by_point',
+        'data/experimental/point_history/point_history_pre_match_features.csv.gz',
+        'data/experimental/point_history/feature_corrections.csv.gz',
+    ], cwd=ROOT, text=True).splitlines()
+    append_only_supplements = [
+        name for name in supplement_paths
+        if name.endswith('.csv.gz') and (
+            name.startswith('data/odds/quotes/by_year/') or
+            name == 'data/odds/quotes/odds_quote_corrections.csv.gz' or
+            name.startswith('data/curated/point_by_point/') or
+            name.startswith('data/experimental/point_history/')
+        )
+    ]
+    for name in (*DATASETS, *curated, *append_only_supplements):
         original = subprocess.check_output(['git', 'cat-file', 'blob', f'HEAD:{name}'], cwd=ROOT)
         appended = verify_prefix(ROOT / name, original)
         print(f'{name}: committed bytes preserved; {appended:,} bytes appended')
