@@ -1,14 +1,14 @@
 {
-  "source": "Valuebetennis, R\u00e9sultats et cotes de tennis depuis 2021",
+  "source": "Valuebetennis, Résultats et cotes de tennis depuis 2021",
   "source_url": "https://www.valuebetennis.com/donnees.htm",
   "license": "CC BY 4.0",
-  "retrieved_at_utc": "2026-10-26T08:24:06.829761+00:00",
+  "retrieved_at_utc": "2026-10-27T06:05:01.168439+00:00",
   "combined_file": "data/odds/atp_wta_match_odds.csv",
   "delimiter": ",",
-  "rows": 470167,
+  "rows": 470225,
   "rows_by_tour": {
-    "atp": 275045,
-    "wta": 195122
+    "atp": 275080,
+    "wta": 195145
   },
   "year_files": [
     {
@@ -48,13 +48,13 @@
     "2023": 89826,
     "2024": 79910,
     "2025": 80412,
-    "2026": 72910
+    "2026": 72968
   },
   "duplicate_match_ids_in_file": 0,
-  "combined_sha256": "a457b26ca1198fdbdf87e38190c8ba74abbbd7ac9da54734b583dba37d2b60ea",
-  "combined_bytes": 67319196,
+  "combined_sha256": "b5b47209487628ca06f92c1b3f46944d5762c31da2785f79f8c8b59af3d23715",
+  "combined_bytes": 67328877,
   "last_full_history_backfill": {
-    "checked_at_utc": "2026-10-26T21:04:40.020323+00:00",
+    "checked_at_utc": "2026-10-27T11:35:01.168439+05:30",
     "source_years_checked": [
       "2021",
       "2022",
@@ -69,12 +69,15 @@
       "2023": "fa45622d678b17176c8b950d09872538dd765a684b16e1910a3ede4e75664bfb",
       "2024": "c408f36f191e2e3f7f1ce0de26b5ce828c48403b0dc5904c5751170ba0affc39",
       "2025": "73a9a93ee2fbd3ebfe155fe67b7d6dca2edd8d55bbbc4729ba5c347173fbf038",
-      "2026": "43cae11e933e6605dc7bb697970a61cdf4be4e409a7c4f31cdb2cca3b66586af"
+      "2026": "647137df37dba2ad12312352046271a806e439b4b296cae612d3848189646f3d"
     },
     "source_seasons_not_available": [],
-    "new_settled_rows_appended": 0,
-    "new_rows_by_tour": {},
-    "unsettled_future_or_invalid_rows_skipped": 0,
+    "new_settled_rows_appended": 58,
+    "new_rows_by_tour": {
+      "atp": 35,
+      "wta": 23
+    },
+    "unsettled_future_or_invalid_rows_skipped": 390,
     "existing_rows_rewritten": 0,
     "policy": "Append unseen settled match IDs from all available seasons; never revise existing rows."
   }

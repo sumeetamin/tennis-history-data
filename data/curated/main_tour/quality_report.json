@@ -1,0 +1,456 @@
+{
+  "date_ranges": {
+    "atp": [
+      "2000-01-03",
+      "2026-10-26"
+    ],
+    "wta": [
+      "2000-01-03",
+      "2026-10-27"
+    ]
+  },
+  "feature_availability_by_tour_and_era": {
+    "atp": {
+      "2000s": {
+        "age_pair": {
+          "matches": 31215,
+          "pct": 99.99
+        },
+        "elo_pair": {
+          "matches": 31217,
+          "pct": 100.0
+        },
+        "hand_pair": {
+          "matches": 31217,
+          "pct": 100.0
+        },
+        "height_pair": {
+          "matches": 29239,
+          "pct": 93.66
+        },
+        "last_pre_match_odds_pair": {
+          "matches": 0,
+          "pct": 0.0
+        },
+        "matches": 31217,
+        "opening_odds_pair": {
+          "matches": 0,
+          "pct": 0.0
+        },
+        "prior_serve_rate_pair": {
+          "matches": 28526,
+          "pct": 91.38
+        },
+        "prior_win_rate_pair": {
+          "matches": 31063,
+          "pct": 99.51
+        },
+        "rank_pair": {
+          "matches": 30314,
+          "pct": 97.11
+        },
+        "rank_points_pair": {
+          "matches": 30314,
+          "pct": 97.11
+        },
+        "recent_365_win_rate_pair": {
+          "matches": 30790,
+          "pct": 98.63
+        },
+        "round": {
+          "matches": 31217,
+          "pct": 100.0
+        },
+        "surface": {
+          "matches": 31217,
+          "pct": 100.0
+        },
+        "surface_elo_pair": {
+          "matches": 31217,
+          "pct": 100.0
+        }
+      },
+      "2010s": {
+        "age_pair": {
+          "matches": 28284,
+          "pct": 100.0
+        },
+        "elo_pair": {
+          "matches": 28285,
+          "pct": 100.0
+        },
+        "hand_pair": {
+          "matches": 28281,
+          "pct": 99.99
+        },
+        "height_pair": {
+          "matches": 27229,
+          "pct": 96.27
+        },
+        "last_pre_match_odds_pair": {
+          "matches": 0,
+          "pct": 0.0
+        },
+        "matches": 28285,
+        "opening_odds_pair": {
+          "matches": 0,
+          "pct": 0.0
+        },
+        "prior_serve_rate_pair": {
+          "matches": 27493,
+          "pct": 97.2
+        },
+        "prior_win_rate_pair": {
+          "matches": 28196,
+          "pct": 99.69
+        },
+        "rank_pair": {
+          "matches": 27678,
+          "pct": 97.85
+        },
+        "rank_points_pair": {
+          "matches": 27678,
+          "pct": 97.85
+        },
+        "recent_365_win_rate_pair": {
+          "matches": 27980,
+          "pct": 98.92
+        },
+        "round": {
+          "matches": 28285,
+          "pct": 100.0
+        },
+        "surface": {
+          "matches": 28285,
+          "pct": 100.0
+        },
+        "surface_elo_pair": {
+          "matches": 28285,
+          "pct": 100.0
+        }
+      },
+      "2020s": {
+        "age_pair": {
+          "matches": 17788,
+          "pct": 99.86
+        },
+        "elo_pair": {
+          "matches": 17813,
+          "pct": 100.0
+        },
+        "hand_pair": {
+          "matches": 17813,
+          "pct": 100.0
+        },
+        "height_pair": {
+          "matches": 17343,
+          "pct": 97.36
+        },
+        "last_pre_match_odds_pair": {
+          "matches": 8723,
+          "pct": 48.97
+        },
+        "matches": 17813,
+        "opening_odds_pair": {
+          "matches": 11378,
+          "pct": 63.87
+        },
+        "prior_serve_rate_pair": {
+          "matches": 17598,
+          "pct": 98.79
+        },
+        "prior_win_rate_pair": {
+          "matches": 17758,
+          "pct": 99.69
+        },
+        "rank_pair": {
+          "matches": 17251,
+          "pct": 96.85
+        },
+        "rank_points_pair": {
+          "matches": 17251,
+          "pct": 96.85
+        },
+        "recent_365_win_rate_pair": {
+          "matches": 17612,
+          "pct": 98.87
+        },
+        "round": {
+          "matches": 16986,
+          "pct": 95.36
+        },
+        "surface": {
+          "matches": 17762,
+          "pct": 99.71
+        },
+        "surface_elo_pair": {
+          "matches": 17813,
+          "pct": 100.0
+        }
+      }
+    },
+    "wta": {
+      "2000s": {
+        "age_pair": {
+          "matches": 27947,
+          "pct": 99.98
+        },
+        "elo_pair": {
+          "matches": 27952,
+          "pct": 100.0
+        },
+        "hand_pair": {
+          "matches": 27952,
+          "pct": 100.0
+        },
+        "height_pair": {
+          "matches": 23603,
+          "pct": 84.44
+        },
+        "last_pre_match_odds_pair": {
+          "matches": 0,
+          "pct": 0.0
+        },
+        "matches": 27952,
+        "opening_odds_pair": {
+          "matches": 0,
+          "pct": 0.0
+        },
+        "prior_serve_rate_pair": {
+          "matches": 13211,
+          "pct": 47.26
+        },
+        "prior_win_rate_pair": {
+          "matches": 27345,
+          "pct": 97.83
+        },
+        "rank_pair": {
+          "matches": 25833,
+          "pct": 92.42
+        },
+        "rank_points_pair": {
+          "matches": 25833,
+          "pct": 92.42
+        },
+        "recent_365_win_rate_pair": {
+          "matches": 26829,
+          "pct": 95.98
+        },
+        "round": {
+          "matches": 27952,
+          "pct": 100.0
+        },
+        "surface": {
+          "matches": 27933,
+          "pct": 99.93
+        },
+        "surface_elo_pair": {
+          "matches": 27952,
+          "pct": 100.0
+        }
+      },
+      "2010s": {
+        "age_pair": {
+          "matches": 26899,
+          "pct": 99.97
+        },
+        "elo_pair": {
+          "matches": 26907,
+          "pct": 100.0
+        },
+        "hand_pair": {
+          "matches": 26907,
+          "pct": 100.0
+        },
+        "height_pair": {
+          "matches": 24316,
+          "pct": 90.37
+        },
+        "last_pre_match_odds_pair": {
+          "matches": 0,
+          "pct": 0.0
+        },
+        "matches": 26907,
+        "opening_odds_pair": {
+          "matches": 0,
+          "pct": 0.0
+        },
+        "prior_serve_rate_pair": {
+          "matches": 24573,
+          "pct": 91.33
+        },
+        "prior_win_rate_pair": {
+          "matches": 26507,
+          "pct": 98.51
+        },
+        "rank_pair": {
+          "matches": 25781,
+          "pct": 95.82
+        },
+        "rank_points_pair": {
+          "matches": 25781,
+          "pct": 95.82
+        },
+        "recent_365_win_rate_pair": {
+          "matches": 26165,
+          "pct": 97.24
+        },
+        "round": {
+          "matches": 26907,
+          "pct": 100.0
+        },
+        "surface": {
+          "matches": 26907,
+          "pct": 100.0
+        },
+        "surface_elo_pair": {
+          "matches": 26907,
+          "pct": 100.0
+        }
+      },
+      "2020s": {
+        "age_pair": {
+          "matches": 16384,
+          "pct": 99.77
+        },
+        "elo_pair": {
+          "matches": 16422,
+          "pct": 100.0
+        },
+        "hand_pair": {
+          "matches": 16419,
+          "pct": 99.98
+        },
+        "height_pair": {
+          "matches": 9653,
+          "pct": 58.78
+        },
+        "last_pre_match_odds_pair": {
+          "matches": 8170,
+          "pct": 49.75
+        },
+        "matches": 16422,
+        "opening_odds_pair": {
+          "matches": 10521,
+          "pct": 64.07
+        },
+        "prior_serve_rate_pair": {
+          "matches": 16131,
+          "pct": 98.23
+        },
+        "prior_win_rate_pair": {
+          "matches": 16381,
+          "pct": 99.75
+        },
+        "rank_pair": {
+          "matches": 15907,
+          "pct": 96.86
+        },
+        "rank_points_pair": {
+          "matches": 15907,
+          "pct": 96.86
+        },
+        "recent_365_win_rate_pair": {
+          "matches": 16224,
+          "pct": 98.79
+        },
+        "round": {
+          "matches": 15465,
+          "pct": 94.17
+        },
+        "surface": {
+          "matches": 16309,
+          "pct": 99.31
+        },
+        "surface_elo_pair": {
+          "matches": 16422,
+          "pct": 100.0
+        }
+      }
+    }
+  },
+  "focus": "ATP/WTA main-tour singles; event census groups source records by event and does not infer that absent matches are missing.",
+  "main_tour_dataset": "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz",
+  "main_tour_rows": 148596,
+  "main_tour_sha256": "cfd94514bc2474c9aa9d83b2120bbaf39948845cd6b187d950aa56eb6886ba5d",
+  "row_validation": {
+    "issue_counts": {},
+    "passed": true,
+    "sample_record_ids": {}
+  },
+  "rows_by_tour": {
+    "atp": 77315,
+    "wta": 71281
+  },
+  "schema_version": 1,
+  "season_coverage_csv": "data/curated/main_tour/season_coverage.csv",
+  "season_coverage_sha256": "1da96fd2bc1a332f1c7b570072366593e7a9ed438a7f56e4daaa118c0e294072",
+  "source_identity_coverage_in_event_census": {
+    "archive_id": 304026,
+    "crosswalk_verified": 1077,
+    "provider_only": 34
+  },
+  "tournament_census": {
+    "completeness_limit": "Independent annual draw/calendar lists are not available in this repository, so this census reports observed events and match counts; it cannot certify complete tournament coverage or count missing real-world matches.",
+    "event_groups": 8420,
+    "grouping": "tour + event year + source + source category + tournament ID; source rows and events are not deduplicated across providers.",
+    "path": "data/curated/main_tour/tournament_census.csv.gz",
+    "result_files": 54,
+    "result_files_sha256": {
+      "atp_2000.csv.gz": "ecf875e671b493d11948ee1781422fea2816e53bf18bfee971c655998aa9bcb1",
+      "atp_2001.csv.gz": "2604760ec77cb03d100fcc136314b75773e9d0fbdf6599fec731978bffff89f2",
+      "atp_2002.csv.gz": "d0115a2abb3847209ba02dc479277bdfd5de3f385201c12c4f57c93b5c0d1702",
+      "atp_2003.csv.gz": "77664b9c25463296c62e7c617ca93f9063cec32bf6058aacf38ce4f9ec961f0b",
+      "atp_2004.csv.gz": "83526154ac942ecd01d9ae75b02562d26a8dabcf7c605df6301f1d009702702d",
+      "atp_2005.csv.gz": "19910deb9eb090b179d870425231ccd3fe88af8255c1249c103476fd5af21b90",
+      "atp_2006.csv.gz": "338269efa3a3a8f7a3322ed99de8808d30f81d2a72df5fd206dd7f7cd192dd7a",
+      "atp_2007.csv.gz": "fec933c827fe965b5cab8a268648627cf9ed0fac87783fe68dd3a38cafb6cc33",
+      "atp_2008.csv.gz": "8e9d8803091d9bfc61fc98bec0bd5b4a5d1ef72ea29d0a0df303f36612273bff",
+      "atp_2009.csv.gz": "ab12c1ced927b81e919a6aa6cf6d655c6475624de0dee938dbb4a742416fd75b",
+      "atp_2010.csv.gz": "d404a9834f943b1a5f97471999a1f5e53e434a5d185da96f5a77701dc5bd7e13",
+      "atp_2011.csv.gz": "4e41b7250666ed8834384af45d849bc44a1ea2195700e82987bf7adc646ea04a",
+      "atp_2012.csv.gz": "6315941686057b42b8f3040d7f04d0beecc9c205242b24bf958ebcc7dec644f3",
+      "atp_2013.csv.gz": "dbba0b1aae9ea2bbcd710d8df35399da1cff2b2d3a5ded4a10c01404804589c1",
+      "atp_2014.csv.gz": "a83c5c6c8c290e3014bc0acc943eb0d9d251ae79afbbd61293644cca4c8a5f18",
+      "atp_2015.csv.gz": "f45e932adafe5b53eee7adcaa4a7d6b152b51c107c4d03135b4b8ab099df94e7",
+      "atp_2016.csv.gz": "a4b75cab1c3111ea57b2f58fab850d97ddeecd157851fb6993d4821a2150651a",
+      "atp_2017.csv.gz": "46acd1ab1a1d5371fbe22f013ebd8288aa1f35e986411018b4fa6a26b411a16d",
+      "atp_2018.csv.gz": "22448cf32680ea38a66bdc1dd414fb058b2a5649c02e4076efca638647cb55c3",
+      "atp_2019.csv.gz": "5961f9893e8a9b93eacd526cfcbec0cc25bb150d7b610c4db3fff2137372c166",
+      "atp_2020.csv.gz": "23fc0a2fef4efc5f73dd17d45296c6299a778ad55a9ad95a9b10ef70f361b8aa",
+      "atp_2021.csv.gz": "82fef1d36b6cbbe569faca48893c5ea4fc1c1f7d9fc6ef11647051fc65cd6ce8",
+      "atp_2022.csv.gz": "aed7c05c3f86f8b79f9341ce6cbb971f371ea5043b12cf73e1bc679716da4094",
+      "atp_2023.csv.gz": "a3117f034ab8463b055b48f222894dcce7b925779b656894c4247afd2d30d609",
+      "atp_2024.csv.gz": "db44845c16bde4f55566cd3b09e4265b0d9db7aa4efabb83732d24f55a838fa6",
+      "atp_2025.csv.gz": "57605ccef8b8da603b1d2c69931b92017b5d7e1a59603159499cdef400f4c684",
+      "atp_2026.csv.gz": "801cfc1af5d54c9f437742abc00ed83e4af65d604980358454cbc54412a293c0",
+      "wta_2000.csv.gz": "247c77b374aac2d1b80d567b4f965672359460ef0cb917056b07a098dce07a4f",
+      "wta_2001.csv.gz": "3d7bb827dc6e72c1afe702d67c37575dd2e012d33b13725ef5b7dcdbf4a3918b",
+      "wta_2002.csv.gz": "854af3d44021b9cd1ce8d70a9c0e8e8c5c4c3b088ae9943cbe743baaf94b9f46",
+      "wta_2003.csv.gz": "3cf8557760264e3f811ac807f6cee98f096539f91cb7bc88e59f162c446cafb2",
+      "wta_2004.csv.gz": "914e786ef8b8b1e88892bf9c5517c6e1d5aef4d480075fc1e1dbf465f425d7d7",
+      "wta_2005.csv.gz": "2d1f5a440afbbf638bccae6817b185d0a09695c9a9e202ab4aa7ee4b5d22e28d",
+      "wta_2006.csv.gz": "83e5834d2c0dfd38ba11ccc8f5882e9142489a1c33ddc03a2d38a0cd26a0b049",
+      "wta_2007.csv.gz": "1491974dd8767c75e73df8aa8af5c60ca5ed0c5fc387053ea7841fe8b43a0661",
+      "wta_2008.csv.gz": "8162664d0ba59ee508055a82cb678fdb63e9e20d5ae94ff769c984b858d5cce3",
+      "wta_2009.csv.gz": "bc4dc40c9ce94aa9d3aadd957fda6758ef05d90d3e4e73bb1de440faeddb374a",
+      "wta_2010.csv.gz": "c7eae9ce24c93dfdf2deccce469d10172105ffcbbb68be983fdbd8953813d79a",
+      "wta_2011.csv.gz": "533dc8675794bc5a815ab01ecafe2dfd211a5eb9242c39776357df13415c2606",
+      "wta_2012.csv.gz": "9654203d2f9ea88e4a8ed1f0a032d3c6efe42ea48c31d1531faafa242673ac71",
+      "wta_2013.csv.gz": "d99c63b92a5a6086f91ce16492d3758b4423961b71e3c95d3ee1031fb751b66a",
+      "wta_2014.csv.gz": "fad60ce35d7727ba87a4d1a8dae264b4016dcfa5805e5e9b87de8de7511d9121",
+      "wta_2015.csv.gz": "a4f2fcf92c59a0d4534bb208cdebd1c68c9f34e1e110927d439078f5b04f1b94",
+      "wta_2016.csv.gz": "882c3bd8cbdad258a444d87f6db43088b89d3072fd0650ab897b587c069ab471",
+      "wta_2017.csv.gz": "264d8fc0de71c7b3e5564a02beb2a4bf63b20191dc3c764e12c03d834c0b2e79",
+      "wta_2018.csv.gz": "c84cd0c86691cb13a2daf9ce94f9dbac7e039b170a64a3acb78a4b2d03ccae29",
+      "wta_2019.csv.gz": "945c985262f4b61127e775f07c3753db2b850f585c4e58e8a265b7f4b5212250",
+      "wta_2020.csv.gz": "7bf0339173cef5e93ef35125d67a8fb0e6a8096fd29dbc54101979831cb3e87f",
+      "wta_2021.csv.gz": "68bb0d18a3644153766644c5abaee7201611537250505d35f2d4a83c16113acf",
+      "wta_2022.csv.gz": "94b906f64e371e31295172149fae31c3546d8f277d1de287a6dfd970fef01e0b",
+      "wta_2023.csv.gz": "af339746c11e1e5572ee46d22432ddbccb08854ef5df0b0211072586fd557c71",
+      "wta_2024.csv.gz": "ffba412ab67232c6a1b4eb217ee8413adb577371195575f727f627c318e997bf",
+      "wta_2025.csv.gz": "129b0ba55ba431371f50c208edee641740d5dead2dfe3c196268397de523d189",
+      "wta_2026.csv.gz": "55d5fc6a587a23974c102c162cdce16aa8a38440ed4291e7904520553a4645d4"
+    }
+  }
+}

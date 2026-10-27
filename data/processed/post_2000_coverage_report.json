@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-26T21:29:06+00:00",
+  "generated_utc": "2026-10-27T06:19:15+00:00",
   "event_date_inclusive": "2000-01-01",
   "source_database": {
     "path": "data/processed/tennis.sqlite",
@@ -167,10 +167,10 @@
     }
   },
   "separate_odds_dataset": {
-    "rows": 470167,
+    "rows": 470225,
     "rows_by_tour": {
-      "atp": 275045,
-      "wta": 195122
+      "atp": 275080,
+      "wta": 195145
     },
     "rows_by_year": {
       "2021": 63728,
@@ -178,7 +178,7 @@
       "2023": 89826,
       "2024": 79910,
       "2025": 80412,
-      "2026": 72910
+      "2026": 72968
     },
     "first_match_date": "2021-01-01",
     "last_match_date": "2026-10-27",
@@ -190,10 +190,10 @@
     "odds_enriched_feature_rows": 239421,
     "odds_enriched_opening_price_pairs": 152668,
     "odds_enriched_last_pre_match_price_pairs": 117203,
-    "recent_model_feature_rows": 5826,
+    "recent_model_feature_rows": 5876,
     "recent_model_feature_date_range": [
       "2026-06-16",
-      "2026-10-26"
+      "2026-10-27"
     ],
     "recent_model_rows_with_rank_fallbacks": 3110,
     "recent_model_rank_fills": 6122,
@@ -210,22 +210,22 @@
         "rows": 964
       }
     },
-    "recent_model_profile_rows": 5826,
-    "recent_model_age_values": 11119,
-    "recent_model_height_profile_values": 7365,
-    "recent_model_hand_values": 11647,
+    "recent_model_profile_rows": 5876,
+    "recent_model_age_values": 11217,
+    "recent_model_height_profile_values": 7427,
+    "recent_model_hand_values": 11746,
     "recent_model_profile_values_by_tour": {
       "atp": {
-        "age": 7342,
-        "height": 5861,
-        "hand": 7532,
-        "rows": 3766
+        "age": 7401,
+        "height": 5912,
+        "hand": 7592,
+        "rows": 3796
       },
       "wta": {
-        "age": 3777,
-        "hand": 4115,
-        "height": 1504,
-        "rows": 2060
+        "age": 3816,
+        "hand": 4154,
+        "height": 1515,
+        "rows": 2080
       }
     },
     "score_state_counts": {

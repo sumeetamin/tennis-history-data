@@ -71,6 +71,9 @@ jobs:
       - name: Append ATP/WTA main-tour pre-match features
         run: python scripts/build_main_tour_dataset.py
 
+      - name: Audit ATP/WTA main-tour coverage and quality
+        run: python scripts/audit_atp_wta_main_tour.py
+
       - name: Verify existing dataset bytes were preserved
         run: python scripts/verify_daily_append_only.py
 

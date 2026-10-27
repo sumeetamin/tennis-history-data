@@ -2,9 +2,9 @@
 
 The latest refresh, checked through **2026-10-27**, found no missing settled matches in the provider's rolling 30-day window. The latest settled date is **2026-10-26**; an unfinished Oct. 27 row remains excluded. Archive cutoffs, hashes and verification results are recorded in [`latest_refresh_report.json`](latest_refresh_report.json).
 
-The full-season backfill also scanned every available Valuebetennis season from 2021 through 2026 and found no unseen settled match IDs. To repeat this check later without rewriting existing rows, run `python scripts/backfill_missing_odds.py`. The odds source starts in 2021, so this check cannot fill pre-2021 results or add stats the source does not publish.
+The full-season backfill scanned every available Valuebetennis season from 2021 through 2026 and appended 58 unseen settled match IDs (35 ATP, 23 WTA), without rewriting existing rows. To repeat this check later, run `python scripts/backfill_missing_odds.py`. The odds source starts in 2021, so this check cannot fill pre-2021 results or add stats the source does not publish.
 
-For recent-period modeling through 2026-10-26, use the [audited snapshot](snapshots/2026-10-27/README.md), which has 5,769 rows with reconstructed history and corrected odds. A full replay found 57 rows with ambiguous or missing provider-player mappings; 2,872 retained rows have changed history values under current-source replay. The 5,826-row append-only file remains preserved, including those excluded rows. The snapshot is dated and does not update automatically.
+For recent-period modeling through 2026-10-26, use the [audited snapshot](snapshots/2026-10-27/README.md), which has 5,769 rows with reconstructed history and corrected odds. A full replay found 57 rows with ambiguous or missing provider-player mappings; 2,872 retained rows have changed history values under current-source replay. The append-only file now has 5,876 rows through 2026-10-27 and remains preserved, including rows with known identity/history issues. The audited snapshot is dated and does not update automatically.
 
 ## Required correction for recent feature odds
 
