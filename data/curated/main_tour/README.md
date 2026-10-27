@@ -1,6 +1,14 @@
 # ATP and WTA main-tour model features
 
-`atp_wta_main_tour_model_features.csv.gz` is a combined, labeled pre-match feature table for ATP and WTA main-tour singles from 2000 onward. It includes the archive's `tour` category and recent provider categories `main_tour`, `masters`, and `grand_chelem`. Challenger, ITF, qualifying, and team-event rows are not included in this focused release.
+> Current release notice (27 October 2026): use `data/curated/research_release/`
+> and `data/odds/recent_model_features_enriched.csv.gz` for corrected current views.
+> They rebuild recent histories and prices from the strict source replay in
+> `data/odds/current/`. Earlier append-only exports and dated snapshots below are
+> retained for provenance; their latest date can include a now-rejected result.
+> See `docs/repository-quality.md` for measured coverage and remaining limitations.
+
+
+`atp_wta_main_tour_model_features.csv.gz` is the legacy combined feature archive from 2000 onward. It includes the archive's `tour` category and recent provider categories `main_tour`, `masters`, and `grand_chelem`. Recent event categories do not identify main-draw status: qualifiers may be mixed in. Use the current research release for explicit draw status and corrected recent rows.
 
 The current release has 148,596 rows: 77,315 ATP and 71,281 WTA, with event dates from 2000-01-03 through 2026-10-26 (ATP) and 2026-10-27 (WTA). For field coverage by tour and era, see [`quality_report.json`](quality_report.json) and [`season_coverage.csv`](season_coverage.csv). [`tournament_census.csv.gz`](tournament_census.csv.gz) lists the events represented in the source results. These are observed coverage counts, not estimates of all professional matches.
 

@@ -5,7 +5,8 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/daily-data-update.yml"
-      - "scripts/build_recent_features_enriched.py"
+      - "scripts/*.py"
+      - "tests/*.py"
   schedule:
     # 13:47 India Standard Time; avoid the busiest top-of-hour schedule slot.
     - cron: "17 8 * * *"
@@ -62,6 +63,9 @@ jobs:
           python scripts/correct_recent_odds.py
           python scripts/correct_recent_odds.py --verify-only
 
+      - name: Reconstruct current recent features with corrected history and identities
+        run: python scripts/build_current_recent_snapshot.py
+
       - name: Build joined recent feature exports by competition level
         run: python scripts/build_recent_features_enriched.py
 
@@ -78,6 +82,9 @@ jobs:
 
       - name: Append ATP/WTA main-tour pre-match features
         run: python scripts/build_main_tour_dataset.py
+
+      - name: Build current ATP/WTA research release with explicit draw scope
+        run: python scripts/build_research_release.py
 
       - name: Audit ATP/WTA main-tour coverage and quality
         run: python scripts/audit_atp_wta_main_tour.py
@@ -97,6 +104,9 @@ jobs:
       - name: Refresh multidimensional coverage and missingness report
         run: python scripts/build_coverage_dashboard.py
 
+      - name: Audit actual release rows and fail on integrity defects
+        run: python scripts/audit_repository_quality.py
+
       - name: Check data contracts, timing and append-only identity rules
         run: python -m unittest discover -s tests -v
 
@@ -106,12 +116,24 @@ jobs:
       - name: Commit only when tracked data changed
         shell: bash
         run: |
-          if [ -z "$(git status --porcelain -- data/odds/atp_wta_match_odds.csv data/odds/recent_model_features.csv.gz data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_player_profiles.csv.gz data/odds/recent_odds_corrections.csv data/odds/quotes data/curated/post_2000/matches data/curated/post_2000/players.csv.gz data/curated/post_2000/player_identity_candidates.csv.gz data/curated/main_tour data/curated/match_charting data/curated/point_by_point data/experimental/point_history docs/coverage-dashboard.md)" ]; then
+          paths=(
+            data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json
+            data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json
+            data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json
+            data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json
+            data/odds/recent_odds_corrections.csv data/odds/recent_odds_corrections_report.json
+            data/odds/recent_model_features_enriched.csv.gz data/odds/recent_main_tour_event_features.csv.gz
+            data/odds/recent_lower_tier_event_features.csv.gz data/odds/recent_features_enrichment_report.json
+            data/odds/current data/odds/quotes data/curated/post_2000 data/curated/main_tour
+            data/curated/research_release data/curated/match_charting data/curated/point_by_point
+            data/experimental/point_history data/quality docs/coverage-dashboard.md docs/repository-quality.md
+          )
+          if [ -z "$(git status --porcelain -- "${paths[@]}")" ]; then
             echo "No data changes; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/odds/atp_wta_match_odds.csv data/odds/valuebetennis_manifest.json data/odds/recent_model_features.csv.gz data/odds/recent_model_features_report.json data/odds/recent_ranking_fallbacks.csv.gz data/odds/recent_ranking_fallbacks_report.json data/odds/recent_player_profiles.csv.gz data/odds/recent_player_profiles_report.json data/odds/recent_odds_corrections.csv data/odds/recent_odds_corrections_report.json data/odds/recent_model_features_enriched.csv.gz data/odds/recent_main_tour_event_features.csv.gz data/odds/recent_lower_tier_event_features.csv.gz data/odds/recent_features_enrichment_report.json data/odds/recent_model_features_enriched.csv.gz data/odds/recent_main_tour_event_features.csv.gz data/odds/recent_lower_tier_event_features.csv.gz data/odds/recent_features_enrichment_report.json data/odds/quotes data/curated/post_2000 data/curated/main_tour data/curated/match_charting data/curated/point_by_point data/experimental/point_history docs/coverage-dashboard.md
-          git commit -m "Append recent tennis results, odds and verified features"
+          git add -- "${paths[@]}"
+          git commit -m "Append source data and refresh audited research views"
           git push

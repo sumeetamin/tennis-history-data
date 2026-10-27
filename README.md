@@ -1,5 +1,16 @@
 # Tennis History Data
 
+**Recommended current data:** [ATP/WTA research release](data/curated/research_release/README.md)
+and its [measured quality report](docs/repository-quality.md). This release uses a fresh
+recent-history replay, rejects unresolved identities and unfinished scores, and exposes
+confirmed main-draw rows separately from recent events with unknown stages.
+The older append-only recent/main-tour exports remain provenance archives and can
+contain superseded history, price ordering, and rows excluded by current checks.
+Use `data/odds/current/manifest.json` for the current completed-match date, not the
+maximum date in the legacy recent archive. Missing values and source coverage are
+reported directly; full match completeness and quote-time validity remain unproven.
+
+
 Historical tennis data and a reproducible starting point for match-winner prediction.
 This repository contains the source data, not just links or a scraper template.
 
@@ -20,7 +31,7 @@ This repository contains the source data, not just links or a scraper template.
 ## Start here
 
 - Unified post-2000 results: [`data/curated/post_2000/`](data/curated/post_2000/README.md) (yearly ATP/WTA CSVs, a player table, available ranking backfills and verified odds, explicit date/identity provenance, coverage and exclusion reports)
-- ATP/WTA main-tour modeling table: [`data/curated/main_tour/`](data/curated/main_tour/README.md) (one labeled pre-match feature table from 2000 onward; opening/last-pre-match odds and recent supplements where available; append-only, with season coverage, event census and quality audit)
+- Current ATP/WTA research tables: [`data/curated/research_release/`](data/curated/research_release/README.md) (confirmed main-draw and broader event-level files, corrected recent history/odds, explicit unknown stages). The earlier [`main_tour/`](data/curated/main_tour/README.md) table is a legacy provenance archive.
 - ATP/WTA charted-match stats: [`data/curated/match_charting/`](data/curated/match_charting/README.md) (licensed aggregate serve, return, rally, shot, net-play and error tables with conservative match-link candidates; post-match statistics)
 - Grand Slam point-by-point supplement: [`data/curated/point_by_point/`](data/curated/point_by_point/README.md) (2011–2024 available singles point logs, explicit source gaps, statistics, append-only identity crosswalk and license)
 - Player/event/surface/ranking/odds/timing missingness: [`coverage dashboard`](docs/coverage-dashboard.md) (refreshed by the daily workflow)
@@ -32,7 +43,7 @@ This repository contains the source data, not just links or a scraper template.
 - Verified odds/match links: `data/odds/linked_odds_sackmann.csv.gz` (also see its audit report)
 - Pre-match model rows with odds: `data/odds/model_features_with_odds.csv.gz` (p1/p2-aligned prices; `p1_won` is the target)
 - 2025 consensus odds supplement: `data/odds/model_features_with_consensus_odds_2025.csv.gz` (4,802 feature rows with source-reported opening/closing consensus prices aligned to p1/p2; see quality flags and timing limits in the odds notes)
-- Audited recent model snapshot: `data/odds/snapshots/2026-10-27/recent_model_features.csv.gz` (5,769 rows with reconstructed history and corrected odds through 2026-10-26; preferred for recent-period modeling)
+- Current audited recent model snapshot: `data/odds/current/recent_model_features.csv.gz` (fresh reconstruction from completed, verified source results; see its manifest for count, date, exclusions, source hashes and corrected history). The enriched version is `data/odds/recent_model_features_enriched.csv.gz`.
 - Daily append-only recent archive: `data/odds/recent_model_features.csv.gz` (retains earlier rows with known history/identity issues; see the dated snapshot and audit report before modeling)
 - Recent odds corrections: `data/odds/recent_odds_corrections.csv` (required overlay for 2,713 existing recent rows; replace all four odds fields on matched IDs)
 - Recent match ranking supplement: `data/odds/recent_ranking_fallbacks.csv.gz` (weekly rankings aligned by `record_id`, with snapshot dates/ages)

@@ -7,16 +7,17 @@ import math
 import re
 import unicodedata
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
+from build_current_recent_snapshot import write_gzip as deterministic_gzip
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/odds"
-FEATURES = DATA / "recent_model_features.csv.gz"
+FEATURES = DATA / "current/recent_model_features.csv.gz"
 SOURCE = DATA / "atp_wta_match_odds.csv"
 RANKS = DATA / "recent_ranking_fallbacks.csv.gz"
 PROFILES = DATA / "recent_player_profiles.csv.gz"
-FEATURE_REPORT = DATA / "recent_model_features_report.json"
+FEATURE_REPORT = DATA / "current/manifest.json"
 ALL_OUT = DATA / "recent_model_features_enriched.csv.gz"
 MAIN_OUT = DATA / "recent_main_tour_event_features.csv.gz"
 LOWER_OUT = DATA / "recent_lower_tier_event_features.csv.gz"
@@ -36,6 +37,9 @@ EXTRA = [
     "p2_rank_snapshot_age_days", "p1_birth_date", "p2_birth_date",
     "p1_birth_date_source", "p2_birth_date_source",
     "p1_height_source", "p2_height_source", "p1_hand_source", "p2_hand_source",
+    "draw_status", "match_datetime_basis", "actual_start_time_verified",
+    "p1_rank_is_stale", "p2_rank_is_stale", "p1_rank_points_source", "p2_rank_points_source",
+    "bookmaker", "market",
 ]
 
 
@@ -66,6 +70,11 @@ def positive(value):
         return n if math.isfinite(n) and n > 0 else None
     except (TypeError, ValueError):
         return None
+
+
+def price(value):
+    number = positive(value)
+    return number if number is not None and number > 1 else None
 
 
 def normalize(value):
@@ -126,6 +135,17 @@ def sha(path):
 
 
 def merge(feature, raw, rank, profile):
+    if not raw:
+        raise ValueError(f'Missing source row: {feature["record_id"]}')
+    for supplement in (rank, profile):
+        if supplement and any(supplement.get(k) != feature.get(k) for k in ('record_id', 'tour', 'event_date', 'p1_id', 'p2_id')):
+            raise ValueError(f'Supplement identity mismatch: {feature["record_id"]}')
+    if rank:
+        for side in ('p1', 'p2'):
+            if present(rank.get(f'{side}_rank_fallback')) or present(rank.get(f'{side}_rank_points_fallback')):
+                age = (date.fromisoformat(feature['event_date']) - date.fromisoformat(rank[f'{side}_rank_snapshot_date'])).days
+                if not 1 <= age <= 90 or age != int(rank[f'{side}_rank_age_days']):
+                    raise ValueError(f'Invalid ranking time: {feature["record_id"]}')
     row = dict(feature)
     category = raw.get("categorie", "") if raw else ""
     group = level(category)
@@ -143,6 +163,11 @@ def merge(feature, raw, rank, profile):
             "round code unavailable"
         ),
         "source_match_datetime_utc": utc(raw.get("date")) if raw else "",
+        "match_datetime_basis": "provider-declared UTC: https://www.valuebetennis.com/donnees.htm; actual start unverified",
+        "actual_start_time_verified": "false",
+        "bookmaker": "Pinnacle",
+        "market": "match_winner",
+        "draw_status": "main_draw" if code == "12" else "pre_qualifying" if code == "0" else "unknown",
         "odds_quote_timestamp_utc": "",
         "odds_timestamp_verified": "false",
         "odds_timing_basis": "provider-labelled opening/last pre-match; exact quote timestamps unavailable",
@@ -150,8 +175,10 @@ def merge(feature, raw, rank, profile):
     if group != "unknown" and not present(row.get("tourney_level")):
         row["tourney_level"] = group
 
-    opening = [positive(row.get("odds_open_p1_decimal")), positive(row.get("odds_open_p2_decimal"))]
-    last = [positive(row.get("odds_close_p1_decimal")), positive(row.get("odds_close_p2_decimal"))]
+    if code == "12" and not present(row.get("round")):
+        row["round"] = "F"
+    opening = [price(row.get("odds_open_p1_decimal")), price(row.get("odds_open_p2_decimal"))]
+    last = [price(row.get("odds_close_p1_decimal")), price(row.get("odds_close_p2_decimal"))]
     row["odds_opening_pair_available"] = str(all(v is not None for v in opening)).lower()
     row["odds_last_pre_match_pair_available"] = str(all(v is not None for v in last)).lower()
     row["odds_last_pre_match_p1_decimal"] = last[0] or ""
@@ -178,6 +205,10 @@ def merge(feature, raw, rank, profile):
                 row[f"{side}_rank_snapshot_age_days"] = rank.get(f"{side}_rank_age_days", "")
         if points is not None:
             row[f"{side}_rank_points"] = int(points) if points.is_integer() else points
+        row[f'{side}_rank_points_source'] = ('recent feature source' if positive(feature.get(f'{side}_rank_points')) is not None
+            else 'prior weekly ranking snapshot' if points is not None else 'missing')
+        snapshot_age = row.get(f'{side}_rank_snapshot_age_days')
+        row[f'{side}_rank_is_stale'] = str(int(snapshot_age) > 14).lower() if present(snapshot_age) else ''
 
         if profile:
             for target, supplement in (
@@ -192,6 +223,8 @@ def merge(feature, raw, rank, profile):
         else:
             for field in ("birth_date", "birth_date_source", "height_source", "hand_source"):
                 row[f"{side}_{field}"] = ""
+        if row.get(f'{side}_hand') not in {'R', 'L', 'A'}:
+            row[f'{side}_hand'] = ''
 
     for key in ("rank", "rank_points", "age", "ht"):
         a, b = positive(row.get(f"p1_{key}")), positive(row.get(f"p2_{key}"))
@@ -219,7 +252,8 @@ def summarize(rows, source, feature_report):
     fields = (
         "p1_rank", "p2_rank", "p1_rank_points", "p2_rank_points",
         "p1_age", "p2_age", "p1_ht", "p2_ht", "p1_hand", "p2_hand",
-        "prior_matches", "surface_prior_matches", "recent365_matches",
+        "p1_prior_matches", "p2_prior_matches", "p1_surface_prior_matches", "p2_surface_prior_matches",
+        "p1_recent365_matches", "p2_recent365_matches", "round", "tourney_level",
     )
 
     def missingness(part):
@@ -231,7 +265,7 @@ def summarize(rows, source, feature_report):
         } for f in fields}
 
     def pair_count(left, right):
-        return sum(positive(r.get(left)) is not None and positive(r.get(right)) is not None for r in rows)
+        return sum(price(r.get(left)) is not None and price(r.get(right)) is not None for r in rows)
 
     return {
         "rows": len(rows),
@@ -245,6 +279,11 @@ def summarize(rows, source, feature_report):
         "counts_by_surface": {k: len(v) for k, v in sorted(groups["surface"].items())},
         "counts_by_source_round_code": {k: len(v) for k, v in sorted(groups["round_code"].items())},
         "missingness_by_tour": {k: missingness(v) for k, v in sorted(groups["tour"].items())},
+        "missingness_by_season": {k: missingness(v) for k, v in sorted(groups["season"].items())},
+        "missingness_by_event_level": {k: missingness(v) for k, v in sorted(groups["event_level"].items())},
+        "missingness_by_surface": {k: missingness(v) for k, v in sorted(groups["surface"].items())},
+        "draw_status_counts": dict(Counter(r['draw_status'] for r in rows)),
+        "rank_snapshot_age_note": "Prior snapshots up to 90 days old are fallbacks, not actual match-day rankings; >14 days explicitly marked stale.",
         "field_missingness": missingness(rows),
         "odds": {
             "opening_pair_rows": pair_count("odds_open_p1_decimal", "odds_open_p2_decimal"),
@@ -270,10 +309,7 @@ def summarize(rows, source, feature_report):
 
 
 def write_gzip(path, rows, fields):
-    with gzip.open(path, "wt", encoding="utf-8", newline="", compresslevel=6) as stream:
-        writer = csv.DictWriter(stream, fieldnames=fields, extrasaction="ignore")
-        writer.writeheader()
-        writer.writerows(rows)
+    deterministic_gzip(path, fields, ({key: row.get(key, '') for key in fields} for row in rows))
 
 
 def main():
@@ -283,6 +319,8 @@ def main():
         raise FileNotFoundError(f"Missing recent-data inputs: {missing}")
 
     features = read_rows(FEATURES, compressed=True)
+    if not features:
+        raise ValueError('Empty canonical snapshot')
     raw = read_rows(SOURCE)
     source = {}
     for row in raw:
@@ -292,6 +330,11 @@ def main():
         source[match_id] = row
     ranks, profiles = keyed_rows(RANKS), keyed_rows(PROFILES)
     feature_report = json.loads(FEATURE_REPORT.read_text(encoding="utf-8"))
+    if feature_report.get('snapshot_sha256') != sha(FEATURES) or feature_report.get('rows') != len(features):
+        raise ValueError('Canonical snapshot manifest mismatch')
+    for name, expected in feature_report.get('inputs', {}).items():
+        if sha(ROOT / name) != expected:
+            raise ValueError(f'Stale canonical snapshot input: {name}')
 
     seen, enriched = set(), []
     for feature in features:
@@ -310,6 +353,9 @@ def main():
     write_gzip(LOWER_OUT, lower_rows, fields)
 
     report = summarize(enriched, source, feature_report)
+    report['canonical_snapshot'] = FEATURES.relative_to(ROOT).as_posix()
+    report['excluded_legacy_rows'] = feature_report.get('excluded_recent_rows')
+    report['history_corrected_rows'] = feature_report.get('history_corrected_rows')
     report["subsets"] = {
         "all_levels": {"rows": len(enriched), "file": ALL_OUT.relative_to(ROOT).as_posix()},
         "main_tour_event_levels": {
@@ -325,7 +371,7 @@ def main():
             "rows": count, "bytes": path.stat().st_size, "sha256": sha(path)
         }
     report["inputs"] = {p.relative_to(ROOT).as_posix(): sha(p) for p in inputs[:-1]}
-    REPORT_OUT.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    REPORT_OUT.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({"rows": len(enriched), "main_tour_event_rows": len(main_rows),
                       "challenger_itf_rows": len(lower_rows),
                       "report": REPORT_OUT.relative_to(ROOT).as_posix()}, indent=2))

@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-10-27T10:57:44.441844+00:00",
+  "source_url": "https://www.valuebetennis.com/datasets/valuebetennis-matchs-2026.csv",
+  "source_license": "CC BY 4.0",
+  "source_sha256": "647137df37dba2ad12312352046271a806e439b4b296cae612d3848189646f3d",
+  "local_raw_sha256": "b5b47209487628ca06f92c1b3f46944d5762c31da2785f79f8c8b59af3d23715",
+  "source_rows": 73358,
+  "source_completed_rows": 22038,
+  "latest_completed_datetime_utc": "2026-10-27 06:30:00",
+  "missing_completed_match_ids": 0,
+  "changed_existing_rows": 0,
+  "scope": "All published 2026 source rows compared against the immutable raw archive; a provider-relative reconciliation, not an official all-tour coverage census."
+}

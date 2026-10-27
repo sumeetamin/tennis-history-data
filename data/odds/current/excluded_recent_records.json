@@ -1,0 +1,557 @@
+[
+  {
+    "record_id": "vb:1000957",
+    "event_date": "2026-10-14",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:1001391",
+    "event_date": "2026-10-16",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:1002240",
+    "event_date": "2026-10-18",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:1003086",
+    "event_date": "2026-10-19",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:1003697",
+    "event_date": "2026-10-21",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:958015",
+    "event_date": "2026-06-23",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:959626",
+    "event_date": "2026-06-29",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:960054",
+    "event_date": "2026-06-29",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:960072",
+    "event_date": "2026-06-30",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:962759",
+    "event_date": "2026-07-05",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:962962",
+    "event_date": "2026-07-06",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:963833",
+    "event_date": "2026-07-07",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:964235",
+    "event_date": "2026-07-08",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:965741",
+    "event_date": "2026-07-13",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:965921",
+    "event_date": "2026-07-14",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:967127",
+    "event_date": "2026-07-16",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:969263",
+    "event_date": "2026-07-20",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:971153",
+    "event_date": "2026-07-26",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:971533",
+    "event_date": "2026-07-29",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:971665",
+    "event_date": "2026-07-27",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:971890",
+    "event_date": "2026-07-28",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:972179",
+    "event_date": "2026-07-28",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:974286",
+    "event_date": "2026-08-04",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:974291",
+    "event_date": "2026-08-03",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:975473",
+    "event_date": "2026-08-06",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:976012",
+    "event_date": "2026-08-08",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:977858",
+    "event_date": "2026-08-13",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:978229",
+    "event_date": "2026-08-15",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:978360",
+    "event_date": "2026-08-15",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:978682",
+    "event_date": "2026-08-17",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:978683",
+    "event_date": "2026-08-18",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:979698",
+    "event_date": "2026-08-19",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:980697",
+    "event_date": "2026-08-21",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:980915",
+    "event_date": "2026-08-23",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:981087",
+    "event_date": "2026-08-23",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:981582",
+    "event_date": "2026-08-24",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:983903",
+    "event_date": "2026-09-01",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:983911",
+    "event_date": "2026-08-31",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:984027",
+    "event_date": "2026-08-30",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:987056",
+    "event_date": "2026-09-06",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:987670",
+    "event_date": "2026-09-07",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:988607",
+    "event_date": "2026-09-10",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:989414",
+    "event_date": "2026-09-11",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:992136",
+    "event_date": "2026-09-22",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:994585",
+    "event_date": "2026-09-27",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:994665",
+    "event_date": "2026-09-30",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:994817",
+    "event_date": "2026-09-28",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:995051",
+    "event_date": "2026-09-28",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:995074",
+    "event_date": "2026-09-28",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:995247",
+    "event_date": "2026-09-29",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:995256",
+    "event_date": "2026-09-29",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:995410",
+    "event_date": "2026-09-29",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:995499",
+    "event_date": "2026-09-29",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:995583",
+    "event_date": "2026-09-29",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:995630",
+    "event_date": "2026-09-29",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:995650",
+    "event_date": "2026-09-29",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:995691",
+    "event_date": "2026-09-30",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:996314",
+    "event_date": "2026-10-01",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:996944",
+    "event_date": "2026-10-04",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:996967",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:996994",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997117",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997314",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997343",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997380",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997395",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997400",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997403",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997409",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997411",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997435",
+    "event_date": "2026-10-04",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997468",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997469",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997481",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997490",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997501",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997502",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997510",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997518",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997526",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997539",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997553",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997561",
+    "event_date": "2026-10-05",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:997566",
+    "event_date": "2026-10-05",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:997571",
+    "event_date": "2026-10-05",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:997616",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997696",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997721",
+    "event_date": "2026-10-06",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:997756",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997776",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997790",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997795",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997814",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997817",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997820",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997829",
+    "event_date": "2026-10-06",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  },
+  {
+    "record_id": "vb:997900",
+    "event_date": "2026-10-05",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997926",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997937",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997942",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997973",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997980",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:997983",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:998010",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:998065",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:998096",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:998099",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:998100",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:998182",
+    "event_date": "2026-10-06",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:998777",
+    "event_date": "2026-10-08",
+    "reason": "incomplete_or_unsupported_set"
+  },
+  {
+    "record_id": "vb:999639",
+    "event_date": "2026-10-11",
+    "reason": "not_reproduced_by_current_identity_or_admission_checks"
+  }
+]

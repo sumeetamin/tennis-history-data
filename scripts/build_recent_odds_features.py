@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from build_features import History, orientation, LAG  # noqa: E402
 from odds_quality import settlement_status  # noqa: E402
+from curated_quality import completed_result
 from recent_odds_mapping import aligned_prices
 
 ODDS = ROOT / "data/odds/atp_wta_match_odds.csv"
@@ -124,7 +125,7 @@ def main():
                     continue
                 if day <= archive_max[tour] + timedelta(days=14):
                     continue
-                if settlement_status(raw) != "completed":
+                if completed_result(raw) != "completed":
                     continue
                 p1, p2 = str(raw.get("joueur1_id") or ""), str(raw.get("joueur2_id") or "")
                 k1, k2 = (tour, p1), (tour, p2)

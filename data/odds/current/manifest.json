@@ -1,0 +1,65 @@
+{
+  "as_of_date": "2026-10-27",
+  "changed_fields": {
+    "elo_diff": 2869,
+    "odds_close_p2_decimal": 2641,
+    "odds_open_p2_decimal": 2661,
+    "p1_elo": 2195,
+    "p1_history_latest_date": 452,
+    "p1_prior_matches": 1034,
+    "p1_prior_win_rate": 1036,
+    "p1_recent365_matches": 1034,
+    "p1_recent365_win_rate": 1037,
+    "p1_surface_elo": 1363,
+    "p1_surface_prior_matches": 629,
+    "p2_elo": 2239,
+    "p2_history_latest_date": 485,
+    "p2_prior_matches": 1052,
+    "p2_prior_win_rate": 1060,
+    "p2_recent365_matches": 1052,
+    "p2_recent365_win_rate": 1057,
+    "p2_surface_elo": 1395,
+    "p2_surface_prior_matches": 663,
+    "prior_win_rate_diff": 1776,
+    "recent365_win_rate_diff": 1755,
+    "surface_elo_diff": 1909
+  },
+  "checks": {
+    "original_archive_bytes_preserved": true,
+    "prior_history_28_day_embargo": true,
+    "source_completed": true,
+    "unique_ids": true
+  },
+  "corrected_rows": 4138,
+  "data_through": "2026-10-27",
+  "date_range": [
+    "2026-06-16",
+    "2026-10-27"
+  ],
+  "excluded_reasons": {
+    "incomplete_or_unsupported_set": 55,
+    "not_reproduced_by_current_identity_or_admission_checks": 56
+  },
+  "excluded_recent_rows": 111,
+  "excluded_records_sha256": "90df68d31a675f7d1ce22a8c33b62660c40952549be2576ffb6e2d1223977ce8",
+  "history_corrected_rows": 2869,
+  "inputs": {
+    "data/odds/atp_wta_match_odds.csv": "b5b47209487628ca06f92c1b3f46944d5762c31da2785f79f8c8b59af3d23715",
+    "data/odds/linked_odds_sackmann.csv.gz": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9",
+    "data/source_files.json": "568295797704108fa2ed6e773a805d7019bd637b1e579893ef4f9f466a3195c4",
+    "scripts/build_current_recent_snapshot.py": "804eb10873450367294282a277b39152ba1168dce8e8ce7214a70d28f1539447",
+    "scripts/build_features.py": "521ace9c03677008fd534fd864d68621722c9433128f87c65358a5d2f9020be1",
+    "scripts/build_recent_odds_features.py": "b2c69dce15452b7951e2b1c3701676c683cb83fb6c79d377842ada8d53dc38bd",
+    "scripts/curated_quality.py": "096c35e82efd2d39d22a1f9f0103a42d750685277bb35f3f565b55197ea0148c",
+    "scripts/odds_quality.py": "dffc7962f1f936956d57b67c9b2b4b065406527ad3899f5ae5ddadadb89283d2",
+    "scripts/recent_odds_mapping.py": "3dfbbe3a9fe5b1c47f29e6eac4e183af0a78cf02291007202028d7f94cc5a1ea"
+  },
+  "new_rows_vs_archive": 0,
+  "published_archive_rows": 5876,
+  "rows": 5765,
+  "schema_version": 1,
+  "scope": "Replaceable current-source reconstruction; immutable original rows remain in the legacy archive. Event dates and 28-day embargo are availability proxies, not verified result publication timestamps.",
+  "skipped_unverified_identity": 934,
+  "snapshot_sha256": "13f4936e28028f7ae4ec454ff4048ad7d0703a5b18c39e3aa5431c8233a607c7",
+  "source_feature_archive_sha256": "66588e771d740397b3d2fd3756be3202b2505b93d9a4efb1ecee7cecdf8e28bd"
+}

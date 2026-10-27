@@ -1,5 +1,13 @@
 # Historical match odds
 
+> Current release notice (27 October 2026): use `data/curated/research_release/`
+> and `data/odds/recent_model_features_enriched.csv.gz` for corrected current views.
+> They rebuild recent histories and prices from the strict source replay in
+> `data/odds/current/`. Earlier append-only exports and dated snapshots below are
+> retained for provenance; their latest date can include a now-rejected result.
+> See `docs/repository-quality.md` for measured coverage and remaining limitations.
+
+
 The player-oriented append-only quote export is split into season-sized files under [`quotes/by_year/`](quotes/by_year/), with its [`manifest`](quotes/manifest.json) and correction overlay. Concatenate the yearly CSV files when a single table is needed; `quote_id` is the stable row key. Each source match is represented by one row per player for opening and provider-labeled last-pre-match prices. `quote_timestamp_utc`, match start timestamps/timezone and `result_available_at_utc` are intentionally blank: Valuebetennis does not supply verifiable values for them. Its stage labels must not be treated as timestamp evidence. Attribute Valuebetennis under CC BY 4.0; rows with Sackmann canonical IDs additionally inherit the archive's license terms. The daily Action appends new quote keys and records changed values in the correction overlay. Season partitions keep every file below GitHub's 100 MB per-file limit.
 
 The latest refresh, checked through **2026-10-27**, found no missing settled matches in the provider's rolling 30-day window. The latest settled date is **2026-10-26**; an unfinished Oct. 27 row remains excluded. Archive cutoffs, hashes and verification results are recorded in [`latest_refresh_report.json`](latest_refresh_report.json).

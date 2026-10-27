@@ -1,0 +1,52 @@
+{
+  "completeness": "Observed source coverage; no independently reconciled official draw census. No claim of all matches or all statistics.",
+  "draw_policy": "Main-draw requires archive tour category and recognized main-draw round, or provider-documented final round 12. Unknown recent rounds are retained only in the event-level view.",
+  "files": {
+    "main_draw_features.csv.gz": {
+      "date_range": [
+        "2000-01-03",
+        "2026-10-25"
+      ],
+      "draw_status_counts": {
+        "main_draw": 146806
+      },
+      "population_source_counts": {
+        "current_recent_replay": 26,
+        "historical_main_tour_archive": 146780
+      },
+      "rows": 146806,
+      "sha256": "62c842e8b37d9127ee5de8a10695a9651b2d1d03fd5dcde6ec9a59e20dd2b505",
+      "tour_counts": {
+        "atp": 76468,
+        "wta": 70338
+      }
+    },
+    "main_tour_event_features.csv.gz": {
+      "date_range": [
+        "2000-01-03",
+        "2026-10-27"
+      ],
+      "draw_status_counts": {
+        "main_draw": 146806,
+        "unknown": 1774
+      },
+      "population_source_counts": {
+        "current_recent_replay": 1768,
+        "historical_main_tour_archive": 146812
+      },
+      "rows": 148580,
+      "sha256": "0297cd9c7f3c6c1713fc4191824cb621ee332ae405b2dea564e1a00d81f5cca0",
+      "tour_counts": {
+        "atp": 77299,
+        "wta": 71281
+      }
+    }
+  },
+  "inputs": {
+    "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz": "cfd94514bc2474c9aa9d83b2120bbaf39948845cd6b187d950aa56eb6886ba5d",
+    "data/odds/recent_main_tour_event_features.csv.gz": "4ef5813e19c36293b80ffd1b97df29360373761f3fafb3d19a2edcbeb55f0a5d"
+  },
+  "legacy_recent_rows_replaced": 1784,
+  "schema_version": 1,
+  "timing_policy": "Historical event dates approximate tournament start. Prior history uses a 28-day embargo. Quote timestamps and actual result availability remain unverified."
+}
