@@ -1,23 +1,23 @@
 {
   "passed": true,
-  "match_rows": 1262404,
-  "player_rows": 42606,
+  "match_rows": 1262474,
+  "player_rows": 42611,
   "matches_by_source": {
     "sackmann": 1255705,
-    "valuebetennis": 6699
+    "valuebetennis": 6769
   },
   "latest_dates_by_source": {
     "sackmann": "2026-06-02",
-    "valuebetennis": "2026-10-27"
+    "valuebetennis": "2026-10-28"
   },
   "both_players_ranked": 1007004,
   "both_serve_counts_present": 330730,
-  "paired_opening_odds": 164936,
-  "exact_match_dates": 254583,
+  "paired_opening_odds": 164998,
+  "exact_match_dates": 254653,
   "ranking_values_filled": 55313,
-  "issue_ledger_rows": 215649,
-  "identity_candidate_rows_checked": 125,
-  "profile_height_rows_checked": 42606,
+  "issue_ledger_rows": 215652,
+  "identity_candidate_rows_checked": 127,
+  "profile_height_rows_checked": 42611,
   "implausible_source_profile_heights_omitted": 7,
   "scope": "Every exported row checked against local source values; IDs, date precision, rank timing, odds orientation, file hashes and counts. Does not prove source accuracy or exhaustive real-world coverage."
 }
