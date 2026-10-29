@@ -28,25 +28,25 @@
       ],
       "draw_status_counts": {
         "main_draw": 146806,
-        "unknown": 1786
+        "unknown": 1797
       },
       "population_source_counts": {
-        "current_recent_replay": 1780,
+        "current_recent_replay": 1791,
         "historical_main_tour_archive": 146812
       },
-      "rows": 148592,
-      "sha256": "c58fead574b65c9a2effcc4903ac3e0672fd909cc8771e587bdb2b193d6590d5",
+      "rows": 148603,
+      "sha256": "2901ffeacd51e781b08112b432111a8139c9c94754ff1ebff0122744220bfc05",
       "tour_counts": {
-        "atp": 77305,
-        "wta": 71287
+        "atp": 77312,
+        "wta": 71291
       }
     }
   },
   "inputs": {
-    "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz": "83ce80bf95573378527ea0ae52a01bcb8b2cc9b2e80d9c3308ecb09468c9ab0f",
-    "data/odds/recent_main_tour_event_features.csv.gz": "b0419e2b34254f8351ff137feedaf64812cf423330f831fa1d7ebc7509dec240"
+    "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz": "99e2339116411353381082d85679552b5027909ffa3543fd29e897499a213e0c",
+    "data/odds/recent_main_tour_event_features.csv.gz": "26d2101844b479911af393b0ff6b9ac56344cbb3a8303bc2fd2d320e12ffd4ca"
   },
-  "legacy_recent_rows_replaced": 1796,
+  "legacy_recent_rows_replaced": 1807,
   "schema_version": 1,
   "timing_policy": "Historical event dates approximate tournament start. Prior history uses a 28-day embargo. Quote timestamps and actual result availability remain unverified."
 }
