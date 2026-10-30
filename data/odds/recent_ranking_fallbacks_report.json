@@ -17,7 +17,7 @@
     }
   },
   "sha256": "2ca135792fbb424b277c5bfacae632f91b67f527dd74c62e1fdf55f032ce18a8",
-  "input_feature_sha256": "148065c8d987563d2bf386b8ecd691bf9ec39513abb16f310e3d570ede89789a",
+  "input_feature_sha256": "25e4327fc4d431cf6508b0df35f630d8f4b2276bf076a6764751e879103d63aa",
   "input_database_sha256": "455a3b639fa3905a0f2c7dae09188d782b3514410552acf685a380341002aad2",
   "supplement_file": "data/odds/recent_ranking_fallbacks.csv.gz",
   "policy": "Append-only fallback values; use only for missing rank fields. Snapshot strictly predates the match date and is at most 90 days old. Original recent feature rows are never rewritten."
