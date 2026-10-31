@@ -24,29 +24,29 @@
     "main_tour_event_features.csv.gz": {
       "date_range": [
         "2000-01-03",
-        "2026-10-30"
+        "2026-10-31"
       ],
       "draw_status_counts": {
         "main_draw": 146806,
-        "unknown": 1808
+        "unknown": 1817
       },
       "population_source_counts": {
-        "current_recent_replay": 1802,
+        "current_recent_replay": 1811,
         "historical_main_tour_archive": 146812
       },
-      "rows": 148614,
-      "sha256": "7f66994d6b54dda281327ec37e127ad752d2f0cd914bddbbeed96f955e0e1861",
+      "rows": 148623,
+      "sha256": "e6164020112086554e7bda83c7d262db22938f0899c9779e08943804cc87c8df",
       "tour_counts": {
-        "atp": 77319,
-        "wta": 71295
+        "atp": 77323,
+        "wta": 71300
       }
     }
   },
   "inputs": {
-    "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz": "26802ff5a073a9510881015025723d487b67048dfa2ef39832c72189cd1eb3e4",
-    "data/odds/recent_main_tour_event_features.csv.gz": "5f84b70e3151b8fbeaec0cae8ea36bf8a5102d01cb8a2cbfd757dbfdf665e8b1"
+    "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz": "ee5f1ad4398336bcb9c77ba41af421312f11eade738e9a2b81beb769549ce510",
+    "data/odds/recent_main_tour_event_features.csv.gz": "842125d3c7403185e3c24c7210253ac76dccebd3c159f0bdf6c61d7863e2aec1"
   },
-  "legacy_recent_rows_replaced": 1818,
+  "legacy_recent_rows_replaced": 1827,
   "schema_version": 1,
   "timing_policy": "Historical event dates approximate tournament start. Prior history uses a 28-day embargo. Quote timestamps and actual result availability remain unverified."
 }

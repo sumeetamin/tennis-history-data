@@ -30,41 +30,41 @@
       "sha256": "9cb285954d8079799167d92f7d77e90f0ec595f81c0cde394621e1ea988a5bc1"
     },
     "data/odds/quotes/by_year/odds_quotes_2026.csv.gz": {
-      "bytes": 20041701,
-      "rows": 292340,
-      "sha256": "c35d7b7f802c6f53c9a54933f3c9f49317b739e8d3b4b899efe917e4e459f684"
+      "bytes": 20049302,
+      "rows": 292508,
+      "sha256": "dbe8c62e8ec98894084415d4a34a5635b78a701d80f991e77ada7eefeaf93ba8"
     }
   },
   "identity_policy": "Provider match/player/event IDs and original CSV row numbers are retained; quote IDs include source row number because provider match IDs may be duplicated. Canonical player/event IDs are filled only when the strict archive match crosswalk identifies the match and exact player name.",
   "market": "Match winner, decimal price, one row per source player and quoted stage.",
-  "new_quotes_appended": 168,
+  "new_quotes_appended": 112,
   "quote_corrections_appended": 0,
   "quote_rows_by_tour": {
-    "atp": 1100732,
-    "wta": 780804
+    "atp": 1100800,
+    "wta": 780848
   },
-  "refreshed_at_utc": "2026-10-30T15:18:58+00:00",
-  "rows": 1881536,
+  "refreshed_at_utc": "2026-10-31T14:48:53+00:00",
+  "rows": 1881648,
   "schema_version": 3,
-  "sha256": "34c0b1334630ed62157b8dc21a245d6b177e708dc7e28795f4e9ec66cf44ef8b",
+  "sha256": "26a5ab5a9b50c08dc0cd101bac5aa0f48c9eafab13bbc0b3544e8ba48b60d296",
   "source": "Valuebetennis historical tennis results and odds since 2021",
   "source_license": "CC BY 4.0",
   "source_match_date_range": [
     "2021-01-01",
-    "2026-10-30"
+    "2026-10-31"
   ],
-  "source_match_rows": 470384,
-  "source_sha256": "c01e7af1c1920da6ddb115e828e1f8725a1d78c50bc09d58b1e14ffb958b412e",
+  "source_match_rows": 470412,
+  "source_sha256": "f7435513e66874d43ce592b1aeb8c48992139620740bcc80e7763e8c34097555",
   "source_url": "https://www.valuebetennis.com/donnees.htm",
   "stage_counts": {
-    "atp:last_pre_match:missing": 337786,
-    "atp:last_pre_match:valid": 212580,
+    "atp:last_pre_match:missing": 337788,
+    "atp:last_pre_match:valid": 212612,
     "atp:opening:missing": 284104,
-    "atp:opening:valid": 266262,
+    "atp:opening:valid": 266296,
     "wta:last_pre_match:missing": 235245,
-    "wta:last_pre_match:valid": 155157,
+    "wta:last_pre_match:valid": 155179,
     "wta:opening:missing": 194240,
-    "wta:opening:valid": 196162
+    "wta:opening:valid": 196184
   },
   "timestamp_policy": "No individual quote timestamp, verified match start time, time zone, or result-publication time is supplied. Those columns are intentionally blank; opening/last-pre-match stages are provider labels, not timestamp proof."
 }
