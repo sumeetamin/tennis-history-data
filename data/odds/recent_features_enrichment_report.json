@@ -1,22 +1,22 @@
 {
   "canonical_snapshot": "data/odds/current/recent_model_features.csv.gz",
   "counts_by_event_level": {
-    "challenger": 3469,
+    "challenger": 3483,
     "grand_slam": 334,
     "itf": 630,
-    "main_tour": 961,
-    "masters": 516,
+    "main_tour": 974,
+    "masters": 524,
     "unknown": 2
   },
   "counts_by_season": {
-    "2026": 5912
+    "2026": 5947
   },
   "counts_by_source_round_code": {
-    "1": 1111,
-    "10": 254,
+    "1": 1128,
+    "10": 269,
     "12": 121,
     "2": 92,
-    "3": 676,
+    "3": 679,
     "4": 1954,
     "5": 1087,
     "6": 93,
@@ -26,13 +26,13 @@
     "unknown": 2
   },
   "counts_by_surface": {
-    "Clay": 2113,
+    "Clay": 2116,
     "Grass": 414,
-    "Hard": 3385
+    "Hard": 3417
   },
   "counts_by_tour": {
-    "atp": 3814,
-    "wta": 2098
+    "atp": 3834,
+    "wta": 2113
   },
   "data_sources": {
     "identity": "Strict unique provider-player-ID/name crosswalk",
@@ -42,227 +42,227 @@
   },
   "date_range": [
     "2026-06-16",
-    "2026-10-31"
+    "2026-11-01"
   ],
   "draw_status_counts": {
     "main_draw": 121,
-    "unknown": 5791
+    "unknown": 5826
   },
   "excluded_legacy_rows": 111,
   "field_missingness": {
     "p1_age": {
-      "available": 5679,
-      "coverage_pct": 96.06,
-      "missing": 233
+      "available": 5713,
+      "coverage_pct": 96.07,
+      "missing": 234
     },
     "p1_hand": {
-      "available": 4618,
-      "coverage_pct": 78.11,
-      "missing": 1294
+      "available": 4648,
+      "coverage_pct": 78.16,
+      "missing": 1299
     },
     "p1_ht": {
-      "available": 3755,
+      "available": 3777,
       "coverage_pct": 63.51,
-      "missing": 2157
+      "missing": 2170
     },
     "p1_prior_matches": {
-      "available": 5912,
+      "available": 5947,
       "coverage_pct": 100.0,
       "missing": 0
     },
     "p1_rank": {
       "available": 3034,
-      "coverage_pct": 51.32,
-      "missing": 2878
+      "coverage_pct": 51.02,
+      "missing": 2913
     },
     "p1_rank_points": {
       "available": 3034,
-      "coverage_pct": 51.32,
-      "missing": 2878
+      "coverage_pct": 51.02,
+      "missing": 2913
     },
     "p1_recent365_matches": {
-      "available": 5912,
+      "available": 5947,
       "coverage_pct": 100.0,
       "missing": 0
     },
     "p1_surface_prior_matches": {
-      "available": 5912,
+      "available": 5947,
       "coverage_pct": 100.0,
       "missing": 0
     },
     "p2_age": {
-      "available": 5657,
-      "coverage_pct": 95.69,
+      "available": 5692,
+      "coverage_pct": 95.71,
       "missing": 255
     },
     "p2_hand": {
-      "available": 4617,
-      "coverage_pct": 78.1,
-      "missing": 1295
+      "available": 4646,
+      "coverage_pct": 78.12,
+      "missing": 1301
     },
     "p2_ht": {
-      "available": 3786,
-      "coverage_pct": 64.04,
-      "missing": 2126
+      "available": 3809,
+      "coverage_pct": 64.05,
+      "missing": 2138
     },
     "p2_prior_matches": {
-      "available": 5912,
+      "available": 5947,
       "coverage_pct": 100.0,
       "missing": 0
     },
     "p2_rank": {
       "available": 3018,
-      "coverage_pct": 51.05,
-      "missing": 2894
+      "coverage_pct": 50.75,
+      "missing": 2929
     },
     "p2_rank_points": {
       "available": 3018,
-      "coverage_pct": 51.05,
-      "missing": 2894
+      "coverage_pct": 50.75,
+      "missing": 2929
     },
     "p2_recent365_matches": {
-      "available": 5912,
+      "available": 5947,
       "coverage_pct": 100.0,
       "missing": 0
     },
     "p2_surface_prior_matches": {
-      "available": 5912,
+      "available": 5947,
       "coverage_pct": 100.0,
       "missing": 0
     },
     "round": {
       "available": 121,
-      "coverage_pct": 2.05,
-      "missing": 5791
+      "coverage_pct": 2.03,
+      "missing": 5826
     },
     "tourney_level": {
-      "available": 5910,
+      "available": 5945,
       "coverage_pct": 99.97,
       "missing": 2
     }
   },
   "files": {
     "data/odds/recent_lower_tier_event_features.csv.gz": {
-      "bytes": 1082849,
-      "rows": 4099,
-      "sha256": "d10a55ea7e0da141069eda6a0377b610f2038b0a43742fc2877071df0c12d433"
+      "bytes": 1085861,
+      "rows": 4113,
+      "sha256": "8d279a1c721424a7da5d42076b126c13c697e12f8e3bbb08d480e77cb33299ec"
     },
     "data/odds/recent_main_tour_event_features.csv.gz": {
-      "bytes": 484972,
-      "rows": 1811,
-      "sha256": "842125d3c7403185e3c24c7210253ac76dccebd3c159f0bdf6c61d7863e2aec1"
+      "bytes": 490113,
+      "rows": 1832,
+      "sha256": "1470df5fecfc6283a2fbb634a6b715c82bfc08e4259f42ea1a342cfcd6b4818e"
     },
     "data/odds/recent_model_features_enriched.csv.gz": {
-      "bytes": 1641188,
-      "rows": 5912,
-      "sha256": "48c4bbee139e1690a4d3d26daa5a0d217745d287dd1f80ae1d7026d8aa58428d"
+      "bytes": 1650179,
+      "rows": 5947,
+      "sha256": "051e5532cf9a1cf78d9090ec3d427b3c99a897ad6308bdf26c9587775b9697c3"
     }
   },
   "history_corrected_rows": 2869,
   "identity_target": {
     "duplicate_record_ids": 0,
     "p1_won_counts": {
-      "0": 2975,
-      "1": 2937
+      "0": 2993,
+      "1": 2954
     },
-    "unique_record_ids": 5912
+    "unique_record_ids": 5947
   },
   "inputs": {
-    "data/odds/atp_wta_match_odds.csv": "f7435513e66874d43ce592b1aeb8c48992139620740bcc80e7763e8c34097555",
-    "data/odds/current/recent_model_features.csv.gz": "463879553c5de7e3562a9aa0f318aba6065f9e7f74be2b864260e168e2432f6c",
-    "data/odds/recent_player_profiles.csv.gz": "e4db5a51181f3f0aba7ae53ea65c9256abce35ce16e6ade9eb10fb0203456e5d",
+    "data/odds/atp_wta_match_odds.csv": "33eb181984972fdbc6fb0b2741aae9bd7b36ef48c42b40de553179bc25a0d8b2",
+    "data/odds/current/recent_model_features.csv.gz": "f3fa6c5f7d52afb51a4da2a0535320f0556093ef12c354e43ce6c1e2f5bb062a",
+    "data/odds/recent_player_profiles.csv.gz": "70b09df5eccaf240c5ee17de941cf67a1340e24d695fc53453360f6ec4681d30",
     "data/odds/recent_ranking_fallbacks.csv.gz": "2ca135792fbb424b277c5bfacae632f91b67f527dd74c62e1fdf55f032ce18a8"
   },
   "main_tour_subset_note": "Main Tour, Masters, and Grand Slam event categories; qualifying-stage rows are not independently removed.",
   "missingness_by_event_level": {
     "challenger": {
       "p1_age": {
-        "available": 3368,
-        "coverage_pct": 97.09,
+        "available": 3382,
+        "coverage_pct": 97.1,
         "missing": 101
       },
       "p1_hand": {
-        "available": 2736,
-        "coverage_pct": 78.87,
-        "missing": 733
+        "available": 2749,
+        "coverage_pct": 78.93,
+        "missing": 734
       },
       "p1_ht": {
-        "available": 2243,
-        "coverage_pct": 64.66,
-        "missing": 1226
+        "available": 2254,
+        "coverage_pct": 64.71,
+        "missing": 1229
       },
       "p1_prior_matches": {
-        "available": 3469,
+        "available": 3483,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_rank": {
         "available": 1830,
-        "coverage_pct": 52.75,
-        "missing": 1639
+        "coverage_pct": 52.54,
+        "missing": 1653
       },
       "p1_rank_points": {
         "available": 1830,
-        "coverage_pct": 52.75,
-        "missing": 1639
+        "coverage_pct": 52.54,
+        "missing": 1653
       },
       "p1_recent365_matches": {
-        "available": 3469,
+        "available": 3483,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_surface_prior_matches": {
-        "available": 3469,
+        "available": 3483,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_age": {
-        "available": 3348,
-        "coverage_pct": 96.51,
+        "available": 3362,
+        "coverage_pct": 96.53,
         "missing": 121
       },
       "p2_hand": {
-        "available": 2738,
-        "coverage_pct": 78.93,
+        "available": 2752,
+        "coverage_pct": 79.01,
         "missing": 731
       },
       "p2_ht": {
-        "available": 2243,
+        "available": 2252,
         "coverage_pct": 64.66,
-        "missing": 1226
+        "missing": 1231
       },
       "p2_prior_matches": {
-        "available": 3469,
+        "available": 3483,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_rank": {
         "available": 1820,
-        "coverage_pct": 52.46,
-        "missing": 1649
+        "coverage_pct": 52.25,
+        "missing": 1663
       },
       "p2_rank_points": {
         "available": 1820,
-        "coverage_pct": 52.46,
-        "missing": 1649
+        "coverage_pct": 52.25,
+        "missing": 1663
       },
       "p2_recent365_matches": {
-        "available": 3469,
+        "available": 3483,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_surface_prior_matches": {
-        "available": 3469,
+        "available": 3483,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "round": {
         "available": 82,
-        "coverage_pct": 2.36,
-        "missing": 3387
+        "coverage_pct": 2.35,
+        "missing": 3401
       },
       "tourney_level": {
-        "available": 3469,
+        "available": 3483,
         "coverage_pct": 100.0,
         "missing": 0
       }
@@ -453,184 +453,184 @@
     },
     "main_tour": {
       "p1_age": {
-        "available": 954,
-        "coverage_pct": 99.27,
-        "missing": 7
+        "available": 966,
+        "coverage_pct": 99.18,
+        "missing": 8
       },
       "p1_hand": {
-        "available": 856,
-        "coverage_pct": 89.07,
-        "missing": 105
+        "available": 865,
+        "coverage_pct": 88.81,
+        "missing": 109
       },
       "p1_ht": {
-        "available": 727,
-        "coverage_pct": 75.65,
-        "missing": 234
+        "available": 730,
+        "coverage_pct": 74.95,
+        "missing": 244
       },
       "p1_prior_matches": {
-        "available": 961,
+        "available": 974,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_rank": {
         "available": 583,
-        "coverage_pct": 60.67,
-        "missing": 378
+        "coverage_pct": 59.86,
+        "missing": 391
       },
       "p1_rank_points": {
         "available": 583,
-        "coverage_pct": 60.67,
-        "missing": 378
+        "coverage_pct": 59.86,
+        "missing": 391
       },
       "p1_recent365_matches": {
-        "available": 961,
+        "available": 974,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_surface_prior_matches": {
-        "available": 961,
+        "available": 974,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_age": {
-        "available": 957,
-        "coverage_pct": 99.58,
+        "available": 970,
+        "coverage_pct": 99.59,
         "missing": 4
       },
       "p2_hand": {
-        "available": 866,
-        "coverage_pct": 90.11,
-        "missing": 95
+        "available": 873,
+        "coverage_pct": 89.63,
+        "missing": 101
       },
       "p2_ht": {
-        "available": 737,
-        "coverage_pct": 76.69,
-        "missing": 224
+        "available": 743,
+        "coverage_pct": 76.28,
+        "missing": 231
       },
       "p2_prior_matches": {
-        "available": 961,
+        "available": 974,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_rank": {
         "available": 579,
-        "coverage_pct": 60.25,
-        "missing": 382
+        "coverage_pct": 59.45,
+        "missing": 395
       },
       "p2_rank_points": {
         "available": 579,
-        "coverage_pct": 60.25,
-        "missing": 382
+        "coverage_pct": 59.45,
+        "missing": 395
       },
       "p2_recent365_matches": {
-        "available": 961,
+        "available": 974,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_surface_prior_matches": {
-        "available": 961,
+        "available": 974,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "round": {
         "available": 19,
-        "coverage_pct": 1.98,
-        "missing": 942
+        "coverage_pct": 1.95,
+        "missing": 955
       },
       "tourney_level": {
-        "available": 961,
+        "available": 974,
         "coverage_pct": 100.0,
         "missing": 0
       }
     },
     "masters": {
       "p1_age": {
-        "available": 516,
+        "available": 524,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_hand": {
-        "available": 490,
-        "coverage_pct": 94.96,
+        "available": 498,
+        "coverage_pct": 95.04,
         "missing": 26
       },
       "p1_ht": {
-        "available": 409,
-        "coverage_pct": 79.26,
+        "available": 417,
+        "coverage_pct": 79.58,
         "missing": 107
       },
       "p1_prior_matches": {
-        "available": 516,
+        "available": 524,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_rank": {
         "available": 297,
-        "coverage_pct": 57.56,
-        "missing": 219
+        "coverage_pct": 56.68,
+        "missing": 227
       },
       "p1_rank_points": {
         "available": 297,
-        "coverage_pct": 57.56,
-        "missing": 219
+        "coverage_pct": 56.68,
+        "missing": 227
       },
       "p1_recent365_matches": {
-        "available": 516,
+        "available": 524,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_surface_prior_matches": {
-        "available": 516,
+        "available": 524,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_age": {
-        "available": 514,
-        "coverage_pct": 99.61,
+        "available": 522,
+        "coverage_pct": 99.62,
         "missing": 2
       },
       "p2_hand": {
-        "available": 493,
-        "coverage_pct": 95.54,
+        "available": 501,
+        "coverage_pct": 95.61,
         "missing": 23
       },
       "p2_ht": {
-        "available": 424,
-        "coverage_pct": 82.17,
+        "available": 432,
+        "coverage_pct": 82.44,
         "missing": 92
       },
       "p2_prior_matches": {
-        "available": 516,
+        "available": 524,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_rank": {
         "available": 296,
-        "coverage_pct": 57.36,
-        "missing": 220
+        "coverage_pct": 56.49,
+        "missing": 228
       },
       "p2_rank_points": {
         "available": 296,
-        "coverage_pct": 57.36,
-        "missing": 220
+        "coverage_pct": 56.49,
+        "missing": 228
       },
       "p2_recent365_matches": {
-        "available": 516,
+        "available": 524,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_surface_prior_matches": {
-        "available": 516,
+        "available": 524,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "round": {
         "available": 6,
-        "coverage_pct": 1.16,
-        "missing": 510
+        "coverage_pct": 1.15,
+        "missing": 518
       },
       "tourney_level": {
-        "available": 516,
+        "available": 524,
         "coverage_pct": 100.0,
         "missing": 0
       }
@@ -731,92 +731,92 @@
   "missingness_by_season": {
     "2026": {
       "p1_age": {
-        "available": 5679,
-        "coverage_pct": 96.06,
-        "missing": 233
+        "available": 5713,
+        "coverage_pct": 96.07,
+        "missing": 234
       },
       "p1_hand": {
-        "available": 4618,
-        "coverage_pct": 78.11,
-        "missing": 1294
+        "available": 4648,
+        "coverage_pct": 78.16,
+        "missing": 1299
       },
       "p1_ht": {
-        "available": 3755,
+        "available": 3777,
         "coverage_pct": 63.51,
-        "missing": 2157
+        "missing": 2170
       },
       "p1_prior_matches": {
-        "available": 5912,
+        "available": 5947,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_rank": {
         "available": 3034,
-        "coverage_pct": 51.32,
-        "missing": 2878
+        "coverage_pct": 51.02,
+        "missing": 2913
       },
       "p1_rank_points": {
         "available": 3034,
-        "coverage_pct": 51.32,
-        "missing": 2878
+        "coverage_pct": 51.02,
+        "missing": 2913
       },
       "p1_recent365_matches": {
-        "available": 5912,
+        "available": 5947,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_surface_prior_matches": {
-        "available": 5912,
+        "available": 5947,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_age": {
-        "available": 5657,
-        "coverage_pct": 95.69,
+        "available": 5692,
+        "coverage_pct": 95.71,
         "missing": 255
       },
       "p2_hand": {
-        "available": 4617,
-        "coverage_pct": 78.1,
-        "missing": 1295
+        "available": 4646,
+        "coverage_pct": 78.12,
+        "missing": 1301
       },
       "p2_ht": {
-        "available": 3786,
-        "coverage_pct": 64.04,
-        "missing": 2126
+        "available": 3809,
+        "coverage_pct": 64.05,
+        "missing": 2138
       },
       "p2_prior_matches": {
-        "available": 5912,
+        "available": 5947,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_rank": {
         "available": 3018,
-        "coverage_pct": 51.05,
-        "missing": 2894
+        "coverage_pct": 50.75,
+        "missing": 2929
       },
       "p2_rank_points": {
         "available": 3018,
-        "coverage_pct": 51.05,
-        "missing": 2894
+        "coverage_pct": 50.75,
+        "missing": 2929
       },
       "p2_recent365_matches": {
-        "available": 5912,
+        "available": 5947,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_surface_prior_matches": {
-        "available": 5912,
+        "available": 5947,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "round": {
         "available": 121,
-        "coverage_pct": 2.05,
-        "missing": 5791
+        "coverage_pct": 2.03,
+        "missing": 5826
       },
       "tourney_level": {
-        "available": 5910,
+        "available": 5945,
         "coverage_pct": 99.97,
         "missing": 2
       }
@@ -825,92 +825,92 @@
   "missingness_by_surface": {
     "Clay": {
       "p1_age": {
-        "available": 2036,
+        "available": 2039,
         "coverage_pct": 96.36,
         "missing": 77
       },
       "p1_hand": {
-        "available": 1635,
-        "coverage_pct": 77.38,
+        "available": 1638,
+        "coverage_pct": 77.41,
         "missing": 478
       },
       "p1_ht": {
-        "available": 1367,
-        "coverage_pct": 64.69,
-        "missing": 746
+        "available": 1369,
+        "coverage_pct": 64.7,
+        "missing": 747
       },
       "p1_prior_matches": {
-        "available": 2113,
+        "available": 2116,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_rank": {
         "available": 1230,
-        "coverage_pct": 58.21,
-        "missing": 883
+        "coverage_pct": 58.13,
+        "missing": 886
       },
       "p1_rank_points": {
         "available": 1230,
-        "coverage_pct": 58.21,
-        "missing": 883
+        "coverage_pct": 58.13,
+        "missing": 886
       },
       "p1_recent365_matches": {
-        "available": 2113,
+        "available": 2116,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_surface_prior_matches": {
-        "available": 2113,
+        "available": 2116,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_age": {
-        "available": 2023,
-        "coverage_pct": 95.74,
+        "available": 2026,
+        "coverage_pct": 95.75,
         "missing": 90
       },
       "p2_hand": {
-        "available": 1661,
-        "coverage_pct": 78.61,
+        "available": 1664,
+        "coverage_pct": 78.64,
         "missing": 452
       },
       "p2_ht": {
-        "available": 1363,
-        "coverage_pct": 64.51,
-        "missing": 750
+        "available": 1364,
+        "coverage_pct": 64.46,
+        "missing": 752
       },
       "p2_prior_matches": {
-        "available": 2113,
+        "available": 2116,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_rank": {
         "available": 1227,
-        "coverage_pct": 58.07,
-        "missing": 886
+        "coverage_pct": 57.99,
+        "missing": 889
       },
       "p2_rank_points": {
         "available": 1227,
-        "coverage_pct": 58.07,
-        "missing": 886
+        "coverage_pct": 57.99,
+        "missing": 889
       },
       "p2_recent365_matches": {
-        "available": 2113,
+        "available": 2116,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_surface_prior_matches": {
-        "available": 2113,
+        "available": 2116,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "round": {
         "available": 52,
         "coverage_pct": 2.46,
-        "missing": 2061
+        "missing": 2064
       },
       "tourney_level": {
-        "available": 2112,
+        "available": 2115,
         "coverage_pct": 99.95,
         "missing": 1
       }
@@ -1009,92 +1009,92 @@
     },
     "Hard": {
       "p1_age": {
-        "available": 3232,
-        "coverage_pct": 95.48,
-        "missing": 153
+        "available": 3263,
+        "coverage_pct": 95.49,
+        "missing": 154
       },
       "p1_hand": {
-        "available": 2602,
-        "coverage_pct": 76.87,
-        "missing": 783
+        "available": 2629,
+        "coverage_pct": 76.94,
+        "missing": 788
       },
       "p1_ht": {
-        "available": 2071,
-        "coverage_pct": 61.18,
-        "missing": 1314
+        "available": 2091,
+        "coverage_pct": 61.19,
+        "missing": 1326
       },
       "p1_prior_matches": {
-        "available": 3385,
+        "available": 3417,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_rank": {
         "available": 1390,
-        "coverage_pct": 41.06,
-        "missing": 1995
+        "coverage_pct": 40.68,
+        "missing": 2027
       },
       "p1_rank_points": {
         "available": 1390,
-        "coverage_pct": 41.06,
-        "missing": 1995
+        "coverage_pct": 40.68,
+        "missing": 2027
       },
       "p1_recent365_matches": {
-        "available": 3385,
+        "available": 3417,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_surface_prior_matches": {
-        "available": 3385,
+        "available": 3417,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_age": {
-        "available": 3222,
-        "coverage_pct": 95.18,
+        "available": 3254,
+        "coverage_pct": 95.23,
         "missing": 163
       },
       "p2_hand": {
-        "available": 2583,
-        "coverage_pct": 76.31,
-        "missing": 802
+        "available": 2609,
+        "coverage_pct": 76.35,
+        "missing": 808
       },
       "p2_ht": {
-        "available": 2113,
-        "coverage_pct": 62.42,
-        "missing": 1272
+        "available": 2135,
+        "coverage_pct": 62.48,
+        "missing": 1282
       },
       "p2_prior_matches": {
-        "available": 3385,
+        "available": 3417,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_rank": {
         "available": 1377,
-        "coverage_pct": 40.68,
-        "missing": 2008
+        "coverage_pct": 40.3,
+        "missing": 2040
       },
       "p2_rank_points": {
         "available": 1377,
-        "coverage_pct": 40.68,
-        "missing": 2008
+        "coverage_pct": 40.3,
+        "missing": 2040
       },
       "p2_recent365_matches": {
-        "available": 3385,
+        "available": 3417,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_surface_prior_matches": {
-        "available": 3385,
+        "available": 3417,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "round": {
         "available": 61,
-        "coverage_pct": 1.8,
-        "missing": 3324
+        "coverage_pct": 1.79,
+        "missing": 3356
       },
       "tourney_level": {
-        "available": 3384,
+        "available": 3416,
         "coverage_pct": 99.97,
         "missing": 1
       }
@@ -1103,214 +1103,214 @@
   "missingness_by_tour": {
     "atp": {
       "p1_age": {
-        "available": 3730,
-        "coverage_pct": 97.8,
+        "available": 3750,
+        "coverage_pct": 97.81,
         "missing": 84
       },
       "p1_hand": {
-        "available": 3210,
-        "coverage_pct": 84.16,
-        "missing": 604
+        "available": 3229,
+        "coverage_pct": 84.22,
+        "missing": 605
       },
       "p1_ht": {
-        "available": 2990,
-        "coverage_pct": 78.4,
-        "missing": 824
+        "available": 3009,
+        "coverage_pct": 78.48,
+        "missing": 825
       },
       "p1_prior_matches": {
-        "available": 3814,
+        "available": 3834,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_rank": {
         "available": 2077,
-        "coverage_pct": 54.46,
-        "missing": 1737
+        "coverage_pct": 54.17,
+        "missing": 1757
       },
       "p1_rank_points": {
         "available": 2077,
-        "coverage_pct": 54.46,
-        "missing": 1737
+        "coverage_pct": 54.17,
+        "missing": 1757
       },
       "p1_recent365_matches": {
-        "available": 3814,
+        "available": 3834,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_surface_prior_matches": {
-        "available": 3814,
+        "available": 3834,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_age": {
-        "available": 3721,
-        "coverage_pct": 97.56,
+        "available": 3741,
+        "coverage_pct": 97.57,
         "missing": 93
       },
       "p2_hand": {
-        "available": 3207,
-        "coverage_pct": 84.08,
+        "available": 3227,
+        "coverage_pct": 84.17,
         "missing": 607
       },
       "p2_ht": {
-        "available": 2989,
-        "coverage_pct": 78.37,
-        "missing": 825
+        "available": 3007,
+        "coverage_pct": 78.43,
+        "missing": 827
       },
       "p2_prior_matches": {
-        "available": 3814,
+        "available": 3834,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_rank": {
         "available": 2065,
-        "coverage_pct": 54.14,
-        "missing": 1749
+        "coverage_pct": 53.86,
+        "missing": 1769
       },
       "p2_rank_points": {
         "available": 2065,
-        "coverage_pct": 54.14,
-        "missing": 1749
+        "coverage_pct": 53.86,
+        "missing": 1769
       },
       "p2_recent365_matches": {
-        "available": 3814,
+        "available": 3834,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_surface_prior_matches": {
-        "available": 3814,
+        "available": 3834,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "round": {
         "available": 81,
-        "coverage_pct": 2.12,
-        "missing": 3733
+        "coverage_pct": 2.11,
+        "missing": 3753
       },
       "tourney_level": {
-        "available": 3812,
+        "available": 3832,
         "coverage_pct": 99.95,
         "missing": 2
       }
     },
     "wta": {
       "p1_age": {
-        "available": 1949,
+        "available": 1963,
         "coverage_pct": 92.9,
-        "missing": 149
+        "missing": 150
       },
       "p1_hand": {
-        "available": 1408,
-        "coverage_pct": 67.11,
-        "missing": 690
+        "available": 1419,
+        "coverage_pct": 67.16,
+        "missing": 694
       },
       "p1_ht": {
-        "available": 765,
-        "coverage_pct": 36.46,
-        "missing": 1333
+        "available": 768,
+        "coverage_pct": 36.35,
+        "missing": 1345
       },
       "p1_prior_matches": {
-        "available": 2098,
+        "available": 2113,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_rank": {
         "available": 957,
-        "coverage_pct": 45.61,
-        "missing": 1141
+        "coverage_pct": 45.29,
+        "missing": 1156
       },
       "p1_rank_points": {
         "available": 957,
-        "coverage_pct": 45.61,
-        "missing": 1141
+        "coverage_pct": 45.29,
+        "missing": 1156
       },
       "p1_recent365_matches": {
-        "available": 2098,
+        "available": 2113,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p1_surface_prior_matches": {
-        "available": 2098,
+        "available": 2113,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_age": {
-        "available": 1936,
-        "coverage_pct": 92.28,
+        "available": 1951,
+        "coverage_pct": 92.33,
         "missing": 162
       },
       "p2_hand": {
-        "available": 1410,
-        "coverage_pct": 67.21,
-        "missing": 688
+        "available": 1419,
+        "coverage_pct": 67.16,
+        "missing": 694
       },
       "p2_ht": {
-        "available": 797,
-        "coverage_pct": 37.99,
-        "missing": 1301
+        "available": 802,
+        "coverage_pct": 37.96,
+        "missing": 1311
       },
       "p2_prior_matches": {
-        "available": 2098,
+        "available": 2113,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_rank": {
         "available": 953,
-        "coverage_pct": 45.42,
-        "missing": 1145
+        "coverage_pct": 45.1,
+        "missing": 1160
       },
       "p2_rank_points": {
         "available": 953,
-        "coverage_pct": 45.42,
-        "missing": 1145
+        "coverage_pct": 45.1,
+        "missing": 1160
       },
       "p2_recent365_matches": {
-        "available": 2098,
+        "available": 2113,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "p2_surface_prior_matches": {
-        "available": 2098,
+        "available": 2113,
         "coverage_pct": 100.0,
         "missing": 0
       },
       "round": {
         "available": 40,
-        "coverage_pct": 1.91,
-        "missing": 2058
+        "coverage_pct": 1.89,
+        "missing": 2073
       },
       "tourney_level": {
-        "available": 2098,
+        "available": 2113,
         "coverage_pct": 100.0,
         "missing": 0
       }
     }
   },
   "odds": {
-    "last_pre_match_pair_rows": 5325,
-    "opening_pair_rows": 5398,
+    "last_pre_match_pair_rows": 5360,
+    "opening_pair_rows": 5433,
     "quote_timestamp_rows": 0,
     "timestamp_verified_rows": 0,
     "timing_note": "Prices have provider opening/last-pre-match labels but no verifiable quote timestamps."
   },
   "rank_snapshot_age_note": "Prior snapshots up to 90 days old are fallbacks, not actual match-day rankings; >14 days explicitly marked stale.",
   "round_code_note": "Source documents code 0 as pre-qualifications and code 12 as final. Intermediate codes are preserved, not guessed into round names.",
-  "rows": 5912,
+  "rows": 5947,
   "source_join_missing_rows": 0,
-  "strict_identity_unverified_candidates_excluded": 971,
+  "strict_identity_unverified_candidates_excluded": 976,
   "subsets": {
     "all_levels": {
       "file": "data/odds/recent_model_features_enriched.csv.gz",
-      "rows": 5912
+      "rows": 5947
     },
     "challenger_itf_event_levels": {
       "file": "data/odds/recent_lower_tier_event_features.csv.gz",
-      "rows": 4099
+      "rows": 4113
     },
     "main_tour_event_levels": {
       "definition": "Main Tour, Masters, and Grand Slam event categories; qualifying stages remain identifiable only by raw round code.",
       "file": "data/odds/recent_main_tour_event_features.csv.gz",
-      "rows": 1811
+      "rows": 1832
     },
     "unknown_event_level_rows": 2
   }
