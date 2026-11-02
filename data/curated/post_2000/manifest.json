@@ -1,33 +1,33 @@
 {
   "schema_version": 1,
-  "as_of_date": "2026-11-01",
-  "match_rows": 1262628,
-  "player_rows": 42615,
+  "as_of_date": "2026-11-02",
+  "match_rows": 1262692,
+  "player_rows": 42617,
   "matches_by_source": {
     "sackmann": 1255705,
-    "valuebetennis": 6923
+    "valuebetennis": 6987
   },
   "latest_dates_by_source": {
     "sackmann": "2026-06-02",
-    "valuebetennis": "2026-11-01"
+    "valuebetennis": "2026-11-02"
   },
   "player_appearances_by_identity_status": {
     "archive_id": 2511410,
-    "crosswalk_verified": 12792,
-    "ambiguous_archive_mapping": 163,
-    "provider_only": 891
+    "crosswalk_verified": 12913,
+    "ambiguous_archive_mapping": 164,
+    "provider_only": 897
   },
   "quality_flags": {
     "not_ordinary_completed_match": 46723,
     "missing_surface": 188,
-    "missing_detailed_match_statistics": 6923,
-    "unresolved_archive_identity": 976
+    "missing_detailed_match_statistics": 6987,
+    "unresolved_archive_identity": 983
   },
   "name_only_identity_candidate_rows": 132,
   "source_row_accounting": {
     "sackmann": 1255712,
     "valuebetennis_already_linked": 247884,
-    "valuebetennis_unlinked": 222568
+    "valuebetennis_unlinked": 222632
   },
   "excluded_rows_by_reason": {
     "sackmann:invalid_identity_or_extra_cells": 7,
@@ -41,7 +41,7 @@
     "valuebetennis:sets_after_match_decided": 3
   },
   "inputs_sha256": {
-    "data/odds/atp_wta_match_odds.csv": "33eb181984972fdbc6fb0b2741aae9bd7b36ef48c42b40de553179bc25a0d8b2",
+    "data/odds/atp_wta_match_odds.csv": "c505da417221a7b441d4a93d9e3db58b95b4f6247b506d5b17dcf4e7897ab884",
     "data/odds/linked_odds_sackmann.csv.gz": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9",
     "data/processed/supplements/ranking_fallbacks.csv.gz": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58",
     "data/processed/supplements/player_profile_enrichment.csv.gz": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875"
@@ -362,21 +362,21 @@
     },
     {
       "path": "matches/wta_2026.csv.gz",
-      "rows": 12497,
-      "bytes": 1694273,
-      "sha256": "e732c2e9b557f5b7b39ec3eb7c049a2b375d8fb9cbeedebb30c657f549e45d5d"
+      "rows": 12511,
+      "bytes": 1695789,
+      "sha256": "0a3d105457e2c9b1bb139b2bf4062ce6d70e34868190f877d34d04ea8155f14e"
     },
     {
       "path": "matches/atp_2026.csv.gz",
-      "rows": 18568,
-      "bytes": 2533550,
-      "sha256": "80a5c2f1976c6eca92ef2f95cb7f8cda448982a2f6d77608e1a55518f11e069e"
+      "rows": 18618,
+      "bytes": 2537641,
+      "sha256": "13605a0e679befce6892c6dc7b057238b6ffa014d3df7a0156603f8f5bc2c4a3"
     },
     {
       "path": "players.csv.gz",
-      "rows": 42615,
-      "bytes": 1072780,
-      "sha256": "53660d420a17ce1e8a5bdb45c633f37027cc8549d68d45b1d88bfd871f9db58c"
+      "rows": 42617,
+      "bytes": 1072899,
+      "sha256": "dc18edc6b8b616d7704a3466df24c078ef63412a3a5127110a82b87971ddec44"
     },
     {
       "path": "player_identity_candidates.csv.gz",

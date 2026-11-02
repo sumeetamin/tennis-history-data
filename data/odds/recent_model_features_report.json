@@ -1,20 +1,20 @@
 {
-  "total_rows": 6058,
+  "total_rows": 6115,
   "date_buffer_days": 14,
   "history_embargo_days": 28,
   "archive_max_event_date": {
     "atp": "2026-06-01",
     "wta": "2026-06-02"
   },
-  "skipped_unverified_identity": 976,
+  "skipped_unverified_identity": 983,
   "future_dated_rows_skipped": 0,
-  "eligible_recent_results_replayed": 5947,
+  "eligible_recent_results_replayed": 6004,
   "history_policy": "Replay all eligible recent source results, including previously exported IDs, in date/record-ID order; emit only unseen IDs. Existing rows are never revised for later-arriving backfills.",
   "date_range": [
     "2026-06-16",
-    "2026-11-01"
+    "2026-11-02"
   ],
-  "sha256": "9a40c19e94e4d929313b51c71685d5834348f5637aeae91c894261461eb1c238",
+  "sha256": "cdfb18d48360c04cfd6b9066a7544210d5925cc58e395156a79897fa8e25d777",
   "feature_file": "data/odds/recent_model_features.csv.gz",
   "policy": "Strict crosswalk-derived player IDs and matching observed names only; completed scores dated no later than the current UTC date; immutable append-only output. No match scores, outcomes, or post-match statistics are features."
 }

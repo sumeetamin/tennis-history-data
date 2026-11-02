@@ -5,20 +5,20 @@
     "main_draw_features.csv.gz": {
       "date_range": [
         "2000-01-03",
-        "2026-10-25"
+        "2026-11-01"
       ],
       "draw_status_counts": {
-        "main_draw": 146806
+        "main_draw": 146809
       },
       "population_source_counts": {
-        "current_recent_replay": 26,
+        "current_recent_replay": 29,
         "historical_main_tour_archive": 146780
       },
-      "rows": 146806,
-      "sha256": "62c842e8b37d9127ee5de8a10695a9651b2d1d03fd5dcde6ec9a59e20dd2b505",
+      "rows": 146809,
+      "sha256": "7422d04780a9fa708174a405d639ac38b26908f2c2cb6012cc6bfade3544194e",
       "tour_counts": {
-        "atp": 76468,
-        "wta": 70338
+        "atp": 76470,
+        "wta": 70339
       }
     },
     "main_tour_event_features.csv.gz": {
@@ -27,26 +27,26 @@
         "2026-11-01"
       ],
       "draw_status_counts": {
-        "main_draw": 146806,
-        "unknown": 1838
+        "main_draw": 146809,
+        "unknown": 1848
       },
       "population_source_counts": {
-        "current_recent_replay": 1832,
+        "current_recent_replay": 1845,
         "historical_main_tour_archive": 146812
       },
-      "rows": 148644,
-      "sha256": "69df098d2a7590874d6d740a6dd0280c96a8272977d03e07bcdc5592b612a00a",
+      "rows": 148657,
+      "sha256": "f6d0b76e0c265ef3609c185e20942174f83c8775b77783929fd18c9b148c07d4",
       "tour_counts": {
-        "atp": 77332,
-        "wta": 71312
+        "atp": 77340,
+        "wta": 71317
       }
     }
   },
   "inputs": {
-    "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz": "1e33a279f4e38e95752234484fd83f4abcecd612f36381ca7ec5cd1cc3f09784",
-    "data/odds/recent_main_tour_event_features.csv.gz": "1470df5fecfc6283a2fbb634a6b715c82bfc08e4259f42ea1a342cfcd6b4818e"
+    "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz": "8583398ce1b8c32268a8c409a23db685a38366f43556bc48d36cc0fd4553ff6d",
+    "data/odds/recent_main_tour_event_features.csv.gz": "4d9abf79fc5543f77dd225e910b992c398312f07d4f05a8af6aae0d0bd72a7ba"
   },
-  "legacy_recent_rows_replaced": 1848,
+  "legacy_recent_rows_replaced": 1861,
   "schema_version": 1,
   "timing_policy": "Historical event dates approximate tournament start. Prior history uses a 28-day embargo. Quote timestamps and actual result availability remain unverified."
 }
