@@ -1,12 +1,12 @@
 {
-  "corrections_appended": 12,
-  "generated_at_utc": "2026-11-04T16:34:53+00:00",
+  "corrections_appended": 22,
+  "generated_at_utc": "2026-11-05T16:42:37+00:00",
   "linked_pbp_matches_in_history": 9838,
   "model_training": "Not performed.",
-  "new_rows_appended": 22,
+  "new_rows_appended": 15,
   "opponent_adjustment": "tour_prior_serve_rate + player_shrunk_serve_deviation - opponent_shrunk_return_deviation",
-  "rows": 148707,
-  "rows_with_prior_point_history": 77671,
+  "rows": 148722,
+  "rows_with_prior_point_history": 77685,
   "shrinkage": {
     "k_points": 200.0,
     "method": "fixed pseudo-point shrinkage toward prior tour mean",

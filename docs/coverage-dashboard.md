@@ -1,6 +1,6 @@
 # Coverage dashboard
 
-Generated from **1,262,833** post-2000 published match rows and **148,707** main-tour feature rows. Coverage counts are row availability, not proof that every real-world event is present.
+Generated from **1,262,881** post-2000 published match rows and **148,722** main-tour feature rows. Coverage counts are row availability, not proof that every real-world event is present.
 
 The machine-readable marginal breakdown is [`coverage_dimensions.csv`](../data/curated/post_2000/coverage_dimensions.csv); the complete report and definitions are in [`coverage_report.json`](../data/curated/post_2000/coverage_report.json). Each row reports population size, field-present rows, missing rows, and percent present for the selected dimension.
 
@@ -8,15 +8,15 @@ The machine-readable marginal breakdown is [`coverage_dimensions.csv`](../data/c
 
 | Tour | Population | Rows |
 |---|---|---:|
-| atp | atp_wta_tour_main_draw | 79,586 |
+| atp | atp_wta_tour_main_draw | 79,596 |
 | atp | challenger_main_draw | 131,351 |
 | atp | itf_or_futures_main_draw | 419,885 |
 | atp | qualifier | 61,018 |
-| atp | unclassified | 4,339 |
+| atp | unclassified | 4,362 |
 | wta | atp_wta_tour_main_draw | 73,022 |
 | wta | itf_or_futures_main_draw | 378,103 |
 | wta | qualifier | 113,335 |
-| wta | unclassified | 2,194 |
+| wta | unclassified | 2,209 |
 
 ## Timing and known gaps
 
@@ -26,4 +26,4 @@ The machine-readable marginal breakdown is [`coverage_dimensions.csv`](../data/c
 - A missing ranking, score, duration, or statistic remains missing. The dashboard counts its absence explicitly.
 - Qualifiers, Challenger main draws, Futures/ITF main draws, WTA ITF rows, and tour main draws are measured in separate population categories where source fields permit classification.
 
-Report CSV SHA-256: `c245c2fd9e7c9af823a15c74f29524bce4bedfcfe21464e1b6d880cb1cd5587d`.
+Report CSV SHA-256: `fc063c6c4fa6cc84f6560a42c91838ab02167839ccc58ae791e380d09aeff4da`.
