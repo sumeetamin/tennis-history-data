@@ -1,9 +1,9 @@
 {
-  "feature_rows_checked": 6281,
+  "feature_rows_checked": 6311,
   "corrected_rows": 2713,
   "corrected_price_values": 5368,
-  "source_sha256": "756075f701ad61d6531647fd340995ad7ddc53f2a79eebaafc5c2df3a76bb77c",
-  "feature_sha256": "ca3b084e76479843e522bee51993eb8c6806561136fb9ff68bbc8fc5fd7911ad",
+  "source_sha256": "f29c6f53de0e4a9786b72722789b993b42dcc7820235d8cb320a75c939c426ae",
+  "feature_sha256": "efe45e150e02aa5468a5addc6ae84e9bbe6d6f27387a1273b803211ffbe40f1c",
   "corrections_sha256": "cedea70f0e6c63466e5db4792bce223fefa2dca77be6039099a8a8705353f8a8",
   "policy": "Join on record_id and replace all four odds fields for matched rows, including blanks. Existing feature bytes remain unchanged."
 }
