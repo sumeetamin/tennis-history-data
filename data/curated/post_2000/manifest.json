@@ -1,47 +1,47 @@
 {
   "schema_version": 1,
-  "as_of_date": "2026-11-08",
-  "match_rows": 1262966,
-  "player_rows": 42623,
+  "as_of_date": "2026-11-09",
+  "match_rows": 1265299,
+  "player_rows": 43297,
   "matches_by_source": {
     "sackmann": 1255705,
-    "valuebetennis": 7261
+    "valuebetennis": 9594
   },
   "latest_dates_by_source": {
     "sackmann": "2026-06-02",
-    "valuebetennis": "2026-11-08"
+    "valuebetennis": "2026-11-09"
   },
   "player_appearances_by_identity_status": {
     "archive_id": 2511410,
-    "crosswalk_verified": 13429,
-    "ambiguous_archive_mapping": 167,
-    "provider_only": 926
+    "crosswalk_verified": 16850,
+    "ambiguous_archive_mapping": 222,
+    "provider_only": 2116
   },
   "quality_flags": {
     "not_ordinary_completed_match": 46723,
     "missing_surface": 188,
-    "missing_detailed_match_statistics": 7261,
-    "unresolved_archive_identity": 1014
+    "missing_detailed_match_statistics": 9594,
+    "unresolved_archive_identity": 2021
   },
-  "name_only_identity_candidate_rows": 135,
+  "name_only_identity_candidate_rows": 354,
   "source_row_accounting": {
     "sackmann": 1255712,
     "valuebetennis_already_linked": 247884,
-    "valuebetennis_unlinked": 222908
+    "valuebetennis_unlinked": 225657
   },
   "excluded_rows_by_reason": {
     "sackmann:invalid_identity_or_extra_cells": 7,
     "valuebetennis:unlinked_within_archive_window": 47596,
     "valuebetennis:missing_score": 95120,
-    "valuebetennis:incomplete_or_unsupported_set": 71860,
+    "valuebetennis:incomplete_or_unsupported_set": 72042,
     "valuebetennis:incomplete_or_unknown_match_format": 732,
-    "valuebetennis:terminal_or_unsupported_score": 290,
+    "valuebetennis:terminal_or_unsupported_score": 523,
     "valuebetennis:winner_score_disagreement": 39,
     "valuebetennis:invalid_player_or_winner_id": 7,
-    "valuebetennis:sets_after_match_decided": 3
+    "valuebetennis:sets_after_match_decided": 4
   },
   "inputs_sha256": {
-    "data/odds/atp_wta_match_odds.csv": "cdad872fec025e65f1d16ee56ecd67ef881c78bf6a6f69f4a30f58ac61e372bd",
+    "data/odds/atp_wta_match_odds.csv": "18c6fc821bdbe295b3180f4fa8d55103a41d4531c13b9b14e02be6f2b6aa79f4",
     "data/odds/linked_odds_sackmann.csv.gz": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9",
     "data/processed/supplements/ranking_fallbacks.csv.gz": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58",
     "data/processed/supplements/player_profile_enrichment.csv.gz": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875"
@@ -362,27 +362,27 @@
     },
     {
       "path": "matches/wta_2026.csv.gz",
-      "rows": 12590,
-      "bytes": 1703971,
-      "sha256": "d4b3d46aece2e70b3e8c37c4fdb27544e6039460560a3a498760568a0bbb4410"
+      "rows": 13553,
+      "bytes": 1765594,
+      "sha256": "f7a047ccb87cac37982724867eb28f9f92a0d7019911bf06c37e998ba5c778f1"
     },
     {
       "path": "matches/atp_2026.csv.gz",
-      "rows": 18813,
-      "bytes": 2554552,
-      "sha256": "24edb955df831f8a9b098fd0149a62fd4dbc11a63204c08895107c457f14c987"
+      "rows": 20183,
+      "bytes": 2640904,
+      "sha256": "01ddd6323cc8d41efdd7c6f54cd648c11ae0b530c5af2a8aa5fb79bc37fd0b91"
     },
     {
       "path": "players.csv.gz",
-      "rows": 42623,
-      "bytes": 1073327,
-      "sha256": "dc12c970b75047218e6c5fc1ba8c578daa5387a070ee49c1a6765c6477208f34"
+      "rows": 43297,
+      "bytes": 1084992,
+      "sha256": "998c0ce4b7257e57b56a4f2c8df5eb3363286b1da6f4e505d1c196794b3d9708"
     },
     {
       "path": "player_identity_candidates.csv.gz",
-      "rows": 135,
-      "bytes": 4650,
-      "sha256": "df5cd3569bea468cf707059a3aaa0e917e089593904e93a0fcbc45950fc71c21"
+      "rows": 354,
+      "bytes": 10036,
+      "sha256": "b7c531f87cc19fbc3955d7d22d3f34a7c315c56eac6eacf6c937c34cf221f002"
     }
   ],
   "scope": "Post-2000 available singles results; not an exhaustive census. Archive dates are tournament starts. Recent results require a complete supported score, agreeing winner, and a 14-day archive-end buffer. Missing values are not imputed.",

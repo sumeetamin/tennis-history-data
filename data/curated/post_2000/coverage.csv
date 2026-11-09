@@ -1,10 +1,10 @@
 tour,category,year,source,l_svpt_present,loser_rank_effective_present,matches,minutes_present,odds_close_winner_decimal_present,odds_open_winner_decimal_present,surface_present,w_svpt_present,winner_rank_effective_present
-atp,Challenger,2026,valuebetennis,0,0,3061,1,2835,2875,3061,0,0
+atp,Challenger,2026,valuebetennis,0,0,3190,1,2949,2989,3190,0,0
 atp,Coupe Davis / BJK Cup,2026,valuebetennis,0,0,3,0,3,3,3,0,0
 atp,Grand Chelem,2026,valuebetennis,0,0,96,0,96,96,96,0,0
-atp,ITF,2026,valuebetennis,0,0,702,0,302,334,702,0,0
-atp,Main tour,2026,valuebetennis,0,0,561,0,550,553,561,0,0
-atp,Masters,2026,valuebetennis,0,0,302,0,301,301,302,0,0
+atp,ITF,2026,valuebetennis,0,0,1917,0,596,658,1917,0,0
+atp,Main tour,2026,valuebetennis,0,0,574,0,563,566,574,0,0
+atp,Masters,2026,valuebetennis,0,0,315,0,313,313,315,0,0
 atp,futures,2000,sackmann,0,10204,12220,0,0,0,12220,0,11429
 atp,futures,2001,sackmann,0,10776,12816,0,0,0,12816,0,12046
 atp,futures,2002,sackmann,0,10756,12647,0,0,0,12647,0,11930
@@ -86,10 +86,10 @@ atp,tour,2023,sackmann,2815,2957,2986,2754,2101,2119,2933,2815,2964
 atp,tour,2024,sackmann,3098,3126,3158,2920,1715,1728,3158,3098,3141
 atp,tour,2025,sackmann,2603,2810,2862,2464,1993,1998,2862,2603,2850
 atp,tour,2026,sackmann,1191,1421,1449,1310,671,675,1449,1191,1436
-wta,Challenger,2026,valuebetennis,0,0,1106,68,916,925,1106,0,0
+wta,Challenger,2026,valuebetennis,0,0,1571,112,1184,1199,1571,0,0
 wta,Grand Chelem,2026,valuebetennis,0,0,268,35,267,267,268,0,0
-wta,ITF,2026,valuebetennis,0,0,319,18,153,153,319,0,0
-wta,Main tour,2026,valuebetennis,0,0,535,50,519,528,535,0,0
+wta,ITF,2026,valuebetennis,0,0,787,29,300,303,787,0,0
+wta,Main tour,2026,valuebetennis,0,0,565,50,548,557,565,0,0
 wta,Masters,2026,valuebetennis,0,0,308,61,307,307,308,0,0
 wta,qual_itf,2000,sackmann,0,9337,11099,0,0,0,11099,0,10094
 wta,qual_itf,2001,sackmann,0,6224,10642,0,0,0,10642,0,7289
