@@ -1,47 +1,47 @@
 {
   "schema_version": 1,
-  "as_of_date": "2026-11-09",
-  "match_rows": 1265299,
-  "player_rows": 43297,
+  "as_of_date": "2026-11-10",
+  "match_rows": 1265584,
+  "player_rows": 43354,
   "matches_by_source": {
     "sackmann": 1255705,
-    "valuebetennis": 9594
+    "valuebetennis": 9879
   },
   "latest_dates_by_source": {
     "sackmann": "2026-06-02",
-    "valuebetennis": "2026-11-09"
+    "valuebetennis": "2026-11-10"
   },
   "player_appearances_by_identity_status": {
     "archive_id": 2511410,
-    "crosswalk_verified": 16850,
-    "ambiguous_archive_mapping": 222,
-    "provider_only": 2116
+    "crosswalk_verified": 17241,
+    "ambiguous_archive_mapping": 228,
+    "provider_only": 2289
   },
   "quality_flags": {
     "not_ordinary_completed_match": 46723,
     "missing_surface": 188,
-    "missing_detailed_match_statistics": 9594,
-    "unresolved_archive_identity": 2021
+    "missing_detailed_match_statistics": 9879,
+    "unresolved_archive_identity": 2171
   },
-  "name_only_identity_candidate_rows": 354,
+  "name_only_identity_candidate_rows": 391,
   "source_row_accounting": {
     "sackmann": 1255712,
     "valuebetennis_already_linked": 247884,
-    "valuebetennis_unlinked": 225657
+    "valuebetennis_unlinked": 226000
   },
   "excluded_rows_by_reason": {
     "sackmann:invalid_identity_or_extra_cells": 7,
     "valuebetennis:unlinked_within_archive_window": 47596,
     "valuebetennis:missing_score": 95120,
-    "valuebetennis:incomplete_or_unsupported_set": 72042,
+    "valuebetennis:incomplete_or_unsupported_set": 72082,
     "valuebetennis:incomplete_or_unknown_match_format": 732,
-    "valuebetennis:terminal_or_unsupported_score": 523,
+    "valuebetennis:terminal_or_unsupported_score": 541,
     "valuebetennis:winner_score_disagreement": 39,
     "valuebetennis:invalid_player_or_winner_id": 7,
     "valuebetennis:sets_after_match_decided": 4
   },
   "inputs_sha256": {
-    "data/odds/atp_wta_match_odds.csv": "18c6fc821bdbe295b3180f4fa8d55103a41d4531c13b9b14e02be6f2b6aa79f4",
+    "data/odds/atp_wta_match_odds.csv": "0c6ac667218a5a29b423bd7246245e87699749864c277cf54e3fc8d4baf56273",
     "data/odds/linked_odds_sackmann.csv.gz": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9",
     "data/processed/supplements/ranking_fallbacks.csv.gz": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58",
     "data/processed/supplements/player_profile_enrichment.csv.gz": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875"
@@ -362,27 +362,27 @@
     },
     {
       "path": "matches/wta_2026.csv.gz",
-      "rows": 13553,
-      "bytes": 1765594,
-      "sha256": "f7a047ccb87cac37982724867eb28f9f92a0d7019911bf06c37e998ba5c778f1"
+      "rows": 13652,
+      "bytes": 1772107,
+      "sha256": "2b09174722306b4dce8e12e24747383e8eceadf8f4246eb384b914e743670844"
     },
     {
       "path": "matches/atp_2026.csv.gz",
-      "rows": 20183,
-      "bytes": 2640904,
-      "sha256": "01ddd6323cc8d41efdd7c6f54cd648c11ae0b530c5af2a8aa5fb79bc37fd0b91"
+      "rows": 20369,
+      "bytes": 2653112,
+      "sha256": "9315e55fcf8f5115805be0328ca7598ce3d89fb8273c7131c362ccbceda627aa"
     },
     {
       "path": "players.csv.gz",
-      "rows": 43297,
-      "bytes": 1084992,
-      "sha256": "998c0ce4b7257e57b56a4f2c8df5eb3363286b1da6f4e505d1c196794b3d9708"
+      "rows": 43354,
+      "bytes": 1086228,
+      "sha256": "e5e702e4372d2ab638a1e3b26f1df8c6094ae1a5c4bcede02ae8941015dcf3ba"
     },
     {
       "path": "player_identity_candidates.csv.gz",
-      "rows": 354,
-      "bytes": 10036,
-      "sha256": "b7c531f87cc19fbc3955d7d22d3f34a7c315c56eac6eacf6c937c34cf221f002"
+      "rows": 391,
+      "bytes": 11318,
+      "sha256": "7e7281400bbcaf79683a64051087b571a9e17393575e788907a81b23e3150c99"
     }
   ],
   "scope": "Post-2000 available singles results; not an exhaustive census. Archive dates are tournament starts. Recent results require a complete supported score, agreeing winner, and a 14-day archive-end buffer. Missing values are not imputed.",
