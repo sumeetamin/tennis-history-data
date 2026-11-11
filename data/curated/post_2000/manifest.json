@@ -1,47 +1,47 @@
 {
   "schema_version": 1,
-  "as_of_date": "2026-11-10",
-  "match_rows": 1265584,
-  "player_rows": 43354,
+  "as_of_date": "2026-11-11",
+  "match_rows": 1265811,
+  "player_rows": 43383,
   "matches_by_source": {
     "sackmann": 1255705,
-    "valuebetennis": 9879
+    "valuebetennis": 10106
   },
   "latest_dates_by_source": {
     "sackmann": "2026-06-02",
-    "valuebetennis": "2026-11-10"
+    "valuebetennis": "2026-11-11"
   },
   "player_appearances_by_identity_status": {
     "archive_id": 2511410,
-    "crosswalk_verified": 17241,
-    "ambiguous_archive_mapping": 228,
-    "provider_only": 2289
+    "crosswalk_verified": 17611,
+    "ambiguous_archive_mapping": 234,
+    "provider_only": 2367
   },
   "quality_flags": {
     "not_ordinary_completed_match": 46723,
     "missing_surface": 188,
-    "missing_detailed_match_statistics": 9879,
-    "unresolved_archive_identity": 2171
+    "missing_detailed_match_statistics": 10106,
+    "unresolved_archive_identity": 2248
   },
-  "name_only_identity_candidate_rows": 391,
+  "name_only_identity_candidate_rows": 406,
   "source_row_accounting": {
     "sackmann": 1255712,
     "valuebetennis_already_linked": 247884,
-    "valuebetennis_unlinked": 226000
+    "valuebetennis_unlinked": 226268
   },
   "excluded_rows_by_reason": {
     "sackmann:invalid_identity_or_extra_cells": 7,
     "valuebetennis:unlinked_within_archive_window": 47596,
     "valuebetennis:missing_score": 95120,
-    "valuebetennis:incomplete_or_unsupported_set": 72082,
+    "valuebetennis:incomplete_or_unsupported_set": 72109,
     "valuebetennis:incomplete_or_unknown_match_format": 732,
-    "valuebetennis:terminal_or_unsupported_score": 541,
+    "valuebetennis:terminal_or_unsupported_score": 555,
     "valuebetennis:winner_score_disagreement": 39,
     "valuebetennis:invalid_player_or_winner_id": 7,
     "valuebetennis:sets_after_match_decided": 4
   },
   "inputs_sha256": {
-    "data/odds/atp_wta_match_odds.csv": "0c6ac667218a5a29b423bd7246245e87699749864c277cf54e3fc8d4baf56273",
+    "data/odds/atp_wta_match_odds.csv": "53085c72bd68f60137aaf36c170ba34021d78f651217c2fbd4c407098eac0c7b",
     "data/odds/linked_odds_sackmann.csv.gz": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9",
     "data/processed/supplements/ranking_fallbacks.csv.gz": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58",
     "data/processed/supplements/player_profile_enrichment.csv.gz": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875"
@@ -362,27 +362,27 @@
     },
     {
       "path": "matches/wta_2026.csv.gz",
-      "rows": 13652,
-      "bytes": 1772107,
-      "sha256": "2b09174722306b4dce8e12e24747383e8eceadf8f4246eb384b914e743670844"
+      "rows": 13714,
+      "bytes": 1776905,
+      "sha256": "b20fe26b8dfbdecce309dfc74684ece7954fe6577b84cd3f6d0cf514376ad07b"
     },
     {
       "path": "matches/atp_2026.csv.gz",
-      "rows": 20369,
-      "bytes": 2653112,
-      "sha256": "9315e55fcf8f5115805be0328ca7598ce3d89fb8273c7131c362ccbceda627aa"
+      "rows": 20534,
+      "bytes": 2664841,
+      "sha256": "d4b4739c550c20116e023b1c406221d3c6d066e26c2c583cb5a39cd9a8bc66f4"
     },
     {
       "path": "players.csv.gz",
-      "rows": 43354,
-      "bytes": 1086228,
-      "sha256": "e5e702e4372d2ab638a1e3b26f1df8c6094ae1a5c4bcede02ae8941015dcf3ba"
+      "rows": 43383,
+      "bytes": 1086918,
+      "sha256": "d2e05e20f6ab1acd526da383d58ef26841a1f107634e1b61006f5154700ae4b9"
     },
     {
       "path": "player_identity_candidates.csv.gz",
-      "rows": 391,
-      "bytes": 11318,
-      "sha256": "7e7281400bbcaf79683a64051087b571a9e17393575e788907a81b23e3150c99"
+      "rows": 406,
+      "bytes": 11944,
+      "sha256": "82916b8eb170074de81674e3d9f56f1761ec084943455998ec273fcb88ef041b"
     }
   ],
   "scope": "Post-2000 available singles results; not an exhaustive census. Archive dates are tournament starts. Recent results require a complete supported score, agreeing winner, and a 14-day archive-end buffer. Missing values are not imputed.",
