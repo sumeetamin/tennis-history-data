@@ -1,5 +1,5 @@
 {
-  "as_of_date": "2026-11-11",
+  "as_of_date": "2026-11-12",
   "checks": {
     "all_current_main_draw_rounds": "unresolved",
     "all_fields_complete": false,
@@ -2176,7 +2176,7 @@
     "main_tour_event_release": {
       "date_range": [
         "2000-01-03",
-        "2026-11-10"
+        "2026-11-11"
       ],
       "dimensions": {
         "draw_status": {
@@ -2200,23 +2200,23 @@
             "rows": 146810
           },
           "unknown": {
-            "last_pre_match_pair_rows": 1916,
-            "missing:odds_quote_timestamp_utc": 1974,
+            "last_pre_match_pair_rows": 1918,
+            "missing:odds_quote_timestamp_utc": 1976,
             "missing:p1_age": 9,
             "missing:p1_hand": 168,
             "missing:p1_ht": 495,
             "missing:p1_prior_serve_win_rate": 1,
-            "missing:p1_rank": 756,
-            "missing:p1_rank_points": 756,
+            "missing:p1_rank": 758,
+            "missing:p1_rank_points": 758,
             "missing:p2_age": 8,
             "missing:p2_hand": 176,
             "missing:p2_ht": 458,
             "missing:p2_prior_serve_win_rate": 1,
-            "missing:p2_rank": 762,
-            "missing:p2_rank_points": 762,
-            "missing:round": 1942,
-            "opening_pair_rows": 1927,
-            "rows": 1974
+            "missing:p2_rank": 764,
+            "missing:p2_rank_points": 764,
+            "missing:round": 1944,
+            "opening_pair_rows": 1929,
+            "rows": 1976
           }
         },
         "event_level": {
@@ -2527,61 +2527,61 @@
             "rows": 334
           },
           "main_tour": {
-            "last_pre_match_pair_rows": 1040,
-            "missing:odds_quote_timestamp_utc": 1064,
+            "last_pre_match_pair_rows": 1041,
+            "missing:odds_quote_timestamp_utc": 1065,
             "missing:p1_age": 9,
             "missing:p1_hand": 117,
             "missing:p1_ht": 278,
             "missing:p1_prior_serve_win_rate": 1,
-            "missing:p1_rank": 481,
-            "missing:p1_rank_points": 481,
+            "missing:p1_rank": 482,
+            "missing:p1_rank_points": 482,
             "missing:p2_age": 5,
             "missing:p2_hand": 119,
             "missing:p2_ht": 266,
-            "missing:p2_rank": 485,
-            "missing:p2_rank_points": 485,
-            "missing:round": 1041,
-            "opening_pair_rows": 1051,
-            "rows": 1064
+            "missing:p2_rank": 486,
+            "missing:p2_rank_points": 486,
+            "missing:round": 1042,
+            "opening_pair_rows": 1052,
+            "rows": 1065
           },
           "masters": {
-            "last_pre_match_pair_rows": 572,
-            "missing:odds_quote_timestamp_utc": 574,
+            "last_pre_match_pair_rows": 573,
+            "missing:odds_quote_timestamp_utc": 575,
             "missing:p1_hand": 28,
             "missing:p1_ht": 109,
-            "missing:p1_rank": 277,
-            "missing:p1_rank_points": 277,
+            "missing:p1_rank": 278,
+            "missing:p1_rank_points": 278,
             "missing:p2_age": 2,
             "missing:p2_hand": 23,
             "missing:p2_ht": 93,
             "missing:p2_prior_serve_win_rate": 1,
-            "missing:p2_rank": 278,
-            "missing:p2_rank_points": 278,
-            "missing:round": 568,
-            "opening_pair_rows": 572,
-            "rows": 574
+            "missing:p2_rank": 279,
+            "missing:p2_rank_points": 279,
+            "missing:round": 569,
+            "opening_pair_rows": 573,
+            "rows": 575
           }
         },
         "history_depth": {
           "both_50plus": {
-            "last_pre_match_pair_rows": 16860,
-            "missing:odds_quote_timestamp_utc": 140739,
+            "last_pre_match_pair_rows": 16862,
+            "missing:odds_quote_timestamp_utc": 140741,
             "missing:p1_age": 3,
             "missing:p1_hand": 1118,
             "missing:p1_ht": 6634,
             "missing:p1_prior_serve_win_rate": 12131,
-            "missing:p1_rank": 1240,
-            "missing:p1_rank_points": 1240,
+            "missing:p1_rank": 1242,
+            "missing:p1_rank_points": 1242,
             "missing:p2_age": 3,
             "missing:p2_hand": 1184,
             "missing:p2_ht": 6835,
             "missing:p2_prior_serve_win_rate": 12152,
-            "missing:p2_rank": 1224,
-            "missing:p2_rank_points": 1224,
-            "missing:round": 1872,
+            "missing:p2_rank": 1226,
+            "missing:p2_rank_points": 1226,
+            "missing:round": 1874,
             "missing:surface": 127,
-            "opening_pair_rows": 21811,
-            "rows": 140739
+            "opening_pair_rows": 21813,
+            "rows": 140741
           },
           "one_or_both_under10": {
             "last_pre_match_pair_rows": 30,
@@ -2645,24 +2645,24 @@
         },
         "opening_odds": {
           "both_available": {
-            "last_pre_match_pair_rows": 17078,
-            "missing:odds_quote_timestamp_utc": 22084,
+            "last_pre_match_pair_rows": 17080,
+            "missing:odds_quote_timestamp_utc": 22086,
             "missing:p1_age": 12,
             "missing:p1_hand": 342,
             "missing:p1_ht": 2749,
             "missing:p1_prior_serve_win_rate": 33,
-            "missing:p1_rank": 793,
-            "missing:p1_rank_points": 793,
+            "missing:p1_rank": 795,
+            "missing:p1_rank_points": 795,
             "missing:p2_age": 10,
             "missing:p2_hand": 373,
             "missing:p2_ht": 2775,
             "missing:p2_prior_serve_win_rate": 31,
-            "missing:p2_rank": 802,
-            "missing:p2_rank_points": 802,
-            "missing:round": 1927,
+            "missing:p2_rank": 804,
+            "missing:p2_rank_points": 804,
+            "missing:round": 1929,
             "missing:surface": 17,
-            "opening_pair_rows": 22084,
-            "rows": 22084
+            "opening_pair_rows": 22086,
+            "rows": 22086
           },
           "pair_missing": {
             "last_pre_match_pair_rows": 0,
@@ -2756,24 +2756,24 @@
             "rows": 51583
           },
           "unknown": {
-            "last_pre_match_pair_rows": 814,
-            "missing:odds_quote_timestamp_utc": 6035,
+            "last_pre_match_pair_rows": 816,
+            "missing:odds_quote_timestamp_utc": 6037,
             "missing:p1_age": 38,
             "missing:p1_hand": 1955,
             "missing:p1_ht": 3710,
             "missing:p1_prior_serve_win_rate": 3779,
-            "missing:p1_rank": 4245,
-            "missing:p1_rank_points": 4245,
+            "missing:p1_rank": 4247,
+            "missing:p1_rank_points": 4247,
             "missing:p2_age": 33,
             "missing:p2_hand": 1958,
             "missing:p2_ht": 3731,
             "missing:p2_prior_serve_win_rate": 3779,
-            "missing:p2_rank": 4273,
-            "missing:p2_rank_points": 4273,
-            "missing:round": 769,
+            "missing:p2_rank": 4275,
+            "missing:p2_rank_points": 4275,
+            "missing:round": 771,
             "missing:surface": 31,
-            "opening_pair_rows": 839,
-            "rows": 6035
+            "opening_pair_rows": 841,
+            "rows": 6037
           }
         },
         "season": {
@@ -3217,24 +3217,24 @@
             "rows": 5342
           },
           "2026": {
-            "last_pre_match_pair_rows": 3210,
-            "missing:odds_quote_timestamp_utc": 4626,
+            "last_pre_match_pair_rows": 3212,
+            "missing:odds_quote_timestamp_utc": 4628,
             "missing:p1_age": 13,
             "missing:p1_hand": 257,
             "missing:p1_ht": 1092,
             "missing:p1_prior_serve_win_rate": 7,
-            "missing:p1_rank": 788,
-            "missing:p1_rank_points": 788,
+            "missing:p1_rank": 790,
+            "missing:p1_rank_points": 790,
             "missing:p2_age": 14,
             "missing:p2_hand": 273,
             "missing:p2_ht": 1059,
             "missing:p2_prior_serve_win_rate": 11,
-            "missing:p2_rank": 797,
-            "missing:p2_rank_points": 797,
-            "missing:round": 1942,
+            "missing:p2_rank": 799,
+            "missing:p2_rank_points": 799,
+            "missing:round": 1944,
             "missing:surface": 20,
-            "opening_pair_rows": 3227,
-            "rows": 4626
+            "opening_pair_rows": 3229,
+            "rows": 4628
           }
         },
         "surface": {
@@ -3293,23 +3293,23 @@
             "rows": 14959
           },
           "Hard": {
-            "last_pre_match_pair_rows": 10320,
-            "missing:odds_quote_timestamp_utc": 84668,
+            "last_pre_match_pair_rows": 10322,
+            "missing:odds_quote_timestamp_utc": 84670,
             "missing:p1_age": 32,
             "missing:p1_hand": 1805,
             "missing:p1_ht": 6186,
             "missing:p1_prior_serve_win_rate": 8539,
-            "missing:p1_rank": 2683,
-            "missing:p1_rank_points": 2683,
+            "missing:p1_rank": 2685,
+            "missing:p1_rank_points": 2685,
             "missing:p2_age": 22,
             "missing:p2_hand": 1821,
             "missing:p2_ht": 6270,
             "missing:p2_prior_serve_win_rate": 8472,
-            "missing:p2_rank": 2729,
-            "missing:p2_rank_points": 2729,
-            "missing:round": 1445,
-            "opening_pair_rows": 13589,
-            "rows": 84668
+            "missing:p2_rank": 2731,
+            "missing:p2_rank_points": 2731,
+            "missing:round": 1447,
+            "opening_pair_rows": 13591,
+            "rows": 84670
           },
           "clay": {
             "last_pre_match_pair_rows": 13,
@@ -3350,44 +3350,44 @@
         },
         "tour": {
           "atp": {
-            "last_pre_match_pair_rows": 8813,
-            "missing:odds_quote_timestamp_utc": 77407,
+            "last_pre_match_pair_rows": 8814,
+            "missing:odds_quote_timestamp_utc": 77408,
             "missing:p1_age": 11,
             "missing:p1_hand": 620,
             "missing:p1_ht": 2221,
             "missing:p1_prior_serve_win_rate": 2374,
-            "missing:p1_rank": 1422,
-            "missing:p1_rank_points": 1422,
+            "missing:p1_rank": 1423,
+            "missing:p1_rank_points": 1423,
             "missing:p2_age": 18,
             "missing:p2_hand": 664,
             "missing:p2_ht": 2320,
             "missing:p2_prior_serve_win_rate": 2426,
-            "missing:p2_rank": 1414,
-            "missing:p2_rank_points": 1414,
-            "missing:round": 905,
+            "missing:p2_rank": 1415,
+            "missing:p2_rank_points": 1415,
+            "missing:round": 906,
             "missing:surface": 51,
-            "opening_pair_rows": 11468,
-            "rows": 77407
+            "opening_pair_rows": 11469,
+            "rows": 77408
           },
           "wta": {
-            "last_pre_match_pair_rows": 8265,
-            "missing:odds_quote_timestamp_utc": 71377,
+            "last_pre_match_pair_rows": 8266,
+            "missing:odds_quote_timestamp_utc": 71378,
             "missing:p1_age": 31,
             "missing:p1_hand": 2719,
             "missing:p1_ht": 8860,
             "missing:p1_prior_serve_win_rate": 15056,
-            "missing:p1_rank": 2823,
-            "missing:p1_rank_points": 2823,
+            "missing:p1_rank": 2824,
+            "missing:p1_rank_points": 2824,
             "missing:p2_age": 24,
             "missing:p2_hand": 2711,
             "missing:p2_ht": 8935,
             "missing:p2_prior_serve_win_rate": 14985,
-            "missing:p2_rank": 2859,
-            "missing:p2_rank_points": 2859,
-            "missing:round": 1037,
+            "missing:p2_rank": 2860,
+            "missing:p2_rank_points": 2860,
+            "missing:round": 1038,
             "missing:surface": 132,
-            "opening_pair_rows": 10616,
-            "rows": 71377
+            "opening_pair_rows": 10617,
+            "rows": 71378
           }
         },
         "tour_season": {
@@ -3818,23 +3818,23 @@
             "rows": 2735
           },
           "atp:2026": {
-            "last_pre_match_pair_rows": 1574,
-            "missing:odds_quote_timestamp_utc": 2324,
+            "last_pre_match_pair_rows": 1575,
+            "missing:odds_quote_timestamp_utc": 2325,
             "missing:p1_age": 5,
             "missing:p1_hand": 71,
             "missing:p1_ht": 97,
             "missing:p1_prior_serve_win_rate": 6,
-            "missing:p1_rank": 405,
-            "missing:p1_rank_points": 405,
+            "missing:p1_rank": 406,
+            "missing:p1_rank_points": 406,
             "missing:p2_age": 8,
             "missing:p2_hand": 85,
             "missing:p2_ht": 107,
             "missing:p2_prior_serve_win_rate": 10,
-            "missing:p2_rank": 409,
-            "missing:p2_rank_points": 409,
-            "missing:round": 905,
-            "opening_pair_rows": 1581,
-            "rows": 2324
+            "missing:p2_rank": 410,
+            "missing:p2_rank_points": 410,
+            "missing:round": 906,
+            "opening_pair_rows": 1582,
+            "rows": 2325
           },
           "wta:2000": {
             "last_pre_match_pair_rows": 0,
@@ -4272,24 +4272,24 @@
             "rows": 2607
           },
           "wta:2026": {
-            "last_pre_match_pair_rows": 1636,
-            "missing:odds_quote_timestamp_utc": 2302,
+            "last_pre_match_pair_rows": 1637,
+            "missing:odds_quote_timestamp_utc": 2303,
             "missing:p1_age": 8,
             "missing:p1_hand": 186,
             "missing:p1_ht": 995,
             "missing:p1_prior_serve_win_rate": 1,
-            "missing:p1_rank": 383,
-            "missing:p1_rank_points": 383,
+            "missing:p1_rank": 384,
+            "missing:p1_rank_points": 384,
             "missing:p2_age": 6,
             "missing:p2_hand": 188,
             "missing:p2_ht": 952,
             "missing:p2_prior_serve_win_rate": 1,
-            "missing:p2_rank": 388,
-            "missing:p2_rank_points": 388,
-            "missing:round": 1037,
+            "missing:p2_rank": 389,
+            "missing:p2_rank_points": 389,
+            "missing:round": 1038,
             "missing:surface": 20,
-            "opening_pair_rows": 1646,
-            "rows": 2302
+            "opening_pair_rows": 1647,
+            "rows": 2303
           }
         }
       },
@@ -4297,112 +4297,112 @@
         "odds_quote_timestamp_utc": {
           "available": 0,
           "available_pct": 0.0,
-          "missing": 148784
+          "missing": 148786
         },
         "p1_age": {
-          "available": 148742,
+          "available": 148744,
           "available_pct": 99.97,
           "missing": 42
         },
         "p1_hand": {
-          "available": 145445,
+          "available": 145447,
           "available_pct": 97.76,
           "missing": 3339
         },
         "p1_ht": {
-          "available": 137703,
+          "available": 137705,
           "available_pct": 92.55,
           "missing": 11081
         },
         "p1_prior_matches": {
-          "available": 148784,
+          "available": 148786,
           "available_pct": 100.0,
           "missing": 0
         },
         "p1_prior_serve_win_rate": {
-          "available": 131354,
+          "available": 131356,
           "available_pct": 88.29,
           "missing": 17430
         },
         "p1_rank": {
           "available": 144539,
           "available_pct": 97.15,
-          "missing": 4245
+          "missing": 4247
         },
         "p1_rank_points": {
           "available": 144539,
           "available_pct": 97.15,
-          "missing": 4245
+          "missing": 4247
         },
         "p2_age": {
-          "available": 148742,
+          "available": 148744,
           "available_pct": 99.97,
           "missing": 42
         },
         "p2_hand": {
-          "available": 145409,
+          "available": 145411,
           "available_pct": 97.73,
           "missing": 3375
         },
         "p2_ht": {
-          "available": 137529,
+          "available": 137531,
           "available_pct": 92.44,
           "missing": 11255
         },
         "p2_prior_matches": {
-          "available": 148784,
+          "available": 148786,
           "available_pct": 100.0,
           "missing": 0
         },
         "p2_prior_serve_win_rate": {
-          "available": 131373,
+          "available": 131375,
           "available_pct": 88.3,
           "missing": 17411
         },
         "p2_rank": {
           "available": 144511,
           "available_pct": 97.13,
-          "missing": 4273
+          "missing": 4275
         },
         "p2_rank_points": {
           "available": 144511,
           "available_pct": 97.13,
-          "missing": 4273
+          "missing": 4275
         },
         "round": {
           "available": 146842,
           "available_pct": 98.69,
-          "missing": 1942
+          "missing": 1944
         },
         "surface": {
-          "available": 148601,
+          "available": 148603,
           "available_pct": 99.88,
           "missing": 183
         },
         "tourney_level": {
-          "available": 148784,
+          "available": 148786,
           "available_pct": 100.0,
           "missing": 0
         }
       },
       "integrity_failures": {},
       "odds": {
-        "last_pre_match_pair_rows": 17078,
-        "open_pair_rows": 22084
+        "last_pre_match_pair_rows": 17080,
+        "open_pair_rows": 22086
       },
       "path": "data/curated/research_release/main_tour_event_features.csv.gz",
-      "rows": 148784,
-      "sha256": "917e09f8b7cf36964866ec775dd6798b98067cddda2c6f6ead0eb746e2f58a16",
+      "rows": 148786,
+      "sha256": "38a86ee3f9c654d76951999ebda0b802d8b0490c806a6b41170f2c86e4d783c1",
       "stale_rank_values_over14_days": {
         "p1": 1106,
         "p2": 1105
       },
-      "unique_ids": 148784
+      "unique_ids": 148786
     },
     "recent_enriched": {
       "date_range": [
         "2026-06-16",
-        "2026-11-11"
+        "2026-11-12"
       ],
       "dimensions": {
         "draw_status": {
@@ -4424,45 +4424,45 @@
             "rows": 158
           },
           "unknown": {
-            "last_pre_match_pair_rows": 6365,
-            "missing:odds_quote_timestamp_utc": 7700,
-            "missing:p1_age": 542,
-            "missing:p1_hand": 2279,
-            "missing:p1_ht": 3415,
-            "missing:p1_prior_serve_win_rate": 139,
-            "missing:p1_rank": 4732,
-            "missing:p1_rank_points": 4732,
-            "missing:p2_age": 561,
-            "missing:p2_hand": 2278,
-            "missing:p2_ht": 3366,
-            "missing:p2_prior_serve_win_rate": 141,
-            "missing:p2_rank": 4747,
-            "missing:p2_rank_points": 4747,
-            "missing:round": 7700,
+            "last_pre_match_pair_rows": 6462,
+            "missing:odds_quote_timestamp_utc": 7826,
+            "missing:p1_age": 559,
+            "missing:p1_hand": 2344,
+            "missing:p1_ht": 3501,
+            "missing:p1_prior_serve_win_rate": 143,
+            "missing:p1_rank": 4858,
+            "missing:p1_rank_points": 4858,
+            "missing:p2_age": 586,
+            "missing:p2_hand": 2353,
+            "missing:p2_ht": 3454,
+            "missing:p2_prior_serve_win_rate": 148,
+            "missing:p2_rank": 4873,
+            "missing:p2_rank_points": 4873,
+            "missing:round": 7826,
             "missing:tourney_level": 2,
-            "opening_pair_rows": 6476,
-            "rows": 7700
+            "opening_pair_rows": 6575,
+            "rows": 7826
           }
         },
         "event_level": {
           "challenger": {
-            "last_pre_match_pair_rows": 3792,
-            "missing:odds_quote_timestamp_utc": 4282,
+            "last_pre_match_pair_rows": 3822,
+            "missing:odds_quote_timestamp_utc": 4312,
             "missing:p1_age": 165,
-            "missing:p1_hand": 1041,
-            "missing:p1_ht": 1687,
+            "missing:p1_hand": 1049,
+            "missing:p1_ht": 1705,
             "missing:p1_prior_serve_win_rate": 38,
-            "missing:p1_rank": 2452,
-            "missing:p1_rank_points": 2452,
-            "missing:p2_age": 191,
-            "missing:p2_hand": 1054,
-            "missing:p2_ht": 1705,
-            "missing:p2_prior_serve_win_rate": 37,
-            "missing:p2_rank": 2462,
-            "missing:p2_rank_points": 2462,
-            "missing:round": 4186,
-            "opening_pair_rows": 3840,
-            "rows": 4282
+            "missing:p1_rank": 2482,
+            "missing:p1_rank_points": 2482,
+            "missing:p2_age": 196,
+            "missing:p2_hand": 1069,
+            "missing:p2_ht": 1724,
+            "missing:p2_prior_serve_win_rate": 38,
+            "missing:p2_rank": 2492,
+            "missing:p2_rank_points": 2492,
+            "missing:round": 4216,
+            "opening_pair_rows": 3870,
+            "rows": 4312
           },
           "grand_slam": {
             "last_pre_match_pair_rows": 334,
@@ -4481,58 +4481,58 @@
             "rows": 334
           },
           "itf": {
-            "last_pre_match_pair_rows": 773,
-            "missing:odds_quote_timestamp_utc": 1602,
-            "missing:p1_age": 370,
-            "missing:p1_hand": 1091,
-            "missing:p1_ht": 1268,
-            "missing:p1_prior_serve_win_rate": 100,
-            "missing:p1_rank": 1602,
-            "missing:p1_rank_points": 1602,
-            "missing:p2_age": 367,
-            "missing:p2_hand": 1069,
-            "missing:p2_ht": 1247,
-            "missing:p2_prior_serve_win_rate": 104,
-            "missing:p2_rank": 1602,
-            "missing:p2_rank_points": 1602,
-            "missing:round": 1570,
-            "opening_pair_rows": 829,
-            "rows": 1602
+            "last_pre_match_pair_rows": 838,
+            "missing:odds_quote_timestamp_utc": 1696,
+            "missing:p1_age": 387,
+            "missing:p1_hand": 1148,
+            "missing:p1_ht": 1336,
+            "missing:p1_prior_serve_win_rate": 104,
+            "missing:p1_rank": 1696,
+            "missing:p1_rank_points": 1696,
+            "missing:p2_age": 387,
+            "missing:p2_hand": 1129,
+            "missing:p2_ht": 1316,
+            "missing:p2_prior_serve_win_rate": 110,
+            "missing:p2_rank": 1696,
+            "missing:p2_rank_points": 1696,
+            "missing:round": 1664,
+            "opening_pair_rows": 896,
+            "rows": 1696
           },
           "main_tour": {
-            "last_pre_match_pair_rows": 1040,
-            "missing:odds_quote_timestamp_utc": 1064,
+            "last_pre_match_pair_rows": 1041,
+            "missing:odds_quote_timestamp_utc": 1065,
             "missing:p1_age": 9,
             "missing:p1_hand": 117,
             "missing:p1_ht": 278,
             "missing:p1_prior_serve_win_rate": 1,
-            "missing:p1_rank": 481,
-            "missing:p1_rank_points": 481,
+            "missing:p1_rank": 482,
+            "missing:p1_rank_points": 482,
             "missing:p2_age": 5,
             "missing:p2_hand": 119,
             "missing:p2_ht": 266,
-            "missing:p2_rank": 485,
-            "missing:p2_rank_points": 485,
-            "missing:round": 1041,
-            "opening_pair_rows": 1051,
-            "rows": 1064
+            "missing:p2_rank": 486,
+            "missing:p2_rank_points": 486,
+            "missing:round": 1042,
+            "opening_pair_rows": 1052,
+            "rows": 1065
           },
           "masters": {
-            "last_pre_match_pair_rows": 572,
-            "missing:odds_quote_timestamp_utc": 574,
+            "last_pre_match_pair_rows": 573,
+            "missing:odds_quote_timestamp_utc": 575,
             "missing:p1_hand": 28,
             "missing:p1_ht": 109,
-            "missing:p1_rank": 277,
-            "missing:p1_rank_points": 277,
+            "missing:p1_rank": 278,
+            "missing:p1_rank_points": 278,
             "missing:p2_age": 2,
             "missing:p2_hand": 23,
             "missing:p2_ht": 93,
             "missing:p2_prior_serve_win_rate": 1,
-            "missing:p2_rank": 278,
-            "missing:p2_rank_points": 278,
-            "missing:round": 568,
-            "opening_pair_rows": 572,
-            "rows": 574
+            "missing:p2_rank": 279,
+            "missing:p2_rank_points": 279,
+            "missing:round": 569,
+            "opening_pair_rows": 573,
+            "rows": 575
           },
           "unknown": {
             "last_pre_match_pair_rows": 2,
@@ -4549,103 +4549,103 @@
         },
         "history_depth": {
           "both_50plus": {
-            "last_pre_match_pair_rows": 5309,
-            "missing:odds_quote_timestamp_utc": 5681,
+            "last_pre_match_pair_rows": 5349,
+            "missing:odds_quote_timestamp_utc": 5727,
             "missing:p1_age": 37,
-            "missing:p1_hand": 839,
-            "missing:p1_ht": 1714,
+            "missing:p1_hand": 854,
+            "missing:p1_ht": 1737,
             "missing:p1_prior_serve_win_rate": 5,
-            "missing:p1_rank": 2968,
-            "missing:p1_rank_points": 2968,
+            "missing:p1_rank": 3014,
+            "missing:p1_rank_points": 3014,
             "missing:p2_age": 37,
-            "missing:p2_hand": 852,
-            "missing:p2_ht": 1684,
+            "missing:p2_hand": 867,
+            "missing:p2_ht": 1705,
             "missing:p2_prior_serve_win_rate": 9,
-            "missing:p2_rank": 2973,
-            "missing:p2_rank_points": 2973,
-            "missing:round": 5545,
+            "missing:p2_rank": 3019,
+            "missing:p2_rank_points": 3019,
+            "missing:round": 5591,
             "missing:tourney_level": 2,
-            "opening_pair_rows": 5357,
-            "rows": 5681
+            "opening_pair_rows": 5397,
+            "rows": 5727
           },
           "one_or_both_under10": {
-            "last_pre_match_pair_rows": 305,
-            "missing:odds_quote_timestamp_utc": 892,
-            "missing:p1_age": 288,
-            "missing:p1_hand": 689,
-            "missing:p1_ht": 772,
-            "missing:p1_prior_serve_win_rate": 100,
-            "missing:p1_rank": 835,
-            "missing:p1_rank_points": 835,
-            "missing:p2_age": 300,
-            "missing:p2_hand": 682,
-            "missing:p2_ht": 783,
-            "missing:p2_prior_serve_win_rate": 100,
-            "missing:p2_rank": 843,
-            "missing:p2_rank_points": 843,
-            "missing:round": 890,
-            "opening_pair_rows": 324,
-            "rows": 892
+            "last_pre_match_pair_rows": 330,
+            "missing:odds_quote_timestamp_utc": 929,
+            "missing:p1_age": 299,
+            "missing:p1_hand": 718,
+            "missing:p1_ht": 804,
+            "missing:p1_prior_serve_win_rate": 103,
+            "missing:p1_rank": 872,
+            "missing:p1_rank_points": 872,
+            "missing:p2_age": 312,
+            "missing:p2_hand": 709,
+            "missing:p2_ht": 814,
+            "missing:p2_prior_serve_win_rate": 104,
+            "missing:p2_rank": 880,
+            "missing:p2_rank_points": 880,
+            "missing:round": 927,
+            "opening_pair_rows": 350,
+            "rows": 929
           },
           "one_or_both_under50": {
-            "last_pre_match_pair_rows": 899,
-            "missing:odds_quote_timestamp_utc": 1285,
-            "missing:p1_age": 219,
-            "missing:p1_hand": 773,
-            "missing:p1_ht": 967,
-            "missing:p1_prior_serve_win_rate": 34,
-            "missing:p1_rank": 1021,
-            "missing:p1_rank_points": 1021,
-            "missing:p2_age": 229,
-            "missing:p2_hand": 768,
-            "missing:p2_ht": 951,
-            "missing:p2_prior_serve_win_rate": 33,
-            "missing:p2_rank": 1024,
-            "missing:p2_rank_points": 1024,
-            "missing:round": 1265,
-            "opening_pair_rows": 947,
-            "rows": 1285
+            "last_pre_match_pair_rows": 931,
+            "missing:odds_quote_timestamp_utc": 1328,
+            "missing:p1_age": 225,
+            "missing:p1_hand": 794,
+            "missing:p1_ht": 998,
+            "missing:p1_prior_serve_win_rate": 35,
+            "missing:p1_rank": 1064,
+            "missing:p1_rank_points": 1064,
+            "missing:p2_age": 242,
+            "missing:p2_hand": 801,
+            "missing:p2_ht": 987,
+            "missing:p2_prior_serve_win_rate": 36,
+            "missing:p2_rank": 1067,
+            "missing:p2_rank_points": 1067,
+            "missing:round": 1308,
+            "opening_pair_rows": 980,
+            "rows": 1328
           }
         },
         "opening_odds": {
           "both_available": {
-            "last_pre_match_pair_rows": 6513,
-            "missing:odds_quote_timestamp_utc": 6628,
-            "missing:p1_age": 223,
-            "missing:p1_hand": 1471,
-            "missing:p1_ht": 2479,
-            "missing:p1_prior_serve_win_rate": 21,
-            "missing:p1_rank": 3701,
-            "missing:p1_rank_points": 3701,
-            "missing:p2_age": 232,
-            "missing:p2_hand": 1473,
-            "missing:p2_ht": 2452,
-            "missing:p2_prior_serve_win_rate": 31,
-            "missing:p2_rank": 3712,
-            "missing:p2_rank_points": 3712,
-            "missing:round": 6476,
+            "last_pre_match_pair_rows": 6610,
+            "missing:odds_quote_timestamp_utc": 6727,
+            "missing:p1_age": 233,
+            "missing:p1_hand": 1516,
+            "missing:p1_ht": 2542,
+            "missing:p1_prior_serve_win_rate": 23,
+            "missing:p1_rank": 3800,
+            "missing:p1_rank_points": 3800,
+            "missing:p2_age": 252,
+            "missing:p2_hand": 1528,
+            "missing:p2_ht": 2516,
+            "missing:p2_prior_serve_win_rate": 35,
+            "missing:p2_rank": 3811,
+            "missing:p2_rank_points": 3811,
+            "missing:round": 6575,
             "missing:tourney_level": 2,
-            "opening_pair_rows": 6628,
-            "rows": 6628
+            "opening_pair_rows": 6727,
+            "rows": 6727
           },
           "pair_missing": {
             "last_pre_match_pair_rows": 0,
-            "missing:odds_quote_timestamp_utc": 1230,
-            "missing:p1_age": 321,
-            "missing:p1_hand": 830,
-            "missing:p1_ht": 974,
-            "missing:p1_prior_serve_win_rate": 118,
-            "missing:p1_rank": 1123,
-            "missing:p1_rank_points": 1123,
-            "missing:p2_age": 334,
-            "missing:p2_hand": 829,
-            "missing:p2_ht": 966,
-            "missing:p2_prior_serve_win_rate": 111,
-            "missing:p2_rank": 1128,
-            "missing:p2_rank_points": 1128,
-            "missing:round": 1224,
+            "missing:odds_quote_timestamp_utc": 1257,
+            "missing:p1_age": 328,
+            "missing:p1_hand": 850,
+            "missing:p1_ht": 997,
+            "missing:p1_prior_serve_win_rate": 120,
+            "missing:p1_rank": 1150,
+            "missing:p1_rank_points": 1150,
+            "missing:p2_age": 339,
+            "missing:p2_hand": 849,
+            "missing:p2_ht": 990,
+            "missing:p2_prior_serve_win_rate": 114,
+            "missing:p2_rank": 1155,
+            "missing:p2_rank_points": 1155,
+            "missing:round": 1251,
             "opening_pair_rows": 0,
-            "rows": 1230
+            "rows": 1257
           }
         },
         "ranking": {
@@ -4703,46 +4703,46 @@
             "rows": 1546
           },
           "unknown": {
-            "last_pre_match_pair_rows": 3670,
-            "missing:odds_quote_timestamp_utc": 4881,
-            "missing:p1_age": 518,
-            "missing:p1_hand": 1890,
-            "missing:p1_ht": 2629,
-            "missing:p1_prior_serve_win_rate": 139,
-            "missing:p1_rank": 4824,
-            "missing:p1_rank_points": 4824,
-            "missing:p2_age": 546,
-            "missing:p2_hand": 1893,
-            "missing:p2_ht": 2631,
-            "missing:p2_prior_serve_win_rate": 142,
-            "missing:p2_rank": 4840,
-            "missing:p2_rank_points": 4840,
-            "missing:round": 4788,
+            "last_pre_match_pair_rows": 3767,
+            "missing:odds_quote_timestamp_utc": 5007,
+            "missing:p1_age": 535,
+            "missing:p1_hand": 1955,
+            "missing:p1_ht": 2715,
+            "missing:p1_prior_serve_win_rate": 143,
+            "missing:p1_rank": 4950,
+            "missing:p1_rank_points": 4950,
+            "missing:p2_age": 571,
+            "missing:p2_hand": 1968,
+            "missing:p2_ht": 2719,
+            "missing:p2_prior_serve_win_rate": 149,
+            "missing:p2_rank": 4966,
+            "missing:p2_rank_points": 4966,
+            "missing:round": 4914,
             "missing:tourney_level": 2,
-            "opening_pair_rows": 3751,
-            "rows": 4881
+            "opening_pair_rows": 3850,
+            "rows": 5007
           }
         },
         "season": {
           "2026": {
-            "last_pre_match_pair_rows": 6513,
-            "missing:odds_quote_timestamp_utc": 7858,
-            "missing:p1_age": 544,
-            "missing:p1_hand": 2301,
-            "missing:p1_ht": 3453,
-            "missing:p1_prior_serve_win_rate": 139,
-            "missing:p1_rank": 4824,
-            "missing:p1_rank_points": 4824,
-            "missing:p2_age": 566,
-            "missing:p2_hand": 2302,
-            "missing:p2_ht": 3418,
-            "missing:p2_prior_serve_win_rate": 142,
-            "missing:p2_rank": 4840,
-            "missing:p2_rank_points": 4840,
-            "missing:round": 7700,
+            "last_pre_match_pair_rows": 6610,
+            "missing:odds_quote_timestamp_utc": 7984,
+            "missing:p1_age": 561,
+            "missing:p1_hand": 2366,
+            "missing:p1_ht": 3539,
+            "missing:p1_prior_serve_win_rate": 143,
+            "missing:p1_rank": 4950,
+            "missing:p1_rank_points": 4950,
+            "missing:p2_age": 591,
+            "missing:p2_hand": 2377,
+            "missing:p2_ht": 3506,
+            "missing:p2_prior_serve_win_rate": 149,
+            "missing:p2_rank": 4966,
+            "missing:p2_rank_points": 4966,
+            "missing:round": 7826,
             "missing:tourney_level": 2,
-            "opening_pair_rows": 6628,
-            "rows": 7858
+            "opening_pair_rows": 6727,
+            "rows": 7984
           }
         },
         "surface": {
@@ -4766,24 +4766,24 @@
             "rows": 25
           },
           "Clay": {
-            "last_pre_match_pair_rows": 2117,
-            "missing:odds_quote_timestamp_utc": 2613,
-            "missing:p1_age": 180,
-            "missing:p1_hand": 784,
-            "missing:p1_ht": 1118,
-            "missing:p1_prior_serve_win_rate": 51,
-            "missing:p1_rank": 1383,
-            "missing:p1_rank_points": 1383,
-            "missing:p2_age": 197,
-            "missing:p2_hand": 761,
-            "missing:p2_ht": 1124,
+            "last_pre_match_pair_rows": 2147,
+            "missing:odds_quote_timestamp_utc": 2652,
+            "missing:p1_age": 189,
+            "missing:p1_hand": 801,
+            "missing:p1_ht": 1144,
+            "missing:p1_prior_serve_win_rate": 54,
+            "missing:p1_rank": 1422,
+            "missing:p1_rank_points": 1422,
+            "missing:p2_age": 204,
+            "missing:p2_hand": 784,
+            "missing:p2_ht": 1153,
             "missing:p2_prior_serve_win_rate": 58,
-            "missing:p2_rank": 1386,
-            "missing:p2_rank_points": 1386,
-            "missing:round": 2556,
+            "missing:p2_rank": 1425,
+            "missing:p2_rank_points": 1425,
+            "missing:round": 2595,
             "missing:tourney_level": 1,
-            "opening_pair_rows": 2145,
-            "rows": 2613
+            "opening_pair_rows": 2176,
+            "rows": 2652
           },
           "Grass": {
             "last_pre_match_pair_rows": 404,
@@ -4799,106 +4799,106 @@
             "rows": 414
           },
           "Hard": {
-            "last_pre_match_pair_rows": 3979,
-            "missing:odds_quote_timestamp_utc": 4806,
-            "missing:p1_age": 350,
-            "missing:p1_hand": 1465,
-            "missing:p1_ht": 2214,
-            "missing:p1_prior_serve_win_rate": 86,
-            "missing:p1_rank": 3416,
-            "missing:p1_rank_points": 3416,
-            "missing:p2_age": 360,
-            "missing:p2_hand": 1480,
-            "missing:p2_ht": 2165,
-            "missing:p2_prior_serve_win_rate": 79,
-            "missing:p2_rank": 3429,
-            "missing:p2_rank_points": 3429,
-            "missing:round": 4713,
+            "last_pre_match_pair_rows": 4046,
+            "missing:odds_quote_timestamp_utc": 4893,
+            "missing:p1_age": 358,
+            "missing:p1_hand": 1513,
+            "missing:p1_ht": 2274,
+            "missing:p1_prior_serve_win_rate": 87,
+            "missing:p1_rank": 3503,
+            "missing:p1_rank_points": 3503,
+            "missing:p2_age": 378,
+            "missing:p2_hand": 1532,
+            "missing:p2_ht": 2224,
+            "missing:p2_prior_serve_win_rate": 86,
+            "missing:p2_rank": 3516,
+            "missing:p2_rank_points": 3516,
+            "missing:round": 4800,
             "missing:tourney_level": 1,
-            "opening_pair_rows": 4061,
-            "rows": 4806
+            "opening_pair_rows": 4129,
+            "rows": 4893
           }
         },
         "tour": {
           "atp": {
-            "last_pre_match_pair_rows": 4158,
-            "missing:odds_quote_timestamp_utc": 4896,
-            "missing:p1_age": 187,
-            "missing:p1_hand": 1038,
-            "missing:p1_ht": 1362,
-            "missing:p1_prior_serve_win_rate": 36,
-            "missing:p1_rank": 2819,
-            "missing:p1_rank_points": 2819,
-            "missing:p2_age": 195,
-            "missing:p2_hand": 1024,
-            "missing:p2_ht": 1344,
-            "missing:p2_prior_serve_win_rate": 36,
-            "missing:p2_rank": 2831,
-            "missing:p2_rank_points": 2831,
-            "missing:round": 4793,
+            "last_pre_match_pair_rows": 4222,
+            "missing:odds_quote_timestamp_utc": 4976,
+            "missing:p1_age": 196,
+            "missing:p1_hand": 1074,
+            "missing:p1_ht": 1406,
+            "missing:p1_prior_serve_win_rate": 38,
+            "missing:p1_rank": 2899,
+            "missing:p1_rank_points": 2899,
+            "missing:p2_age": 208,
+            "missing:p2_hand": 1062,
+            "missing:p2_ht": 1387,
+            "missing:p2_prior_serve_win_rate": 38,
+            "missing:p2_rank": 2911,
+            "missing:p2_rank_points": 2911,
+            "missing:round": 4873,
             "missing:tourney_level": 2,
-            "opening_pair_rows": 4251,
-            "rows": 4896
+            "opening_pair_rows": 4317,
+            "rows": 4976
           },
           "wta": {
-            "last_pre_match_pair_rows": 2355,
-            "missing:odds_quote_timestamp_utc": 2962,
-            "missing:p1_age": 357,
-            "missing:p1_hand": 1263,
-            "missing:p1_ht": 2091,
-            "missing:p1_prior_serve_win_rate": 103,
-            "missing:p1_rank": 2005,
-            "missing:p1_rank_points": 2005,
-            "missing:p2_age": 371,
-            "missing:p2_hand": 1278,
-            "missing:p2_ht": 2074,
-            "missing:p2_prior_serve_win_rate": 106,
-            "missing:p2_rank": 2009,
-            "missing:p2_rank_points": 2009,
-            "missing:round": 2907,
-            "opening_pair_rows": 2377,
-            "rows": 2962
+            "last_pre_match_pair_rows": 2388,
+            "missing:odds_quote_timestamp_utc": 3008,
+            "missing:p1_age": 365,
+            "missing:p1_hand": 1292,
+            "missing:p1_ht": 2133,
+            "missing:p1_prior_serve_win_rate": 105,
+            "missing:p1_rank": 2051,
+            "missing:p1_rank_points": 2051,
+            "missing:p2_age": 383,
+            "missing:p2_hand": 1315,
+            "missing:p2_ht": 2119,
+            "missing:p2_prior_serve_win_rate": 111,
+            "missing:p2_rank": 2055,
+            "missing:p2_rank_points": 2055,
+            "missing:round": 2953,
+            "opening_pair_rows": 2410,
+            "rows": 3008
           }
         },
         "tour_season": {
           "atp:2026": {
-            "last_pre_match_pair_rows": 4158,
-            "missing:odds_quote_timestamp_utc": 4896,
-            "missing:p1_age": 187,
-            "missing:p1_hand": 1038,
-            "missing:p1_ht": 1362,
-            "missing:p1_prior_serve_win_rate": 36,
-            "missing:p1_rank": 2819,
-            "missing:p1_rank_points": 2819,
-            "missing:p2_age": 195,
-            "missing:p2_hand": 1024,
-            "missing:p2_ht": 1344,
-            "missing:p2_prior_serve_win_rate": 36,
-            "missing:p2_rank": 2831,
-            "missing:p2_rank_points": 2831,
-            "missing:round": 4793,
+            "last_pre_match_pair_rows": 4222,
+            "missing:odds_quote_timestamp_utc": 4976,
+            "missing:p1_age": 196,
+            "missing:p1_hand": 1074,
+            "missing:p1_ht": 1406,
+            "missing:p1_prior_serve_win_rate": 38,
+            "missing:p1_rank": 2899,
+            "missing:p1_rank_points": 2899,
+            "missing:p2_age": 208,
+            "missing:p2_hand": 1062,
+            "missing:p2_ht": 1387,
+            "missing:p2_prior_serve_win_rate": 38,
+            "missing:p2_rank": 2911,
+            "missing:p2_rank_points": 2911,
+            "missing:round": 4873,
             "missing:tourney_level": 2,
-            "opening_pair_rows": 4251,
-            "rows": 4896
+            "opening_pair_rows": 4317,
+            "rows": 4976
           },
           "wta:2026": {
-            "last_pre_match_pair_rows": 2355,
-            "missing:odds_quote_timestamp_utc": 2962,
-            "missing:p1_age": 357,
-            "missing:p1_hand": 1263,
-            "missing:p1_ht": 2091,
-            "missing:p1_prior_serve_win_rate": 103,
-            "missing:p1_rank": 2005,
-            "missing:p1_rank_points": 2005,
-            "missing:p2_age": 371,
-            "missing:p2_hand": 1278,
-            "missing:p2_ht": 2074,
-            "missing:p2_prior_serve_win_rate": 106,
-            "missing:p2_rank": 2009,
-            "missing:p2_rank_points": 2009,
-            "missing:round": 2907,
-            "opening_pair_rows": 2377,
-            "rows": 2962
+            "last_pre_match_pair_rows": 2388,
+            "missing:odds_quote_timestamp_utc": 3008,
+            "missing:p1_age": 365,
+            "missing:p1_hand": 1292,
+            "missing:p1_ht": 2133,
+            "missing:p1_prior_serve_win_rate": 105,
+            "missing:p1_rank": 2051,
+            "missing:p1_rank_points": 2051,
+            "missing:p2_age": 383,
+            "missing:p2_hand": 1315,
+            "missing:p2_ht": 2119,
+            "missing:p2_prior_serve_win_rate": 111,
+            "missing:p2_rank": 2055,
+            "missing:p2_rank_points": 2055,
+            "missing:round": 2953,
+            "opening_pair_rows": 2410,
+            "rows": 3008
           }
         }
       },
@@ -4906,107 +4906,107 @@
         "odds_quote_timestamp_utc": {
           "available": 0,
           "available_pct": 0.0,
-          "missing": 7858
+          "missing": 7984
         },
         "p1_age": {
-          "available": 7314,
-          "available_pct": 93.08,
-          "missing": 544
+          "available": 7423,
+          "available_pct": 92.97,
+          "missing": 561
         },
         "p1_hand": {
-          "available": 5557,
-          "available_pct": 70.72,
-          "missing": 2301
+          "available": 5618,
+          "available_pct": 70.37,
+          "missing": 2366
         },
         "p1_ht": {
-          "available": 4405,
-          "available_pct": 56.06,
-          "missing": 3453
+          "available": 4445,
+          "available_pct": 55.67,
+          "missing": 3539
         },
         "p1_prior_matches": {
-          "available": 7858,
+          "available": 7984,
           "available_pct": 100.0,
           "missing": 0
         },
         "p1_prior_serve_win_rate": {
-          "available": 7719,
-          "available_pct": 98.23,
-          "missing": 139
+          "available": 7841,
+          "available_pct": 98.21,
+          "missing": 143
         },
         "p1_rank": {
           "available": 3034,
-          "available_pct": 38.61,
-          "missing": 4824
+          "available_pct": 38.0,
+          "missing": 4950
         },
         "p1_rank_points": {
           "available": 3034,
-          "available_pct": 38.61,
-          "missing": 4824
+          "available_pct": 38.0,
+          "missing": 4950
         },
         "p2_age": {
-          "available": 7292,
-          "available_pct": 92.8,
-          "missing": 566
+          "available": 7393,
+          "available_pct": 92.6,
+          "missing": 591
         },
         "p2_hand": {
-          "available": 5556,
-          "available_pct": 70.71,
-          "missing": 2302
+          "available": 5607,
+          "available_pct": 70.23,
+          "missing": 2377
         },
         "p2_ht": {
-          "available": 4440,
-          "available_pct": 56.5,
-          "missing": 3418
+          "available": 4478,
+          "available_pct": 56.09,
+          "missing": 3506
         },
         "p2_prior_matches": {
-          "available": 7858,
+          "available": 7984,
           "available_pct": 100.0,
           "missing": 0
         },
         "p2_prior_serve_win_rate": {
-          "available": 7716,
-          "available_pct": 98.19,
-          "missing": 142
+          "available": 7835,
+          "available_pct": 98.13,
+          "missing": 149
         },
         "p2_rank": {
           "available": 3018,
-          "available_pct": 38.41,
-          "missing": 4840
+          "available_pct": 37.8,
+          "missing": 4966
         },
         "p2_rank_points": {
           "available": 3018,
-          "available_pct": 38.41,
-          "missing": 4840
+          "available_pct": 37.8,
+          "missing": 4966
         },
         "round": {
           "available": 158,
-          "available_pct": 2.01,
-          "missing": 7700
+          "available_pct": 1.98,
+          "missing": 7826
         },
         "surface": {
-          "available": 7858,
+          "available": 7984,
           "available_pct": 100.0,
           "missing": 0
         },
         "tourney_level": {
-          "available": 7856,
+          "available": 7982,
           "available_pct": 99.97,
           "missing": 2
         }
       },
       "integrity_failures": {},
       "odds": {
-        "last_pre_match_pair_rows": 6513,
-        "open_pair_rows": 6628
+        "last_pre_match_pair_rows": 6610,
+        "open_pair_rows": 6727
       },
       "path": "data/odds/recent_model_features_enriched.csv.gz",
-      "rows": 7858,
-      "sha256": "d3f5e912daa16df1b3aca5e102ed6024d3577d5cd8d5e1353680cbcab02b5ba9",
+      "rows": 7984,
+      "sha256": "64c5206443562207123275fa6031cd5ece6771bf57054078d4976b48c4107149",
       "stale_rank_values_over14_days": {
         "p1": 2780,
         "p2": 2764
       },
-      "unique_ids": 7858
+      "unique_ids": 7984
     }
   },
   "legacy_recent_excluded_rows": 111,
@@ -5021,16 +5021,16 @@
   ],
   "rating": "No numeric completeness rating assigned: missing match denominator and timing evidence prevent a defensible 10/10.",
   "raw_provider": {
-    "latest_completed_date": "2026-11-11",
-    "latest_row_date": "2026-11-11",
+    "latest_completed_date": "2026-11-12",
+    "latest_row_date": "2026-11-12",
     "status_counts": {
-      "completed": 267740,
+      "completed": 267905,
       "incomplete_or_unknown_match_format": 2619,
-      "incomplete_or_unsupported_set": 80923,
+      "incomplete_or_unsupported_set": 80926,
       "invalid_player_or_winner_id": 7,
       "missing_score": 122202,
       "sets_after_match_decided": 4,
-      "terminal_or_unsupported_score": 618,
+      "terminal_or_unsupported_score": 632,
       "winner_score_disagreement": 39
     }
   },

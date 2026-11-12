@@ -4,11 +4,11 @@
   "date_ranges": {
     "atp": [
       "2000-01-03",
-      "2026-11-10"
+      "2026-11-11"
     ],
     "wta": [
       "2000-01-03",
-      "2026-11-09"
+      "2026-11-11"
     ]
   },
   "main_tour_categories": [
@@ -17,21 +17,21 @@
     "masters",
     "tour"
   ],
-  "rows": 148800,
+  "rows": 148802,
   "schema_version": 1,
-  "sha256": "c8e490a91bef194b0e16f96e429e5084974383461e086e915bc8b569f93775d3",
+  "sha256": "7caad2052137624340975c1109a6b960ebb96d7ce09abfe35f144ead17c47030",
   "tour_category_rows": {
     "atp:grand_chelem": 89,
-    "atp:main_tour": 547,
+    "atp:main_tour": 548,
     "atp:masters": 299,
     "atp:tour": 76488,
     "wta:grand_chelem": 248,
     "wta:main_tour": 521,
-    "wta:masters": 284,
+    "wta:masters": 285,
     "wta:tour": 70324
   },
   "tour_rows": {
-    "atp": 77423,
-    "wta": 71377
+    "atp": 77424,
+    "wta": 71378
   }
 }
