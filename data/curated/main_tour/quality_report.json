@@ -2,11 +2,11 @@
   "date_ranges": {
     "atp": [
       "2000-01-03",
-      "2026-11-11"
+      "2026-11-12"
     ],
     "wta": [
       "2000-01-03",
-      "2026-11-11"
+      "2026-11-13"
     ]
   },
   "feature_availability_by_tour_and_era": {
@@ -131,60 +131,60 @@
       },
       "2020s": {
         "age_pair": {
-          "matches": 17897,
+          "matches": 17899,
           "pct": 99.86
         },
         "elo_pair": {
-          "matches": 17922,
+          "matches": 17924,
           "pct": 100.0
         },
         "hand_pair": {
-          "matches": 17922,
+          "matches": 17924,
           "pct": 100.0
         },
         "height_pair": {
-          "matches": 17444,
+          "matches": 17446,
           "pct": 97.33
         },
         "last_pre_match_odds_pair": {
-          "matches": 8830,
+          "matches": 8832,
           "pct": 49.27
         },
-        "matches": 17922,
+        "matches": 17924,
         "opening_odds_pair": {
-          "matches": 11485,
-          "pct": 64.08
+          "matches": 11487,
+          "pct": 64.09
         },
         "prior_serve_rate_pair": {
-          "matches": 17707,
+          "matches": 17709,
           "pct": 98.8
         },
         "prior_win_rate_pair": {
-          "matches": 17867,
+          "matches": 17869,
           "pct": 99.69
         },
         "rank_pair": {
           "matches": 17251,
-          "pct": 96.26
+          "pct": 96.25
         },
         "rank_points_pair": {
           "matches": 17251,
-          "pct": 96.26
+          "pct": 96.25
         },
         "recent_365_win_rate_pair": {
-          "matches": 17720,
+          "matches": 17722,
           "pct": 98.87
         },
         "round": {
           "matches": 16986,
-          "pct": 94.78
+          "pct": 94.77
         },
         "surface": {
-          "matches": 17871,
+          "matches": 17873,
           "pct": 99.72
         },
         "surface_elo_pair": {
-          "matches": 17922,
+          "matches": 17924,
           "pct": 100.0
         }
       }
@@ -310,60 +310,60 @@
       },
       "2020s": {
         "age_pair": {
-          "matches": 16477,
+          "matches": 16479,
           "pct": 99.75
         },
         "elo_pair": {
-          "matches": 16519,
+          "matches": 16521,
           "pct": 100.0
         },
         "hand_pair": {
-          "matches": 16516,
+          "matches": 16518,
           "pct": 99.98
         },
         "height_pair": {
           "matches": 9675,
-          "pct": 58.57
+          "pct": 58.56
         },
         "last_pre_match_odds_pair": {
-          "matches": 8266,
-          "pct": 50.04
+          "matches": 8268,
+          "pct": 50.05
         },
-        "matches": 16519,
+        "matches": 16521,
         "opening_odds_pair": {
-          "matches": 10617,
-          "pct": 64.27
+          "matches": 10619,
+          "pct": 64.28
         },
         "prior_serve_rate_pair": {
-          "matches": 16228,
+          "matches": 16230,
           "pct": 98.24
         },
         "prior_win_rate_pair": {
-          "matches": 16478,
+          "matches": 16480,
           "pct": 99.75
         },
         "rank_pair": {
           "matches": 15907,
-          "pct": 96.3
+          "pct": 96.28
         },
         "rank_points_pair": {
           "matches": 15907,
-          "pct": 96.3
+          "pct": 96.28
         },
         "recent_365_win_rate_pair": {
-          "matches": 16321,
+          "matches": 16323,
           "pct": 98.8
         },
         "round": {
           "matches": 15465,
-          "pct": 93.62
+          "pct": 93.61
         },
         "surface": {
-          "matches": 16406,
+          "matches": 16408,
           "pct": 99.32
         },
         "surface_elo_pair": {
-          "matches": 16519,
+          "matches": 16521,
           "pct": 100.0
         }
       }
@@ -371,23 +371,23 @@
   },
   "focus": "ATP/WTA main-tour singles; event census groups source records by event and does not infer that absent matches are missing.",
   "main_tour_dataset": "data/curated/main_tour/atp_wta_main_tour_model_features.csv.gz",
-  "main_tour_rows": 148802,
-  "main_tour_sha256": "7caad2052137624340975c1109a6b960ebb96d7ce09abfe35f144ead17c47030",
+  "main_tour_rows": 148806,
+  "main_tour_sha256": "6107d53d0c527fdf1e300091908a57f557027b7b3fb0f9ac775360ea5104b0c0",
   "row_validation": {
     "issue_counts": {},
     "passed": true,
     "sample_record_ids": {}
   },
   "rows_by_tour": {
-    "atp": 77424,
-    "wta": 71378
+    "atp": 77426,
+    "wta": 71380
   },
   "schema_version": 1,
   "season_coverage_csv": "data/curated/main_tour/season_coverage.csv",
-  "season_coverage_sha256": "34adab28142ae8c51d91b7ddec8de713cfb3b86a4f648936c7169a5bb8a3e942",
+  "season_coverage_sha256": "d942874ba2e45171019fd75e8fbcd5890da5c693555ec635bfd77d210a6e056f",
   "source_identity_coverage_in_event_census": {
     "archive_id": 304026,
-    "crosswalk_verified": 1200,
+    "crosswalk_verified": 1204,
     "provider_only": 38
   },
   "tournament_census": {
@@ -423,7 +423,7 @@
       "atp_2023.csv.gz": "a3117f034ab8463b055b48f222894dcce7b925779b656894c4247afd2d30d609",
       "atp_2024.csv.gz": "db44845c16bde4f55566cd3b09e4265b0d9db7aa4efabb83732d24f55a838fa6",
       "atp_2025.csv.gz": "57605ccef8b8da603b1d2c69931b92017b5d7e1a59603159499cdef400f4c684",
-      "atp_2026.csv.gz": "70e70976e82285c3849cf6dfc0d9a8be5bc61c11d9be662ac66dba57ce08d258",
+      "atp_2026.csv.gz": "bbb07896eca63d05ed7cb5f49bad5986e123c61ab429d04c73bc45ade48776b3",
       "wta_2000.csv.gz": "247c77b374aac2d1b80d567b4f965672359460ef0cb917056b07a098dce07a4f",
       "wta_2001.csv.gz": "3d7bb827dc6e72c1afe702d67c37575dd2e012d33b13725ef5b7dcdbf4a3918b",
       "wta_2002.csv.gz": "854af3d44021b9cd1ce8d70a9c0e8e8c5c4c3b088ae9943cbe743baaf94b9f46",
@@ -450,7 +450,7 @@
       "wta_2023.csv.gz": "af339746c11e1e5572ee46d22432ddbccb08854ef5df0b0211072586fd557c71",
       "wta_2024.csv.gz": "ffba412ab67232c6a1b4eb217ee8413adb577371195575f727f627c318e997bf",
       "wta_2025.csv.gz": "129b0ba55ba431371f50c208edee641740d5dead2dfe3c196268397de523d189",
-      "wta_2026.csv.gz": "c52e589fe987c22ef814333f36f0a768cd86fe0fce8f15aab9fc86741459e9dc"
+      "wta_2026.csv.gz": "2f2644f0d2f15cf85eede762a8e002b19346de11e846ecaf5bacf541c9f646e9"
     }
   }
 }
