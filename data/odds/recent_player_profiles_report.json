@@ -1,30 +1,30 @@
 {
-  "rows_with_profile_data": 8305,
-  "recent_feature_rows": 8305,
+  "rows_with_profile_data": 8702,
+  "recent_feature_rows": 8702,
   "field_values": {
-    "age": 15363,
-    "height": 9149,
-    "hand": 16604,
-    "rows": 8305
+    "age": 16001,
+    "height": 9385,
+    "hand": 17398,
+    "rows": 8702
   },
   "field_values_by_tour": {
     "atp": {
-      "age": 9908,
-      "height": 7378,
-      "hand": 10348,
-      "rows": 5174
+      "age": 10326,
+      "height": 7590,
+      "hand": 10816,
+      "rows": 5408
     },
     "wta": {
-      "age": 5455,
-      "hand": 6256,
-      "height": 1771,
-      "rows": 3131
+      "age": 5675,
+      "hand": 6582,
+      "height": 1795,
+      "rows": 3294
     }
   },
   "height_is_historical": false,
   "age_basis": "Birth date plus exact Valuebetennis match date; rounded to one decimal year.",
-  "profile_supplement_sha256": "0af2c36e412121877cc70a2fe7ec800a27e02b08a70a6d0e3f0c735a19fbe7e4",
-  "input_recent_features_sha256": "d94a1bb1a5c9788bb3176675cca6cd44233a7419a997da088eb63a0cf0a16d5c",
+  "profile_supplement_sha256": "87ce2b6ee67a4bdac239f525dc6924e512242900d19de91f38805729fc4eaef3",
+  "input_recent_features_sha256": "e4dd4f153a5524f26800e5def50ba71f6e4ed8f20df3277216e903168a5674f6",
   "input_database_sha256": "455a3b639fa3905a0f2c7dae09188d782b3514410552acf685a380341002aad2",
   "input_wikidata_profile_supplement_sha256": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875",
   "supplement_file": "data/odds/recent_player_profiles.csv.gz",
