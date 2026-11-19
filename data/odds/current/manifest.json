@@ -1,5 +1,5 @@
 {
-  "as_of_date": "2026-11-18",
+  "as_of_date": "2026-11-19",
   "changed_fields": {
     "elo_diff": 2869,
     "odds_close_p2_decimal": 2641,
@@ -31,10 +31,10 @@
     "unique_ids": true
   },
   "corrected_rows": 4138,
-  "data_through": "2026-11-18",
+  "data_through": "2026-11-19",
   "date_range": [
     "2026-06-16",
-    "2026-11-18"
+    "2026-11-19"
   ],
   "excluded_reasons": {
     "incomplete_or_unsupported_set": 55,
@@ -44,7 +44,7 @@
   "excluded_records_sha256": "90df68d31a675f7d1ce22a8c33b62660c40952549be2576ffb6e2d1223977ce8",
   "history_corrected_rows": 2869,
   "inputs": {
-    "data/odds/atp_wta_match_odds.csv": "b3b36eaf1939935b462658ce1ab8f340fdbce93404cb4552e0d0750c77605bf4",
+    "data/odds/atp_wta_match_odds.csv": "740cd290419fe8db1f78409e2aa02e1d4d9d88db8ac2b7fd64012bf40b76e442",
     "data/odds/linked_odds_sackmann.csv.gz": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9",
     "data/source_files.json": "568295797704108fa2ed6e773a805d7019bd637b1e579893ef4f9f466a3195c4",
     "scripts/build_current_recent_snapshot.py": "804eb10873450367294282a277b39152ba1168dce8e8ce7214a70d28f1539447",
@@ -55,11 +55,11 @@
     "scripts/recent_odds_mapping.py": "3dfbbe3a9fe5b1c47f29e6eac4e183af0a78cf02291007202028d7f94cc5a1ea"
   },
   "new_rows_vs_archive": 0,
-  "published_archive_rows": 8702,
-  "rows": 8591,
+  "published_archive_rows": 8819,
+  "rows": 8708,
   "schema_version": 1,
   "scope": "Replaceable current-source reconstruction; immutable original rows remain in the legacy archive. Event dates and 28-day embargo are availability proxies, not verified result publication timestamps.",
-  "skipped_unverified_identity": 2785,
-  "snapshot_sha256": "4b497924a85a57c0728f64fa2d005cc81d46572cf3011f55a797f45c9464e9c1",
-  "source_feature_archive_sha256": "e4dd4f153a5524f26800e5def50ba71f6e4ed8f20df3277216e903168a5674f6"
+  "skipped_unverified_identity": 2815,
+  "snapshot_sha256": "bf5d08d6aa81f2758070b9dbfc1e4872ab0727436635fba2418c28226dfd5525",
+  "source_feature_archive_sha256": "4a5d3a7637a2aac8cc405f9d36494fcec15517a9193f4348d1f54cc393bd23a1"
 }
