@@ -5,10 +5,10 @@
   "retrieved_at_utc": "2026-10-27T06:05:01.168439+00:00",
   "combined_file": "data/odds/atp_wta_match_odds.csv",
   "delimiter": ",",
-  "rows": 475921,
+  "rows": 476004,
   "rows_by_tour": {
-    "atp": 278691,
-    "wta": 197230
+    "atp": 278746,
+    "wta": 197258
   },
   "year_files": [
     {
@@ -48,11 +48,11 @@
     "2023": 89826,
     "2024": 79910,
     "2025": 80412,
-    "2026": 78664
+    "2026": 78747
   },
   "duplicate_match_ids_in_file": 0,
-  "combined_sha256": "3a8cfadc8df5fcc83b2701175c20276d371699121d5eb5e863b2cbb6cd5c40c1",
-  "combined_bytes": 68167152,
+  "combined_sha256": "a520667e61f7d5daa0f9f25b390b1b1d4a96e2c09cb09692e6f0ef5c8dfb8556",
+  "combined_bytes": 68179983,
   "last_full_history_backfill": {
     "checked_at_utc": "2026-10-27T11:35:01.168439+05:30",
     "source_years_checked": [
@@ -81,20 +81,20 @@
     "existing_rows_rewritten": 0,
     "policy": "Append unseen settled match IDs from all available seasons; never revise existing rows."
   },
-  "last_incremental_update_utc": "2026-11-20T17:03:02.303457+00:00",
+  "last_incremental_update_utc": "2026-11-21T16:14:18.773470+00:00",
   "last_incremental_window": {
-    "from": "2026-10-21",
-    "through": "2026-11-20",
-    "source_rows_checked": 81093,
+    "from": "2026-10-22",
+    "through": "2026-11-21",
+    "source_rows_checked": 81249,
     "source_year_sha256": {
-      "2026": "35a671239b47602def693cbd32798f7950157173edb53cf46908a042473e3f6c"
+      "2026": "114b49dcfc285f67439ff2dc9a248b4dbb28686b4484bb0a6c8f416765fd22ba"
     },
     "source_years_not_yet_available": [],
-    "unsettled_rows_skipped": 2429,
-    "new_rows_appended": 137,
+    "unsettled_rows_skipped": 2502,
+    "new_rows_appended": 83,
     "new_rows_by_tour": {
-      "atp": 83,
-      "wta": 54
+      "atp": 55,
+      "wta": 28
     }
   }
 }
