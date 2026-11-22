@@ -1,15 +1,15 @@
 # Measured repository quality
 
-As of 2026-11-21. Rebuild: `python scripts/audit_repository_quality.py`.
+As of 2026-11-22. Rebuild: `python scripts/audit_repository_quality.py`.
 
 | Current release | Rows | Date range | Integrity failures |
 |---|---:|---|---:|
-| [recent_enriched](../data/odds/recent_model_features_enriched.csv.gz) | 8,869 | 2026-06-16 to 2026-11-21 | 0 |
+| [recent_enriched](../data/odds/recent_model_features_enriched.csv.gz) | 8,913 | 2026-06-16 to 2026-11-22 | 0 |
 | [main_draw_release](../data/curated/research_release/main_draw_features.csv.gz) | 146,810 | 2000-01-03 to 2026-11-08 | 0 |
-| [main_tour_event_release](../data/curated/research_release/main_tour_event_features.csv.gz) | 148,803 | 2000-01-03 to 2026-11-20 | 0 |
+| [main_tour_event_release](../data/curated/research_release/main_tour_event_features.csv.gz) | 148,805 | 2000-01-03 to 2026-11-21 | 0 |
 
 Legacy recent rows excluded: 111; replayed rows with changed non-price fields: 2869.
-Latest raw date: 2026-11-21. Latest completed raw match date: 2026-11-21.
+Latest raw date: 2026-11-22. Latest completed raw match date: 2026-11-22.
 
 Missingness, source hashes, opening/last-pre-match pair counts and breakdowns by tour, season, event level, surface, rank, history depth and draw status are in [the machine-readable audit](../data/quality/repository_quality.json).
 
