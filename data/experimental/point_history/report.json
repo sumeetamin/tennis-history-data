@@ -1,9 +1,9 @@
 {
   "corrections_appended": 2,
-  "generated_at_utc": "2026-11-22T16:29:02+00:00",
+  "generated_at_utc": "2026-11-23T20:31:59+00:00",
   "linked_pbp_matches_in_history": 9838,
   "model_training": "Not performed.",
-  "new_rows_appended": 2,
+  "new_rows_appended": 0,
   "opponent_adjustment": "tour_prior_serve_rate + player_shrunk_serve_deviation - opponent_shrunk_return_deviation",
   "rows": 148821,
   "rows_with_prior_point_history": 77771,
