@@ -1,47 +1,47 @@
 {
   "schema_version": 1,
-  "as_of_date": "2026-11-24",
-  "match_rows": 1267972,
-  "player_rows": 43732,
+  "as_of_date": "2026-11-25",
+  "match_rows": 1268099,
+  "player_rows": 43735,
   "matches_by_source": {
     "sackmann": 1255705,
-    "valuebetennis": 12267
+    "valuebetennis": 12394
   },
   "latest_dates_by_source": {
     "sackmann": "2026-06-02",
-    "valuebetennis": "2026-11-24"
+    "valuebetennis": "2026-11-25"
   },
   "player_appearances_by_identity_status": {
     "archive_id": 2511410,
-    "crosswalk_verified": 20868,
-    "ambiguous_archive_mapping": 293,
-    "provider_only": 3373
+    "crosswalk_verified": 21084,
+    "ambiguous_archive_mapping": 298,
+    "provider_only": 3406
   },
   "quality_flags": {
     "not_ordinary_completed_match": 46723,
     "missing_surface": 188,
-    "missing_detailed_match_statistics": 12267,
-    "unresolved_archive_identity": 3130
+    "missing_detailed_match_statistics": 12394,
+    "unresolved_archive_identity": 3164
   },
-  "name_only_identity_candidate_rows": 580,
+  "name_only_identity_candidate_rows": 591,
   "source_row_accounting": {
     "sackmann": 1255712,
     "valuebetennis_already_linked": 247884,
-    "valuebetennis_unlinked": 228755
+    "valuebetennis_unlinked": 228901
   },
   "excluded_rows_by_reason": {
     "sackmann:invalid_identity_or_extra_cells": 7,
     "valuebetennis:unlinked_within_archive_window": 47596,
     "valuebetennis:missing_score": 95120,
-    "valuebetennis:incomplete_or_unsupported_set": 72244,
+    "valuebetennis:incomplete_or_unsupported_set": 72251,
     "valuebetennis:incomplete_or_unknown_match_format": 732,
-    "valuebetennis:terminal_or_unsupported_score": 746,
+    "valuebetennis:terminal_or_unsupported_score": 758,
     "valuebetennis:winner_score_disagreement": 39,
     "valuebetennis:invalid_player_or_winner_id": 7,
     "valuebetennis:sets_after_match_decided": 4
   },
   "inputs_sha256": {
-    "data/odds/atp_wta_match_odds.csv": "cf2053ed13212ea7c865e478ed79987b98f8e8b2b48a9bed306d079321c77244",
+    "data/odds/atp_wta_match_odds.csv": "0394f9416fe5efa95335e1c5b7fda79a3ae9c0de6c3b1ddee63a462ee95f247c",
     "data/odds/linked_odds_sackmann.csv.gz": "b5b686e26271a8eaac34064bd5364556d1db11c7f1196703acdec190fc0dcfc9",
     "data/processed/supplements/ranking_fallbacks.csv.gz": "d3c3aa4a424f65cb912c33ab5ac9e0e225229e445a4353432280f1227dabcb58",
     "data/processed/supplements/player_profile_enrichment.csv.gz": "8a1964a1cecd99aa9c0fc2918d7e8dadc7b632fb2ed27e530f8dabb275b36875"
@@ -362,27 +362,27 @@
     },
     {
       "path": "matches/wta_2026.csv.gz",
-      "rows": 14494,
-      "bytes": 1832552,
-      "sha256": "36bb24d749b76e013d61dcb7f96daf7491d4b8560706c50a15479a62d3364058"
+      "rows": 14548,
+      "bytes": 1836660,
+      "sha256": "6ea4d8cea5bfc92c728c4c2c5918d142715a3368eb9548f21beac794a689759b"
     },
     {
       "path": "matches/atp_2026.csv.gz",
-      "rows": 21915,
-      "bytes": 2761754,
-      "sha256": "b7245144895da7bda8b6da387b4e9d70f144cccb344804b3f855431bd8ff7130"
+      "rows": 21988,
+      "bytes": 2767332,
+      "sha256": "eb689cd6bde4e4e596459bb2007b696907407b09569329b14819e41c4a492188"
     },
     {
       "path": "players.csv.gz",
-      "rows": 43732,
-      "bytes": 1094552,
-      "sha256": "2b264947f88dd9746323d413294e758c1d14f2614e158267b50387e85876ba34"
+      "rows": 43735,
+      "bytes": 1094711,
+      "sha256": "4d20ad3fc503efa6e9e86cf59f123f38432a25bb7d6a684dd8be4e2e66f3839f"
     },
     {
       "path": "player_identity_candidates.csv.gz",
-      "rows": 580,
-      "bytes": 18111,
-      "sha256": "d1a2d08f0258dfa12f24be9da15855253606cfb6b3fa3d80906bf41d20623bc9"
+      "rows": 591,
+      "bytes": 18619,
+      "sha256": "2b933ad75d3d264e6ed4444058e4fce6646792ff50b23f1b9578cc65dcf4bde1"
     }
   ],
   "scope": "Post-2000 available singles results; not an exhaustive census. Archive dates are tournament starts. Recent results require a complete supported score, agreeing winner, and a 14-day archive-end buffer. Missing values are not imputed.",
